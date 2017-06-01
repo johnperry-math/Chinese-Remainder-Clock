@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chinese Remainder Clock</title>
+</head>
+<body>
+<h1 align="center">The Chinese Remainder Clock</h1>
+
+<ul>
+    <li><a href="#ideal">The idea</a></li>
+    <li><a href="#options">Options</a></li>
+    <li><a href="#credits">Credits</a></li>
+</ul>
+
+<a name="idea"></a> <h2>The idea</h2>
+If an ordinary clock would tell time in the form<p/>
+<div align="center">10&nbsp;&nbsp;:&nbsp;&nbsp;06&nbsp;&nbsp;:&nbsp;&nbsp;47.</div><p/>
+then a &ldquo;Chinese Remainder Clock&rdquo; tells this same time in the form<p/>
+<div align="center">1&nbsp;&nbsp;2&nbsp;&nbsp;:&nbsp;&nbsp;0&nbsp;&nbsp;2&nbsp;&nbsp;1&nbsp;&nbsp;:&nbsp;&nbsp;1&nbsp;&nbsp;3&nbsp;&nbsp;2&nbsp;.</div><p/>
+These digits are the remainders after dividing:
+<ul>
+    <li style="color:blue;"><span style="color:black;">hours by 3 and 4,</span></li>
+    <li style="color:red;"><span style="color:black;">minutes by 3, 4, and 5, and</span></li>
+    <li style="color:green;"><span style="color:black;">seconds by 3, 4, and 5.</span></li>
+</ul>
+A famous result called the
+<a href="https://en.wikipedia.org/wiki/Chinese_Remainder_Theorem"><b>Chinese Remainder Theorem</b></a>
+promises that:
+<ul>
+    <li style="color:blue;"><span style="color:black;">if you know
+        the 3-remainder and the 4-remainder for the hour,
+        then you can reconstruct the hour;</span></li>
+    <li style="color:red;"><span style="color:black;">if you know
+        the 3-remainder, the 4-remainder, and the 5-remainder for the minute,
+        then you can reconstruct the minute; and</span></li>
+    <li style="color:green;"><span style="color:black;">if you know
+        the 3-remainder, the 4-remainder, and the 5-remainder for the second,
+        then you can reconstruct the second.</span></li>
+</ul>
+The important thing is that the numbers that we use for division have no common factors.
+For example, knowing the 2-remainder and the 6-remainder would not suffice to reconstruct the hour.
+
+<a name="options"></a> <h2>Options</h2>
+Several toggles allow you to choose different modes:
+<ul>
+    <li>a 12-hour clock or a <a href="#hours">24-hour clock</a>;</li>
+    <li>an <a href="#analog">analog clock</a>
+        or a <a href="#digital">digital clock</a>;</li>
+    <li>a color clock or a black-and-white clock; and</li>
+    <li><a href="#manual">automatic or manual.</a></li>
+</ul>
+
+<a name="hours"></a><h3>12- or 24-hour mode</h3>
+
+Traditionally, time is measured in 12-hour increments,
+but many individuals and organizations tell time in 24-hour increments.
+The default for the Chinese Remainder Clock is to use 12-hour increments,
+but since 24&nbsp;=&nbsp;3&nbsp;&times;&nbsp;8, we can divide the hours by 8 instead of by 4.
+Pressing the &ldquo;12 hour&rdquo; toggle will change from 12- to 24-hour mode;
+pressing that toggle again will change it back.
+
+<a name="analog"></a><h3>The &ldquo;analog&rdquo; Chinese Remainder Clock</h3>
+A traditional clock has hands that point to the correct time.
+For the hour, there are 12 positions on the circle, and
+for the minute, there are 60 positions.
+We do the same thing here, using one circle for each remainder we consider:
+<ul>
+    <li style="color:blue;"><span style="color:black;">the hour has
+        one circle with three positions and one circle with four positions
+        (the innermost rings of the dial);
+    </span></li>
+    <li style="color:red;"><span style="color:black;">
+        the minute has one circle with three positions,
+        one circle with four positions,
+        and one circle with five positions
+        (the outermost rings of the dial); and
+    </span></li>
+    <li style="color:green;"><span style="color:black;">
+        the second has one circle with three positions,
+        one circle with four positions,
+        and one circle with five positions
+        (interleaved among the outermost rings of the dial).
+    </span></li>
+</ul>
+The position for the zero remainder lies at the top of each circle.
+Increasing a remainder by 1 means to rotate the position on the corresponding circle one step clockwise.
+
+<a name="digital"></a><h3>The &ldquo;digital&rdquo; Chinese Remainder Clock</h3>
+Instead of considering positions on a circle, we can simply list the remainders.
+We write these numbers in a triangle, square, pentagon, or octagon
+to convey whether we mean the 3-, 4-, 5-, or 8-remainder.
+<ul>
+    <li style="color:blue;"><span style="color:black;">the hour has a triangle
+        and a square (or, in the 24-hour clock, an
+        octagon), placed on the left;</span></li>
+    <li style="color:red;"><span style="color:black;">the minute has a triangle,
+        a square, and a pentagon, placed in the middle; and</span></li>
+    <li style="color:green;"><span style="color:black;">the second has a triangle,
+        a square, and a pentagon, placed on the right.</span></li>
+</ul>
+
+<a name="manual"></a><h3>Automatic or Manual</h3>
+When the &ldquo;Auto&rdquo; toggle is activated,
+the clock displays the phone&rsquo;s current time.
+Pressing the toggle switches to a &ldquo;Manual&rdquo; mode,
+where you can modify the time directly, and experiment with how the clock works.
+In this mode,
+<ul>
+    <li>a &ldquo;drop-down menu&rdquo; lets you indicate whether you wish to modify
+        the hour, minute, or second;</li>
+    <li>two buttons labeled &ldquo;-1&rdquo; and &ldquo;+1&rdquo; let you decrement or increment
+        the selected unit of time; and</li>
+    <li>a text box lets you choose a value directly.</li>
+</ul>
+
+<a name="credits"></a><h2>Credits</h2><div align="center">
+    Chinese Remainder Clock, Version 1.0 &#169; 2017<br/>
+    App by <a href="http://www.math.usm.edu/perry/">John Perry</a>
+    and <a href="http://antonellaperucca.net/">Antonella Perucca</a><br/>
+    <a href="http://antonellaperucca.net/CRC.html">Official website</a>
+    <p/>
+    The designs of the Chinese Remainder Clock are patented.
+    Personal use allowed.
+</div>
+
+</body>
+</html>

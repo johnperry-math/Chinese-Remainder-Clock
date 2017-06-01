@@ -1,0 +1,147 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".Chinese_Remainder$PlaceholderFragment">
+
+    <view
+        class="name.cantanima.chineseremainderclock.CRC_View"
+        android:id="@+id/crc_view"
+        layout_centerHorizontal="true"
+        layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/selectUnit"
+        android:layout_toRightOf="@+id/hourToggle"
+        android:layout_toEndOf="@+id/hourToggle"
+        android:layout_below="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="Chinese Remainder Clock"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:typeface="serif"
+        tools:text="Chinese Remainder Clock"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+    <ToggleButton
+        android:id="@+id/hourToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:checked="false"
+        android:focusable="false"
+        android:text="12/24 hour"
+        android:textOff="12 hour"
+        android:textOn="24 hour" />
+
+    <ToggleButton
+        android:id="@+id/monochromeToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ToggleButton"
+        android:textOff="Color"
+        android:textOn="B&amp;W"
+        android:focusable="false"
+        android:layout_above="@+id/analogToggle"
+        android:layout_alignRight="@+id/hourToggle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ToggleButton
+        android:id="@+id/analogToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:text="ToggleButton"
+        android:textOff="Analog"
+        android:textOn="Digital"
+        android:layout_alignRight="@id/hourToggle"
+        android:layout_above="@+id/hourToggle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:id="@+id/selectUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/unitStrings"
+        android:spinnerMode="dropdown"
+        android:focusable="true"
+        android:layout_above="@id/timeEditor"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/selectUnit"
+        android:weightSum="1"
+        android:layout_alignStart="@+id/selectUnit"
+        android:layout_alignParentEnd="true">
+
+        <Button
+            android:id="@+id/decrementButton"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="0.5"
+            android:text="-1" />
+
+        <Button
+            android:id="@+id/incrementButton"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_weight="0.5"
+            android:text="+1" />
+
+    </LinearLayout>
+
+    <ToggleButton
+        android:id="@+id/activeToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:checked="false"
+        android:text="ToggleButton"
+        android:textOff="Auto"
+        android:textOn="Manual" />
+
+    <EditText
+        android:id="@+id/timeEditor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="3"
+        android:imeOptions="actionDone"
+        android:selectAllOnFocus="true"
+        android:inputType="number"
+        android:layout_above="@+id/activeToggle"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@id/selectUnit"/>
+
+    <Button
+        android:id="@+id/helpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Info"
+        android:layout_above="@+id/monochromeToggle"
+        android:layout_alignRight="@id/hourToggle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

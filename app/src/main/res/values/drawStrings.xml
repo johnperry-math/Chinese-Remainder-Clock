@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="drawStrings">
+        <item>Arcs</item>
+        <item>Balls</item>
+        <item>Bubbles</item>
+        <item>Polygons</item>
+    </string-array>
+</resources>

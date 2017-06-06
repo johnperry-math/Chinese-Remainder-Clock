@@ -82,14 +82,23 @@ public class Chinese_Remainder extends Activity {
             SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
             boolean default_hour = false;
             boolean saved_hour = (prefs.contains(getString(R.string.saved_hour))) ?
-                    prefs.getBoolean(getString(R.string.saved_hour), default_hour) : false;
+                    prefs.getBoolean(getString(R.string.saved_hour), default_hour) : default_hour;
             boolean default_color = false;
             boolean saved_color = (prefs.contains(getString(R.string.saved_color))) ?
-                    prefs.getBoolean(getString(R.string.saved_color), default_color) : false;
-            boolean default_anadig = false;
-            boolean saved_anadig = (prefs.contains(getString(R.string.saved_anadig))) ?
-                    prefs.getBoolean(getString(R.string.saved_anadig), default_anadig) : false  ;
-            crc_view.setPrefs(prefs, saved_hour, saved_color, saved_anadig);
+                    prefs.getBoolean(getString(R.string.saved_color), default_color) : default_color;
+            int default_drawer = 1;
+            int saved_drawer = (prefs.contains(getString(R.string.saved_drawer))) ?
+                    prefs.getInt(getString(R.string.saved_drawer), default_drawer) : default_drawer;
+            if (!prefs.contains(getString(R.string.version))) {
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.clear();
+                editor.putString(getString(R.string.version), "1.1");
+                editor.putBoolean(getString(R.string.saved_hour), saved_hour);
+                editor.putBoolean(getString(R.string.saved_color), saved_color);
+                editor.putInt(getString(R.string.saved_drawer), saved_drawer);
+                editor.apply();
+            }
+            crc_view.setPrefs(prefs, saved_hour, saved_color, saved_drawer);
 
             // setup user interface elements: all should start off invisible,
             // and should have crc_view as an appropriate listener
@@ -105,10 +114,10 @@ public class Chinese_Remainder extends Activity {
             mb.setVisibility(View.INVISIBLE);
             mb.setChecked(saved_color);
 
-            ToggleButton ab = (ToggleButton) rootView.findViewById(R.id.analogToggle);
-            ab.setOnCheckedChangeListener(crc_view);
-            ab.setVisibility(View.INVISIBLE);
-            ab.setChecked(saved_anadig);
+            Spinner db = (Spinner) rootView.findViewById(R.id.drawSpinner);
+            db.setOnItemSelectedListener(crc_view);
+            db.setSelection(saved_drawer);
+            db.setVisibility(View.INVISIBLE);
 
             ToggleButton pb = (ToggleButton) rootView.findViewById(R.id.activeToggle);
             pb.setOnCheckedChangeListener(crc_view);
@@ -136,7 +145,7 @@ public class Chinese_Remainder extends Activity {
             helpButton.setVisibility(View.INVISIBLE);
             helpButton.setOnClickListener(crc_view);
 
-            crc_view.setButtonsToListen(hb, mb, ab, pb, upButton, dnButton, spinner, timeEditor, helpButton);
+            crc_view.setButtonsToListen(hb, mb, db, pb, upButton, dnButton, spinner, timeEditor, helpButton);
 
             return rootView;
         }

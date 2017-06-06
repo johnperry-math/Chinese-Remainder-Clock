@@ -80,14 +80,17 @@ public class CRC_View
     // prefer_mono is the last saved setting for monochrome v. color
     // prefer_digi is the last saved setting for analog v. digital clock
     void setPrefs(
-            SharedPreferences prefs, boolean hour_12_24, boolean prefer_mono, boolean prefer_digi
+            SharedPreferences prefs, boolean hour_12_24, boolean prefer_mono, int which_drawer
     ) {
 
         my_prefs = prefs;
 
-        analog = !prefer_digi;
-        if (analog) my_drawer = new CRC_View_Ballsy(this);
-        else my_drawer = new CRC_View_Polly(this);
+        switch (which_drawer) {
+            case 0: my_drawer = new CRC_View_Arcy(this); break;
+            case 1: my_drawer = new CRC_View_Ballsy(this); break;
+            case 2: my_drawer = new CRC_View_Bubbly(this); break;
+            case 3: my_drawer = new CRC_View_Polly(this); break;
+        }
         my_drawer.set_color(!prefer_mono);
         set_color_or_monochrome();
         if (hour_12_24) hour_modulus = 8;
@@ -98,12 +101,12 @@ public class CRC_View
     // we need to listen to certain buttons
     // see code for indication of which parameter corresponds to which button
     void setButtonsToListen(
-            ToggleButton hb, ToggleButton mb, ToggleButton ab, ToggleButton pb,
+            ToggleButton hb, ToggleButton mb, Spinner db, ToggleButton pb,
             Button dn, Button up, Spinner spin, EditText vb, Button ib
             ) {
         hourButton = hb;
         monochromeButton = mb;
-        analogButton = ab;
+        drawSelecter = db;
         activeToggle = pb;
         incrementer = up;
         decrementer = dn;
@@ -116,11 +119,11 @@ public class CRC_View
         if (my_drawer.is_color()) {
             SharedPreferences.Editor edit = my_prefs.edit();
             edit.putBoolean(my_owner.getString(R.string.saved_color), false);
-            edit.commit();
+            edit.apply();
         } else {
             SharedPreferences.Editor edit = my_prefs.edit();
             edit.putBoolean(my_owner.getString(R.string.saved_color), true);
-            edit.commit();
+            edit.apply();
         }
     }
 
@@ -136,29 +139,19 @@ public class CRC_View
                 which_hour = Calendar.HOUR_OF_DAY;
                 SharedPreferences.Editor edit = my_prefs.edit();
                 edit.putBoolean(my_owner.getString(R.string.saved_hour), true);
-                edit.commit();
+                edit.apply();
             }
             else {
                 hour_modulus = 4;
                 which_hour = HOUR;
                 SharedPreferences.Editor edit = my_prefs.edit();
                 edit.putBoolean(my_owner.getString(R.string.saved_hour), false);
-                edit.commit();
+                edit.apply();
             }
             invalidate();
         } else if (buttonView == monochromeButton) {
             my_drawer.toggle_color();
             set_color_or_monochrome();
-            invalidate();
-        } else if (buttonView == analogButton) {
-            analog = !analog;
-            SharedPreferences.Editor edit = my_prefs.edit();
-            edit.putBoolean(my_owner.getString(R.string.saved_anadig), !analog);
-            edit.commit();
-            if (analog) my_drawer = new CRC_View_Ballsy(this);
-            else my_drawer = new CRC_View_Polly(this);
-            my_drawer.set_color(!monochromeButton.isChecked());
-            my_drawer.recalculate_positions();
             invalidate();
         } else if (buttonView == activeToggle) {
             if (my_animator.is_paused()) {
@@ -199,7 +192,7 @@ public class CRC_View
             if (hourButton.getVisibility() == VISIBLE) {
                 hourButton.setVisibility(INVISIBLE);
                 monochromeButton.setVisibility(INVISIBLE);
-                analogButton.setVisibility(INVISIBLE);
+                drawSelecter.setVisibility(INVISIBLE);
                 activeToggle.setVisibility(INVISIBLE);
                 valueEditor.setVisibility(INVISIBLE);
                 unitSelecter.setVisibility(INVISIBLE);
@@ -209,7 +202,7 @@ public class CRC_View
             } else {
                 hourButton.setVisibility(VISIBLE);
                 monochromeButton.setVisibility(VISIBLE);
-                analogButton.setVisibility(VISIBLE);
+                drawSelecter.setVisibility(VISIBLE);
                 activeToggle.setVisibility(VISIBLE);
                 helpButton.setVisibility(VISIBLE);
                 if (!activeToggle.isChecked()) {
@@ -247,33 +240,56 @@ public class CRC_View
             Intent help_view = new Intent(my_owner.getApplicationContext(), HelpActivity.class);
             my_owner.startActivity(help_view);
         } else if (v == valueEditor)
-            new_time_value = Integer.valueOf(valueEditor.getText().toString()).intValue();
+            new_time_value = Integer.valueOf(valueEditor.getText().toString());
     }
 
     // handle seleciton of unit by user
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        switch(position) {
-            case 0:
-                which_unit_to_modify = Units.HOURS;
-                switch (hour_modulus) {
-                    case 4:
-                    //default:
-                        valueEditor.setText(hour12_strings[last_h]);
-                        break;
-                    case 8:
-                        valueEditor.setText(hour24_strings[last_h]);
-                        break;
-                }
-                break;
-            case 1:
-                which_unit_to_modify = Units.MINUTES;
-                valueEditor.setText(minsec_strings[last_m]);
-                break;
-            case 2:
-                which_unit_to_modify = Units.SECONDS;
-                valueEditor.setText(minsec_strings[last_s]);
-                break;
+        if (parent == unitSelecter) {
+            switch (position) {
+                case 0:
+                    which_unit_to_modify = Units.HOURS;
+                    switch (hour_modulus) {
+                        case 4:
+                            //default:
+                            valueEditor.setText(hour12_strings[last_h]);
+                            break;
+                        case 8:
+                            valueEditor.setText(hour24_strings[last_h]);
+                            break;
+                    }
+                    break;
+                case 1:
+                    which_unit_to_modify = Units.MINUTES;
+                    valueEditor.setText(minsec_strings[last_m]);
+                    break;
+                case 2:
+                    which_unit_to_modify = Units.SECONDS;
+                    valueEditor.setText(minsec_strings[last_s]);
+                    break;
+            }
+        } else if (parent == drawSelecter) {
+            SharedPreferences.Editor edit = my_prefs.edit();
+            edit.putInt(my_owner.getString(R.string.saved_drawer), position);
+            edit.apply();
+            switch (position) {
+                case 0:
+                    my_drawer = new CRC_View_Arcy(this);
+                    break;
+                case 1:
+                    my_drawer = new CRC_View_Ballsy(this);
+                    break;
+                case 2:
+                    my_drawer = new CRC_View_Bubbly(this);
+                    break;
+                case 3:
+                    my_drawer = new CRC_View_Polly(this);
+                    break;
+            }
+            my_drawer.set_color(!monochromeButton.isChecked());
+            my_drawer.recalculate_positions();
+            invalidate();
         }
         valueEditor.selectAll();
     }
@@ -287,7 +303,7 @@ public class CRC_View
     // handle when the user enters a new time
     @Override
     public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-        new_time_value = Integer.valueOf(textView.getText().toString()).intValue();
+        new_time_value = Integer.valueOf(textView.getText().toString());
         time_guide = Modification.NEW_VALUE;
         valueEditor.setEnabled(false);
         valueEditor.setEnabled(true);
@@ -307,9 +323,9 @@ public class CRC_View
     protected Chinese_Remainder my_owner;
 
     // UI elements
-    protected ToggleButton hourButton, monochromeButton, analogButton, activeToggle;
+    protected ToggleButton hourButton, monochromeButton, activeToggle;
     protected Button incrementer, decrementer, helpButton;
-    protected Spinner unitSelecter;
+    protected Spinner unitSelecter, drawSelecter;
     protected EditText valueEditor;
 
     // various useful constant strings
@@ -323,9 +339,9 @@ public class CRC_View
     protected boolean analog;
 
     // useful constants to make code more legible
-    protected enum Units { HOURS, MINUTES, SECONDS };
+    enum Units { HOURS, MINUTES, SECONDS };
     protected Units which_unit_to_modify;
-    protected enum Modification { LEAVE_BE, CALENDAR, INCREMENT, DECREMENT, NEW_VALUE };
+    enum Modification { LEAVE_BE, CALENDAR, INCREMENT, DECREMENT, NEW_VALUE };
     protected Modification time_guide;
     protected int new_time_value;
     protected enum Drawer { POLLY, BALLSY };

@@ -104,6 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="center"
+        android:weightSum="100"
         android:layout_centerHorizontal="true" >
 
         <ToggleButton
@@ -112,27 +113,29 @@
             android:layout_height="wrap_content"
             android:checked="false"
             android:focusable="false"
+            android:layout_weight="33"
             android:textOff="12 hour"
             android:textOn="24 hour" />
+
+        <Spinner
+            android:id="@+id/drawSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="34"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:entries="@array/drawStrings" />
 
         <ToggleButton
             android:id="@+id/monochromeToggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="33"
             android:focusable="false"
             android:textOff="Color"
             android:textOn="B&amp;W" />
 
-        <ToggleButton
-            android:id="@+id/analogToggle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:textOff="Analog"
-            android:textOn="Digital" />
-
-        />
-
     </LinearLayout>
+
 
 </RelativeLayout>

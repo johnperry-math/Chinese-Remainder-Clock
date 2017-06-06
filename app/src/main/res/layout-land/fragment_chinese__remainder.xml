@@ -42,6 +42,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignRight="@id/drawSpinner"
         android:checked="false"
         android:focusable="false"
         android:text="12/24 hour"
@@ -56,23 +57,19 @@
         android:textOff="Color"
         android:textOn="B&amp;W"
         android:focusable="false"
-        android:layout_above="@+id/analogToggle"
-        android:layout_alignRight="@+id/hourToggle"
+        android:layout_above="@+id/hourToggle"
+        android:layout_alignRight="@+id/drawSpinner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <ToggleButton
-        android:id="@+id/analogToggle"
+    <Spinner
+        android:id="@+id/drawSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="false"
-        android:text="ToggleButton"
-        android:textOff="Analog"
-        android:textOn="Digital"
-        android:layout_alignRight="@id/hourToggle"
-        android:layout_above="@+id/hourToggle"
+        android:layout_above="@+id/monochromeToggle"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:entries="@array/drawStrings" />
 
     <Spinner
         android:id="@+id/selectUnit"
@@ -91,7 +88,8 @@
         android:layout_above="@+id/selectUnit"
         android:weightSum="1"
         android:layout_alignStart="@+id/selectUnit"
-        android:layout_alignParentEnd="true">
+        android:layout_alignParentEnd="true"
+        android:id="@+id/linearLayout">
 
         <Button
             android:id="@+id/decrementButton"
@@ -139,8 +137,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Info"
-        android:layout_above="@+id/monochromeToggle"
-        android:layout_alignRight="@id/hourToggle"
+        android:layout_above="@+id/drawSpinner"
+        android:layout_alignRight="@id/drawSpinner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

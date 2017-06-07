@@ -88,7 +88,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="9bb8212795b42582b986205629c50cc7b4432832">
+        sha1="7418f39849584ac4a3833f56ae8e258e87885c25">
         <dex dex="/home/cantanima/AndroidStudioProjects/ChineseRemainderClock/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_33713f205a305ea8efda4afbcd596e3d9468b0c7/classes.dex" />
     </item>
     <item

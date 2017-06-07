@@ -41,6 +41,8 @@ public class CRC_View_Ballsy extends Clock_Drawer {
 
     }
 
+    float preferred_step() { return 0.04f; }
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void draw(Canvas canvas) {
@@ -345,9 +347,6 @@ public class CRC_View_Ballsy extends Clock_Drawer {
     void recalculate_positions() {
 
         super.recalculate_positions();
-
-        text_paint.setTextSize(diam / 6f);
-        text_paint.setShadowLayer(diam / 24f, diam / 48f, diam / 48f, BLACK);
 
         anal_hr3 = (float) (diam / 6.0);
         anal_hr4 = (float) (diam / 3.0);

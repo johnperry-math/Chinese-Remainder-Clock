@@ -26,6 +26,8 @@ public abstract class Clock_Drawer {
 
     abstract void draw(Canvas canvas);
 
+    abstract float preferred_step();
+
     void recalculate_positions() {
         w = (float) my_viewer.getWidth();
         h = (float) my_viewer.getHeight();
@@ -37,6 +39,10 @@ public abstract class Clock_Drawer {
         min_y = cy - diam; max_y = cy + diam;
 
         textYOffset = diam / 24f;
+
+        text_paint.setTextSize(diam / 6f);
+        text_paint.setShadowLayer(diam / 24f, diam / 48f, diam / 48f, BLACK);
+
     }
 
     void initialize_fields(CRC_View view) {

@@ -45,6 +45,8 @@ public class CRC_View_Polly extends Clock_Drawer {
 
     }
 
+    float preferred_step() { return 0.49f; }
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void draw(Canvas canvas) {
@@ -393,8 +395,6 @@ public class CRC_View_Polly extends Clock_Drawer {
         Paint.FontMetrics fm = digi_paint.getFontMetrics();
         float digi_t_adjust = -fm.ascent;
         digi_ty = cy + digi_t_adjust / 2.5f;
-        text_paint.setTextSize(diam / 6f);
-        text_paint.setShadowLayer(diam / 24f, diam / 48f, diam / 48f, BLACK);
         digi_step = diam / 2;
         digi_hcy1 = cy - obj_w2;
         digi_hcy2 = cy + obj_w2;

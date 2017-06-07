@@ -62,6 +62,7 @@ public class CRC_View
     @Override
     protected void onDraw(Canvas canvas) {
         my_drawer.draw(canvas);
+        my_animator.set_step(my_drawer.preferred_step());
     }
 
     @Override

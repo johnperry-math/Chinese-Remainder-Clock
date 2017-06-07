@@ -19,4 +19,6 @@ public class CRC_View_Bubbly extends Clock_Drawer {
     void draw(Canvas canvas) {
 
     }
+
+    float preferred_step() { return 0.49f; }
 }

@@ -315,14 +315,6 @@ public class CRC_View_Polly extends Clock_Drawer {
 
         ball_paint.setStyle(FILL);
         ball_paint.setAlpha(51 * (smod5 % 5 + 1));
-        // TODO
-        // The following worked on my phone (until I deleted and rewrote it, at least),
-        //  but I'm not sure about slower devices, so it's commented out.
-        // If we can make this more efficient, change it so that the alpha increases, like so:
-        /*if (my_offset > 0.96)
-            ball_paint.setAlpha(51 * (smod5 % 5 + 1));
-        else
-            ball_paint.setAlpha(51 * (int) (smod5 % 5 + my_offset));*/
         backPath.rewind();
         backPath.moveTo(digi_s5_pts[0], digi_s5_pts[1]); backPath.lineTo(digi_s5_pts[2], digi_s5_pts[3]);
         backPath.lineTo(digi_s5_pts[4], digi_s5_pts[5]); backPath.lineTo(digi_s5_pts[6], digi_s5_pts[7]);

@@ -93,8 +93,6 @@ public abstract class Clock_Drawer {
 
         // if the offset is roughly at 1, print the new time, else print the old time
         // (if someone is looking carefully, the clock will seem to be 1 second behind)
-        // TODO
-        // maybe rework the animation so that the clock will not seem 1 second behind
         int print_hour, print_minute, print_second;
         if (my_viewer.my_offset >= 0.96f || !nextTime) {
             print_hour = hour;

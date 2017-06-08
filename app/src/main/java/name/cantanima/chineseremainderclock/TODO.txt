@@ -1,0 +1,33 @@
+TODO
+Some clocks (e.g., Ballsy) are 1 second behind. It's probably not noticeable,
+but we should consider fixing them.
+
+TODO
+For Polly, the following worked on my phone (until I deleted and rewrote it, at least),
+but I'm not sure about slower devices, so it's commented out.
+If we can make this more efficient, change it so that the alpha increases, like so:
+    if (my_offset > 0.96)
+        ball_paint.setAlpha(51 * (smod5 % 5 + 1));
+    else
+        ball_paint.setAlpha(51 * (int) (smod5 % 5 + my_offset));*/
+
+TODO
+Split Polly into three different designs:
+a) Linus simply moves lines about a polygon.
+b) Shady fills a polygon without using lines.
+c) Vertie rotates a highlight around the vertices, much as Ballsy rotates a ball around a circle.
+
+TODO
+Add an honest settings panel and clean up the interface.
+
+TODO
+Add a toggle to hide the time.
+
+TODO
+Add a toggle to hide the seconds.
+
+TODO
+Quiz mode! with "accomplishments!"
+
+TODO
+Consider a different background color.

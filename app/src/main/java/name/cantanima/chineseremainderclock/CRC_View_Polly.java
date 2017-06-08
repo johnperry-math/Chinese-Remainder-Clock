@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Build;
+import android.util.Log;
 
 import java.util.Calendar;
 
@@ -45,7 +46,7 @@ public class CRC_View_Polly extends Clock_Drawer {
 
     }
 
-    float preferred_step() { return 0.49f; }
+    float preferred_step() { return 0.1f; }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -142,17 +143,23 @@ public class CRC_View_Polly extends Clock_Drawer {
         // hour, modulo 3
 
         ball_paint.setColor(hour_color);
-        ball_paint.setStyle(STROKE);
-        ball_paint.setStrokeWidth(3);
-        ball_paint.setStyle(FILL);
-        ball_paint.setAlpha(85 * (hmod3 % 3 + 1));
         backPath.rewind();
         backPath.moveTo(digi_h3_pts[0], digi_h3_pts[1]); backPath.lineTo(digi_h3_pts[2], digi_h3_pts[3]);
         backPath.lineTo(digi_h3_pts[4], digi_h3_pts[5]); backPath.lineTo(digi_h3_pts[6], digi_h3_pts[7]);
-        canvas.drawPath(backPath, ball_paint);
+        if (my_viewer.last_h != hour) {
+            ball_paint.setStyle(FILL);
+            ball_paint.setAlpha((int) (
+                 (1 - my_viewer.my_offset)*85*(lhmod3 % 3) + my_viewer.my_offset*85*(hmod3 % 3))
+            );
+            canvas.drawPath(backPath, ball_paint);
+        } else {
+            ball_paint.setStyle(FILL);
+            ball_paint.setAlpha(85 * (hmod3 % 3));
+            canvas.drawPath(backPath, ball_paint);
+        }
         ball_paint.setStyle(STROKE);
+        ball_paint.setStrokeWidth(3);
         ball_paint.setAlpha(255);
-        //canvas.drawLines(digi_h3_pts, circle_paint);
         if (hmod3 == 3)
             canvas.drawText(zero_str, cx - digi_step, digi_hty1, digi_paint);
         else
@@ -164,7 +171,6 @@ public class CRC_View_Polly extends Clock_Drawer {
         if (my_viewer.hour_modulus == 4) {
 
             ball_paint.setStyle(FILL);
-            ball_paint.setAlpha(63 * (hmod4 % 4 + 1));
             backPath.rewind();
             backPath.moveTo(digi_h4_pts[0], digi_h4_pts[1]);
             backPath.lineTo(digi_h4_pts[2], digi_h4_pts[3]);
@@ -174,10 +180,20 @@ public class CRC_View_Polly extends Clock_Drawer {
             backPath.lineTo(digi_h4_pts[10], digi_h4_pts[11]);
             backPath.lineTo(digi_h4_pts[12], digi_h4_pts[13]);
             backPath.lineTo(digi_h4_pts[14], digi_h4_pts[15]);
-            canvas.drawPath(backPath, ball_paint);
+            if (my_viewer.last_h != hour) {
+                ball_paint.setStyle(FILL);
+                ball_paint.setAlpha((int) (
+                    (1 - my_viewer.my_offset)*63*(lhmod4 % 4) + my_viewer.my_offset*63*(hmod4 % 4))
+                );
+                canvas.drawPath(backPath, ball_paint);
+            } else {
+                ball_paint.setStyle(FILL);
+                ball_paint.setAlpha(63 * (hmod4 % 4));
+                canvas.drawPath(backPath, ball_paint);
+            }
             ball_paint.setStyle(STROKE);
+            ball_paint.setStrokeWidth(3);
             ball_paint.setAlpha(255);
-            //canvas.drawLines(digi_h4_pts, circle_paint);
             if (hmod4 == 4)
                 canvas.drawText(zero_str, cx - digi_step, digi_hty2, digi_paint);
             else
@@ -186,8 +202,6 @@ public class CRC_View_Polly extends Clock_Drawer {
 
         } else { // hour modulo 8
 
-            ball_paint.setStyle(FILL);
-            ball_paint.setAlpha(31 * (hmod4 % 8 + 1));
             backPath.rewind();
             backPath.moveTo(digi_h8_pts[0], digi_h8_pts[1]);
             backPath.lineTo(digi_h8_pts[2], digi_h8_pts[3]);
@@ -205,10 +219,20 @@ public class CRC_View_Polly extends Clock_Drawer {
             backPath.lineTo(digi_h8_pts[26], digi_h8_pts[27]);
             backPath.lineTo(digi_h8_pts[28], digi_h8_pts[29]);
             backPath.lineTo(digi_h8_pts[30], digi_h8_pts[31]);
-            canvas.drawPath(backPath, ball_paint);
+            if (my_viewer.last_h != hour) {
+                ball_paint.setStyle(FILL);
+                ball_paint.setAlpha((int) (
+                        (1 - my_viewer.my_offset)*31*(lhmod4 % 8) + my_viewer.my_offset*31*(hmod4 % 8))
+                );
+                canvas.drawPath(backPath, ball_paint);
+            } else {
+                ball_paint.setStyle(FILL);
+                ball_paint.setAlpha(31 * (hmod4 % 8));
+                canvas.drawPath(backPath, ball_paint);
+            }
             ball_paint.setStyle(STROKE);
+            ball_paint.setStrokeWidth(3);
             ball_paint.setAlpha(255);
-            //canvas.drawLines(digi_h8_pts, circle_paint);
             if (hmod4 == 8)
                 canvas.drawText(zero_str, cx - digi_step, digi_hty2, digi_paint);
             else
@@ -220,15 +244,23 @@ public class CRC_View_Polly extends Clock_Drawer {
         // minute, modulo 3
 
         ball_paint.setColor(minute_color);
-        ball_paint.setStyle(FILL);
-        ball_paint.setAlpha(85 * (mmod3 % 3 + 1));
         backPath.rewind();
         backPath.moveTo(digi_m3_pts[0], digi_m3_pts[1]); backPath.lineTo(digi_m3_pts[2], digi_m3_pts[3]);
         backPath.lineTo(digi_m3_pts[4], digi_m3_pts[5]); backPath.lineTo(digi_m3_pts[6], digi_m3_pts[7]);
-        canvas.drawPath(backPath, ball_paint);
+        if (my_viewer.last_m != minute) {
+            ball_paint.setStyle(FILL);
+            ball_paint.setAlpha((int) (
+                    (1 - my_viewer.my_offset)*85*(lmmod3 % 3) + my_viewer.my_offset*85*(mmod3 % 3))
+            );
+            canvas.drawPath(backPath, ball_paint);
+        } else {
+            ball_paint.setStyle(FILL);
+            ball_paint.setAlpha(85 * (mmod3 % 3));
+            canvas.drawPath(backPath, ball_paint);
+        }
         ball_paint.setStyle(STROKE);
         ball_paint.setAlpha(255);
-        //canvas.drawLines(digi_m3_pts, circle_paint);
+        ball_paint.setStrokeWidth(3);
         if (mmod3 == 3)
             canvas.drawText(zero_str, cx, digi_msty1, digi_paint);
         else
@@ -237,17 +269,25 @@ public class CRC_View_Polly extends Clock_Drawer {
 
         // minute, modulo 4
 
-        ball_paint.setStyle(FILL);
-        ball_paint.setAlpha(63 * (mmod4 % 4 + 1));
         backPath.rewind();
         backPath.moveTo(digi_m4_pts[0], digi_m4_pts[1]); backPath.lineTo(digi_m4_pts[2], digi_m4_pts[3]);
         backPath.lineTo(digi_m4_pts[4], digi_m4_pts[5]); backPath.lineTo(digi_m4_pts[6], digi_m4_pts[7]);
         backPath.lineTo(digi_m4_pts[8], digi_m4_pts[9]); backPath.lineTo(digi_m4_pts[10], digi_m4_pts[11]);
         backPath.lineTo(digi_m4_pts[12], digi_m4_pts[13]); backPath.lineTo(digi_m4_pts[14], digi_m4_pts[15]);
-        canvas.drawPath(backPath, ball_paint);
+        if (my_viewer.last_m != minute) {
+            ball_paint.setStyle(FILL);
+            ball_paint.setAlpha((int) (
+                    (1 - my_viewer.my_offset)*63*(lmmod4 % 4) + my_viewer.my_offset*63*(mmod4 % 4))
+            );
+            canvas.drawPath(backPath, ball_paint);
+        } else {
+            ball_paint.setStyle(FILL);
+            ball_paint.setAlpha(63 * (mmod4 % 4));
+            canvas.drawPath(backPath, ball_paint);
+        }
         ball_paint.setStyle(STROKE);
         ball_paint.setAlpha(255);
-        //canvas.drawLines(digi_m4_pts, circle_paint);
+        ball_paint.setStrokeWidth(3);
         if (mmod4 == 4)
             canvas.drawText(zero_str, cx, digi_ty, digi_paint);
         else
@@ -256,18 +296,26 @@ public class CRC_View_Polly extends Clock_Drawer {
 
         // minute, modulo 5
 
-        ball_paint.setStyle(FILL);
-        ball_paint.setAlpha(51 * (mmod5 % 5 + 1));
         backPath.rewind();
         backPath.moveTo(digi_m5_pts[0], digi_m5_pts[1]); backPath.lineTo(digi_m5_pts[2], digi_m5_pts[3]);
         backPath.lineTo(digi_m5_pts[4], digi_m5_pts[5]); backPath.lineTo(digi_m5_pts[6], digi_m5_pts[7]);
         backPath.lineTo(digi_m5_pts[8], digi_m5_pts[9]); backPath.lineTo(digi_m5_pts[10], digi_m5_pts[11]);
         backPath.lineTo(digi_m5_pts[12], digi_m5_pts[13]); backPath.lineTo(digi_m5_pts[14], digi_m5_pts[15]);
         backPath.lineTo(digi_m5_pts[16], digi_m5_pts[17]); backPath.lineTo(digi_m5_pts[18], digi_m5_pts[19]);
-        canvas.drawPath(backPath, ball_paint);
+        if (my_viewer.last_m != minute) {
+            ball_paint.setStyle(FILL);
+            ball_paint.setAlpha((int) (
+                    (1 - my_viewer.my_offset)*51*(lmmod5 % 5) + my_viewer.my_offset*51*(mmod5 % 5))
+            );
+            canvas.drawPath(backPath, ball_paint);
+        } else {
+            ball_paint.setStyle(FILL);
+            ball_paint.setAlpha(51 * (mmod5 % 5));
+            canvas.drawPath(backPath, ball_paint);
+        }
         ball_paint.setStyle(STROKE);
         ball_paint.setAlpha(255);
-        //canvas.drawLines(digi_m5_pts, circle_paint);
+        ball_paint.setStrokeWidth(3);
         if (mmod5 == 5)
             canvas.drawText(zero_str, cx, digi_msty3, digi_paint);
         else
@@ -277,15 +325,23 @@ public class CRC_View_Polly extends Clock_Drawer {
         // second, modulo 3
 
         ball_paint.setColor(second_color);
-        ball_paint.setStyle(FILL);
-        ball_paint.setAlpha(63 * (smod3 % 3 + 1));
         backPath.rewind();
         backPath.moveTo(digi_s3_pts[0], digi_s3_pts[1]); backPath.lineTo(digi_s3_pts[2], digi_s3_pts[3]);
         backPath.lineTo(digi_s3_pts[4], digi_s3_pts[5]); backPath.lineTo(digi_s3_pts[6], digi_s3_pts[7]);
-        canvas.drawPath(backPath, ball_paint);
+        if (my_viewer.last_s != second) {
+            ball_paint.setStyle(FILL);
+            ball_paint.setAlpha((int) (
+                    (1 - my_viewer.my_offset)*85*(lsmod3 % 3) + my_viewer.my_offset*85*(smod3 % 3))
+            );
+            canvas.drawPath(backPath, ball_paint);
+        } else {
+            ball_paint.setStyle(FILL);
+            ball_paint.setAlpha(85 * (smod3 % 3));
+            canvas.drawPath(backPath, ball_paint);
+        }
         ball_paint.setStyle(STROKE);
         ball_paint.setAlpha(255);
-        //canvas.drawLines(digi_s3_pts, circle_paint);
+        ball_paint.setStrokeWidth(3);
         if (smod3 == 3)
             canvas.drawText(zero_str, cx + digi_step, digi_msty1, digi_paint);
         else
@@ -294,17 +350,25 @@ public class CRC_View_Polly extends Clock_Drawer {
 
         // second, modulo 4
 
-        ball_paint.setStyle(FILL);
-        ball_paint.setAlpha(63 * (smod4 % 4 + 1));
         backPath.rewind();
         backPath.moveTo(digi_s4_pts[0], digi_s4_pts[1]); backPath.lineTo(digi_s4_pts[2], digi_s4_pts[3]);
         backPath.lineTo(digi_s4_pts[4], digi_s4_pts[5]); backPath.lineTo(digi_s4_pts[6], digi_s4_pts[7]);
         backPath.lineTo(digi_s4_pts[8], digi_s4_pts[9]); backPath.lineTo(digi_s4_pts[10], digi_s4_pts[11]);
         backPath.lineTo(digi_s4_pts[12], digi_s4_pts[13]); backPath.lineTo(digi_s4_pts[14], digi_s4_pts[15]);
-        canvas.drawPath(backPath, ball_paint);
+        if (my_viewer.last_s != second) {
+            ball_paint.setStyle(FILL);
+            ball_paint.setAlpha((int) (
+                    (1 - my_viewer.my_offset)*63*(lsmod4 % 4) + my_viewer.my_offset*63*(smod4 % 4))
+            );
+            canvas.drawPath(backPath, ball_paint);
+        } else {
+            ball_paint.setStyle(FILL);
+            ball_paint.setAlpha(63 * (smod4 % 4));
+            canvas.drawPath(backPath, ball_paint);
+        }
         ball_paint.setStyle(STROKE);
         ball_paint.setAlpha(255);
-        //canvas.drawLines(digi_s4_pts, circle_paint);
+        ball_paint.setStrokeWidth(3);
         if (smod4 == 4)
             canvas.drawText(zero_str, cx + digi_step, digi_ty, digi_paint);
         else
@@ -313,18 +377,26 @@ public class CRC_View_Polly extends Clock_Drawer {
 
         // minute, modulo 5
 
-        ball_paint.setStyle(FILL);
-        ball_paint.setAlpha(51 * (smod5 % 5 + 1));
         backPath.rewind();
         backPath.moveTo(digi_s5_pts[0], digi_s5_pts[1]); backPath.lineTo(digi_s5_pts[2], digi_s5_pts[3]);
         backPath.lineTo(digi_s5_pts[4], digi_s5_pts[5]); backPath.lineTo(digi_s5_pts[6], digi_s5_pts[7]);
         backPath.lineTo(digi_s5_pts[8], digi_s5_pts[9]); backPath.lineTo(digi_s5_pts[10], digi_s5_pts[11]);
         backPath.lineTo(digi_s5_pts[12], digi_s5_pts[13]); backPath.lineTo(digi_s5_pts[14], digi_s5_pts[15]);
         backPath.lineTo(digi_s5_pts[16], digi_s5_pts[17]); backPath.lineTo(digi_s5_pts[18], digi_s5_pts[19]);
-        canvas.drawPath(backPath, ball_paint);
+        if (my_viewer.last_s != second) {
+            ball_paint.setStyle(FILL);
+            ball_paint.setAlpha((int) (
+                    (1 - my_viewer.my_offset)*51*(lsmod5 % 5) + my_viewer.my_offset*51*(smod5 % 5))
+            );
+            canvas.drawPath(backPath, ball_paint);
+        } else {
+            ball_paint.setStyle(FILL);
+            ball_paint.setAlpha(51 * (smod5 % 5));
+            canvas.drawPath(backPath, ball_paint);
+        }
         ball_paint.setStyle(STROKE);
         ball_paint.setAlpha(255);
-        //canvas.drawLines(digi_s5_pts, circle_paint);
+        ball_paint.setStrokeWidth(3);
         if (smod5 == 5)
             canvas.drawText(zero_str, cx + digi_step, digi_msty3, digi_paint);
         else
@@ -506,5 +578,7 @@ public class CRC_View_Polly extends Clock_Drawer {
     protected Path backPath;
 
     protected Paint digi_paint;
+
+    protected static final String tag = "Polly";
 
 }

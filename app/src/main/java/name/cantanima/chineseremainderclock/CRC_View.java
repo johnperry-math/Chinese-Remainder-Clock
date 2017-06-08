@@ -182,7 +182,6 @@ public class CRC_View
                 valueEditor.selectAll();
             }
         }
-        Log.d(tag, String.valueOf(my_prefs.getBoolean(my_owner.getString(R.string.saved_color), false)));
 
     }
 

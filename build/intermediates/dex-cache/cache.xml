@@ -52,7 +52,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
         <dex dex="/home/cantanima/AndroidStudioProjects/ChineseRemainderClock/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_1fd2218b77d728b9adb1db0b5034a745ab5b3cb3/classes.dex" />
     </item>
     <item
@@ -88,7 +88,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="7418f39849584ac4a3833f56ae8e258e87885c25">
+        sha1="cfbd4af9b78b27f0c4bb03e6b3ad73a4d0ae5df1">
         <dex dex="/home/cantanima/AndroidStudioProjects/ChineseRemainderClock/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_33713f205a305ea8efda4afbcd596e3d9468b0c7/classes.dex" />
     </item>
     <item

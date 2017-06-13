@@ -1,5 +1,5 @@
 TODO
-Some clocks (e.g., Ballsy) are 1 second behind. It's probably not noticeable,
+Some clocks (e.g., Bally) are 1 second behind. It's probably not noticeable,
 but we should consider fixing them.
 
 TODO
@@ -22,3 +22,11 @@ Quiz mode! with "accomplishments!"
 
 TODO
 Consider a different background color.
+
+TODO
+Move strings to string file(s), to assist with eventual internationalization.
+
+DONE
+- Fade in/out of Polly (6ish June 2017).
+- First implementation of Archy (6ish June 2017).
+- First implementation of Bubbly (13 June 2017).

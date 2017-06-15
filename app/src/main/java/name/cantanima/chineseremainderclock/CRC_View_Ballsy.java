@@ -139,26 +139,26 @@ public class CRC_View_Ballsy extends Clock_Drawer {
         float ball_offset = (my_viewer.my_offset > 0.96) ? 1.0f : my_viewer.my_offset;
 
         // draw concentric circles for the main paths
-        canvas.drawCircle(cx, cy, anal_hr3, circle_paint);
-        canvas.drawCircle(cx, cy, anal_hr4, circle_paint);
-        canvas.drawCircle(cx, cy, anal_mr3, circle_paint);
-        canvas.drawCircle(cx, cy, anal_mr4, circle_paint);
-        canvas.drawCircle(cx, cy, anal_mr5, circle_paint);
+        canvas.drawCircle(cx, cy, bally_hr3, circle_paint);
+        canvas.drawCircle(cx, cy, bally_hr4, circle_paint);
+        canvas.drawCircle(cx, cy, bally_mr3, circle_paint);
+        canvas.drawCircle(cx, cy, bally_mr4, circle_paint);
+        canvas.drawCircle(cx, cy, bally_mr5, circle_paint);
 
         // draw hatch marks for positions modulo 3
         for (int i = 0; i < 3; ++i) {
             canvas.drawLine(
-                    (float) (cx + anal_hatch_hr3_inner * cos(2 * PI / 3 * i - PI  / 2)),
-                    (float) (cy + anal_hatch_hr3_inner * sin(2 * PI / 3 * i - PI  / 2)),
-                    (float) (cx + anal_hatch_h3_outer * cos(2 * PI / 3 * i - PI  / 2)),
-                    (float) (cy + anal_hatch_h3_outer * sin(2 * PI / 3 * i - PI  / 2)),
+                    (float) (cx + bally_hatch_hr3_inner * cos(2 * PI / 3 * i - PI  / 2)),
+                    (float) (cy + bally_hatch_hr3_inner * sin(2 * PI / 3 * i - PI  / 2)),
+                    (float) (cx + bally_hatch_h3_outer * cos(2 * PI / 3 * i - PI  / 2)),
+                    (float) (cy + bally_hatch_h3_outer * sin(2 * PI / 3 * i - PI  / 2)),
                     circle_paint
             );
             canvas.drawLine(
-                    (float) (cx + anal_hatch_mr3_inner * cos(2 * PI / 3 * i - PI  / 2)),
-                    (float) (cy + anal_hatch_mr3_inner * sin(2 * PI / 3 * i - PI  / 2)),
-                    (float) (cx + anal_hatch_mr3_outer * cos(2 * PI / 3 * i - PI  / 2)),
-                    (float) (cy + anal_hatch_mr3_outer * sin(2 * PI / 3 * i - PI  / 2)),
+                    (float) (cx + bally_hatch_mr3_inner * cos(2 * PI / 3 * i - PI  / 2)),
+                    (float) (cy + bally_hatch_mr3_inner * sin(2 * PI / 3 * i - PI  / 2)),
+                    (float) (cx + bally_hatch_mr3_outer * cos(2 * PI / 3 * i - PI  / 2)),
+                    (float) (cy + bally_hatch_mr3_outer * sin(2 * PI / 3 * i - PI  / 2)),
                     circle_paint
             );
         }
@@ -166,10 +166,10 @@ public class CRC_View_Ballsy extends Clock_Drawer {
         // draw hatch marks for hour's second positions (modulo 4 or 8 as appropriate)
         for (int i = 0; i < my_viewer.hour_modulus; ++i) {
             canvas.drawLine(
-                    (float) (cx + anal_hatch_hr4_inner * cos(2 * PI / my_viewer.hour_modulus * i - PI / 2)),
-                    (float) (cy + anal_hatch_hr4_inner * sin(2 * PI / my_viewer.hour_modulus * i - PI / 2)),
-                    (float) (cx + anal_hatch_h4_outer * cos(2 * PI / my_viewer.hour_modulus * i - PI / 2)),
-                    (float) (cy + anal_hatch_h4_outer * sin(2 * PI / my_viewer.hour_modulus * i - PI / 2)),
+                    (float) (cx + bally_hatch_hr4_inner * cos(2 * PI / my_viewer.hour_modulus * i - PI / 2)),
+                    (float) (cy + bally_hatch_hr4_inner * sin(2 * PI / my_viewer.hour_modulus * i - PI / 2)),
+                    (float) (cx + bally_hatch_h4_outer * cos(2 * PI / my_viewer.hour_modulus * i - PI / 2)),
+                    (float) (cy + bally_hatch_h4_outer * sin(2 * PI / my_viewer.hour_modulus * i - PI / 2)),
                     circle_paint
             );
         }
@@ -177,10 +177,10 @@ public class CRC_View_Ballsy extends Clock_Drawer {
         // draw hatch marks for minute's positions modulo 4
         for (int i = 0; i < 4; ++i) {
             canvas.drawLine(
-                    (float) (cx + anal_hatch_mr4_inner * cos(2 * PI / 4 * i - PI / 2)),
-                    (float) (cy + anal_hatch_mr4_inner * sin(2 * PI / 4 * i - PI / 2)),
-                    (float) (cx + anal_hatch_m4_outer * cos(2 * PI / 4 * i - PI / 2)),
-                    (float) (cy + anal_hatch_m4_outer * sin(2 * PI / 4 * i - PI / 2)),
+                    (float) (cx + bally_hatch_mr4_inner * cos(2 * PI / 4 * i - PI / 2)),
+                    (float) (cy + bally_hatch_mr4_inner * sin(2 * PI / 4 * i - PI / 2)),
+                    (float) (cx + bally_hatch_m4_outer * cos(2 * PI / 4 * i - PI / 2)),
+                    (float) (cy + bally_hatch_m4_outer * sin(2 * PI / 4 * i - PI / 2)),
                     circle_paint
             );
         }
@@ -188,10 +188,10 @@ public class CRC_View_Ballsy extends Clock_Drawer {
         // draw hatch marks for minute's positions modulo 5
         for (int i = 0; i < 5; ++i) {
             canvas.drawLine(
-                    (float) (cx + anal_hatch_mr5_inner * cos(2 * PI / 5 * i - PI / 2)),
-                    (float) (cy + anal_hatch_mr5_inner * sin(2 * PI / 5 * i - PI / 2)),
-                    (float) (cx + anal_hatch_m5_outer * cos(2 * PI / 5 * i - PI / 2)),
-                    (float) (cy + anal_hatch_m5_outer * sin(2 * PI / 5 * i - PI / 2)),
+                    (float) (cx + bally_hatch_mr5_inner * cos(2 * PI / 5 * i - PI / 2)),
+                    (float) (cy + bally_hatch_mr5_inner * sin(2 * PI / 5 * i - PI / 2)),
+                    (float) (cx + bally_hatch_m5_outer * cos(2 * PI / 5 * i - PI / 2)),
+                    (float) (cy + bally_hatch_m5_outer * sin(2 * PI / 5 * i - PI / 2)),
                     circle_paint
             );
         }
@@ -261,41 +261,41 @@ public class CRC_View_Ballsy extends Clock_Drawer {
         ball_paint.setColor(hour_color);
         ball_paint.setStyle(FILL);
 
-        float x = (float) (cx + anal_hr3 * cos(hangle3));
-        float y = (float) (cy + anal_hr3 * sin(hangle3));
-        canvas.drawCircle(x, y, anal_br, ball_paint);
+        float x = (float) (cx + bally_hr3 * cos(hangle3));
+        float y = (float) (cy + bally_hr3 * sin(hangle3));
+        canvas.drawCircle(x, y, bally_br, ball_paint);
 
-        x = (float) (cx + anal_hr4 * cos(hangle4));
-        y = (float) (cy + anal_hr4 * sin(hangle4));
-        canvas.drawCircle(x, y, anal_br, ball_paint);
+        x = (float) (cx + bally_hr4 * cos(hangle4));
+        y = (float) (cy + bally_hr4 * sin(hangle4));
+        canvas.drawCircle(x, y, bally_br, ball_paint);
 
         ball_paint.setColor(minute_color);
 
-        x = (float) (cx + anal_mr3 * cos(mangle3));
-        y = (float) (cy + anal_mr3 * sin(mangle3));
-        canvas.drawCircle(x, y, anal_br, ball_paint);
+        x = (float) (cx + bally_mr3 * cos(mangle3));
+        y = (float) (cy + bally_mr3 * sin(mangle3));
+        canvas.drawCircle(x, y, bally_br, ball_paint);
 
-        x = (float) (cx + anal_mr4 * cos(mangle4));
-        y = (float) (cy + anal_mr4 * sin(mangle4));
-        canvas.drawCircle(x, y, anal_br, ball_paint);
+        x = (float) (cx + bally_mr4 * cos(mangle4));
+        y = (float) (cy + bally_mr4 * sin(mangle4));
+        canvas.drawCircle(x, y, bally_br, ball_paint);
 
-        x = (float) (cx + anal_mr5 * cos(mangle5));
-        y = (float) (cy + anal_mr5 * sin(mangle5));
-        canvas.drawCircle(x, y, anal_br, ball_paint);
+        x = (float) (cx + bally_mr5 * cos(mangle5));
+        y = (float) (cy + bally_mr5 * sin(mangle5));
+        canvas.drawCircle(x, y, bally_br, ball_paint);
 
         ball_paint.setColor(second_color);
 
-        x = (float) (cx + anal_sr3 * cos(sangle3));
-        y = (float) (cy + anal_sr3 * sin(sangle3));
-        canvas.drawCircle(x, y, anal_br, ball_paint);
+        x = (float) (cx + bally_sr3 * cos(sangle3));
+        y = (float) (cy + bally_sr3 * sin(sangle3));
+        canvas.drawCircle(x, y, bally_br, ball_paint);
 
-        x = (float) (cx + anal_sr4 * cos(sangle4));
-        y = (float) (cy + anal_sr4 * sin(sangle4));
-        canvas.drawCircle(x, y, anal_br, ball_paint);
+        x = (float) (cx + bally_sr4 * cos(sangle4));
+        y = (float) (cy + bally_sr4 * sin(sangle4));
+        canvas.drawCircle(x, y, bally_br, ball_paint);
 
-        x = (float) (cx + anal_sr5 * cos(sangle5));
-        y = (float) (cy + anal_sr5 * sin(sangle5));
-        canvas.drawCircle(x, y, anal_br, ball_paint);
+        x = (float) (cx + bally_sr5 * cos(sangle5));
+        y = (float) (cy + bally_sr5 * sin(sangle5));
+        canvas.drawCircle(x, y, bally_br, ball_paint);
 
         // adjust certain settings once the animation ends
 
@@ -348,33 +348,33 @@ public class CRC_View_Ballsy extends Clock_Drawer {
 
         super.recalculate_positions();
 
-        anal_hr3 = (float) (diam / 6.0);
-        anal_hr4 = (float) (diam / 3.0);
-        anal_mr3 = (float) (diam / 2.0);
-        anal_mr4 = (float) (diam * 2.0 / 3.0);
-        anal_mr5 = (float) (diam * 5.0 / 6.0);
-        anal_sr3 = (float) (diam / 12.0 * 5.0);
-        anal_sr4 = (float) (diam / 12.0 * 7.0);
-        anal_sr5 = (float) (diam / 12.0 * 9.0);
-        anal_br = diam / 28;
-        anal_hatch_dist = diam / 60;
-        anal_hatch_hr3_inner = anal_hr3 - anal_hatch_dist;
-        anal_hatch_h3_outer = anal_hr3 + anal_hatch_dist;
-        anal_hatch_hr4_inner = anal_hr4 - anal_hatch_dist;
-        anal_hatch_h4_outer = anal_hr4 + anal_hatch_dist;
-        anal_hatch_mr3_inner = anal_mr3 - anal_hatch_dist;
-        anal_hatch_mr3_outer = anal_mr3 + anal_hatch_dist;
-        anal_hatch_mr4_inner = anal_mr4 - anal_hatch_dist;
-        anal_hatch_m4_outer = anal_mr4 + anal_hatch_dist;
-        anal_hatch_mr5_inner = anal_mr5 - anal_hatch_dist;
-        anal_hatch_m5_outer = anal_mr5 + anal_hatch_dist;
+        bally_hr3 = (float) (diam / 6.0);
+        bally_hr4 = (float) (diam / 3.0);
+        bally_mr3 = (float) (diam / 2.0);
+        bally_mr4 = (float) (diam * 2.0 / 3.0);
+        bally_mr5 = (float) (diam * 5.0 / 6.0);
+        bally_sr3 = (float) (diam / 12.0 * 5.0);
+        bally_sr4 = (float) (diam / 12.0 * 7.0);
+        bally_sr5 = (float) (diam / 12.0 * 9.0);
+        bally_br = diam / 28;
+        bally_hatch_dist = diam / 60;
+        bally_hatch_hr3_inner = bally_hr3 - bally_hatch_dist;
+        bally_hatch_h3_outer = bally_hr3 + bally_hatch_dist;
+        bally_hatch_hr4_inner = bally_hr4 - bally_hatch_dist;
+        bally_hatch_h4_outer = bally_hr4 + bally_hatch_dist;
+        bally_hatch_mr3_inner = bally_mr3 - bally_hatch_dist;
+        bally_hatch_mr3_outer = bally_mr3 + bally_hatch_dist;
+        bally_hatch_mr4_inner = bally_mr4 - bally_hatch_dist;
+        bally_hatch_m4_outer = bally_mr4 + bally_hatch_dist;
+        bally_hatch_mr5_inner = bally_mr5 - bally_hatch_dist;
+        bally_hatch_m5_outer = bally_mr5 + bally_hatch_dist;
 
     }
 
     // fields that control layout of analog clock elements
-    protected float anal_hr3, anal_hr4, anal_mr3, anal_mr4, anal_mr5, anal_sr3, anal_sr4, anal_sr5,
-            anal_br, anal_hatch_dist, anal_hatch_hr3_inner, anal_hatch_h3_outer,
-            anal_hatch_hr4_inner, anal_hatch_h4_outer, anal_hatch_mr3_inner,
-            anal_hatch_mr3_outer, anal_hatch_mr4_inner, anal_hatch_m4_outer,
-            anal_hatch_mr5_inner, anal_hatch_m5_outer;
+    protected float bally_hr3, bally_hr4, bally_mr3, bally_mr4, bally_mr5, bally_sr3, bally_sr4, bally_sr5,
+            bally_br, bally_hatch_dist, bally_hatch_hr3_inner, bally_hatch_h3_outer,
+            bally_hatch_hr4_inner, bally_hatch_h4_outer, bally_hatch_mr3_inner,
+            bally_hatch_mr3_outer, bally_hatch_mr4_inner, bally_hatch_m4_outer,
+            bally_hatch_mr5_inner, bally_hatch_m5_outer;
 }

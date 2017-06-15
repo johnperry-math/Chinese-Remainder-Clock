@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="drawStrings">
+    <string-array name="drawStrings" type="id">
         <item>Archy</item>
         <item>Bally</item>
         <item>Bubbly</item>
-        <item>Polly</item>
+        <item>Linus</item>
+        <item>Shady</item>
+        <item>Vertie</item>
     </string-array>
 </resources>

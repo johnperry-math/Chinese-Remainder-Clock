@@ -273,7 +273,7 @@ public class CRC_View
             SharedPreferences.Editor edit = my_prefs.edit();
             edit.putInt(my_owner.getString(R.string.saved_drawer), position);
             edit.apply();
-            switch (position) {
+            switch (position) { // these need to line up with the values in drawStrings.xml !!!
                 case 0:
                     my_drawer = new CRC_View_Arcy(this);
                     break;
@@ -284,7 +284,13 @@ public class CRC_View
                     my_drawer = new CRC_View_Bubbly(this);
                     break;
                 case 3:
-                    my_drawer = new CRC_View_Polly(this);
+                    my_drawer = new CRC_View_Linus(this);
+                    break;
+                case 4:
+                    my_drawer = new CRC_View_Shady(this);
+                    break;
+                case 5:
+                    my_drawer = new CRC_View_Vertie(this);
                     break;
             }
             my_drawer.set_color(!monochromeButton.isChecked());
@@ -339,12 +345,11 @@ public class CRC_View
     protected boolean analog;
 
     // useful constants to make code more legible
-    enum Units { HOURS, MINUTES, SECONDS };
+    enum Units { HOURS, MINUTES, SECONDS }
     protected Units which_unit_to_modify;
-    enum Modification { LEAVE_BE, CALENDAR, INCREMENT, DECREMENT, NEW_VALUE };
+    enum Modification { LEAVE_BE, CALENDAR, INCREMENT, DECREMENT, NEW_VALUE }
     protected Modification time_guide;
     protected int new_time_value;
-    protected enum Drawer { POLLY, BALLSY };
 
     // whether we are calculating 12- or 24-hour time
     protected int which_hour;

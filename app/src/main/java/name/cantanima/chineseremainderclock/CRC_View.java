@@ -81,7 +81,9 @@ public class CRC_View
     // prefer_mono is the last saved setting for monochrome v. color
     // prefer_digi is the last saved setting for analog v. digital clock
     void setPrefs(
-            SharedPreferences prefs, boolean hour_12_24, boolean prefer_mono, int which_drawer
+            SharedPreferences prefs,
+            boolean hour_12_24, boolean prefer_mono, boolean show_seconds, boolean show_time,
+            int which_drawer
     ) {
 
         my_prefs = prefs;
@@ -90,9 +92,14 @@ public class CRC_View
             case 0: my_drawer = new CRC_View_Arcy(this); break;
             case 1: my_drawer = new CRC_View_Ballsy(this); break;
             case 2: my_drawer = new CRC_View_Bubbly(this); break;
-            case 3: my_drawer = new CRC_View_Polly(this); break;
+            case 3: my_drawer = new CRC_View_Linus(this); break;
+            case 4: my_drawer = new CRC_View_Shady(this); break;
+            case 5: my_drawer = new CRC_View_Vertie(this); break;
         }
+        my_drawer.recalculate_positions();
         my_drawer.set_color(!prefer_mono);
+        my_drawer.set_show_seconds(show_seconds);
+        my_drawer.set_show_time(show_time);
         set_color_or_monochrome();
         if (hour_12_24) hour_modulus = 8;
         else hour_modulus = 4;
@@ -270,10 +277,12 @@ public class CRC_View
                     break;
             }
         } else if (parent == drawSelecter) {
+            boolean show_time = my_drawer.get_show_time();
+            boolean show_seconds = my_drawer.get_show_seconds();
             SharedPreferences.Editor edit = my_prefs.edit();
             edit.putInt(my_owner.getString(R.string.saved_drawer), position);
             edit.apply();
-            switch (position) { // these need to line up with the values in drawStrings.xml !!!
+            switch (position) { // these need to line up with the values in drawString0s.xml !!!
                 case 0:
                     my_drawer = new CRC_View_Arcy(this);
                     break;
@@ -293,6 +302,8 @@ public class CRC_View
                     my_drawer = new CRC_View_Vertie(this);
                     break;
             }
+            my_drawer.set_show_time(show_time);
+            my_drawer.set_show_seconds(show_seconds);
             my_drawer.set_color(!monochromeButton.isChecked());
             my_drawer.recalculate_positions();
             invalidate();

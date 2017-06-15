@@ -196,71 +196,86 @@ public abstract class Clock_Drawer {
             canvas.drawRect(min_x, min_y, max_x, max_y, back_paint);
         }
 
-        // if the offset is roughly at 1, print the new time, else print the old time
-        // (if someone is looking carefully, the clock will seem to be 1 second behind)
-        int print_hour, print_minute, print_second;
-        if (my_viewer.my_offset >= 0.96f || !nextTime) {
-            print_hour = hour;
-            print_minute = minute;
-            print_second = second;
-        } else {
-            print_hour = my_viewer.last_h;
-            print_minute = my_viewer.last_m;
-            print_second = my_viewer.last_s;
-        }
-
-        // print the correct times
-        String to_print;
-        if (print_hour % 12 == 0) {
-            if (my_viewer.which_hour == Calendar.HOUR && (this instanceof CRC_View_Ballsy)) {
-                to_print = twelve_str;
+        if (show_time) {
+            // if the offset is roughly at 1, print the new time, else print the old time
+            // (if someone is looking carefully, the clock will seem to be 1 second behind)
+            int print_hour, print_minute, print_second;
+            if (my_viewer.my_offset >= 0.96f || !nextTime) {
+                print_hour = hour;
+                print_minute = minute;
+                print_second = second;
             } else {
-                if (print_hour == 0 || print_hour == 24)
-                    to_print = dbl_zero_str;
-                else to_print = twelve_str;
+                print_hour = my_viewer.last_h;
+                print_minute = my_viewer.last_m;
+                print_second = my_viewer.last_s;
             }
-        } else if (print_hour > 0 && print_hour < 10) {
-            //to_print = zero_str + String.valueOf(print_hour);
-            to_print = zero_str + hour12_strings[print_hour];
-        } else {
-            to_print = String.valueOf(print_hour);
+
+            // print the correct times
+            String to_print;
+            if (print_hour % 12 == 0) {
+                if (my_viewer.which_hour == Calendar.HOUR && (this instanceof CRC_View_Ballsy)) {
+                    to_print = twelve_str;
+                } else {
+                    if (print_hour == 0 || print_hour == 24)
+                        to_print = dbl_zero_str;
+                    else to_print = twelve_str;
+                }
+            } else if (print_hour > 0 && print_hour < 10) {
+                //to_print = zero_str + String.valueOf(print_hour);
+                to_print = zero_str + hour12_strings[print_hour];
+            } else {
+                to_print = String.valueOf(print_hour);
+            }
+            canvas.drawText(
+                    to_print,
+                    cx - diam * (2f / 3f + 1f / 8f), cy - diam * (2f / 3f + 1f / 8f) + textYOffset,
+                    text_paint
+            );
+            if (print_minute == 60)
+                to_print = dbl_zero_str;
+            else {
+                if (print_minute < 10)
+                    to_print = zero_str + minsec_strings[print_minute];
+                else
+                    to_print = minsec_strings[print_minute];
+            }
+            canvas.drawText(
+                    to_print,
+                    cx + diam * (2f / 3f + 1f / 24f), cy - diam * (2f / 3f + 1f / 8f) + textYOffset,
+                    text_paint
+            );
+            if (print_second == 60)
+                to_print = dbl_zero_str;
+            else {
+                if (print_second < 10)
+                    to_print = zero_str + minsec_strings[print_second];
+                else
+                    to_print = minsec_strings[print_second];
+            }
+            canvas.drawText(
+                    to_print,
+                    cx + diam * (2f / 3f + 1f / 8f), cy + diam * (2f / 3f + 1f / 8f) + textYOffset,
+                    text_paint
+            );
         }
-        canvas.drawText(
-                to_print,
-                cx - diam * (2f / 3f + 1f / 8f), cy - diam * (2f / 3f + 1f / 8f) + textYOffset,
-                text_paint
-        );
-        if (print_minute == 60)
-            to_print = dbl_zero_str;
-        else {
-            if (print_minute < 10)
-                to_print = zero_str + minsec_strings[print_minute];
-            else
-                to_print = minsec_strings[print_minute];
-        }
-        canvas.drawText(
-                to_print,
-                cx + diam * (2f /3f + 1f / 24f), cy - diam * (2f / 3f + 1f / 8f) + textYOffset,
-                text_paint
-        );
-        if (print_second == 60)
-            to_print = dbl_zero_str;
-        else {
-            if (print_second < 10)
-                to_print = zero_str + minsec_strings[print_second];
-            else
-                to_print = minsec_strings[print_second];
-        }
-        canvas.drawText(
-                to_print,
-                cx + diam * (2f / 3f + 1f / 8f), cy + diam * (2f / 3f + 1f / 8f) + textYOffset,
-                text_paint
-        );
     }
 
     protected void set_color(boolean yesno) {
         color = yesno; adjust_color();
     }
+
+    protected void set_show_seconds(boolean yesno) {
+        show_seconds = yesno;
+    }
+
+    protected boolean get_show_seconds() { return show_seconds; }
+
+    protected void set_show_time(boolean yesno) {
+        show_time = yesno;
+    }
+
+    protected boolean get_show_time() { return show_time; }
+
     protected void toggle_color() {
         color = !color; adjust_color();
     }
@@ -291,6 +306,8 @@ public abstract class Clock_Drawer {
 
     // fields related to the UI elements
     protected boolean color;
+    protected boolean show_seconds;
+    protected boolean show_time;
 
     protected static final String zero_str = "0";
     protected static final String twelve_str = "12";

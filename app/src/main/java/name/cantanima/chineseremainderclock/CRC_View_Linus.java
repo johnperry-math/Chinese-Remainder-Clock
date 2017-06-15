@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Build;
-import android.util.Log;
 
 
 import static android.graphics.Color.WHITE;
@@ -17,12 +16,6 @@ import static java.lang.Math.abs;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.INCREMENT;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.LEAVE_BE;
-
-/**
- * Created by cantanima on 6/5/17.
- */
 
 public class CRC_View_Linus extends Clock_Drawer {
 

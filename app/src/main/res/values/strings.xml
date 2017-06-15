@@ -1,25 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="dummy_content">dummy</string>
+
+    <!-- Strings related to UI -->
+
     <string name="app_name">Chinese Remainder Clock</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+
+    <string name="info_button_text">Information</string>
+    <string name="info_button_text_short">Info</string>
+
+    <string name="auto_button_text">Auto/Manual</string>
+    <string name="auto_button_text_off">Auto</string>
+    <string name="auto_button_text_on">Manual</string>
+
+    <string name="dec_button">-1</string>
+    <string name="inc_button">+1</string>
+
+    <string name="color_button_text">Color/Monochrome</string>
+    <string name="color_button_text_off">Color</string>
+    <string name="color_button_text_on">B&amp;W</string>
+
+    <string name="hours_button_text">12/24 hour</string>
+    <string name="hours_button_text_off">12 hour</string>
+    <string name="hours_button_text_on">24 hour</string>
+
+    <!-- Strings related to Help (not sure I actually use this) -->
 
     <string name="title_activity_help_activity.java">Help Activity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="title_activity_help">HelpActivity</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
+    <string name="action_settings">Settings</string>
+
     <string name="version">version</string>
     <string name="saved_hour">saved_hour</string>
     <string name="saved_color">saved_color</string>
     <string name="saved_drawer">saved_drawer</string>
+    <string name="saved_show_seconds">saved_show_seconds</string>
+    <string name="saved_show_time">saved_show_time</string>
+
+    <string name="pref_category_design">Interface</string>
+    <string name="pref_drawers">Clock design</string>
+    <string name="design_pref_summary">Several analog and digital varieties available</string>
+    <string-array name="drawStrings">
+        <item>Archy</item>
+        <item>Bally</item>
+        <item>Bubbly</item>
+        <item>Linus</item>
+        <item>Shady</item>
+        <item>Vertie</item>
+    </string-array>
+    <string-array name="drawStringValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+
+    <string name="color_pref_text">Monochrome</string>
+    <string name="color_pref_summary">Choose between color and black-and-white</string>
+
+    <string name="pref_category_timekeeping">Timekeeping</string>
+    <string name="seconds_pref_text">Show representation of seconds</string>
+    <string name="show_time_pref_text">Show time</string>
+
+    <string name="hours_pref_text">24 hour clock</string>
+    <string name="hours_button_text_off_long">12 hour clock</string>
+    <string name="hours_button_text_on_long">24 hour clock</string>
 
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>

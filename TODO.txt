@@ -3,30 +3,30 @@ Some clocks (e.g., Bally) are 1 second behind. It's probably not noticeable,
 but we should consider fixing them.
 
 TODO
-Split Polly into three different designs:
-a) Linus simply moves lines about a polygon.
-b) Shady fills a polygon without using lines.
-c) Vertie rotates a highlight around the vertices, much as Ballsy rotates a ball around a circle.
-
-TODO
-Add an honest settings panel and clean up the interface.
-
-TODO
-Add a toggle to hide the time.
-
-TODO
-Add a toggle to hide the seconds.
-
-TODO
 Quiz mode! with "accomplishments!"
 
 TODO
-Consider a different background color.
+Add settings interface so that colors can be set by user.
 
 TODO
-Move strings to string file(s), to assist with eventual internationalization.
+Implement hiding of seconds representation.
+
+TODO
+The settings panel will crash if we reorient the phone while the settings are open.
+Android docs have some information on this; fix!
 
 DONE
 - Fade in/out of Polly (6ish June 2017).
 - First implementation of Archy (6ish June 2017).
 - First implementation of Bubbly (13 June 2017).
+- Split Polly into three different designs:
+  a) Linus simply moves lines about a polygon.
+  b) Shady fills a polygon without using lines.
+  c) Vertie rotates a highlight around the vertices, much as Ballsy rotates a ball around a circle.
+- Move strings to string file(s), to assist with eventual internationalization.
+  (This may not be entirely done, but I'm cleaning it up wherever I find it.)
+- Add an honest settings panel and clean up the interface.
+- Add a toggle to hide the seconds.
+- Add a toggle to hide the time.
+- Implement toggle to hide the time.
+

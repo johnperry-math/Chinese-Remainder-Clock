@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/pref_category_design">
+        <ListPreference
+            android:id="@+id/pref_draw_object"
+            android:defaultValue="1"
+            android:entries="@array/drawStrings"
+            android:entryValues="@array/drawStringValues"
+            android:key="saved_drawer"
+            android:summary="@string/design_pref_summary"
+            android:title="@string/pref_drawers" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="saved_color"
+            android:summary="@string/color_pref_summary"
+            android:switchTextOff="@string/color_button_text_off"
+            android:switchTextOn="@string/color_button_text_on"
+            android:title="@string/color_pref_text" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_category_timekeeping">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/saved_show_time"
+            android:title="@string/show_time_pref_text" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/saved_show_seconds"
+            android:title="@string/seconds_pref_text" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="saved_hour"
+            android:switchTextOn="@string/hours_button_text_on_long"
+            android:title="@string/hours_pref_text" />
+    </PreferenceCategory>
+</PreferenceScreen>

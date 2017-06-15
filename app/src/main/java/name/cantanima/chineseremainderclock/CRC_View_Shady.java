@@ -1,38 +1,18 @@
 package name.cantanima.chineseremainderclock;
 
 import android.annotation.TargetApi;
-import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Build;
-import android.util.Log;
 
-import java.util.Calendar;
-
-import static android.graphics.Color.BLACK;
 import static android.graphics.Color.WHITE;
 import static android.graphics.Paint.ANTI_ALIAS_FLAG;
 import static android.graphics.Paint.Align.CENTER;
 import static android.graphics.Paint.Style.FILL;
-import static android.graphics.Paint.Style.STROKE;
 import static java.lang.Math.PI;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
-import static java.util.Calendar.MINUTE;
-import static java.util.Calendar.SECOND;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.CALENDAR;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.INCREMENT;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.LEAVE_BE;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_VALUE;
-
-import name.cantanima.chineseremainderclock.CRC_View.Modification;
-
-/**
- * Created by cantanima on 6/5/17.
- */
 
 public class CRC_View_Shady extends Clock_Drawer {
 

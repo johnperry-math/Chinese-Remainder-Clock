@@ -24,6 +24,7 @@
         <activity
             android:name=".CRC_Prefs_Activity"
             android:label="Settings"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             />
     </application>
 

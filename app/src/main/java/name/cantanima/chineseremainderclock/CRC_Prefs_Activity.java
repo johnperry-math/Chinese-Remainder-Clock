@@ -3,15 +3,8 @@ package name.cantanima.chineseremainderclock;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
-import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
-
-import java.util.List;
-
-/**
- * Created by cantanima on 6/15/17.
- */
 
 public class CRC_Prefs_Activity
         extends PreferenceActivity
@@ -35,6 +28,29 @@ public class CRC_Prefs_Activity
             lp.setSummary(lp.getEntry());
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .registerOnSharedPreferenceChangeListener(this);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .unregisterOnSharedPreferenceChangeListener(this);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .unregisterOnSharedPreferenceChangeListener(this);
     }
 
     protected CRC_Preferences crc_prefs;

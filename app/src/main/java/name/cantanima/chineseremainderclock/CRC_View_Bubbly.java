@@ -233,74 +233,80 @@ public class CRC_View_Bubbly extends Clock_Drawer {
             canvas.drawCircle(m_x5, m_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
         }
 
-        ball_paint.setColor(second_color);
-        ball_paint.setStyle(FILL);
-        canvas.drawPath(s_tria, ball_paint);
-        int smod3 = (second % 3) == 0 ? 3 : second % 3;
-        for (int i = 0; i < 2; ++i) {
+        if (show_seconds) {
+
+            ball_paint.setColor(second_color);
             ball_paint.setStyle(FILL);
-            if (smod3 == 3) {
-                ball_paint.setAlpha(max(0, (int) ((1 - my_viewer.my_offset) * 255)));
-                canvas.drawCircle(s_x3, s_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
-            } else {
-                if (i + 1 < smod3 || (i + 1 == smod3 && my_viewer.my_offset > 0.9)) {
-                    ball_paint.setAlpha(255);
-                    canvas.drawCircle(s_x3, s_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
-                } else if (i + 1 == smod3) {
-                    ball_paint.setAlpha((int) (my_viewer.my_offset * 255));
-                    canvas.drawCircle(s_x3, s_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
-                }
-            }
-            ball_paint.setAlpha(255); ball_paint.setStyle(STROKE);
-            canvas.drawCircle(s_x3, s_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
-        }
-        ball_paint.setAlpha(255); ball_paint.setStyle(FILL);
-        canvas.drawPath(s_quad, ball_paint);
-        int smod4 = (second % 4) == 0 ? 4 : second % 4;
-        for (int i = 0; i < 3; ++i) {
-            ball_paint.setStyle(FILL);
-            if (my_viewer.last_s == second) {
-                if (i + 1 <= second % 4) {
-                    canvas.drawCircle(s_x4, s_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
-                }
-            } else {
-                if (smod4 == 4) {
+            canvas.drawPath(s_tria, ball_paint);
+            int smod3 = (second % 3) == 0 ? 3 : second % 3;
+            for (int i = 0; i < 2; ++i) {
+                ball_paint.setStyle(FILL);
+                if (smod3 == 3) {
                     ball_paint.setAlpha(max(0, (int) ((1 - my_viewer.my_offset) * 255)));
-                    canvas.drawCircle(s_x4, s_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
+                    canvas.drawCircle(s_x3, s_y - (vstep * 0.85f + cstep * i), cradius, ball_paint);
                 } else {
-                    if (i + 1 < smod4 || (i + 1 == smod4 && my_viewer.my_offset > 0.9)) {
+                    if (i + 1 < smod3 || (i + 1 == smod3 && my_viewer.my_offset > 0.9)) {
                         ball_paint.setAlpha(255);
-                        canvas.drawCircle(s_x4, s_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
-                    } else if (i + 1 == smod4) {
+                        canvas.drawCircle(s_x3, s_y - (vstep * 0.85f + cstep * i), cradius, ball_paint);
+                    } else if (i + 1 == smod3) {
                         ball_paint.setAlpha((int) (my_viewer.my_offset * 255));
-                        canvas.drawCircle(s_x4, s_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
+                        canvas.drawCircle(s_x3, s_y - (vstep * 0.85f + cstep * i), cradius, ball_paint);
                     }
                 }
+                ball_paint.setAlpha(255);
+                ball_paint.setStyle(STROKE);
+                canvas.drawCircle(s_x3, s_y - (vstep * 0.85f + cstep * i), cradius, ball_paint);
             }
             ball_paint.setAlpha(255);
-            ball_paint.setStyle(STROKE);
-            canvas.drawCircle(s_x4, s_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
-        }
-        ball_paint.setStyle(FILL);
-        canvas.drawPath(s_pent, ball_paint);
-        int smod5 = (second % 5) == 0 ? 5 : second % 5;
-        for (int i = 0; i < 4; ++i) {
             ball_paint.setStyle(FILL);
-            if (smod5 == 5) {
-                ball_paint.setAlpha(max(0, (int) ((1 - my_viewer.my_offset) * 255)));
-                canvas.drawCircle(s_x5, s_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
-            } else {
-                if (i + 1 < smod5 || (i + 1 == smod5 && my_viewer.my_offset > 0.9)) {
-                    ball_paint.setAlpha(255);
-                    canvas.drawCircle(s_x5, s_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
-                } else if (i + 1 == smod5) {
-                    ball_paint.setAlpha((int) (my_viewer.my_offset * 255));
-                    canvas.drawCircle(s_x5, s_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
+            canvas.drawPath(s_quad, ball_paint);
+            int smod4 = (second % 4) == 0 ? 4 : second % 4;
+            for (int i = 0; i < 3; ++i) {
+                ball_paint.setStyle(FILL);
+                if (my_viewer.last_s == second) {
+                    if (i + 1 <= second % 4) {
+                        canvas.drawCircle(s_x4, s_y - (vstep * 0.85f + cstep * i), cradius, ball_paint);
+                    }
+                } else {
+                    if (smod4 == 4) {
+                        ball_paint.setAlpha(max(0, (int) ((1 - my_viewer.my_offset) * 255)));
+                        canvas.drawCircle(s_x4, s_y - (vstep * 0.85f + cstep * i), cradius, ball_paint);
+                    } else {
+                        if (i + 1 < smod4 || (i + 1 == smod4 && my_viewer.my_offset > 0.9)) {
+                            ball_paint.setAlpha(255);
+                            canvas.drawCircle(s_x4, s_y - (vstep * 0.85f + cstep * i), cradius, ball_paint);
+                        } else if (i + 1 == smod4) {
+                            ball_paint.setAlpha((int) (my_viewer.my_offset * 255));
+                            canvas.drawCircle(s_x4, s_y - (vstep * 0.85f + cstep * i), cradius, ball_paint);
+                        }
+                    }
                 }
+                ball_paint.setAlpha(255);
+                ball_paint.setStyle(STROKE);
+                canvas.drawCircle(s_x4, s_y - (vstep * 0.85f + cstep * i), cradius, ball_paint);
             }
-            ball_paint.setAlpha(255);
-            ball_paint.setStyle(STROKE);
-            canvas.drawCircle(s_x5, s_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
+            ball_paint.setStyle(FILL);
+            canvas.drawPath(s_pent, ball_paint);
+            int smod5 = (second % 5) == 0 ? 5 : second % 5;
+            for (int i = 0; i < 4; ++i) {
+                ball_paint.setStyle(FILL);
+                if (smod5 == 5) {
+                    ball_paint.setAlpha(max(0, (int) ((1 - my_viewer.my_offset) * 255)));
+                    canvas.drawCircle(s_x5, s_y - (vstep * 0.85f + cstep * i), cradius, ball_paint);
+                } else {
+                    if (i + 1 < smod5 || (i + 1 == smod5 && my_viewer.my_offset > 0.9)) {
+                        ball_paint.setAlpha(255);
+                        canvas.drawCircle(s_x5, s_y - (vstep * 0.85f + cstep * i), cradius, ball_paint);
+                    } else if (i + 1 == smod5) {
+                        ball_paint.setAlpha((int) (my_viewer.my_offset * 255));
+                        canvas.drawCircle(s_x5, s_y - (vstep * 0.85f + cstep * i), cradius, ball_paint);
+                    }
+                }
+                ball_paint.setAlpha(255);
+                ball_paint.setStyle(STROKE);
+                canvas.drawCircle(s_x5, s_y - (vstep * 0.85f + cstep * i), cradius, ball_paint);
+            }
+
         }
 
         usual_cleanup();

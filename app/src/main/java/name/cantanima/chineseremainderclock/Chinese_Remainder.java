@@ -9,8 +9,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,7 +24,6 @@ import android.widget.ToggleButton;
 
 public class Chinese_Remainder
     extends Activity
-    implements SharedPreferences.OnSharedPreferenceChangeListener
 {
 
     @Override
@@ -39,7 +36,6 @@ public class Chinese_Remainder
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-        PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
     }
 
 
@@ -69,24 +65,6 @@ public class Chinese_Remainder
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void onSharedPreferenceChanged(SharedPreferences pref, String key) {
-        boolean saved_hour = pref.getBoolean(getString(R.string.saved_hour), false);
-        boolean saved_color = pref.getBoolean(getString(R.string.saved_color), false);
-        boolean saved_seconds = pref.getBoolean(getString(R.string.saved_show_seconds), false);
-        boolean saved_time = pref.getBoolean(getString(R.string.saved_show_time), false);
-        int saved_drawer = Integer.valueOf(pref.getString(getString(R.string.saved_drawer), "0"));
-        SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
-        editor.putBoolean(getString(R.string.saved_hour), saved_hour);
-        editor.putBoolean(getString(R.string.saved_color), saved_color);
-        editor.putBoolean(getString(R.string.saved_show_seconds), saved_seconds);
-        editor.putBoolean(getString(R.string.saved_show_time), saved_time);
-        editor.putInt(getString(R.string.saved_drawer), saved_drawer);
-        editor.apply();
-
-        CRC_View crc_view = (CRC_View) findViewById(R.id.crc_view);
-        crc_view.setPrefs(pref, saved_hour, saved_color, saved_seconds, saved_time, saved_drawer);
     }
 
     /**
@@ -138,7 +116,7 @@ public class Chinese_Remainder
                 editor.putInt(getString(R.string.saved_drawer), saved_drawer);
                 editor.apply();
             }
-            crc_view.setPrefs(prefs, saved_hour, saved_color, saved_seconds, saved_time, saved_drawer);
+            //crc_view.setPrefs(prefs, saved_hour, saved_color, saved_seconds, saved_time, saved_drawer);
 
             // setup user interface elements: all should start off invisible,
             // and should have crc_view as an appropriate listener
@@ -194,8 +172,5 @@ public class Chinese_Remainder
 
     // used when debugging w/Log.d()
     private static final String tag = "Chinese Remainer";
-
-    Fragment mainFragment;
-    Fragment prefFragment;
 
 }

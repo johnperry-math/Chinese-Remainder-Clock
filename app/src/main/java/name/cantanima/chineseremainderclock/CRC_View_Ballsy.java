@@ -233,19 +233,23 @@ public class CRC_View_Ballsy extends Clock_Drawer {
         y = (float) (cy + bally_mr5 * sin(mangle5));
         canvas.drawCircle(x, y, bally_br, ball_paint);
 
-        ball_paint.setColor(second_color);
+        if (show_seconds) {
 
-        x = (float) (cx + bally_sr3 * cos(sangle3));
-        y = (float) (cy + bally_sr3 * sin(sangle3));
-        canvas.drawCircle(x, y, bally_br, ball_paint);
+            ball_paint.setColor(second_color);
 
-        x = (float) (cx + bally_sr4 * cos(sangle4));
-        y = (float) (cy + bally_sr4 * sin(sangle4));
-        canvas.drawCircle(x, y, bally_br, ball_paint);
+            x = (float) (cx + bally_sr3 * cos(sangle3));
+            y = (float) (cy + bally_sr3 * sin(sangle3));
+            canvas.drawCircle(x, y, bally_br, ball_paint);
 
-        x = (float) (cx + bally_sr5 * cos(sangle5));
-        y = (float) (cy + bally_sr5 * sin(sangle5));
-        canvas.drawCircle(x, y, bally_br, ball_paint);
+            x = (float) (cx + bally_sr4 * cos(sangle4));
+            y = (float) (cy + bally_sr4 * sin(sangle4));
+            canvas.drawCircle(x, y, bally_br, ball_paint);
+
+            x = (float) (cx + bally_sr5 * cos(sangle5));
+            y = (float) (cy + bally_sr5 * sin(sangle5));
+            canvas.drawCircle(x, y, bally_br, ball_paint);
+
+        }
 
         usual_cleanup();
 

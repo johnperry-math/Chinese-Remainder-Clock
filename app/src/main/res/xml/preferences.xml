@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="@string/pref_category_design">
+    <PreferenceCategory
+        android:title="@string/pref_category_design"
+        tools:summary="@string/pref_category_design_summ">
         <ListPreference
             android:id="@+id/pref_draw_object"
             android:defaultValue="1"
@@ -13,25 +16,37 @@
         <SwitchPreference
             android:defaultValue="false"
             android:key="saved_color"
-            android:summary="@string/color_pref_summary"
+            android:summaryOn="@string/color_pref_summary_on"
+            android:summaryOff="@string/color_pref_summary_off"
             android:switchTextOff="@string/color_button_text_off"
             android:switchTextOn="@string/color_button_text_on"
             android:title="@string/color_pref_text" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_unit_order"
+            android:summaryOff="@string/hs_order_pref_summ_off"
+            android:summaryOn="@string/hs_order_pref_summ_on"
+            android:title="@string/hs_order_pref_text" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_category_timekeeping">
         <SwitchPreference
             android:defaultValue="true"
             android:key="@string/saved_show_time"
+            android:summaryOff="@string/show_time_pref_summ_off"
+            android:summaryOn="@string/show_time_pref_summ_on"
             android:title="@string/show_time_pref_text" />
         <SwitchPreference
             android:defaultValue="true"
             android:key="@string/saved_show_seconds"
+            android:summaryOff="@string/seconds_pref_summ_off"
+            android:summaryOn="@string/seconds_pref_summ_on"
             android:title="@string/seconds_pref_text" />
         <SwitchPreference
             android:defaultValue="false"
             android:key="saved_hour"
-            android:switchTextOn="@string/hours_button_text_on_long"
+            android:summaryOff="@string/hours_button_text_off_long"
+            android:summaryOn="@string/hours_button_text_on_long"
             android:title="@string/hours_pref_text" />
     </PreferenceCategory>
 </PreferenceScreen>

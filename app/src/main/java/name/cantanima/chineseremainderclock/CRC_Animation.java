@@ -4,10 +4,6 @@ import android.util.Log;
 
 import java.util.Calendar;
 
-/**
- * Created by cantanima on 4/23/17.
- */
-
 public class CRC_Animation implements Runnable {
 
     public CRC_Animation(CRC_View view) {

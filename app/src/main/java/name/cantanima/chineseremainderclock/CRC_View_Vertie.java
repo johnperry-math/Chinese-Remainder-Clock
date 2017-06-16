@@ -204,64 +204,68 @@ public class CRC_View_Vertie extends Clock_Drawer {
             );
         }
 
-        // second, modulo 3
+        if (show_seconds) {
 
-        canvas.drawLines(digi_s3_pts, poly_paint);
-        ball_paint.setColor(second_color);
-        if (my_viewer.last_s != second) {
-            canvas.drawCircle(
-                    digi_s3_pts[(lsmod3 % 3) << 2]*(1 - offset)
-                            + digi_s3_pts[(smod3 % 3) << 2]*offset,
-                    digi_s3_pts[((lsmod3 % 3) << 2) + 1]*(1 - offset)
-                            + digi_s3_pts[((smod3 % 3) << 2) + 1]*offset,
-                    cradius,
-                    ball_paint
-            );
-        } else {
-            canvas.drawCircle(
-                    digi_s3_pts[(smod3 % 3) << 2], digi_s3_pts[((smod3 % 3) << 2) + 1],
-                    cradius, ball_paint
-            );
-        }
+            // second, modulo 3
 
-        // second, modulo 4
+            canvas.drawLines(digi_s3_pts, poly_paint);
+            ball_paint.setColor(second_color);
+            if (my_viewer.last_s != second) {
+                canvas.drawCircle(
+                        digi_s3_pts[(lsmod3 % 3) << 2] * (1 - offset)
+                                + digi_s3_pts[(smod3 % 3) << 2] * offset,
+                        digi_s3_pts[((lsmod3 % 3) << 2) + 1] * (1 - offset)
+                                + digi_s3_pts[((smod3 % 3) << 2) + 1] * offset,
+                        cradius,
+                        ball_paint
+                );
+            } else {
+                canvas.drawCircle(
+                        digi_s3_pts[(smod3 % 3) << 2], digi_s3_pts[((smod3 % 3) << 2) + 1],
+                        cradius, ball_paint
+                );
+            }
 
-        canvas.drawLines(digi_s4_pts, poly_paint);
-        ball_paint.setColor(second_color);
-        if (my_viewer.last_s != second) {
-            canvas.drawCircle(
-                    digi_s4_pts[(lsmod4 % 4) << 2]*(1 - offset)
-                            + digi_s4_pts[(smod4 % 4) << 2]*offset,
-                    digi_s4_pts[((lsmod4 % 4) << 2) + 1]*(1 - offset)
-                            + digi_s4_pts[((smod4 % 4) << 2) + 1]*offset,
-                    cradius,
-                    ball_paint
-            );
-        } else {
-            canvas.drawCircle(
-                    digi_s4_pts[(smod4 % 4) << 2], digi_s4_pts[((smod4 % 4) << 2) + 1],
-                    cradius, ball_paint
-            );
-        }
+            // second, modulo 4
 
-        // second, modulo 5
+            canvas.drawLines(digi_s4_pts, poly_paint);
+            ball_paint.setColor(second_color);
+            if (my_viewer.last_s != second) {
+                canvas.drawCircle(
+                        digi_s4_pts[(lsmod4 % 4) << 2] * (1 - offset)
+                                + digi_s4_pts[(smod4 % 4) << 2] * offset,
+                        digi_s4_pts[((lsmod4 % 4) << 2) + 1] * (1 - offset)
+                                + digi_s4_pts[((smod4 % 4) << 2) + 1] * offset,
+                        cradius,
+                        ball_paint
+                );
+            } else {
+                canvas.drawCircle(
+                        digi_s4_pts[(smod4 % 4) << 2], digi_s4_pts[((smod4 % 4) << 2) + 1],
+                        cradius, ball_paint
+                );
+            }
 
-        canvas.drawLines(digi_s5_pts, poly_paint);
-        ball_paint.setColor(second_color);
-        if (my_viewer.last_s != second) {
-            canvas.drawCircle(
-                    digi_s5_pts[(lsmod5 % 5) << 2]*(1 - offset)
-                            + digi_s5_pts[(smod5 % 5) << 2]*offset,
-                    digi_s5_pts[((lsmod5 % 5) << 2) + 1]*(1 - offset)
-                            + digi_s5_pts[((smod5 % 5) << 2) + 1]*offset,
-                    cradius,
-                    ball_paint
-            );
-        } else {
-            canvas.drawCircle(
-                    digi_s5_pts[(smod5 % 5) << 2], digi_s5_pts[((smod5 % 5) << 2) + 1],
-                    cradius, ball_paint
-            );
+            // second, modulo 5
+
+            canvas.drawLines(digi_s5_pts, poly_paint);
+            ball_paint.setColor(second_color);
+            if (my_viewer.last_s != second) {
+                canvas.drawCircle(
+                        digi_s5_pts[(lsmod5 % 5) << 2] * (1 - offset)
+                                + digi_s5_pts[(smod5 % 5) << 2] * offset,
+                        digi_s5_pts[((lsmod5 % 5) << 2) + 1] * (1 - offset)
+                                + digi_s5_pts[((smod5 % 5) << 2) + 1] * offset,
+                        cradius,
+                        ball_paint
+                );
+            } else {
+                canvas.drawCircle(
+                        digi_s5_pts[(smod5 % 5) << 2], digi_s5_pts[((smod5 % 5) << 2) + 1],
+                        cradius, ball_paint
+                );
+            }
+
         }
         
         usual_cleanup();

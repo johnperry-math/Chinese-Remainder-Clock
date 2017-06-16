@@ -42,9 +42,12 @@
     <string name="saved_show_seconds">saved_show_seconds</string>
     <string name="saved_show_time">saved_show_time</string>
 
-    <string name="pref_category_design">Interface</string>
-    <string name="pref_drawers">Clock design</string>
+    <string name="pref_category_design">Design</string>
+    <string name="pref_category_design_summ">Settings related to the clock\'s design</string>
+
+    <string name="pref_drawers">Art</string>
     <string name="design_pref_summary">Several analog and digital varieties available</string>
+    <integer name="num_drawers">6</integer>
     <string-array name="drawStrings">
         <item>Archy</item>
         <item>Bally</item>
@@ -64,13 +67,23 @@
     </string-array>
 
     <string name="color_pref_text">Monochrome</string>
-    <string name="color_pref_summary">Choose between color and black-and-white</string>
+    <string name="color_pref_summary_on">Draw the clock in black-and-white</string>
+    <string name="color_pref_summary_off">Draw the clock in color</string>
+
+    <string name="hs_order_pref_text">Order of units</string>
+    <string name="hs_order_pref_summ_on">Draw the seconds on the inside or left</string>
+    <string name="hs_order_pref_summ_off">Draw the seconds on the outside or right</string>
 
     <string name="pref_category_timekeeping">Timekeeping</string>
-    <string name="seconds_pref_text">Show representation of seconds</string>
-    <string name="show_time_pref_text">Show time</string>
 
-    <string name="hours_pref_text">24 hour clock</string>
+    <string name="seconds_pref_text">Seconds, too!</string>
+    <string name="seconds_pref_summ_on">Show the representation of the seconds</string>
+    <string name="seconds_pref_summ_off">Hide the representation of the seconds</string>
+    <string name="show_time_pref_text">Show time</string>
+    <string name="show_time_pref_summ_on">Write the time in the clock\'s corners</string>
+    <string name="show_time_pref_summ_off">Leave the conventional time off the clock</string>
+
+    <string name="hours_pref_text">Hours on the clock</string>
     <string name="hours_button_text_off_long">12 hour clock</string>
     <string name="hours_button_text_on_long">24 hour clock</string>
 

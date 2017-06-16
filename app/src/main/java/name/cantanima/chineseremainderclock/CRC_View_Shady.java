@@ -173,54 +173,58 @@ public class CRC_View_Shady extends Clock_Drawer {
         else
             canvas.drawText(String.valueOf(mmod5), cx, digi_msty3, digi_paint);
 
-        // second, modulo 3
+        if (show_seconds) {
 
-        ball_paint.setColor(second_color);
-        if (my_viewer.last_s != second) {
-            ball_paint.setAlpha((int) (
-                    (1 - my_viewer.my_offset)*85*(lsmod3 % 3) + my_viewer.my_offset*85*(smod3 % 3))
-            );
-            canvas.drawPath(s_tria, ball_paint);
-        } else {
-            ball_paint.setAlpha(85 * (smod3 % 3));
-            canvas.drawPath(s_tria, ball_paint);
+            // second, modulo 3
+
+            ball_paint.setColor(second_color);
+            if (my_viewer.last_s != second) {
+                ball_paint.setAlpha((int) (
+                        (1 - my_viewer.my_offset) * 85 * (lsmod3 % 3) + my_viewer.my_offset * 85 * (smod3 % 3))
+                );
+                canvas.drawPath(s_tria, ball_paint);
+            } else {
+                ball_paint.setAlpha(85 * (smod3 % 3));
+                canvas.drawPath(s_tria, ball_paint);
+            }
+            if (smod3 == 3)
+                canvas.drawText(zero_str, cx + digi_step, digi_msty1, digi_paint);
+            else
+                canvas.drawText(String.valueOf(smod3), cx + digi_step, digi_msty1, digi_paint);
+
+            // second, modulo 4
+
+            if (my_viewer.last_s != second) {
+                ball_paint.setAlpha((int) (
+                        (1 - my_viewer.my_offset) * 63 * (lsmod4 % 4) + my_viewer.my_offset * 63 * (smod4 % 4))
+                );
+                canvas.drawPath(s_quad, ball_paint);
+            } else {
+                ball_paint.setAlpha(63 * (smod4 % 4));
+                canvas.drawPath(s_quad, ball_paint);
+            }
+            if (smod4 == 4)
+                canvas.drawText(zero_str, cx + digi_step, digi_ty, digi_paint);
+            else
+                canvas.drawText(String.valueOf(smod4), cx + digi_step, digi_ty, digi_paint);
+
+            // second, modulo 5
+
+            if (my_viewer.last_s != second) {
+                ball_paint.setAlpha((int) (
+                        (1 - my_viewer.my_offset) * 51 * (lsmod5 % 5) + my_viewer.my_offset * 51 * (smod5 % 5))
+                );
+                canvas.drawPath(s_pent, ball_paint);
+            } else {
+                ball_paint.setAlpha(51 * (smod5 % 5));
+                canvas.drawPath(s_pent, ball_paint);
+            }
+            if (smod5 == 5)
+                canvas.drawText(zero_str, cx + digi_step, digi_msty3, digi_paint);
+            else
+                canvas.drawText(String.valueOf(smod5), cx + digi_step, digi_msty3, digi_paint);
+
         }
-        if (smod3 == 3)
-            canvas.drawText(zero_str, cx + digi_step, digi_msty1, digi_paint);
-        else
-            canvas.drawText(String.valueOf(smod3), cx + digi_step, digi_msty1, digi_paint);
-
-        // second, modulo 4
-
-        if (my_viewer.last_s != second) {
-            ball_paint.setAlpha((int) (
-                    (1 - my_viewer.my_offset)*63*(lsmod4 % 4) + my_viewer.my_offset*63*(smod4 % 4))
-            );
-            canvas.drawPath(s_quad, ball_paint);
-        } else {
-            ball_paint.setAlpha(63 * (smod4 % 4));
-            canvas.drawPath(s_quad, ball_paint);
-        }
-        if (smod4 == 4)
-            canvas.drawText(zero_str, cx + digi_step, digi_ty, digi_paint);
-        else
-            canvas.drawText(String.valueOf(smod4), cx + digi_step, digi_ty, digi_paint);
-
-        // minute, modulo 5
-
-        if (my_viewer.last_s != second) {
-            ball_paint.setAlpha((int) (
-                    (1 - my_viewer.my_offset)*51*(lsmod5 % 5) + my_viewer.my_offset*51*(smod5 % 5))
-            );
-            canvas.drawPath(s_pent, ball_paint);
-        } else {
-            ball_paint.setAlpha(51 * (smod5 % 5));
-            canvas.drawPath(s_pent, ball_paint);
-        }
-        if (smod5 == 5)
-            canvas.drawText(zero_str, cx + digi_step, digi_msty3, digi_paint);
-        else
-            canvas.drawText(String.valueOf(smod5), cx + digi_step, digi_msty3, digi_paint);
 
         usual_cleanup();
 

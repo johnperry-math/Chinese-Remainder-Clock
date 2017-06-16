@@ -282,106 +282,110 @@ public class CRC_View_Linus extends Clock_Drawer {
             canvas.drawLines(digi_m5_pts, 0, mmod5 << 2, ball_paint);
         }
 
-        // second, modulo 3
+        if (show_seconds) {
 
-        ball_paint.setColor(WHITE);
-        ball_paint.setStrokeWidth(1);
-        canvas.drawLines(digi_s3_pts, ball_paint);
-        ball_paint.setColor(second_color);
-        ball_paint.setStrokeWidth(4);
-        if (abs(my_viewer.last_s - second) == 1 && my_viewer.time_guide != DECREMENT) {
-            canvas.drawLines(digi_s3_pts, 0, (lsmod3 % 3) << 2, ball_paint);
-            canvas.drawLine(
-                    digi_s3_pts[(lsmod3 % 3) << 2],
-                    digi_s3_pts[((lsmod3 % 3) << 2) + 1],
-                    digi_s3_pts[(lsmod3 % 3) << 2]*(1 - my_viewer.my_offset)
-                            + digi_s3_pts[(smod3 % 3) << 2]*my_viewer.my_offset,
-                    digi_s3_pts[((lsmod3 % 3) << 2) + 1]*(1 - my_viewer.my_offset)
-                            + digi_s3_pts[((smod3 % 3) << 2) + 1]*my_viewer.my_offset,
-                    ball_paint
-            );
-        } else if (abs(my_viewer.last_s - second) == 1 && my_viewer.time_guide == DECREMENT) {
-            canvas.drawLines(digi_s3_pts, 0, (smod3 % 3) << 2, ball_paint);
-            canvas.drawLine(
-                    digi_s3_pts[(smod3 % 3) << 2],
-                    digi_s3_pts[((smod3 % 3) << 2) + 1],
-                    digi_s3_pts[(smod3 % 3) << 2]*my_viewer.my_offset
-                            + digi_s3_pts[(lsmod3 % 3) << 2]*(1 - my_viewer.my_offset),
-                    digi_s3_pts[((smod3 % 3) << 2) + 1]*my_viewer.my_offset
-                            + digi_s3_pts[((lsmod3 % 3) << 2) + 1]*(1 - my_viewer.my_offset),
-                    ball_paint
-            );
+            // second, modulo 3
 
-        } else {
-            canvas.drawLines(digi_s3_pts, 0, smod3 << 2, ball_paint);
-        }
+            ball_paint.setColor(WHITE);
+            ball_paint.setStrokeWidth(1);
+            canvas.drawLines(digi_s3_pts, ball_paint);
+            ball_paint.setColor(second_color);
+            ball_paint.setStrokeWidth(4);
+            if (abs(my_viewer.last_s - second) == 1 && my_viewer.time_guide != DECREMENT) {
+                canvas.drawLines(digi_s3_pts, 0, (lsmod3 % 3) << 2, ball_paint);
+                canvas.drawLine(
+                        digi_s3_pts[(lsmod3 % 3) << 2],
+                        digi_s3_pts[((lsmod3 % 3) << 2) + 1],
+                        digi_s3_pts[(lsmod3 % 3) << 2] * (1 - my_viewer.my_offset)
+                                + digi_s3_pts[(smod3 % 3) << 2] * my_viewer.my_offset,
+                        digi_s3_pts[((lsmod3 % 3) << 2) + 1] * (1 - my_viewer.my_offset)
+                                + digi_s3_pts[((smod3 % 3) << 2) + 1] * my_viewer.my_offset,
+                        ball_paint
+                );
+            } else if (abs(my_viewer.last_s - second) == 1 && my_viewer.time_guide == DECREMENT) {
+                canvas.drawLines(digi_s3_pts, 0, (smod3 % 3) << 2, ball_paint);
+                canvas.drawLine(
+                        digi_s3_pts[(smod3 % 3) << 2],
+                        digi_s3_pts[((smod3 % 3) << 2) + 1],
+                        digi_s3_pts[(smod3 % 3) << 2] * my_viewer.my_offset
+                                + digi_s3_pts[(lsmod3 % 3) << 2] * (1 - my_viewer.my_offset),
+                        digi_s3_pts[((smod3 % 3) << 2) + 1] * my_viewer.my_offset
+                                + digi_s3_pts[((lsmod3 % 3) << 2) + 1] * (1 - my_viewer.my_offset),
+                        ball_paint
+                );
 
-        // second, modulo 4
+            } else {
+                canvas.drawLines(digi_s3_pts, 0, smod3 << 2, ball_paint);
+            }
 
-        ball_paint.setColor(WHITE);
-        ball_paint.setStrokeWidth(1);
-        canvas.drawLines(digi_s4_pts, ball_paint);
-        ball_paint.setColor(second_color);
-        ball_paint.setStrokeWidth(4);
-        if (abs(my_viewer.last_s - second) == 1 && my_viewer.time_guide != DECREMENT) {
-            canvas.drawLines(digi_s4_pts, 0, (lsmod4 % 4) << 2, ball_paint);
-            canvas.drawLine(
-                    digi_s4_pts[(lsmod4 % 4) << 2],
-                    digi_s4_pts[((lsmod4 % 4) << 2) + 1],
-                    digi_s4_pts[(lsmod4 % 4) << 2]*(1 - my_viewer.my_offset)
-                            + digi_s4_pts[(smod4 % 4) << 2]*my_viewer.my_offset,
-                    digi_s4_pts[((lsmod4 % 4) << 2) + 1]*(1 - my_viewer.my_offset)
-                            + digi_s4_pts[((smod4 % 4) << 2) + 1]*my_viewer.my_offset,
-                    ball_paint
-            );
-        } else if (abs(my_viewer.last_s - second) == 1 && my_viewer.time_guide == DECREMENT) {
-            canvas.drawLines(digi_s4_pts, 0, (smod4 % 4) << 2, ball_paint);
-            canvas.drawLine(
-                    digi_s4_pts[(smod4 % 4) << 2],
-                    digi_s4_pts[((smod4 % 4) << 2) + 1],
-                    digi_s4_pts[(smod4 % 4) << 2]*my_viewer.my_offset
-                            + digi_s4_pts[(lsmod4 % 4) << 2]*(1 - my_viewer.my_offset),
-                    digi_s4_pts[((smod4 % 4) << 2) + 1]*my_viewer.my_offset
-                            + digi_s4_pts[((lsmod4 % 4) << 2) + 1]*(1 - my_viewer.my_offset),
-                    ball_paint
-            );
+            // second, modulo 4
 
-        } else {
-            canvas.drawLines(digi_s4_pts, 0, smod4 << 2, ball_paint);
-        }
+            ball_paint.setColor(WHITE);
+            ball_paint.setStrokeWidth(1);
+            canvas.drawLines(digi_s4_pts, ball_paint);
+            ball_paint.setColor(second_color);
+            ball_paint.setStrokeWidth(4);
+            if (abs(my_viewer.last_s - second) == 1 && my_viewer.time_guide != DECREMENT) {
+                canvas.drawLines(digi_s4_pts, 0, (lsmod4 % 4) << 2, ball_paint);
+                canvas.drawLine(
+                        digi_s4_pts[(lsmod4 % 4) << 2],
+                        digi_s4_pts[((lsmod4 % 4) << 2) + 1],
+                        digi_s4_pts[(lsmod4 % 4) << 2] * (1 - my_viewer.my_offset)
+                                + digi_s4_pts[(smod4 % 4) << 2] * my_viewer.my_offset,
+                        digi_s4_pts[((lsmod4 % 4) << 2) + 1] * (1 - my_viewer.my_offset)
+                                + digi_s4_pts[((smod4 % 4) << 2) + 1] * my_viewer.my_offset,
+                        ball_paint
+                );
+            } else if (abs(my_viewer.last_s - second) == 1 && my_viewer.time_guide == DECREMENT) {
+                canvas.drawLines(digi_s4_pts, 0, (smod4 % 4) << 2, ball_paint);
+                canvas.drawLine(
+                        digi_s4_pts[(smod4 % 4) << 2],
+                        digi_s4_pts[((smod4 % 4) << 2) + 1],
+                        digi_s4_pts[(smod4 % 4) << 2] * my_viewer.my_offset
+                                + digi_s4_pts[(lsmod4 % 4) << 2] * (1 - my_viewer.my_offset),
+                        digi_s4_pts[((smod4 % 4) << 2) + 1] * my_viewer.my_offset
+                                + digi_s4_pts[((lsmod4 % 4) << 2) + 1] * (1 - my_viewer.my_offset),
+                        ball_paint
+                );
 
-        // second, modulo 5
+            } else {
+                canvas.drawLines(digi_s4_pts, 0, smod4 << 2, ball_paint);
+            }
 
-        ball_paint.setColor(WHITE);
-        ball_paint.setStrokeWidth(1);
-        canvas.drawLines(digi_s5_pts, ball_paint);
-        ball_paint.setColor(second_color);
-        ball_paint.setStrokeWidth(4);
-        if (abs(my_viewer.last_s - second) == 1 && my_viewer.time_guide != DECREMENT) {
-            canvas.drawLines(digi_s5_pts, 0, (lsmod5 % 5) << 2, ball_paint);
-            canvas.drawLine(
-                    digi_s5_pts[(lsmod5 % 5) << 2],
-                    digi_s5_pts[((lsmod5 % 5) << 2) + 1],
-                    digi_s5_pts[(lsmod5 % 5) << 2]*(1 - my_viewer.my_offset)
-                            + digi_s5_pts[(smod5 % 5) << 2]*my_viewer.my_offset,
-                    digi_s5_pts[((lsmod5 % 5) << 2) + 1]*(1 - my_viewer.my_offset)
-                            + digi_s5_pts[((smod5 % 5) << 2) + 1]*my_viewer.my_offset,
-                    ball_paint
-            );
-        } else if (abs(my_viewer.last_s - second) == 1 && my_viewer.time_guide == DECREMENT) {
-            canvas.drawLines(digi_s5_pts, 0, (smod5 % 5) << 2, ball_paint);
-            canvas.drawLine(
-                    digi_s5_pts[(smod5 % 5) << 2],
-                    digi_s5_pts[((smod5 % 5) << 2) + 1],
-                    digi_s5_pts[(smod5 % 5) << 2]*my_viewer.my_offset
-                            + digi_s5_pts[(lsmod5 % 5) << 2]*(1 - my_viewer.my_offset),
-                    digi_s5_pts[((smod5 % 5) << 2) + 1]*my_viewer.my_offset
-                            + digi_s5_pts[((lsmod5 % 5) << 2) + 1]*(1 - my_viewer.my_offset),
-                    ball_paint
-            );
+            // second, modulo 5
 
-        } else {
-            canvas.drawLines(digi_s5_pts, 0, smod5 << 2, ball_paint);
+            ball_paint.setColor(WHITE);
+            ball_paint.setStrokeWidth(1);
+            canvas.drawLines(digi_s5_pts, ball_paint);
+            ball_paint.setColor(second_color);
+            ball_paint.setStrokeWidth(4);
+            if (abs(my_viewer.last_s - second) == 1 && my_viewer.time_guide != DECREMENT) {
+                canvas.drawLines(digi_s5_pts, 0, (lsmod5 % 5) << 2, ball_paint);
+                canvas.drawLine(
+                        digi_s5_pts[(lsmod5 % 5) << 2],
+                        digi_s5_pts[((lsmod5 % 5) << 2) + 1],
+                        digi_s5_pts[(lsmod5 % 5) << 2] * (1 - my_viewer.my_offset)
+                                + digi_s5_pts[(smod5 % 5) << 2] * my_viewer.my_offset,
+                        digi_s5_pts[((lsmod5 % 5) << 2) + 1] * (1 - my_viewer.my_offset)
+                                + digi_s5_pts[((smod5 % 5) << 2) + 1] * my_viewer.my_offset,
+                        ball_paint
+                );
+            } else if (abs(my_viewer.last_s - second) == 1 && my_viewer.time_guide == DECREMENT) {
+                canvas.drawLines(digi_s5_pts, 0, (smod5 % 5) << 2, ball_paint);
+                canvas.drawLine(
+                        digi_s5_pts[(smod5 % 5) << 2],
+                        digi_s5_pts[((smod5 % 5) << 2) + 1],
+                        digi_s5_pts[(smod5 % 5) << 2] * my_viewer.my_offset
+                                + digi_s5_pts[(lsmod5 % 5) << 2] * (1 - my_viewer.my_offset),
+                        digi_s5_pts[((smod5 % 5) << 2) + 1] * my_viewer.my_offset
+                                + digi_s5_pts[((lsmod5 % 5) << 2) + 1] * (1 - my_viewer.my_offset),
+                        ball_paint
+                );
+
+            } else {
+                canvas.drawLines(digi_s5_pts, 0, smod5 << 2, ball_paint);
+            }
+
         }
 
         usual_cleanup();

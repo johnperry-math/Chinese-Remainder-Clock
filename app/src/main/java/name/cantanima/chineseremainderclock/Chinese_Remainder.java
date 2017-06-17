@@ -101,22 +101,30 @@ public class Chinese_Remainder
             boolean default_time = false;
             boolean saved_time = (prefs.contains(getString(R.string.saved_show_time))) ?
                     prefs.getBoolean(getString(R.string.saved_show_time), default_time) : default_time;
+            boolean default_reverse_orientation = false;
+            boolean saved_unit_orientation = (prefs.contains(getString(R.string.saved_reverse_orientation))) ?
+                    prefs.getBoolean(getString(R.string.saved_reverse_orientation), default_reverse_orientation) :
+                    default_reverse_orientation;
             
             int default_drawer = 1;
             int saved_drawer = (prefs.contains(getString(R.string.saved_drawer))) ?
                     prefs.getInt(getString(R.string.saved_drawer), default_drawer) : default_drawer;
-            if (!prefs.contains(getString(R.string.version)) || !prefs.getString("version", "1.2").equals("1.2")) {
+            String version_string = getString(R.string.current_version);
+            if (
+                    !prefs.contains(getString(R.string.version)) ||
+                    !prefs.getString(getString(R.string.version), version_string).equals(version_string)
+            ) {
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.clear();
-                editor.putString(getString(R.string.version), "1.2");
+                editor.putString(getString(R.string.version), version_string);
                 editor.putBoolean(getString(R.string.saved_hour), saved_hour);
                 editor.putBoolean(getString(R.string.saved_color), saved_color);
                 editor.putBoolean(getString(R.string.saved_show_seconds), saved_seconds);
                 editor.putBoolean(getString(R.string.saved_show_time), saved_time);
+                editor.putBoolean(getString(R.string.saved_reverse_orientation), saved_unit_orientation);
                 editor.putInt(getString(R.string.saved_drawer), saved_drawer);
                 editor.apply();
             }
-            //crc_view.setPrefs(prefs, saved_hour, saved_color, saved_seconds, saved_time, saved_drawer);
 
             // setup user interface elements: all should start off invisible,
             // and should have crc_view as an appropriate listener

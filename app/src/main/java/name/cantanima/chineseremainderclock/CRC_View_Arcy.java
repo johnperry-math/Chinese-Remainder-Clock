@@ -230,16 +230,51 @@ public class CRC_View_Arcy extends Clock_Drawer {
 
         super.recalculate_positions();
 
-        rh3 = diam * 1f / 10f;
-        rhh = diam * 2f / 10f;
-        rm3 = diam * 3f / 10f;
-        rm4 = diam * 4f / 10f;
-        rm5 = diam * 5f / 10f;
-        rs3 = diam * 6f / 10f;
-        rs4 = diam * 7f / 10f;
-        rs5 = diam * 8f / 10f;
+        float r_off;
 
-        float r_off = diam / 40f;
+        if (reverse_orientation) {
+
+            if (show_seconds) {
+                rh3 = diam * 7f / 10f;
+                rhh = diam * 8f / 10f;
+                rm3 = diam * 4f / 10f;
+                rm4 = diam * 5f / 10f;
+                rm5 = diam * 6f / 10f;
+                rs3 = diam * 1f / 10f;
+                rs4 = diam * 2f / 10f;
+                rs5 = diam * 3f / 10f;
+                r_off = diam / 40f;
+            } else {
+                rm3 = diam * 1f / 6f;
+                rm4 = diam * 2f / 6f;
+                rm5 = diam * 3f / 6f;
+                rh3 = diam * 4f / 6f;
+                rhh = diam * 5f / 6f;
+                r_off = diam / 25f;
+            }
+
+        } else {
+
+            if (show_seconds) {
+                rh3 = diam * 1f / 10f;
+                rhh = diam * 2f / 10f;
+                rm3 = diam * 3f / 10f;
+                rm4 = diam * 4f / 10f;
+                rm5 = diam * 5f / 10f;
+                rs3 = diam * 6f / 10f;
+                rs4 = diam * 7f / 10f;
+                rs5 = diam * 8f / 10f;
+                r_off = diam / 40f;
+            } else {
+                rh3 = diam * 1f / 6f;
+                rhh = diam * 2f / 6f;
+                rm3 = diam * 3f / 6f;
+                rm4 = diam * 4f / 6f;
+                rm5 = diam * 5f / 6f;
+                r_off = diam / 25f;
+            }
+
+        }
 
         path_h3 = new Path [] { new Path(), new Path(), new Path() };
         path_h4 = new Path [] { new Path(), new Path(), new Path(), new Path() };

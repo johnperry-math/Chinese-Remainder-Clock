@@ -276,9 +276,14 @@ public abstract class Clock_Drawer {
 
     protected boolean get_show_time() { return show_time; }
 
+    protected boolean get_reverse_orientation() { return reverse_orientation; }
+
+    protected void set_reverse_orientation(boolean yesno) { reverse_orientation = yesno; }
+
     protected void toggle_color() {
         color = !color; adjust_color();
     }
+
     protected void adjust_color() {
         if (color) {
             second_color = GOODGREEN;
@@ -308,6 +313,7 @@ public abstract class Clock_Drawer {
     protected boolean color;
     protected boolean show_seconds;
     protected boolean show_time;
+    protected boolean reverse_orientation;
 
     protected static final String zero_str = "0";
     protected static final String twelve_str = "12";

@@ -9,10 +9,7 @@ TODO
 Add settings interface so that colors can be set by user.
 
 TODO
-Implement hiding of seconds representation. (Partially done -- now need to recompute positions.)
-
-TODO
-Implement reversal of order of units.
+Make it possible to change the time manually by touch and drag motions.
 
 DONE
 - Fade in/out of Polly (6ish June 2017).
@@ -31,3 +28,5 @@ DONE
 - Add toggle button to reverse order of seconds, minutes, and hours.
 - The settings panel will crash if we reorient the phone while the settings are open.
   Android docs have some information on this; fix!
+- Implement reversal of order of units.
+- Implement hiding of seconds representation.

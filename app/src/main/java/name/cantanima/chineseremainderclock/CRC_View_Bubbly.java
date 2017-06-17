@@ -318,17 +318,60 @@ public class CRC_View_Bubbly extends Clock_Drawer {
 
         super.recalculate_positions();
 
-        hstep = w / 8f;
-        vstep = h / 11f;
-        radius = min(hstep, vstep) / 2.25f;
-        cradius = radius * 0.7f;
-        cstep = cradius * 2.35f;
+        if (show_seconds) {
 
-        h_x3 = 2*hstep; h_xh = 3*hstep;
-        m_x3 = 4*hstep; m_x4 = 5*hstep; m_x5 = 6*hstep;
-        s_x3 = 3f*hstep; s_x4 = 4f*hstep; s_x5 = 5f*hstep;
-        h_y = m_y = 5f*vstep;
-        s_y = 9*vstep;
+            hstep = w / 8f;
+            vstep = h / 11f;
+            radius = min(hstep, vstep) / 2.25f;
+            cradius = radius * 0.7f;
+            cstep = cradius * 2.35f;
+
+            h_y = m_y = 5f * vstep;
+            s_y = 9 * vstep;
+            if (reverse_orientation) {
+                h_x3 = 5 * hstep;
+                h_xh = 6 * hstep;
+                m_x3 = 2 * hstep;
+                m_x4 = 3 * hstep;
+                m_x5 = 4 * hstep;
+                s_x3 = 3f * hstep;
+                s_x4 = 4f * hstep;
+                s_x5 = 5f * hstep;
+            } else {
+                h_x3 = 2 * hstep;
+                h_xh = 3 * hstep;
+                m_x3 = 4 * hstep;
+                m_x4 = 5 * hstep;
+                m_x5 = 6 * hstep;
+                s_x3 = 3f * hstep;
+                s_x4 = 4f * hstep;
+                s_x5 = 5f * hstep;
+            }
+
+        } else {
+
+            hstep = w / 6f;
+            vstep = h / 7f;
+            radius = min(hstep, vstep) / 2.25f;
+            cradius = radius * 0.7f;
+            cstep = cradius * 2.35f;
+
+            h_y = m_y = cy + 3 * radius;
+            if (reverse_orientation) {
+                m_x3 = hstep;
+                m_x4 = 2 * hstep;
+                m_x5 = 3 * hstep;
+                h_x3 = 4 * hstep;
+                h_xh = 5 * hstep;
+            } else {
+                h_x3 = hstep;
+                h_xh = 2 * hstep;
+                m_x3 = 3 * hstep;
+                m_x4 = 4 * hstep;
+                m_x5 = 5 * hstep;
+            }
+
+        }
 
         h_tria = new Path();
         h_tria.moveTo(h_x3 - radius*1.15f * (float) cos(9 * PI / 6), h_y + radius*0.25f + radius*1.15f * (float) sin(9 * PI / 6));

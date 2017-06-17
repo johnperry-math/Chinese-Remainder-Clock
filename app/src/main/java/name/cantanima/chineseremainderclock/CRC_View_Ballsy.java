@@ -94,6 +94,11 @@ public class CRC_View_Ballsy extends Clock_Drawer {
         canvas.drawCircle(cx, cy, bally_mr3, circle_paint);
         canvas.drawCircle(cx, cy, bally_mr4, circle_paint);
         canvas.drawCircle(cx, cy, bally_mr5, circle_paint);
+        if (reverse_orientation) {
+            canvas.drawCircle(cx, cy, bally_sr3, circle_paint);
+            canvas.drawCircle(cx, cy, bally_sr4, circle_paint);
+            canvas.drawCircle(cx, cy, bally_sr5, circle_paint);
+        }
 
         // draw hatch marks for positions modulo 3
         for (int i = 0; i < 3; ++i) {
@@ -262,15 +267,41 @@ public class CRC_View_Ballsy extends Clock_Drawer {
 
         super.recalculate_positions();
 
-        bally_hr3 = (float) (diam / 6.0);
-        bally_hr4 = (float) (diam / 3.0);
-        bally_mr3 = (float) (diam / 2.0);
-        bally_mr4 = (float) (diam * 2.0 / 3.0);
-        bally_mr5 = (float) (diam * 5.0 / 6.0);
-        bally_sr3 = (float) (diam / 12.0 * 5.0);
-        bally_sr4 = (float) (diam / 12.0 * 7.0);
-        bally_sr5 = (float) (diam / 12.0 * 9.0);
-        bally_br = diam / 28;
+        if (reverse_orientation) {
+
+            if (show_seconds) {
+                bally_sr3 = diam / 9f;
+                bally_sr4 = diam / 9f * 2f;
+                bally_sr5 = diam / 9f * 3f;
+                bally_mr3 = diam / 9f * 4f;
+                bally_mr4 = diam / 9f * 5f;
+                bally_mr5 = diam / 9f * 6f;
+                bally_hr3 = diam / 9f * 7f;
+                bally_hr4 = diam / 9f * 8f;
+                bally_br = diam / 28;
+            } else {
+                bally_mr3 = diam / 6f;
+                bally_mr4 = diam / 6f * 2f;
+                bally_mr5 = diam / 6f * 3f;
+                bally_hr3 = diam / 6f * 4f;
+                bally_hr4 = diam / 6f * 5f;
+                bally_br = diam / 20;
+            }
+
+        } else {
+
+            bally_hr3 = (float) (diam / 6.0);
+            bally_hr4 = (float) (diam / 3.0);
+            bally_mr3 = (float) (diam / 2.0);
+            bally_mr4 = (float) (diam * 2.0 / 3.0);
+            bally_mr5 = (float) (diam * 5.0 / 6.0);
+            bally_sr3 = (float) (diam / 12.0 * 5.0);
+            bally_sr4 = (float) (diam / 12.0 * 7.0);
+            bally_sr5 = (float) (diam / 12.0 * 9.0);
+            bally_br = diam / 28;
+
+        }
+
         bally_hatch_dist = diam / 60;
         bally_hatch_hr3_inner = bally_hr3 - bally_hatch_dist;
         bally_hatch_h3_outer = bally_hr3 + bally_hatch_dist;

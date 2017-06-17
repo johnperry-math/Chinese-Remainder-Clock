@@ -76,17 +76,17 @@ public class CRC_View_Shady extends Clock_Drawer {
         ball_paint.setStyle(FILL);
         if (my_viewer.last_h != hour) {
             ball_paint.setAlpha((int) (
-                    (1 - my_viewer.my_offset)*85*(lhmod3 % 3) + my_viewer.my_offset*85*(hmod3 % 3))
+                    (1 - my_viewer.my_offset)*63*((lhmod3 % 3) + 1) + my_viewer.my_offset*63*((hmod3 % 3) + 1))
             );
             canvas.drawPath(h_tria, ball_paint);
         } else {
-            ball_paint.setAlpha(85 * (hmod3 % 3));
+            ball_paint.setAlpha(63 * ((hmod3 % 3) + 1));
             canvas.drawPath(h_tria, ball_paint);
         }
         if (hmod3 == 3)
-            canvas.drawText(zero_str, cx - digi_step, digi_hty1, digi_paint);
+            canvas.drawText(zero_str, digi_hx, digi_hty1, digi_paint);
         else
-            canvas.drawText(String.valueOf(hmod3), cx - digi_step, digi_hty1, digi_paint);
+            canvas.drawText(String.valueOf(hmod3), digi_hx, digi_hty1, digi_paint);
 
         // hour, modulo 4 or 8, depending on the kind of time
 
@@ -94,33 +94,33 @@ public class CRC_View_Shady extends Clock_Drawer {
 
             if (my_viewer.last_h != hour) {
                 ball_paint.setAlpha((int) (
-                        (1 - my_viewer.my_offset)*63*(lhmod4 % 4) + my_viewer.my_offset*63*(hmod4 % 4))
+                        (1 - my_viewer.my_offset)*51*((lhmod4 % 4) + 1) + my_viewer.my_offset*51*((hmod4 % 4) + 1))
                 );
                 canvas.drawPath(h_quad, ball_paint);
             } else {
-                ball_paint.setAlpha(63 * (hmod4 % 4));
+                ball_paint.setAlpha(51 * ((hmod4 % 4) + 1));
                 canvas.drawPath(h_quad, ball_paint);
             }
             if (hmod4 == 4)
-                canvas.drawText(zero_str, cx - digi_step, digi_hty2, digi_paint);
+                canvas.drawText(zero_str, digi_hx, digi_hty2, digi_paint);
             else
-                canvas.drawText(String.valueOf(hmod4), cx - digi_step, digi_hty2, digi_paint);
+                canvas.drawText(String.valueOf(hmod4), digi_hx, digi_hty2, digi_paint);
 
         } else { // hour modulo 8
 
             if (my_viewer.last_h != hour) {
                 ball_paint.setAlpha((int) (
-                        (1 - my_viewer.my_offset)*31*(lhmod4 % 8) + my_viewer.my_offset*31*(hmod4 % 8))
+                        (1 - my_viewer.my_offset)*27*((lhmod4 % 8) + 1) + my_viewer.my_offset*27*((hmod4 % 8) + 1))
                 );
                 canvas.drawPath(h_octo, ball_paint);
             } else {
-                ball_paint.setAlpha(31 * (hmod4 % 8));
+                ball_paint.setAlpha(27 * ((hmod4 % 8) + 1));
                 canvas.drawPath(h_octo, ball_paint);
             }
             if (hmod4 == 8)
-                canvas.drawText(zero_str, cx - digi_step, digi_hty2, digi_paint);
+                canvas.drawText(zero_str, digi_hx, digi_hty2, digi_paint);
             else
-                canvas.drawText(String.valueOf(hmod4), cx - digi_step, digi_hty2, digi_paint);
+                canvas.drawText(String.valueOf(hmod4), digi_hx, digi_hty2, digi_paint);
 
         }
 
@@ -129,49 +129,49 @@ public class CRC_View_Shady extends Clock_Drawer {
         ball_paint.setColor(minute_color);
         if (my_viewer.last_m != minute) {
             ball_paint.setAlpha((int) (
-                    (1 - my_viewer.my_offset)*85*(lmmod3 % 3) + my_viewer.my_offset*85*(mmod3 % 3))
+                    (1 - my_viewer.my_offset)*63*((lmmod3 % 3) + 1) + my_viewer.my_offset*63*((mmod3 % 3) + 1))
             );
             canvas.drawPath(m_tria, ball_paint);
         } else {
-            ball_paint.setAlpha(85 * (mmod3 % 3));
+            ball_paint.setAlpha(63 * ((mmod3 % 3) + 1));
             canvas.drawPath(m_tria, ball_paint);
         }
         if (mmod3 == 3)
-            canvas.drawText(zero_str, cx, digi_msty1, digi_paint);
+            canvas.drawText(zero_str, digi_mx, digi_msty1, digi_paint);
         else
-            canvas.drawText(String.valueOf(mmod3), cx, digi_msty1, digi_paint);
+            canvas.drawText(String.valueOf(mmod3), digi_mx, digi_msty1, digi_paint);
 
         // minute, modulo 4
 
         if (my_viewer.last_m != minute) {
             ball_paint.setAlpha((int) (
-                    (1 - my_viewer.my_offset)*63*(lmmod4 % 4) + my_viewer.my_offset*63*(mmod4 % 4))
+                    (1 - my_viewer.my_offset)*51*((lmmod4 % 4) + 1) + my_viewer.my_offset*51*((mmod4 % 4) + 1))
             );
             canvas.drawPath(m_quad, ball_paint);
         } else {
-            ball_paint.setAlpha(63 * (mmod4 % 4));
+            ball_paint.setAlpha(51 * ((mmod4 % 4) + 1));
             canvas.drawPath(m_quad, ball_paint);
         }
         if (mmod4 == 4)
-            canvas.drawText(zero_str, cx, digi_ty, digi_paint);
+            canvas.drawText(zero_str, digi_mx, digi_ty, digi_paint);
         else
-            canvas.drawText(String.valueOf(mmod4), cx, digi_ty, digi_paint);
+            canvas.drawText(String.valueOf(mmod4), digi_mx, digi_ty, digi_paint);
 
         // minute, modulo 5
 
         if (my_viewer.last_m != minute) {
             ball_paint.setAlpha((int) (
-                    (1 - my_viewer.my_offset)*51*(lmmod5 % 5) + my_viewer.my_offset*51*(mmod5 % 5))
+                    (1 - my_viewer.my_offset)*45*((lmmod5 % 5) + 1) + my_viewer.my_offset*45*((mmod5 % 5) + 1))
             );
             canvas.drawPath(m_pent, ball_paint);
         } else {
-            ball_paint.setAlpha(51 * (mmod5 % 5));
+            ball_paint.setAlpha(45 * ((mmod5 % 5) + 1));
             canvas.drawPath(m_pent, ball_paint);
         }
         if (mmod5 == 5)
-            canvas.drawText(zero_str, cx, digi_msty3, digi_paint);
+            canvas.drawText(zero_str, digi_mx, digi_msty3, digi_paint);
         else
-            canvas.drawText(String.valueOf(mmod5), cx, digi_msty3, digi_paint);
+            canvas.drawText(String.valueOf(mmod5), digi_mx, digi_msty3, digi_paint);
 
         if (show_seconds) {
 
@@ -180,49 +180,49 @@ public class CRC_View_Shady extends Clock_Drawer {
             ball_paint.setColor(second_color);
             if (my_viewer.last_s != second) {
                 ball_paint.setAlpha((int) (
-                        (1 - my_viewer.my_offset) * 85 * (lsmod3 % 3) + my_viewer.my_offset * 85 * (smod3 % 3))
+                        (1 - my_viewer.my_offset) * 63 * ((lsmod3 % 3) + 1) + my_viewer.my_offset * 63 * ((smod3 % 3) + 1))
                 );
                 canvas.drawPath(s_tria, ball_paint);
             } else {
-                ball_paint.setAlpha(85 * (smod3 % 3));
+                ball_paint.setAlpha(63 * ((smod3 % 3) + 1));
                 canvas.drawPath(s_tria, ball_paint);
             }
             if (smod3 == 3)
-                canvas.drawText(zero_str, cx + digi_step, digi_msty1, digi_paint);
+                canvas.drawText(zero_str, digi_sx, digi_msty1, digi_paint);
             else
-                canvas.drawText(String.valueOf(smod3), cx + digi_step, digi_msty1, digi_paint);
+                canvas.drawText(String.valueOf(smod3), digi_sx, digi_msty1, digi_paint);
 
             // second, modulo 4
 
             if (my_viewer.last_s != second) {
                 ball_paint.setAlpha((int) (
-                        (1 - my_viewer.my_offset) * 63 * (lsmod4 % 4) + my_viewer.my_offset * 63 * (smod4 % 4))
+                        (1 - my_viewer.my_offset) * 51 * ((lsmod4 % 4) + 1) + my_viewer.my_offset * 51* ((smod4 % 4) + 1))
                 );
                 canvas.drawPath(s_quad, ball_paint);
             } else {
-                ball_paint.setAlpha(63 * (smod4 % 4));
+                ball_paint.setAlpha(51 * ((smod4 % 4) + 1));
                 canvas.drawPath(s_quad, ball_paint);
             }
             if (smod4 == 4)
-                canvas.drawText(zero_str, cx + digi_step, digi_ty, digi_paint);
+                canvas.drawText(zero_str, digi_sx, digi_ty, digi_paint);
             else
-                canvas.drawText(String.valueOf(smod4), cx + digi_step, digi_ty, digi_paint);
+                canvas.drawText(String.valueOf(smod4), digi_sx, digi_ty, digi_paint);
 
             // second, modulo 5
 
             if (my_viewer.last_s != second) {
                 ball_paint.setAlpha((int) (
-                        (1 - my_viewer.my_offset) * 51 * (lsmod5 % 5) + my_viewer.my_offset * 51 * (smod5 % 5))
+                        (1 - my_viewer.my_offset) * 45 * ((lsmod5 % 5) + 1) + my_viewer.my_offset * 45 * ((smod5 % 5) + 1))
                 );
                 canvas.drawPath(s_pent, ball_paint);
             } else {
-                ball_paint.setAlpha(51 * (smod5 % 5));
+                ball_paint.setAlpha(45 * ((smod5 % 5) + 1));
                 canvas.drawPath(s_pent, ball_paint);
             }
             if (smod5 == 5)
-                canvas.drawText(zero_str, cx + digi_step, digi_msty3, digi_paint);
+                canvas.drawText(zero_str, digi_sx, digi_msty3, digi_paint);
             else
-                canvas.drawText(String.valueOf(smod5), cx + digi_step, digi_msty3, digi_paint);
+                canvas.drawText(String.valueOf(smod5), digi_sx, digi_msty3, digi_paint);
 
         }
 
@@ -252,29 +252,207 @@ public class CRC_View_Shady extends Clock_Drawer {
         digi_msty1 = digi_mscy1 + digi_t_adjust / 2.5f;
         digi_msty3 = digi_mscy3 + digi_t_adjust / 2.5f;
 
-        digi_h3_pts = new float [] {
-                cx - digi_step - obj_w2 * (float) cos(9 * PI / 6), digi_hcy1 + obj_w2 * (float) sin(9 * PI / 6),
-                cx - digi_step - obj_w2 * (float) cos(5 * PI / 6), digi_hcy1 + obj_w2 * (float) sin(5 * PI / 6),
-                cx - digi_step - obj_w2 * (float) cos(5 * PI / 6), digi_hcy1 + obj_w2 * (float) sin(5 * PI / 6),
-                cx - digi_step - obj_w2 * (float) cos(PI / 6), digi_hcy1 + obj_w2 * (float) sin(PI / 6),
-                cx - digi_step - obj_w2 * (float) cos(PI / 6), digi_hcy1 + obj_w2 * (float) sin(PI / 6),
-                cx - digi_step - obj_w2 * (float) cos(9 * PI / 6), digi_hcy1 + obj_w2 * (float) sin(9 * PI / 6),
-        };
+        if (show_seconds) {
+
+            int dir = reverse_orientation ? -1 : 1;
+            
+            digi_hx = cx - dir*digi_step;
+            digi_mx = cx;
+            digi_sx = cx + dir*digi_step;
+
+            digi_h3_pts = new float[]{
+                    digi_hx - obj_w2 * (float) cos(9 * PI / 6), digi_hcy1 + obj_w2 * (float) sin(9 * PI / 6),
+                    digi_hx - obj_w2 * (float) cos(5 * PI / 6), digi_hcy1 + obj_w2 * (float) sin(5 * PI / 6),
+                    digi_hx - obj_w2 * (float) cos(5 * PI / 6), digi_hcy1 + obj_w2 * (float) sin(5 * PI / 6),
+                    digi_hx - obj_w2 * (float) cos(PI / 6), digi_hcy1 + obj_w2 * (float) sin(PI / 6),
+                    digi_hx - obj_w2 * (float) cos(PI / 6), digi_hcy1 + obj_w2 * (float) sin(PI / 6),
+                    digi_hx - obj_w2 * (float) cos(9 * PI / 6), digi_hcy1 + obj_w2 * (float) sin(9 * PI / 6),
+            };
+
+            digi_h4_pts = new float[]{
+                    digi_hx, digi_hcy2 - obj_w2,
+                    digi_hx + obj_w2, digi_hcy2,
+                    digi_hx + obj_w2, digi_hcy2,
+                    digi_hx, digi_hcy2 + obj_w2,
+                    digi_hx, digi_hcy2 + obj_w2,
+                    digi_hx - obj_w2, digi_hcy2,
+                    digi_hx - obj_w2, digi_hcy2,
+                    digi_hx, digi_hcy2 - obj_w2,
+            };
+
+            digi_h8_pts = new float[]{
+                    digi_hx - obj_w2 * (float) cos(12 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(12 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(10 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(10 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(10 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(10 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(8 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(8 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(8 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(8 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(6 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(6 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(6 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(6 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(4 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(4 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(4 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(4 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(2 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(2 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(2 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(2 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(0 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(0 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(0 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(0 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(14 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(14 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(14 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(14 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(12 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(12 * PI / 8),
+            };
+
+            digi_m3_pts = new float[]{
+                    digi_mx - obj_w2 * (float) cos(9 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(9 * PI / 6),
+                    digi_mx - obj_w2 * (float) cos(5 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(5 * PI / 6),
+                    digi_mx - obj_w2 * (float) cos(5 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(5 * PI / 6),
+                    digi_mx - obj_w2 * (float) cos(PI / 6), digi_mscy1 + obj_w2 * (float) sin(PI / 6),
+                    digi_mx - obj_w2 * (float) cos(PI / 6), digi_mscy1 + obj_w2 * (float) sin(PI / 6),
+                    digi_mx - obj_w2 * (float) cos(9 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(9 * PI / 6),
+            };
+
+            digi_m4_pts = new float[]{
+                    digi_mx, cy - obj_w2,
+                    digi_mx + obj_w2, cy,
+                    digi_mx + obj_w2, cy,
+                    digi_mx, cy + obj_w2,
+                    digi_mx, cy + obj_w2,
+                    digi_mx - obj_w2, cy,
+                    digi_mx - obj_w2, cy,
+                    digi_mx, cy - obj_w2,
+            };
+
+            digi_m5_pts = new float[]{
+                    digi_mx - obj_w2 * (float) cos(15 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(15 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(11 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(11 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(11 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(11 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(7 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(7 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(7 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(7 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(3 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(3 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(3 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(3 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(19 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(19 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(19 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(19 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(15 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(15 * PI / 10),
+            };
+
+            digi_s3_pts = new float[]{
+                    digi_sx - obj_w2 * (float) cos(9 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(9 * PI / 6),
+                    digi_sx - obj_w2 * (float) cos(5 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(5 * PI / 6),
+                    digi_sx - obj_w2 * (float) cos(5 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(5 * PI / 6),
+                    digi_sx - obj_w2 * (float) cos(PI / 6), digi_mscy1 + obj_w2 * (float) sin(PI / 6),
+                    digi_sx - obj_w2 * (float) cos(PI / 6), digi_mscy1 + obj_w2 * (float) sin(PI / 6),
+                    digi_sx - obj_w2 * (float) cos(9 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(9 * PI / 6),
+            };
+
+            digi_s4_pts = new float[]{
+                    digi_sx, cy - obj_w2,
+                    digi_sx + obj_w2, cy,
+                    digi_sx + obj_w2, cy,
+                    digi_sx, cy + obj_w2,
+                    digi_sx, cy + obj_w2,
+                    digi_sx - obj_w2, cy,
+                    digi_sx - obj_w2, cy,
+                    digi_sx, cy - obj_w2,
+            };
+
+            digi_s5_pts = new float[]{
+                    digi_sx - obj_w2 * (float) cos(15 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(15 * PI / 10),
+                    digi_sx - obj_w2 * (float) cos(11 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(11 * PI / 10),
+                    digi_sx - obj_w2 * (float) cos(11 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(11 * PI / 10),
+                    digi_sx - obj_w2 * (float) cos(7 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(7 * PI / 10),
+                    digi_sx - obj_w2 * (float) cos(7 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(7 * PI / 10),
+                    digi_sx - obj_w2 * (float) cos(3 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(3 * PI / 10),
+                    digi_sx - obj_w2 * (float) cos(3 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(3 * PI / 10),
+                    digi_sx - obj_w2 * (float) cos(19 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(19 * PI / 10),
+                    digi_sx - obj_w2 * (float) cos(19 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(19 * PI / 10),
+                    digi_sx - obj_w2 * (float) cos(15 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(15 * PI / 10),
+            };
+
+        } else {
+
+            float dir = reverse_orientation ? -.5f : .5f;
+            
+            digi_hx = cx - dir*digi_step;
+            digi_mx = cx + dir*digi_step;
+
+            digi_h3_pts = new float[]{
+                    digi_hx - obj_w2 * (float) cos(9 * PI / 6), digi_hcy1 + obj_w2 * (float) sin(9 * PI / 6),
+                    digi_hx - obj_w2 * (float) cos(5 * PI / 6), digi_hcy1 + obj_w2 * (float) sin(5 * PI / 6),
+                    digi_hx - obj_w2 * (float) cos(5 * PI / 6), digi_hcy1 + obj_w2 * (float) sin(5 * PI / 6),
+                    digi_hx - obj_w2 * (float) cos(PI / 6), digi_hcy1 + obj_w2 * (float) sin(PI / 6),
+                    digi_hx - obj_w2 * (float) cos(PI / 6), digi_hcy1 + obj_w2 * (float) sin(PI / 6),
+                    digi_hx - obj_w2 * (float) cos(9 * PI / 6), digi_hcy1 + obj_w2 * (float) sin(9 * PI / 6),
+            };
+
+            digi_h4_pts = new float[]{
+                    digi_hx, digi_hcy2 - obj_w2,
+                    digi_hx + obj_w2, digi_hcy2,
+                    digi_hx + obj_w2, digi_hcy2,
+                    digi_hx, digi_hcy2 + obj_w2,
+                    digi_hx, digi_hcy2 + obj_w2,
+                    digi_hx - obj_w2, digi_hcy2,
+                    digi_hx - obj_w2, digi_hcy2,
+                    digi_hx, digi_hcy2 - obj_w2,
+            };
+
+            digi_h8_pts = new float[]{
+                    digi_hx - obj_w2 * (float) cos(12 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(12 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(10 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(10 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(10 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(10 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(8 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(8 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(8 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(8 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(6 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(6 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(6 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(6 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(4 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(4 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(4 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(4 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(2 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(2 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(2 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(2 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(0 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(0 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(0 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(0 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(14 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(14 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(14 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(14 * PI / 8),
+                    digi_hx - obj_w2 * (float) cos(12 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(12 * PI / 8),
+            };
+
+            digi_m3_pts = new float[]{
+                    digi_mx - obj_w2 * (float) cos(9 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(9 * PI / 6),
+                    digi_mx - obj_w2 * (float) cos(5 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(5 * PI / 6),
+                    digi_mx - obj_w2 * (float) cos(5 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(5 * PI / 6),
+                    digi_mx - obj_w2 * (float) cos(PI / 6), digi_mscy1 + obj_w2 * (float) sin(PI / 6),
+                    digi_mx - obj_w2 * (float) cos(PI / 6), digi_mscy1 + obj_w2 * (float) sin(PI / 6),
+                    digi_mx - obj_w2 * (float) cos(9 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(9 * PI / 6),
+            };
+
+            digi_m4_pts = new float[]{
+                    digi_mx, cy - obj_w2,
+                    digi_mx + obj_w2, cy,
+                    digi_mx + obj_w2, cy,
+                    digi_mx, cy + obj_w2,
+                    digi_mx, cy + obj_w2,
+                    digi_mx - obj_w2, cy,
+                    digi_mx - obj_w2, cy,
+                    digi_mx, cy - obj_w2,
+            };
+
+            digi_m5_pts = new float[]{
+                    digi_mx - obj_w2 * (float) cos(15 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(15 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(11 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(11 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(11 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(11 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(7 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(7 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(7 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(7 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(3 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(3 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(3 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(3 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(19 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(19 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(19 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(19 * PI / 10),
+                    digi_mx - obj_w2 * (float) cos(15 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(15 * PI / 10),
+            };
+
+        }
+
+        // now set up the paths
+
         h_tria = new Path();
         h_tria.rewind();
         h_tria.moveTo(digi_h3_pts[0], digi_h3_pts[1]); h_tria.lineTo(digi_h3_pts[2], digi_h3_pts[3]);
         h_tria.lineTo(digi_h3_pts[4], digi_h3_pts[5]); h_tria.lineTo(digi_h3_pts[6], digi_h3_pts[7]);
 
-        digi_h4_pts = new float [] {
-                cx - digi_step, digi_hcy2 - obj_w2,
-                cx - digi_step + obj_w2, digi_hcy2,
-                cx - digi_step + obj_w2, digi_hcy2,
-                cx - digi_step, digi_hcy2 + obj_w2,
-                cx - digi_step, digi_hcy2 + obj_w2,
-                cx - digi_step - obj_w2, digi_hcy2,
-                cx - digi_step - obj_w2, digi_hcy2,
-                cx - digi_step, digi_hcy2 - obj_w2,
-        };
         h_quad = new Path();
         h_quad.rewind();
         h_quad.moveTo(digi_h4_pts[0], digi_h4_pts[1]);
@@ -286,25 +464,6 @@ public class CRC_View_Shady extends Clock_Drawer {
         h_quad.lineTo(digi_h4_pts[12], digi_h4_pts[13]);
         h_quad.lineTo(digi_h4_pts[14], digi_h4_pts[15]);
 
-
-        digi_h8_pts = new float [] {
-                cx - digi_step - obj_w2 * (float) cos(12 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(12 * PI / 8),
-                cx - digi_step - obj_w2 * (float) cos(10 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(10 * PI / 8),
-                cx - digi_step - obj_w2 * (float) cos(10 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(10 * PI / 8),
-                cx - digi_step - obj_w2 * (float) cos(8 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(8 * PI / 8),
-                cx - digi_step - obj_w2 * (float) cos(8 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(8 * PI / 8),
-                cx - digi_step - obj_w2 * (float) cos(6 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(6 * PI / 8),
-                cx - digi_step - obj_w2 * (float) cos(6 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(6 * PI / 8),
-                cx - digi_step - obj_w2 * (float) cos(4 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(4 * PI / 8),
-                cx - digi_step - obj_w2 * (float) cos(4 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(4 * PI / 8),
-                cx - digi_step - obj_w2 * (float) cos(2 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(2 * PI / 8),
-                cx - digi_step - obj_w2 * (float) cos(2 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(2 * PI / 8),
-                cx - digi_step - obj_w2 * (float) cos(0 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(0 * PI / 8),
-                cx - digi_step - obj_w2 * (float) cos(0 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(0 * PI / 8),
-                cx - digi_step - obj_w2 * (float) cos(14 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(14 * PI / 8),
-                cx - digi_step - obj_w2 * (float) cos(14 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(14 * PI / 8),
-                cx - digi_step - obj_w2 * (float) cos(12 * PI / 8), digi_hcy2 + obj_w2 * (float) sin(12 * PI / 8),
-        };
         h_octo = new Path();
         h_octo.rewind();
         h_octo.moveTo(digi_h8_pts[0], digi_h8_pts[1]);
@@ -324,29 +483,11 @@ public class CRC_View_Shady extends Clock_Drawer {
         h_octo.lineTo(digi_h8_pts[28], digi_h8_pts[29]);
         h_octo.lineTo(digi_h8_pts[30], digi_h8_pts[31]);
 
-        digi_m3_pts = new float [] {
-                cx - obj_w2 * (float) cos(9 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(9 * PI / 6),
-                cx - obj_w2 * (float) cos(5 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(5 * PI / 6),
-                cx - obj_w2 * (float) cos(5 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(5 * PI / 6),
-                cx - obj_w2 * (float) cos(PI / 6), digi_mscy1 + obj_w2 * (float) sin(PI / 6),
-                cx - obj_w2 * (float) cos(PI / 6), digi_mscy1 + obj_w2 * (float) sin(PI / 6),
-                cx - obj_w2 * (float) cos(9 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(9 * PI / 6),
-        };
         m_tria = new Path();
         m_tria.rewind();
         m_tria.moveTo(digi_m3_pts[0], digi_m3_pts[1]); m_tria.lineTo(digi_m3_pts[2], digi_m3_pts[3]);
         m_tria.lineTo(digi_m3_pts[4], digi_m3_pts[5]); m_tria.lineTo(digi_m3_pts[6], digi_m3_pts[7]);
 
-        digi_m4_pts = new float [] {
-                cx, cy - obj_w2,
-                cx + obj_w2, cy,
-                cx + obj_w2, cy,
-                cx, cy + obj_w2,
-                cx, cy + obj_w2,
-                cx - obj_w2, cy,
-                cx - obj_w2, cy,
-                cx, cy - obj_w2,
-        };
         m_quad = new Path();
         m_quad.rewind();
         m_quad.moveTo(digi_m4_pts[0], digi_m4_pts[1]); m_quad.lineTo(digi_m4_pts[2], digi_m4_pts[3]);
@@ -354,18 +495,6 @@ public class CRC_View_Shady extends Clock_Drawer {
         m_quad.lineTo(digi_m4_pts[8], digi_m4_pts[9]); m_quad.lineTo(digi_m4_pts[10], digi_m4_pts[11]);
         m_quad.lineTo(digi_m4_pts[12], digi_m4_pts[13]); m_quad.lineTo(digi_m4_pts[14], digi_m4_pts[15]);
 
-        digi_m5_pts = new float [] {
-                cx - obj_w2 * (float) cos(15 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(15 *  PI / 10),
-                cx - obj_w2 * (float) cos(11 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(11 *  PI / 10),
-                cx - obj_w2 * (float) cos(11 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(11 * PI / 10),
-                cx - obj_w2 * (float) cos(7 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(7 *  PI / 10),
-                cx - obj_w2 * (float) cos(7 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(7 * PI / 10),
-                cx - obj_w2 * (float) cos(3 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(3 * PI / 10),
-                cx - obj_w2 * (float) cos(3 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(3 *  PI / 10),
-                cx - obj_w2 * (float) cos(19 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(19 *  PI / 10),
-                cx - obj_w2 * (float) cos(19 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(19 * PI / 10),
-                cx - obj_w2 * (float) cos(15 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(15 * PI / 10),
-        };
         m_pent = new Path();
         m_pent.rewind();
         m_pent.moveTo(digi_m5_pts[0], digi_m5_pts[1]); m_pent.lineTo(digi_m5_pts[2], digi_m5_pts[3]);
@@ -374,61 +503,47 @@ public class CRC_View_Shady extends Clock_Drawer {
         m_pent.lineTo(digi_m5_pts[12], digi_m5_pts[13]); m_pent.lineTo(digi_m5_pts[14], digi_m5_pts[15]);
         m_pent.lineTo(digi_m5_pts[16], digi_m5_pts[17]); m_pent.lineTo(digi_m5_pts[18], digi_m5_pts[19]);
 
-        digi_s3_pts = new float [] {
-                cx + digi_step - obj_w2 * (float) cos(9 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(9 * PI / 6),
-                cx + digi_step - obj_w2 * (float) cos(5 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(5 * PI / 6),
-                cx + digi_step - obj_w2 * (float) cos(5 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(5 * PI / 6),
-                cx + digi_step - obj_w2 * (float) cos(PI / 6), digi_mscy1 + obj_w2 * (float) sin(PI / 6),
-                cx + digi_step - obj_w2 * (float) cos(PI / 6), digi_mscy1 + obj_w2 * (float) sin(PI / 6),
-                cx + digi_step - obj_w2 * (float) cos(9 * PI / 6), digi_mscy1 + obj_w2 * (float) sin(9 * PI / 6),
-        };
         s_tria = new Path();
-        s_tria.rewind();
-        s_tria.moveTo(digi_s3_pts[0], digi_s3_pts[1]); s_tria.lineTo(digi_s3_pts[2], digi_s3_pts[3]);
-        s_tria.lineTo(digi_s3_pts[4], digi_s3_pts[5]); s_tria.lineTo(digi_s3_pts[6], digi_s3_pts[7]);
-
-        digi_s4_pts = new float [] {
-                cx + digi_step, cy - obj_w2,
-                cx + digi_step + obj_w2, cy,
-                cx + digi_step + obj_w2, cy,
-                cx + digi_step, cy + obj_w2,
-                cx + digi_step, cy + obj_w2,
-                cx + digi_step - obj_w2, cy,
-                cx + digi_step - obj_w2, cy,
-                cx + digi_step, cy - obj_w2,
-        };
         s_quad = new Path();
-        s_quad.rewind();
-        s_quad.moveTo(digi_s4_pts[0], digi_s4_pts[1]); s_quad.lineTo(digi_s4_pts[2], digi_s4_pts[3]);
-        s_quad.lineTo(digi_s4_pts[4], digi_s4_pts[5]); s_quad.lineTo(digi_s4_pts[6], digi_s4_pts[7]);
-        s_quad.lineTo(digi_s4_pts[8], digi_s4_pts[9]); s_quad.lineTo(digi_s4_pts[10], digi_s4_pts[11]);
-        s_quad.lineTo(digi_s4_pts[12], digi_s4_pts[13]); s_quad.lineTo(digi_s4_pts[14], digi_s4_pts[15]);
-
-        digi_s5_pts = new float [] {
-                cx + digi_step - obj_w2 * (float) cos(15 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(15 *  PI / 10),
-                cx + digi_step - obj_w2 * (float) cos(11 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(11 *  PI / 10),
-                cx + digi_step - obj_w2 * (float) cos(11 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(11 * PI / 10),
-                cx + digi_step - obj_w2 * (float) cos(7 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(7 *  PI / 10),
-                cx + digi_step - obj_w2 * (float) cos(7 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(7 * PI / 10),
-                cx + digi_step - obj_w2 * (float) cos(3 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(3 * PI / 10),
-                cx + digi_step - obj_w2 * (float) cos(3 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(3 *  PI / 10),
-                cx + digi_step - obj_w2 * (float) cos(19 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(19 *  PI / 10),
-                cx + digi_step - obj_w2 * (float) cos(19 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(19 * PI / 10),
-                cx + digi_step - obj_w2 * (float) cos(15 * PI / 10), digi_mscy3 + obj_w2 * (float) sin(15 * PI / 10),
-        };
         s_pent = new Path();
-        s_pent.rewind();
-        s_pent.moveTo(digi_s5_pts[0], digi_s5_pts[1]); s_pent.lineTo(digi_s5_pts[2], digi_s5_pts[3]);
-        s_pent.lineTo(digi_s5_pts[4], digi_s5_pts[5]); s_pent.lineTo(digi_s5_pts[6], digi_s5_pts[7]);
-        s_pent.lineTo(digi_s5_pts[8], digi_s5_pts[9]); s_pent.lineTo(digi_s5_pts[10], digi_s5_pts[11]);
-        s_pent.lineTo(digi_s5_pts[12], digi_s5_pts[13]); s_pent.lineTo(digi_s5_pts[14], digi_s5_pts[15]);
-        s_pent.lineTo(digi_s5_pts[16], digi_s5_pts[17]); s_pent.lineTo(digi_s5_pts[18], digi_s5_pts[19]);
+
+        if (show_seconds) {
+
+            s_tria.rewind();
+            s_tria.moveTo(digi_s3_pts[0], digi_s3_pts[1]);
+            s_tria.lineTo(digi_s3_pts[2], digi_s3_pts[3]);
+            s_tria.lineTo(digi_s3_pts[4], digi_s3_pts[5]);
+            s_tria.lineTo(digi_s3_pts[6], digi_s3_pts[7]);
+
+            s_quad.rewind();
+            s_quad.moveTo(digi_s4_pts[0], digi_s4_pts[1]);
+            s_quad.lineTo(digi_s4_pts[2], digi_s4_pts[3]);
+            s_quad.lineTo(digi_s4_pts[4], digi_s4_pts[5]);
+            s_quad.lineTo(digi_s4_pts[6], digi_s4_pts[7]);
+            s_quad.lineTo(digi_s4_pts[8], digi_s4_pts[9]);
+            s_quad.lineTo(digi_s4_pts[10], digi_s4_pts[11]);
+            s_quad.lineTo(digi_s4_pts[12], digi_s4_pts[13]);
+            s_quad.lineTo(digi_s4_pts[14], digi_s4_pts[15]);
+
+            s_pent.rewind();
+            s_pent.moveTo(digi_s5_pts[0], digi_s5_pts[1]);
+            s_pent.lineTo(digi_s5_pts[2], digi_s5_pts[3]);
+            s_pent.lineTo(digi_s5_pts[4], digi_s5_pts[5]);
+            s_pent.lineTo(digi_s5_pts[6], digi_s5_pts[7]);
+            s_pent.lineTo(digi_s5_pts[8], digi_s5_pts[9]);
+            s_pent.lineTo(digi_s5_pts[10], digi_s5_pts[11]);
+            s_pent.lineTo(digi_s5_pts[12], digi_s5_pts[13]);
+            s_pent.lineTo(digi_s5_pts[14], digi_s5_pts[15]);
+            s_pent.lineTo(digi_s5_pts[16], digi_s5_pts[17]);
+            s_pent.lineTo(digi_s5_pts[18], digi_s5_pts[19]);
+
+        }
 
     }
 
     // fields that control layout of digital clock elements (except the polygons)
     protected float digi_step, digi_ty, digi_hcy1, digi_hcy2, digi_hty1, digi_hty2,
-            digi_mscy1, digi_mscy3, digi_msty1, digi_msty3, obj_w2;
+            digi_mscy1, digi_mscy3, digi_msty1, digi_msty3, digi_hx, digi_mx, digi_sx, obj_w2;
     // arrays that store points to draw the polygons
     protected float [] digi_h3_pts, digi_h4_pts, digi_h8_pts, digi_m3_pts, digi_m4_pts, digi_m5_pts,
             digi_s3_pts, digi_s4_pts, digi_s5_pts;

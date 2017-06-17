@@ -51,21 +51,25 @@ public class CRC_View
         if (!isInEditMode()) {
             my_owner = (Chinese_Remainder) context;
         }
-        
+
+        hour_modulus = 4;
+        which_hour = HOUR;
+        time_guide = CALENDAR;
         SharedPreferences prefs = my_owner.getPreferences(MODE_PRIVATE);
         boolean saved_hour = prefs.getBoolean(my_owner.getString(R.string.saved_hour), false);
         boolean saved_color = prefs.getBoolean(my_owner.getString(R.string.saved_color), false);
         boolean saved_seconds = prefs.getBoolean(my_owner.getString(R.string.saved_show_seconds), false);
         boolean saved_time = prefs.getBoolean(my_owner.getString(R.string.saved_show_time), false);
+        boolean saved_unit_orientation = prefs.getBoolean(my_owner.getString(R.string.saved_reverse_orientation), false);
         int saved_drawer = prefs.getInt(my_owner.getString(R.string.saved_drawer), 0);
-        setPrefs(prefs, saved_hour, saved_color, saved_seconds, saved_time, saved_drawer);
+        setPrefs(
+                prefs,
+                saved_hour, saved_color, saved_seconds, saved_time, saved_unit_orientation,
+                saved_drawer
+        );
         setOnTouchListener(this);
         PreferenceManager.getDefaultSharedPreferences(my_owner)
                 .registerOnSharedPreferenceChangeListener(this);
-
-        hour_modulus = 4;
-        which_hour = HOUR;
-        time_guide = CALENDAR;
 
         my_animator = new CRC_Animation(this);
 
@@ -102,6 +106,7 @@ public class CRC_View
     void setPrefs(
             SharedPreferences prefs,
             boolean hour_12_24, boolean prefer_mono, boolean show_seconds, boolean show_time,
+            boolean saved_unit_orientation,
             int which_drawer
     ) {
 
@@ -115,13 +120,14 @@ public class CRC_View
             case 4: my_drawer = new CRC_View_Shady(this); break;
             case 5: my_drawer = new CRC_View_Vertie(this); break;
         }
-        my_drawer.recalculate_positions();
         my_drawer.set_color(!prefer_mono);
         my_drawer.set_show_seconds(show_seconds);
         my_drawer.set_show_time(show_time);
+        my_drawer.set_reverse_orientation(saved_unit_orientation);
         set_color_or_monochrome();
         if (hour_12_24) hour_modulus = 8;
         else hour_modulus = 4;
+        my_drawer.recalculate_positions();
 
     }
 
@@ -358,16 +364,22 @@ public class CRC_View
         boolean saved_color = pref.getBoolean(my_owner.getString(R.string.saved_color), false);
         boolean saved_seconds = pref.getBoolean(my_owner.getString(R.string.saved_show_seconds), false);
         boolean saved_time = pref.getBoolean(my_owner.getString(R.string.saved_show_time), false);
+        boolean saved_reverse_orientation = pref.getBoolean(my_owner.getString(R.string.saved_reverse_orientation), false);
         int saved_drawer = Integer.valueOf(pref.getString(my_owner.getString(R.string.saved_drawer), "0"));
         SharedPreferences.Editor editor = my_owner.getPreferences(MODE_PRIVATE).edit();
         editor.putBoolean(my_owner.getString(R.string.saved_hour), saved_hour);
         editor.putBoolean(my_owner.getString(R.string.saved_color), saved_color);
         editor.putBoolean(my_owner.getString(R.string.saved_show_seconds), saved_seconds);
         editor.putBoolean(my_owner.getString(R.string.saved_show_time), saved_time);
+        editor.putBoolean(my_owner.getString(R.string.saved_reverse_orientation), saved_reverse_orientation);
         editor.putInt(my_owner.getString(R.string.saved_drawer), saved_drawer);
         editor.apply();
 
-        setPrefs(pref, saved_hour, saved_color, saved_seconds, saved_time, saved_drawer);
+        setPrefs(
+                pref,
+                saved_hour, saved_color, saved_seconds, saved_time, saved_reverse_orientation,
+                saved_drawer
+        );
     }
 
 

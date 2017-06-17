@@ -23,7 +23,7 @@
             android:title="@string/color_pref_text" />
         <SwitchPreference
             android:defaultValue="false"
-            android:key="switch_unit_order"
+            android:key="@string/saved_reverse_orientation"
             android:summaryOff="@string/hs_order_pref_summ_off"
             android:summaryOn="@string/hs_order_pref_summ_on"
             android:title="@string/hs_order_pref_text" />

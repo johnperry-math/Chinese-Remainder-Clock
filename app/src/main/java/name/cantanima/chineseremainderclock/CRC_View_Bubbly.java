@@ -329,20 +329,20 @@ public class CRC_View_Bubbly extends Clock_Drawer {
             h_y = m_y = 5f * vstep;
             s_y = 9 * vstep;
             if (reverse_orientation) {
-                h_x3 = 5 * hstep;
-                h_xh = 6 * hstep;
-                m_x3 = 2 * hstep;
-                m_x4 = 3 * hstep;
-                m_x5 = 4 * hstep;
+                h_x3 = 5.25f * hstep;
+                h_xh = 6.25f * hstep;
+                m_x3 = 1.75f * hstep;
+                m_x4 = 2.75f * hstep;
+                m_x5 = 3.75f * hstep;
                 s_x3 = 3f * hstep;
                 s_x4 = 4f * hstep;
                 s_x5 = 5f * hstep;
             } else {
-                h_x3 = 2 * hstep;
-                h_xh = 3 * hstep;
-                m_x3 = 4 * hstep;
-                m_x4 = 5 * hstep;
-                m_x5 = 6 * hstep;
+                h_x3 = 1.75f * hstep;
+                h_xh = 2.75f * hstep;
+                m_x3 = 4.25f * hstep;
+                m_x4 = 5.25f * hstep;
+                m_x5 = 6.25f * hstep;
                 s_x3 = 3f * hstep;
                 s_x4 = 4f * hstep;
                 s_x5 = 5f * hstep;
@@ -358,17 +358,17 @@ public class CRC_View_Bubbly extends Clock_Drawer {
 
             h_y = m_y = cy + 3 * radius;
             if (reverse_orientation) {
-                m_x3 = hstep;
-                m_x4 = 2 * hstep;
-                m_x5 = 3 * hstep;
-                h_x3 = 4 * hstep;
-                h_xh = 5 * hstep;
+                m_x3 = 0.75f * hstep;
+                m_x4 = 1.75f * hstep;
+                m_x5 = 2.75f * hstep;
+                h_x3 = 4.25f * hstep;
+                h_xh = 5.25f * hstep;
             } else {
-                h_x3 = hstep;
-                h_xh = 2 * hstep;
-                m_x3 = 3 * hstep;
-                m_x4 = 4 * hstep;
-                m_x5 = 5 * hstep;
+                h_x3 = 0.75f * hstep;
+                h_xh = 1.75f * hstep;
+                m_x3 = 3.25f * hstep;
+                m_x4 = 4.25f * hstep;
+                m_x5 = 5.25f * hstep;
             }
 
         }

@@ -9,11 +9,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Chinese_Remainder$PlaceholderFragment">
 
+    <TextView
+        android:id="@+id/time_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="99:99:99"
+        android:textSize="24sp" />
+
     <Button
         android:id="@+id/helpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/time_display"
         android:layout_centerHorizontal="true"
         android:text="@string/info_button_text" />
 
@@ -141,6 +150,5 @@
             android:textOn="@string/color_button_text_on" />
 
     </LinearLayout>
-
 
 </RelativeLayout>

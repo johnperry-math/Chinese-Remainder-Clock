@@ -3,6 +3,15 @@
 
     <item
         is-multidex="true"
+        jar="/home/cantanima/.android/build-cache/dfb403757c1207484fd28797c42be209717d3e02/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7ed87c7f833e46dacace668e63cb8c4b67cb3172">
+        <dex dex="/home/cantanima/AndroidStudioProjects/ChineseRemainderClock/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_de62ce52e367044af7f5a90b6538eab1f1b57c7c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/home/cantanima/.android/build-cache/c0e64e0076cbc7aaadf4b1cb47594b389b3b6f58/output/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
@@ -88,7 +97,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="99224c509e76003fad7f52a6f5a92b89b1c44a8f">
+        sha1="192e76be40044fccaa43a613fd77e3a501abb425">
         <dex dex="/home/cantanima/AndroidStudioProjects/ChineseRemainderClock/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_33713f205a305ea8efda4afbcd596e3d9468b0c7/classes.dex" />
     </item>
     <item

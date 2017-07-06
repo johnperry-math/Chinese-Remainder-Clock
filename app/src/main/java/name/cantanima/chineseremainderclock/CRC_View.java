@@ -27,9 +27,16 @@ import android.widget.ToggleButton;
 import java.util.Calendar;
 
 import static android.content.Context.MODE_PRIVATE;
+import static android.graphics.Color.BLACK;
+import static android.graphics.Color.BLUE;
+import static android.graphics.Color.GRAY;
+import static android.graphics.Color.GREEN;
+import static android.graphics.Color.LTGRAY;
+import static android.graphics.Color.RED;
 import static android.view.MotionEvent.ACTION_DOWN;
 import static java.util.Calendar.HOUR;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.CALENDAR;
+import static name.cantanima.chineseremainderclock.Clock_Drawer.VERYLIGHTGRAY;
 
 /**
  * Created by cantanima on 4/22/17.
@@ -47,29 +54,44 @@ public class CRC_View
 
         super(context, attrs);
 
-        // this line is needed to preview the layout in Android Studio
-        if (!isInEditMode()) {
-            my_owner = (Chinese_Remainder) context;
-        }
-
         hour_modulus = 4;
         which_hour = HOUR;
         time_guide = CALENDAR;
-        SharedPreferences prefs = my_owner.getPreferences(MODE_PRIVATE);
-        boolean saved_hour = prefs.getBoolean(my_owner.getString(R.string.saved_hour), false);
-        boolean saved_color = prefs.getBoolean(my_owner.getString(R.string.saved_color), false);
-        boolean saved_seconds = prefs.getBoolean(my_owner.getString(R.string.saved_show_seconds), false);
-        boolean saved_time = prefs.getBoolean(my_owner.getString(R.string.saved_show_time), false);
-        boolean saved_unit_orientation = prefs.getBoolean(my_owner.getString(R.string.saved_reverse_orientation), false);
-        int saved_drawer = prefs.getInt(my_owner.getString(R.string.saved_drawer), 0);
-        setPrefs(
-                prefs,
-                saved_hour, saved_color, saved_seconds, saved_time, saved_unit_orientation,
-                saved_drawer
-        );
-        setOnTouchListener(this);
-        PreferenceManager.getDefaultSharedPreferences(my_owner)
-                .registerOnSharedPreferenceChangeListener(this);
+
+        if (isInEditMode()) {
+            my_drawer = new CRC_View_Ballsy(this);
+        } else {
+            my_owner = (Chinese_Remainder) context;
+            SharedPreferences prefs = my_owner.getPreferences(MODE_PRIVATE);
+            boolean saved_hour = prefs.getBoolean(my_owner.getString(R.string.saved_hour), false);
+            boolean saved_color = prefs.getBoolean(my_owner.getString(R.string.saved_color), false);
+            boolean saved_seconds = prefs.getBoolean(my_owner.getString(R.string.saved_show_seconds), false);
+            boolean saved_time = prefs.getBoolean(my_owner.getString(R.string.saved_show_time), false);
+            boolean saved_unit_orientation = prefs.getBoolean(my_owner.getString(R.string.saved_reverse_orientation), false);
+            int saved_drawer = prefs.getInt(my_owner.getString(R.string.saved_drawer), 0);
+            int saved_hour_color = prefs.getInt(my_owner.getString(R.string.saved_hour_color), BLUE);
+            int saved_minute_color = prefs.getInt(my_owner.getString(R.string.saved_minute_color), RED);
+            int saved_second_color = prefs.getInt(my_owner.getString(R.string.saved_second_color), GREEN);
+            int saved_bw_hour_color = prefs.getInt(my_owner.getString(R.string.saved_bw_hour_color), VERYLIGHTGRAY);
+            int saved_bw_minute_color = prefs.getInt(my_owner.getString(R.string.saved_bw_minute_color), LTGRAY);
+            int saved_bw_second_color = prefs.getInt(my_owner.getString(R.string.saved_bw_second_color), BLACK);
+            int saved_bg_color = prefs.getInt(my_owner.getString(R.string.saved_bg_color), GRAY);
+            setPrefs(
+                    prefs,
+                    saved_hour, saved_color, saved_seconds, saved_time, saved_unit_orientation,
+                    saved_drawer, saved_bg_color,
+                    saved_hour_color, saved_minute_color, saved_second_color,
+                    saved_bw_hour_color, saved_bw_minute_color, saved_bw_second_color
+            );
+            setOnTouchListener(this);
+            PreferenceManager.getDefaultSharedPreferences(my_owner)
+                    .registerOnSharedPreferenceChangeListener(this);
+            if (saved_time) {
+                if (tv != null) tv.setVisibility(VISIBLE);
+            } else {
+                if (tv != null) tv.setVisibility(INVISIBLE);
+            }
+        }
 
         my_animator = new CRC_Animation(this);
 
@@ -107,18 +129,22 @@ public class CRC_View
             SharedPreferences prefs,
             boolean hour_12_24, boolean prefer_mono, boolean show_seconds, boolean show_time,
             boolean saved_unit_orientation,
-            int which_drawer
+            int which_drawer, int bg_color,
+            int hour_color, int minute_color, int second_color,
+            int bw_hour_color, int bw_minute_color, int bw_second_color
     ) {
 
         my_prefs = prefs;
 
         switch (which_drawer) {
             case 0: my_drawer = new CRC_View_Arcy(this); break;
-            case 1: my_drawer = new CRC_View_Ballsy(this); break;
-            case 2: my_drawer = new CRC_View_Bubbly(this); break;
-            case 3: my_drawer = new CRC_View_Linus(this); break;
-            case 4: my_drawer = new CRC_View_Shady(this); break;
-            case 5: my_drawer = new CRC_View_Vertie(this); break;
+            case 1: my_drawer = new CRC_View_Archy_Fade(this); break;
+            case 2: my_drawer = new CRC_View_Ballsy(this); break;
+            case 3: my_drawer = new CRC_View_Bubbly(this); break;
+            case 4: my_drawer = new CRC_View_Linus(this); break;
+            case 5: my_drawer = new CRC_View_Shady(this); break;
+            case 6: my_drawer = new CRC_View_Vertie(this); break;
+            default: my_drawer = new CRC_View_Arcy(this); break;
         }
         my_drawer.set_color(!prefer_mono);
         my_drawer.set_show_seconds(show_seconds);
@@ -128,6 +154,17 @@ public class CRC_View
         if (hour_12_24) hour_modulus = 8;
         else hour_modulus = 4;
         my_drawer.recalculate_positions();
+        if (my_drawer.is_color()) {
+            my_drawer.set_hour_color(hour_color);
+            my_drawer.set_minute_color(minute_color);
+            my_drawer.set_second_color(second_color);
+        } else {
+            my_drawer.set_hour_color(bw_hour_color);
+            my_drawer.set_minute_color(bw_minute_color);
+            my_drawer.set_second_color(bw_second_color);
+        }
+        my_drawer.set_bg_color(bg_color);
+        my_drawer.set_time_textview(tv);
 
     }
 
@@ -146,6 +183,17 @@ public class CRC_View
         unitSelecter = spin;
         valueEditor = vb;
         helpButton = ib;
+    }
+
+    void set_time_textview(TextView ttv) {
+        tv = ttv;
+        if (my_drawer != null) my_drawer.set_time_textview(tv);
+        if (tv != null) {
+            SharedPreferences pref = my_owner.getPreferences(MODE_PRIVATE);
+            boolean show_time = pref.getBoolean(my_owner.getString(R.string.saved_show_time), false);
+            if (show_time) tv.setVisibility(VISIBLE);
+            else tv.setVisibility(INVISIBLE);
+        }
     }
 
     public void set_color_or_monochrome() {
@@ -222,7 +270,7 @@ public class CRC_View
     public boolean onTouch(View v, MotionEvent event) {
 
         if (event.getAction() == ACTION_DOWN) {
-            if (hourButton.getVisibility() == VISIBLE) {
+            if (activeToggle.getVisibility() == VISIBLE) {
                 /*hourButton.setVisibility(INVISIBLE);
                 monochromeButton.setVisibility(INVISIBLE);
                 drawSelecter.setVisibility(INVISIBLE);*/
@@ -366,6 +414,13 @@ public class CRC_View
         boolean saved_time = pref.getBoolean(my_owner.getString(R.string.saved_show_time), false);
         boolean saved_reverse_orientation = pref.getBoolean(my_owner.getString(R.string.saved_reverse_orientation), false);
         int saved_drawer = Integer.valueOf(pref.getString(my_owner.getString(R.string.saved_drawer), "0"));
+        int saved_hour_color = pref.getInt(my_owner.getString(R.string.saved_hour_color), BLUE);
+        int saved_minute_color = pref.getInt(my_owner.getString(R.string.saved_minute_color), RED);
+        int saved_second_color = pref.getInt(my_owner.getString(R.string.saved_second_color), GREEN);
+        int saved_bw_hour_color = pref.getInt(my_owner.getString(R.string.saved_bw_hour_color), VERYLIGHTGRAY);
+        int saved_bw_minute_color = pref.getInt(my_owner.getString(R.string.saved_bw_minute_color), LTGRAY);
+        int saved_bw_second_color = pref.getInt(my_owner.getString(R.string.saved_bw_second_color), BLACK);
+        int saved_bg_color = pref.getInt(my_owner.getString(R.string.saved_bg_color), GRAY);
         SharedPreferences.Editor editor = my_owner.getPreferences(MODE_PRIVATE).edit();
         editor.putBoolean(my_owner.getString(R.string.saved_hour), saved_hour);
         editor.putBoolean(my_owner.getString(R.string.saved_color), saved_color);
@@ -373,13 +428,27 @@ public class CRC_View
         editor.putBoolean(my_owner.getString(R.string.saved_show_time), saved_time);
         editor.putBoolean(my_owner.getString(R.string.saved_reverse_orientation), saved_reverse_orientation);
         editor.putInt(my_owner.getString(R.string.saved_drawer), saved_drawer);
+        editor.putInt(my_owner.getString(R.string.saved_hour_color), saved_hour_color);
+        editor.putInt(my_owner.getString(R.string.saved_minute_color), saved_minute_color);
+        editor.putInt(my_owner.getString(R.string.saved_second_color), saved_second_color);
+        editor.putInt(my_owner.getString(R.string.saved_bw_hour_color), saved_bw_hour_color);
+        editor.putInt(my_owner.getString(R.string.saved_bw_minute_color), saved_bw_minute_color);
+        editor.putInt(my_owner.getString(R.string.saved_bw_second_color), saved_bw_second_color);
+        editor.putInt(my_owner.getString(R.string.saved_bg_color), saved_bg_color);
         editor.apply();
 
         setPrefs(
                 pref,
                 saved_hour, saved_color, saved_seconds, saved_time, saved_reverse_orientation,
-                saved_drawer
+                saved_drawer, saved_bg_color,
+                saved_hour_color, saved_minute_color, saved_second_color,
+                saved_bw_hour_color, saved_bw_minute_color, saved_bw_second_color
         );
+        if (saved_time) {
+            if (tv != null) tv.setVisibility(VISIBLE);
+        } else {
+            if (tv != null) tv.setVisibility(INVISIBLE);
+        }
     }
 
 
@@ -396,6 +465,7 @@ public class CRC_View
     protected Button incrementer, decrementer, helpButton;
     protected Spinner unitSelecter, drawSelecter;
     protected EditText valueEditor;
+    protected TextView tv;
 
     // various useful constant strings
     protected static final String tag = "CRC_View"; // debugging

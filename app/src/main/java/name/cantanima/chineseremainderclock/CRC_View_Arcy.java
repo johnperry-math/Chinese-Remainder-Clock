@@ -160,64 +160,67 @@ public class CRC_View_Arcy extends Clock_Drawer {
         if (show_seconds) {
             ball_paint.setColor(second_color);
             for (int i = 0; i < 3; ++i) {
-                if (my_viewer.last_s != second) {
+                /*if (my_viewer.last_s != second) {
                     if (i == my_viewer.last_s % 3 && my_viewer.my_offset < 1.0) {
                         ball_paint.setStyle(FILL);
                         ball_paint.setAlpha((int) (255 * (1 - my_viewer.my_offset)));
                         canvas.drawPath(path_s3[i], ball_paint);
                     } else if (second % 3 == i) {
                         ball_paint.setStyle(FILL);
-                        ball_paint.setAlpha(min(255, (int) (255 * my_viewer.my_offset)));
+                        //ball_paint.setAlpha(min(255, (int) (255 * my_viewer.my_offset)));
+                        ball_paint.setAlpha(255);
                         canvas.drawPath(path_s3[i], ball_paint);
                     }
-                } else if (second % 3 == i) {
+                } else*/ if (second % 3 == i) {
                     ball_paint.setStyle(FILL_AND_STROKE);
                     ball_paint.setAlpha(255);
                     canvas.drawPath(path_s3[i], ball_paint);
                 }
                 ball_paint.setStyle(STROKE);
                 ball_paint.setAlpha(255);
-                canvas.drawPath(path_s3[i], ball_paint);
+                //canvas.drawPath(path_s3[i], ball_paint);
             }
             for (int i = 0; i < 4; ++i) {
-                if (my_viewer.last_s != second) {
+                /*if (my_viewer.last_s != second) {
                     if (i == my_viewer.last_s % 4 && my_viewer.my_offset < 1.0) {
                         ball_paint.setStyle(FILL);
                         ball_paint.setAlpha((int) (255 * (1 - my_viewer.my_offset)));
                         canvas.drawPath(path_s4[i], ball_paint);
                     } else if (second % 4 == i) {
                         ball_paint.setStyle(FILL);
-                        ball_paint.setAlpha(min(255, (int) (255 * my_viewer.my_offset)));
+                        //ball_paint.setAlpha(min(255, (int) (255 * my_viewer.my_offset)));
+                        ball_paint.setAlpha(255);
                         canvas.drawPath(path_s4[i], ball_paint);
                     }
-                } else if (second % 4 == i) {
+                } else*/ if (second % 4 == i) {
                     ball_paint.setStyle(FILL_AND_STROKE);
                     ball_paint.setAlpha(255);
                     canvas.drawPath(path_s4[i], ball_paint);
                 }
                 ball_paint.setStyle(STROKE);
                 ball_paint.setAlpha(255);
-                canvas.drawPath(path_s4[i], ball_paint);
+                //canvas.drawPath(path_s4[i], ball_paint);
             }
             for (int i = 0; i < 5; ++i) {
-                if (my_viewer.last_s != second) {
+                /*if (my_viewer.last_s != second) {
                     if (i == my_viewer.last_s % 5 && my_viewer.my_offset < 1.0) {
                         ball_paint.setStyle(FILL);
                         ball_paint.setAlpha((int) (255 * (1 - my_viewer.my_offset)));
                         canvas.drawPath(path_s5[i], ball_paint);
                     } else if (second % 5 == i) {
                         ball_paint.setStyle(FILL);
-                        ball_paint.setAlpha(min(255, (int) (255 * my_viewer.my_offset)));
+                        //ball_paint.setAlpha(min(255, (int) (255 * my_viewer.my_offset)));
+                        ball_paint.setAlpha(255);
                         canvas.drawPath(path_s5[i], ball_paint);
                     }
-                } else if (second % 5 == i) {
+                } else*/ if (second % 5 == i) {
                     ball_paint.setStyle(FILL_AND_STROKE);
                     ball_paint.setAlpha(255);
                     canvas.drawPath(path_s5[i], ball_paint);
                 }
                 ball_paint.setStyle(STROKE);
                 ball_paint.setAlpha(255);
-                canvas.drawPath(path_s5[i], ball_paint);
+                //canvas.drawPath(path_s5[i], ball_paint);
             }
         }
 
@@ -237,12 +240,12 @@ public class CRC_View_Arcy extends Clock_Drawer {
             if (show_seconds) {
                 rh3 = diam * 7f / 10f;
                 rhh = diam * 8f / 10f;
-                rm3 = diam * 4f / 10f;
-                rm4 = diam * 5f / 10f;
-                rm5 = diam * 6f / 10f;
-                rs3 = diam * 1f / 10f;
-                rs4 = diam * 2f / 10f;
-                rs5 = diam * 3f / 10f;
+                rm3 = diam * 6f / 10f;
+                rs3 = diam * 5f / 10f;
+                rm4 = diam * 4f / 10f;
+                rs4 = diam * 3f / 10f;
+                rm5 = diam * 2f / 10f;
+                rs5 = diam * 1f / 10f;
                 r_off = diam / 40f;
             } else {
                 rm3 = diam * 1f / 6f;
@@ -258,12 +261,12 @@ public class CRC_View_Arcy extends Clock_Drawer {
             if (show_seconds) {
                 rh3 = diam * 1f / 10f;
                 rhh = diam * 2f / 10f;
-                rm3 = diam * 3f / 10f;
-                rm4 = diam * 4f / 10f;
-                rm5 = diam * 5f / 10f;
-                rs3 = diam * 6f / 10f;
-                rs4 = diam * 7f / 10f;
-                rs5 = diam * 8f / 10f;
+                rs3 = diam * 3f / 10f;
+                rm3 = diam * 4f / 10f;
+                rs4 = diam * 5f / 10f;
+                rm4 = diam * 6f / 10f;
+                rs5 = diam * 7f / 10f;
+                rm5 = diam * 8f / 10f;
                 r_off = diam / 40f;
             } else {
                 rh3 = diam * 1f / 6f;

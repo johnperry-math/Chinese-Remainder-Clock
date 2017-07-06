@@ -25,4 +25,5 @@ dependencies {
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.android.support:support-vector-drawable:24.2.1'
     compile 'com.android.support:appcompat-v7:24.2.1' // where X.X.X version
+    compile 'com.github.yukuku:ambilwarna:2.0.1'
 }

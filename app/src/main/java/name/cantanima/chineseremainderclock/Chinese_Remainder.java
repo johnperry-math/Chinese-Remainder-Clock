@@ -19,7 +19,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import org.w3c.dom.Text;
 
 
 public class Chinese_Remainder
@@ -172,6 +175,10 @@ public class Chinese_Remainder
             helpButton.setOnClickListener(crc_view);
 
             crc_view.setButtonsToListen(hb, mb, db, pb, upButton, dnButton, spinner, timeEditor, helpButton);
+
+            TextView tv = (TextView) rootView.findViewById(R.id.time_display);
+            tv.setVisibility(View.INVISIBLE);
+            crc_view.set_time_textview(tv);
 
             return rootView;
         }

@@ -27,6 +27,22 @@
             android:summaryOff="@string/hs_order_pref_summ_off"
             android:summaryOn="@string/hs_order_pref_summ_on"
             android:title="@string/hs_order_pref_text" />
+        <yuku.ambilwarna.widget.AmbilWarnaPreference
+            android:key="@string/saved_bg_color"
+            android:defaultValue="0xff0000ff"
+            android:title="@string/bg_color_text" />
+        <yuku.ambilwarna.widget.AmbilWarnaPreference
+            android:key="@string/saved_hour_color"
+            android:defaultValue="0xff0000ff"
+            android:title="@string/hour_color_text" />
+        <yuku.ambilwarna.widget.AmbilWarnaPreference
+            android:key="@string/saved_minute_color"
+            android:defaultValue="0xffff0000"
+            android:title="@string/minute_color_text" />
+        <yuku.ambilwarna.widget.AmbilWarnaPreference
+            android:key="@string/saved_second_color"
+            android:defaultValue="0xff00ff00"
+            android:title="@string/second_color_text" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/pref_category_timekeeping">

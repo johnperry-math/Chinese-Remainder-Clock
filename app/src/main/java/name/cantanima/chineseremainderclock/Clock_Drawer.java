@@ -4,6 +4,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Build;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
@@ -190,6 +192,7 @@ public abstract class Clock_Drawer {
             float cx, float cy, float diam, boolean nextTime
     ) {
         // draw a rounded rectangle if we can
+        back_paint.setColor(bg_color);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             canvas.drawRoundRect(min_x, min_y, max_x, max_y, diam / 6f, diam / 6f, back_paint);
         } else {
@@ -226,43 +229,47 @@ public abstract class Clock_Drawer {
             } else {
                 to_print = String.valueOf(print_hour);
             }
-            canvas.drawText(
+            /*canvas.drawText(
                     to_print,
                     cx - diam * (2f / 3f + 1f / 8f), cy - diam * (2f / 3f + 1f / 8f) + textYOffset,
                     text_paint
-            );
+            );*/
+            to_print += colon_str;
             if (print_minute == 60)
-                to_print = dbl_zero_str;
+                to_print += dbl_zero_str;
             else {
                 if (print_minute < 10)
-                    to_print = zero_str + minsec_strings[print_minute];
+                    to_print += zero_str + minsec_strings[print_minute];
                 else
-                    to_print = minsec_strings[print_minute];
+                    to_print += minsec_strings[print_minute];
             }
-            canvas.drawText(
+            /*canvas.drawText(
                     to_print,
                     cx + diam * (2f / 3f + 1f / 24f), cy - diam * (2f / 3f + 1f / 8f) + textYOffset,
                     text_paint
-            );
+            );*/
             if (print_second == 60)
-                to_print = dbl_zero_str;
+                to_print += colon_str + dbl_zero_str;
             else {
                 if (print_second < 10)
-                    to_print = zero_str + minsec_strings[print_second];
+                    to_print += colon_str + zero_str + minsec_strings[print_second];
                 else
-                    to_print = minsec_strings[print_second];
+                    to_print += colon_str + minsec_strings[print_second];
             }
-            canvas.drawText(
+            /*canvas.drawText(
                     to_print,
                     cx + diam * (2f / 3f + 1f / 8f), cy + diam * (2f / 3f + 1f / 8f) + textYOffset,
                     text_paint
-            );
+            );*/
+            tv.setText(to_print);
         }
     }
 
     protected void set_color(boolean yesno) {
         color = yesno; adjust_color();
     }
+
+    protected void set_time_textview(TextView ttv) { tv = ttv; }
 
     protected void set_show_seconds(boolean yesno) {
         show_seconds = yesno;
@@ -297,12 +304,20 @@ public abstract class Clock_Drawer {
     }
 
     boolean is_color() { return color; }
+    
+    void set_hour_color(int new_hour_color) { hour_color = new_hour_color; }
+
+    void set_minute_color(int new_minute_color) { minute_color = new_minute_color; }
+
+    void set_second_color(int new_second_color) { second_color = new_second_color; }
+
+    void set_bg_color(int new_bg_color) { bg_color = new_bg_color; }
 
     // fields that control aspects of painting
     protected final static int GOODGREEN = Color.rgb(0, 224, 0);
     protected final static int BACKGROUND = Color.argb(192, 128, 128, 128);
     protected final static int VERYLIGHTGRAY = Color.rgb(223, 223, 233);
-    protected int second_color, minute_color, hour_color;
+    protected int second_color, minute_color, hour_color, bg_color;
 
     // fields that control layout of all clock elements
     protected float min_x, min_y, max_x, max_y, w, h, cx, cy, diam, textYOffset;
@@ -325,6 +340,7 @@ public abstract class Clock_Drawer {
     protected static String [] hour24_strings = {};
 
     protected CRC_View my_viewer;
+    protected TextView tv;
 
     protected int hour, minute, second, millis, hour_max;
 

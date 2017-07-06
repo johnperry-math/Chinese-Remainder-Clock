@@ -43,15 +43,23 @@
     <string name="saved_show_seconds">saved_show_seconds</string>
     <string name="saved_show_time">saved_show_time</string>
     <string name="saved_reverse_orientation">saved_reverse_orientation</string>
+    <string name="saved_bg_color">saved_bg_color</string>
+    <string name="saved_hour_color">saved_hour_color</string>
+    <string name="saved_minute_color">saved_minute_color</string>
+    <string name="saved_second_color">saved_second_color</string>
+    <string name="saved_bw_hour_color">saved_bw_hour_color</string>
+    <string name="saved_bw_minute_color">saved_bw_minute_color</string>
+    <string name="saved_bw_second_color">saved_bw_second_color</string>
 
     <string name="pref_category_design">Design</string>
     <string name="pref_category_design_summ">Settings related to the clock\'s design</string>
 
     <string name="pref_drawers">Art</string>
     <string name="design_pref_summary">Several analog and digital varieties available</string>
-    <integer name="num_drawers">6</integer>
+    <integer name="num_drawers">7</integer>
     <string-array name="drawStrings">
         <item>Archy</item>
+        <item>Archy Fade</item>
         <item>Bally</item>
         <item>Bubbly</item>
         <item>Linus</item>
@@ -89,6 +97,11 @@
     <string name="hours_button_text_off_long">12 hour clock</string>
     <string name="hours_button_text_on_long">24 hour clock</string>
 
+    <string name="bg_color_text">Background color</string>
+    <string name="hour_color_text">Hour color</string>
+    <string name="minute_color_text">Minute color</string>
+    <string name="second_color_text">Second color</string>
+    
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 

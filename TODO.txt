@@ -3,10 +3,10 @@ Some clocks (e.g., Bally) are 1 second behind. It's probably not noticeable,
 but we should consider fixing them.
 
 TODO
-Quiz mode! with "accomplishments!"
+Update documentation to reflect new designs.
 
 TODO
-Add settings interface so that colors can be set by user.
+Quiz mode! with "accomplishments!"
 
 TODO
 Make it possible to change the time manually by touch and drag motions.
@@ -30,3 +30,4 @@ DONE
   Android docs have some information on this; fix!
 - Implement reversal of order of units.
 - Implement hiding of seconds representation.
+- Add settings interface so that colors can be set by user.

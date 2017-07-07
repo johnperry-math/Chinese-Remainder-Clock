@@ -146,6 +146,15 @@
         <dex dex="/home/cantanima/AndroidStudioProjects/ChineseRemainderClock/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_e009a5cf07bb868c1d5292a710ed12d8c261f09c/classes.dex" />
     </item>
     <item
+        is-multidex="false"
+        jar="/home/cantanima/.android/build-cache/dfb403757c1207484fd28797c42be209717d3e02/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7ed87c7f833e46dacace668e63cb8c4b67cb3172">
+        <dex dex="/home/cantanima/AndroidStudioProjects/ChineseRemainderClock/app/build/intermediates/pre-dexed/release/classes_de62ce52e367044af7f5a90b6538eab1f1b57c7c.jar" />
+    </item>
+    <item
         is-multidex="true"
         jar="/home/cantanima/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
         jumboMode="true"

@@ -29,7 +29,7 @@
             android:title="@string/hs_order_pref_text" />
         <yuku.ambilwarna.widget.AmbilWarnaPreference
             android:key="@string/saved_bg_color"
-            android:defaultValue="0xff0000ff"
+            android:defaultValue="0xff808080"
             android:title="@string/bg_color_text" />
         <yuku.ambilwarna.widget.AmbilWarnaPreference
             android:key="@string/saved_hour_color"
@@ -47,13 +47,13 @@
 
     <PreferenceCategory android:title="@string/pref_category_timekeeping">
         <SwitchPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="@string/saved_show_time"
             android:summaryOff="@string/show_time_pref_summ_off"
             android:summaryOn="@string/show_time_pref_summ_on"
             android:title="@string/show_time_pref_text" />
         <SwitchPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="@string/saved_show_seconds"
             android:summaryOff="@string/seconds_pref_summ_off"
             android:summaryOn="@string/seconds_pref_summ_on"

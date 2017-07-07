@@ -42,25 +42,111 @@ The important thing is that the numbers that we use for division have no common 
 For example, knowing the 2-remainder and the 6-remainder would not suffice to reconstruct the hour.
 
 <a name="options"></a> <h2>Options</h2>
-Several toggles allow you to choose different modes:
+If you touch the main screen, a toggle will appear that will let you select
+<a href="#manual">automatic or manual</a> operation of the clock.
+
+If you select &ldquo;Settings&rdquo; from the menu,
+several options will appear:
 <ul>
-    <li>a 12-hour clock or a <a href="#hours">24-hour clock</a>;</li>
-    <li>an <a href="#analog">analog clock</a>
-        or a <a href="#digital">digital clock</a>;</li>
-    <li>a color clock or a black-and-white clock; and</li>
-    <li><a href="#manual">automatic or manual.</a></li>
+    <li>Design options
+    <ul>
+        <li>an option to choose the clock&rsquo;s <a href="#design">the artistic design</a>;</li>
+        <li>a color clock or a black-and-white clock;</li>
+        <li>colors for the clock (appropriate to the choice given); and</li>
+        <li>how to order the units when drawing the clock;</li>
+    </ul></li>
+    <li>Timekeeping options
+    <ul>
+        <li>whether to show the as an ordinary clock would;</li>
+        <li>whether to show the seconds on the clock; and</li>
+        <li>whether to show a 12-hour clock or a <a href="#hours">24-hour clock</a>.</li>
+    </ul></li>
 </ul>
 
-<a name="hours"></a><h3>12- or 24-hour mode</h3>
+<a name="design"></a><h3>Clock designs</h3>
+We can classify the clock designs into two basic kinds:
+<ul>
+    <li><a href="#circular">Circular</a>
+    <ul>
+        <li>Archy</li>
+        <li>Archy Fade</li>
+        <li>Bally</li>
+    </ul>
+    </li>
+    <li><a href="#polygonal">Polygonal</a>
+    <ul>
+        <li>Bubbly</li>
+        <li>Linus</li>
+        <li>Shady</li>
+        <li>Vertie</li>
+    </ul>
+    </li>
+</ul>
 
-Traditionally, time is measured in 12-hour increments,
-but many individuals and organizations tell time in 24-hour increments.
-The default for the Chinese Remainder Clock is to use 12-hour increments,
-but since 24&nbsp;=&nbsp;3&nbsp;&times;&nbsp;8, we can divide the hours by 8 instead of by 4.
-Pressing the &ldquo;12 hour&rdquo; toggle will change from 12- to 24-hour mode;
-pressing that toggle again will change it back.
+<a name="circular"></a><h4>Circular designs</h4>
+A traditional, analog clock has hands that point to the correct time.
+For the hour, there are 12 positions on the circle, and
+for the minute, there are 60 positions.
+The hands rotate in &ldquo;clockwise&rdquo; fashion and you can read the time instantly
+by simply looking at the hands&rsquo; positions.
+<p/>
+A circular Chinese Remainder Clock design behaves similarly.
+Using one circle for each remainder we consider:
+<ul>
+    <li style="color:blue;"><span style="color:black;">the hour has
+        one circle with three positions and one circle with four positions;
+    </span></li>
+    <li style="color:red;"><span style="color:black;">
+        the minute has one circle with three positions,
+        one circle with four positions,
+        and one circle with five positions; and
+    </span></li>
+    <li style="color:green;"><span style="color:black;">
+        the second has one circle with three positions,
+        one circle with four positions,
+        and one circle with five positions.
+    </span></li>
+</ul>
+The position for the zero remainder lies at the top of each circle.
+Increasing a remainder by 1 means to rotate the position on the corresponding circle
+one step clockwise.
+<ul>
+    <li>The &ldquo;Archy&rdquo; designs accomplish this
+        by highlighting the correct arcs of a circle.</li>
+    <li>the &ldquo;Bally&rdquo; design accomplishes this by moving balls to the correct positions.</li>
+</ul>
 
-<a name="analog"></a><h3>The &ldquo;analog&rdquo; Chinese Remainder Clock</h3>
+<a name="polygonal"></a><h4>Polygonal designs</h4>
+Instead of considering positions on a circle, a digital clock simply lists
+the hours, minutes, and seconds.
+<p/>
+A polygonal Chinese Remainder Clock design behaves similarly,
+but instead of writing the remainders as numbers
+we represent them by modifying a triangle, square, pentagon, or octagon
+to convey whether we mean the 3-, 4-, 5-, or 8-remainder.
+<ul>
+    <li style="color:blue;"><span style="color:black;">the hour has a triangle
+        and a square (or, in the 24-hour clock, an
+        octagon);</span></li>
+    <li style="color:red;"><span style="color:black;">the minute has a triangle,
+        a square, and a pentagon; and</span></li>
+    <li style="color:green;"><span style="color:black;">the second has a triangle,
+        a square, and a pentagon.</span></li>
+</ul>
+The polygonal designs included here exhibit a bit of variety in how they use this basic idea.
+<ul>
+<li>For the &ldquo;Bubbly&rdquo; design, bubbles appear over the polygon: some filled, some not.
+The number of filled bubbles tells you the remainder.</li>
+<li>For the &ldquo;Linus&rdquo; design, a line winds its way around the polygon, so that
+the number of highlighted sides tells you the remainder.</li>
+<li>For the &ldquo;Shady&rdquo; design, the polygon&rsquo;s shade tells you the remainder:
+the darkest shade is 0, and the brightest shade is the largest value.
+As it can be somewhat difficult to make out the shades, the also writes the remainder as a number.</li>
+<li>Finally, the &ldquo;Vertie&rdquo; design is similar to &ldquo;Linus&rdquo;, but
+instead of a line winding its way around the polygon, a small ball does.</li>
+</ul>
+
+<!--<a name="analog"></a><h4>The &ldquo;analog&rdquo; Chinese Remainder Clock</h4>
 A traditional clock has hands that point to the correct time.
 For the hour, there are 12 positions on the circle, and
 for the minute, there are 60 positions.
@@ -86,7 +172,7 @@ We do the same thing here, using one circle for each remainder we consider:
 The position for the zero remainder lies at the top of each circle.
 Increasing a remainder by 1 means to rotate the position on the corresponding circle one step clockwise.
 
-<a name="digital"></a><h3>The &ldquo;digital&rdquo; Chinese Remainder Clock</h3>
+<a name="digital"></a><h4>The &ldquo;digital&rdquo; Chinese Remainder Clock</h4>
 Instead of considering positions on a circle, we can simply list the remainders.
 We write these numbers in a triangle, square, pentagon, or octagon
 to convey whether we mean the 3-, 4-, 5-, or 8-remainder.
@@ -98,7 +184,7 @@ to convey whether we mean the 3-, 4-, 5-, or 8-remainder.
         a square, and a pentagon, placed in the middle; and</span></li>
     <li style="color:green;"><span style="color:black;">the second has a triangle,
         a square, and a pentagon, placed on the right.</span></li>
-</ul>
+</ul>-->
 
 <a name="manual"></a><h3>Automatic or Manual</h3>
 When the &ldquo;Auto&rdquo; toggle is activated,
@@ -113,6 +199,15 @@ In this mode,
         the selected unit of time; and</li>
     <li>a text box lets you choose a value directly.</li>
 </ul>
+
+<a name="hours"></a><h3>12- or 24-hour mode</h3>
+
+Traditionally, time is measured in 12-hour increments,
+but many individuals and organizations tell time in 24-hour increments.
+The default for the Chinese Remainder Clock is to use 12-hour increments,
+but since 24&nbsp;=&nbsp;3&nbsp;&times;&nbsp;8, we can divide the hours by 8 instead of by 4.
+Pressing the &ldquo;12 hour&rdquo; toggle will change from 12- to 24-hour mode;
+pressing that toggle again will change it back.
 
 <a name="credits"></a><h2>Credits</h2><div align="center">
     Chinese Remainder Clock, Version 1.0 &#169; 2017<br/>

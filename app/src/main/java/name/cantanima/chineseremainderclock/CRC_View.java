@@ -172,7 +172,7 @@ public class CRC_View
     // see code for indication of which parameter corresponds to which button
     void setButtonsToListen(
             ToggleButton hb, ToggleButton mb, Spinner db, ToggleButton pb,
-            Button dn, Button up, Spinner spin, EditText vb, Button ib
+            Button dn, Button up, Spinner spin, EditText vb/*, Button ib*/
             ) {
         hourButton = hb;
         monochromeButton = mb;
@@ -182,7 +182,7 @@ public class CRC_View
         decrementer = dn;
         unitSelecter = spin;
         valueEditor = vb;
-        helpButton = ib;
+        //helpButton = ib;
     }
 
     void set_time_textview(TextView ttv) {

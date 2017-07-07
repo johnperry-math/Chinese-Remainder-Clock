@@ -238,15 +238,15 @@ public class CRC_View_Arcy extends Clock_Drawer {
         if (reverse_orientation) {
 
             if (show_seconds) {
-                rh3 = diam * 7f / 10f;
-                rhh = diam * 8f / 10f;
-                rm3 = diam * 6f / 10f;
-                rs3 = diam * 5f / 10f;
-                rm4 = diam * 4f / 10f;
-                rs4 = diam * 3f / 10f;
-                rm5 = diam * 2f / 10f;
-                rs5 = diam * 1f / 10f;
-                r_off = diam / 40f;
+                rh3 = diam * 7f / 9f;
+                rhh = diam * 8f / 9f;
+                rm3 = diam * 6f / 9f;
+                rs3 = diam * 5f / 9f;
+                rm4 = diam * 4f / 9f;
+                rs4 = diam * 3f / 9f;
+                rm5 = diam * 2f / 9f;
+                rs5 = diam * 1f / 9f;
+                r_off = diam / 35f;
             } else {
                 rm3 = diam * 1f / 6f;
                 rm4 = diam * 2f / 6f;
@@ -259,15 +259,15 @@ public class CRC_View_Arcy extends Clock_Drawer {
         } else {
 
             if (show_seconds) {
-                rh3 = diam * 1f / 10f;
-                rhh = diam * 2f / 10f;
-                rs3 = diam * 3f / 10f;
-                rm3 = diam * 4f / 10f;
-                rs4 = diam * 5f / 10f;
-                rm4 = diam * 6f / 10f;
-                rs5 = diam * 7f / 10f;
-                rm5 = diam * 8f / 10f;
-                r_off = diam / 40f;
+                rh3 = diam * 1f / 9f;
+                rhh = diam * 2f / 9f;
+                rs3 = diam * 3f / 9f;
+                rm3 = diam * 4f / 9f;
+                rs4 = diam * 5f / 9f;
+                rm4 = diam * 6f / 9f;
+                rs5 = diam * 7f / 9f;
+                rm5 = diam * 8f / 9f;
+                r_off = diam / 35f;
             } else {
                 rh3 = diam * 1f / 6f;
                 rhh = diam * 2f / 6f;

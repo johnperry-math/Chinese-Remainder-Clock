@@ -290,15 +290,24 @@ public class CRC_View_Ballsy extends Clock_Drawer {
 
         } else {
 
-            bally_hr3 = (float) (diam / 6.0);
-            bally_hr4 = (float) (diam / 3.0);
-            bally_mr3 = (float) (diam / 2.0);
-            bally_mr4 = (float) (diam * 2.0 / 3.0);
-            bally_mr5 = (float) (diam * 5.0 / 6.0);
-            bally_sr3 = (float) (diam / 12.0 * 5.0);
-            bally_sr4 = (float) (diam / 12.0 * 7.0);
-            bally_sr5 = (float) (diam / 12.0 * 9.0);
-            bally_br = diam / 28;
+            if (show_seconds) {
+              bally_hr3 = diam / 6.0f;
+              bally_hr4 = diam / 3.0f;
+              bally_mr3 = diam / 2.0f;
+              bally_mr4 = diam * 2.0f / 3.0f;
+              bally_mr5 = diam * 5.0f / 6.0f;
+              bally_sr3 = diam / 12.0f * 5.0f;
+              bally_sr4 = diam / 12.0f * 7.0f;
+              bally_sr5 = diam / 12.0f * 9.0f;
+              bally_br = diam / 28;
+            } else {
+              bally_hr3 = diam / 6f;
+              bally_hr4 = diam / 6f * 2f;
+              bally_mr3 = diam / 6f * 3f;
+              bally_mr4 = diam / 6f * 4f;
+              bally_mr5 = diam / 6f * 5f;
+              bally_br = diam / 20;
+            }
 
         }
 

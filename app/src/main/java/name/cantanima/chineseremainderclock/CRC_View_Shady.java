@@ -237,12 +237,12 @@ public class CRC_View_Shady extends Clock_Drawer {
 
         super.recalculate_positions();
 
-        obj_w2 = diam / 5;
+        obj_w2 = diam / 4;
         digi_paint.setTextSize(obj_w2 * 0.75f);
         Paint.FontMetrics fm = digi_paint.getFontMetrics();
         float digi_t_adjust = -fm.ascent;
         digi_ty = cy + digi_t_adjust / 2.5f;
-        digi_step = diam / 2;
+        digi_step = diam / 4;
         digi_hcy1 = cy - obj_w2;
         digi_hcy2 = cy + obj_w2;
         digi_hty1 = digi_hcy1 + digi_t_adjust / 2.5f;
@@ -256,9 +256,9 @@ public class CRC_View_Shady extends Clock_Drawer {
 
             int dir = reverse_orientation ? -1 : 1;
             
-            digi_hx = cx - dir*digi_step;
+            digi_hx = cx - 2.5f*dir*digi_step;
             digi_mx = cx;
-            digi_sx = cx + dir*digi_step;
+            digi_sx = cx + 2.5f*dir*digi_step;
 
             digi_h3_pts = new float[]{
                     digi_hx - obj_w2 * (float) cos(9 * PI / 6), digi_hcy1 + obj_w2 * (float) sin(9 * PI / 6),
@@ -367,10 +367,10 @@ public class CRC_View_Shady extends Clock_Drawer {
 
         } else {
 
-            float dir = reverse_orientation ? -.5f : .5f;
+            float dir = reverse_orientation ? -1f : 1f;
             
-            digi_hx = cx - dir*digi_step;
-            digi_mx = cx + dir*digi_step;
+            digi_hx = cx - 1.5f*dir*digi_step;
+            digi_mx = cx + 1.5f*dir*digi_step;
 
             digi_h3_pts = new float[]{
                     digi_hx - obj_w2 * (float) cos(9 * PI / 6), digi_hcy1 + obj_w2 * (float) sin(9 * PI / 6),

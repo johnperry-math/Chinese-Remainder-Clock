@@ -170,11 +170,11 @@ public class Chinese_Remainder
             timeEditor.setSelectAllOnFocus(true);
             timeEditor.setOnClickListener(crc_view);
 
-            Button helpButton = (Button) rootView.findViewById(R.id.helpButton);
+            /*Button helpButton = (Button) rootView.findViewById(R.id.helpButton);
             helpButton.setVisibility(View.INVISIBLE);
-            helpButton.setOnClickListener(crc_view);
+            helpButton.setOnClickListener(crc_view);*/
 
-            crc_view.setButtonsToListen(hb, mb, db, pb, upButton, dnButton, spinner, timeEditor, helpButton);
+            crc_view.setButtonsToListen(hb, mb, db, pb, upButton, dnButton, spinner, timeEditor/*, helpButton*/);
 
             TextView tv = (TextView) rootView.findViewById(R.id.time_display);
             tv.setVisibility(View.INVISIBLE);

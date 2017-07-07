@@ -15,37 +15,28 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:shadowColor="@color/black"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="3"
         android:text="99:99:99"
-        android:textSize="24sp" />
+        android:textSize="48sp" />
 
-    <Button
+    <!--Button
         android:id="@+id/helpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/time_display"
         android:layout_centerHorizontal="true"
-        android:text="@string/info_button_text" />
-
-    <!--TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/helpButton"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="serif"
-        android:gravity="center"
-        android:text="@string/app_name"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:typeface="serif"
-        tools:text="Chinese Remainder Clock" /-->
+        android:text="@string/info_button_text" />-->
 
     <view class="name.cantanima.chineseremainderclock.CRC_View"
         android:id="@+id/crc_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/activeToggle"
-        android:layout_below="@+id/helpButton"
+        android:layout_below="@+id/time_display"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"

@@ -36,7 +36,8 @@ public class CRC_Prefs_Activity
     public void onSharedPreferenceChanged(SharedPreferences pref, String key) {
         if (key.equals(getString(R.string.saved_drawer))) {
             ListPreference lp = (ListPreference) crc_prefs.findPreference(getString(R.string.saved_drawer));
-            lp.setSummary(lp.getEntry());
+            if (lp != null)
+              lp.setSummary(lp.getEntry());
         } else if (key.equals(getString(R.string.saved_color))) {
             SwitchPreference cp = (SwitchPreference) crc_prefs.findPreference(getString(R.string.saved_color));
             AmbilWarnaPreference hp = (AmbilWarnaPreference) crc_prefs.findPreference(getString(R.string.saved_hour_color));
@@ -45,7 +46,8 @@ public class CRC_Prefs_Activity
             if (hp == null) hp = (AmbilWarnaPreference) crc_prefs.findPreference(getString(R.string.saved_bw_hour_color));
             if (mp == null) mp = (AmbilWarnaPreference) crc_prefs.findPreference(getString(R.string.saved_bw_minute_color));
             if (sp == null) sp = (AmbilWarnaPreference) crc_prefs.findPreference(getString(R.string.saved_bw_second_color));
-            if (cp.isChecked()) {
+            if (cp != null) {
+              if (cp.isChecked()) {
                 int saved_bw_hour_color = pref.getInt(getString(R.string.saved_bw_hour_color), BLUE);
                 int saved_bw_minute_color = pref.getInt(getString(R.string.saved_bw_minute_color), RED);
                 int saved_bw_second_color = pref.getInt(getString(R.string.saved_bw_second_color), GREEN);
@@ -55,7 +57,7 @@ public class CRC_Prefs_Activity
                 hp.forceSetValue(saved_bw_hour_color);
                 mp.forceSetValue(saved_bw_minute_color);
                 sp.forceSetValue(saved_bw_second_color);
-            } else {
+              } else {
                 int saved_hour_color = pref.getInt(getString(R.string.saved_hour_color), BLUE);
                 int saved_minute_color = pref.getInt(getString(R.string.saved_minute_color), RED);
                 int saved_second_color = pref.getInt(getString(R.string.saved_second_color), GREEN);
@@ -65,6 +67,7 @@ public class CRC_Prefs_Activity
                 hp.forceSetValue(saved_hour_color);
                 mp.forceSetValue(saved_minute_color);
                 sp.forceSetValue(saved_second_color);
+              }
             }
         }
 

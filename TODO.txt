@@ -3,9 +3,6 @@ Some clocks (e.g., Bally) are 1 second behind. It's probably not noticeable,
 but we should consider fixing them.
 
 TODO
-Update documentation to reflect new designs.
-
-TODO
 Quiz mode! with "accomplishments!"
 
 TODO
@@ -31,3 +28,6 @@ DONE
 - Implement reversal of order of units.
 - Implement hiding of seconds representation.
 - Add settings interface so that colors can be set by user.
+- Move time out of clock design and into its own proper TextView.
+- Adjusted designs' sizes now that we have more space after moving time out of the design.
+- Update documentation to reflect new designs.

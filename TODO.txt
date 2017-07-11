@@ -6,7 +6,7 @@ TODO
 Quiz mode! with "accomplishments!"
 
 TODO
-Make it possible to change the time manually by touch and drag motions.
+Consider changing time manually in Archy, Bubbly, Vertie.
 
 DONE
 - Fade in/out of Polly (6ish June 2017).
@@ -31,3 +31,4 @@ DONE
 - Move time out of clock design and into its own proper TextView.
 - Adjusted designs' sizes now that we have more space after moving time out of the design.
 - Update documentation to reflect new designs.
+- Make it possible to change the time manually by touch and drag motions. (in Bally)

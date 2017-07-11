@@ -454,6 +454,14 @@ public class CRC_View_Ballsy extends Clock_Drawer {
             if (last_mod < 0) last_mod += 3;
             break;
           case HOURH:
+            if (my_viewer.hour_modulus == 4) {
+              last_mod = (int) round(2f / PI * new_angle + 1f);
+              if (last_mod < 0) last_mod += 4;
+            } else {
+              last_mod = (int) round(4f / PI * new_angle + 2f);
+              if (last_mod < 0) last_mod += 8;
+            }
+            break;
           case MIN4:
           case SEC4:
             last_mod = (int) round(2f / PI * new_angle + 1f);

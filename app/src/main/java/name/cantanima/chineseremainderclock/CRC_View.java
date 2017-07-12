@@ -37,6 +37,7 @@ import static android.view.MotionEvent.ACTION_DOWN;
 import static android.view.MotionEvent.ACTION_MOVE;
 import static android.view.MotionEvent.ACTION_UP;
 import static java.util.Calendar.HOUR;
+import static java.util.Calendar.HOUR_OF_DAY;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.CALENDAR;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.LEAVE_BE;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_VALUE;
@@ -155,8 +156,13 @@ public class CRC_View
     my_drawer.set_show_time(show_time);
     my_drawer.set_reverse_orientation(saved_unit_orientation);
     set_color_or_monochrome();
-    if (hour_12_24) hour_modulus = 8;
-    else hour_modulus = 4;
+    if (hour_12_24) {
+      hour_modulus = 8;
+      which_hour = HOUR_OF_DAY;
+    } else {
+      hour_modulus = 4;
+      which_hour = HOUR;
+    }
     my_drawer.recalculate_positions();
     if (my_drawer.is_color()) {
       my_drawer.set_hour_color(hour_color);

@@ -6,17 +6,6 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".Chinese_Remainder$PlaceholderFragment">
 
-    <!--Button
-        android:id="@+id/helpButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/info_button_text_short"
-        android:layout_above="@+id/drawSpinner"
-        android:layout_alignRight="@id/drawSpinner"
-        android:layout_alignEnd="@id/drawSpinner"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />-->
-
     <TextView
         android:id="@+id/time_display"
         android:layout_width="wrap_content"
@@ -38,116 +27,71 @@
         android:id="@+id/crc_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/selectUnit"
-        android:layout_toStartOf="@+id/selectUnit"
-        android:layout_toRightOf="@+id/hourToggle"
-        android:layout_toEndOf="@+id/hourToggle"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_below="@id/time_display" />
-
-    <ToggleButton
-        android:id="@+id/hourToggle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@id/drawSpinner"
-        android:layout_alignEnd="@id/drawSpinner"
-        android:layout_alignLeft="@id/drawSpinner"
-        android:layout_alignStart="@id/drawSpinner"
-        android:layout_alignParentBottom="true"
-        android:checked="false"
-        android:focusable="false"
-        android:text="@string/hours_button_text"
-        android:textOff="@string/hours_button_text_off"
-        android:textOn="@string/hours_button_text_on" />
-
-    <ToggleButton
-        android:id="@+id/monochromeToggle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/color_button_text"
-        android:textOff="@string/color_button_text_off"
-        android:textOn="@string/color_button_text_on"
-        android:focusable="false"
-        android:layout_above="@+id/hourToggle"
-        android:layout_alignRight="@+id/drawSpinner"
-        android:layout_alignEnd="@id/drawSpinner"
-        android:layout_alignLeft="@+id/drawSpinner"
-        android:layout_alignStart="@id/drawSpinner"
-        android:textAlignment="center"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Spinner
-        android:id="@+id/drawSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/monochromeToggle"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:entries="@array/drawStrings" />
-
-    <Spinner
-        android:id="@+id/selectUnit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:entries="@array/unitStrings"
-        android:spinnerMode="dropdown"
-        android:focusable="true"
-        android:layout_above="@id/timeEditor"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/selectUnit"
-        android:weightSum="1"
-        android:layout_alignStart="@+id/selectUnit"
-        android:layout_alignLeft="@+id/selectUnit"
-        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:id="@+id/linearLayout" >
-
-        <Button
-            android:id="@+id/decrementButton"
-            android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignRight="@id/crc_view"
+        android:layout_alignEnd="@id/crc_view"
+        android:orientation="vertical"
+    >
+        <Spinner
+            android:id="@+id/selectUnit"
             android:layout_width="wrap_content"
-            android:layout_weight="0.5"
-            android:text="@string/dec_button" />
-
-        <Button
-            android:id="@+id/incrementButton"
             android:layout_height="wrap_content"
+            android:entries="@array/unitStrings"
+            android:spinnerMode="dropdown"
+            android:focusable="true"
+            android:layout_gravity="center_horizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:id="@+id/linearLayout" >
+
+            <Button
+                android:id="@+id/decrementButton"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/dec_button" />
+
+            <Button
+                android:id="@+id/incrementButton"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/inc_button" />
+
+        </LinearLayout>
+
+        <ToggleButton
+            android:id="@+id/activeToggle"
             android:layout_width="wrap_content"
-            android:layout_weight="0.5"
-            android:text="@string/inc_button" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:checked="false"
+            android:text="@string/auto_button_text"
+            android:textOff="@string/auto_button_text_off"
+            android:textOn="@string/auto_button_text_on" />
+
+        <EditText
+            android:id="@+id/timeEditor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:ems="3"
+            android:imeOptions="actionDone"
+            android:selectAllOnFocus="true"
+            android:inputType="number" />
 
     </LinearLayout>
-
-    <ToggleButton
-        android:id="@+id/activeToggle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:checked="false"
-        android:text="@string/auto_button_text"
-        android:textOff="@string/auto_button_text_off"
-        android:textOn="@string/auto_button_text_on" />
-
-    <EditText
-        android:id="@+id/timeEditor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="3"
-        android:imeOptions="actionDone"
-        android:selectAllOnFocus="true"
-        android:inputType="number"
-        android:layout_above="@+id/activeToggle"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@id/selectUnit"
-        android:layout_alignStart="@id/selectUnit" />
-
 </RelativeLayout>

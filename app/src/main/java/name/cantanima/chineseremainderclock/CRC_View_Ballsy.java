@@ -145,6 +145,7 @@ public class CRC_View_Ballsy extends Clock_Drawer {
     float ball_offset = (my_viewer.my_offset > 0.96) ? 1.0f : my_viewer.my_offset;
 
     // draw concentric circles for the main paths
+    circle_paint.setColor(line_color);
     canvas.drawCircle(cx, cy, bally_hr3, circle_paint);
     canvas.drawCircle(cx, cy, bally_hr4, circle_paint);
     canvas.drawCircle(cx, cy, bally_mr3, circle_paint);
@@ -370,50 +371,50 @@ public class CRC_View_Ballsy extends Clock_Drawer {
     float y = e.getY();
 
     if (
-        x > last_h3_x - 2*bally_br && x < last_h3_x + 2*bally_br &&
-            y > last_h3_y - 2*bally_br && y < last_h3_y + 2*bally_br
+        x > last_h3_x - bally_br && x < last_h3_x + bally_br &&
+            y > last_h3_y - bally_br && y < last_h3_y + bally_br
         ) {
       dragging_which_ball = HOUR3;
       searching = false;
     } else if (
-        x > last_hh_x - 2*bally_br && x < last_hh_x + 2*bally_br &&
-            y > last_hh_y - 2*bally_br && y < last_hh_y + 2*bally_br
+        x > last_hh_x - bally_br && x < last_hh_x + bally_br &&
+            y > last_hh_y - bally_br && y < last_hh_y + bally_br
         ) {
       dragging_which_ball = HOURH;
       searching = false;
     } else if (
-        x > last_m3_x - 2*bally_br && x < last_m3_x + 2*bally_br &&
-        y > last_m3_y - 2*bally_br && y < last_m3_y + 2*bally_br
+        x > last_m3_x - bally_br && x < last_m3_x + bally_br &&
+        y > last_m3_y - bally_br && y < last_m3_y + bally_br
     ) {
       dragging_which_ball = MIN3;
       searching = false;
     } else if (
-        x > last_m4_x - 2*bally_br && x < last_m4_x + 2*bally_br &&
-            y > last_m4_y - 2*bally_br && y < last_m4_y + 2*bally_br
+        x > last_m4_x - bally_br && x < last_m4_x + bally_br &&
+            y > last_m4_y - bally_br && y < last_m4_y + bally_br
         ) {
       dragging_which_ball = MIN4;
       searching = false;
     } else if (
-        x > last_m5_x - 2*bally_br && x < last_m5_x + 2*bally_br &&
-            y > last_m5_y - 2*bally_br && y < last_m5_y + 2*bally_br
+        x > last_m5_x - bally_br && x < last_m5_x + bally_br &&
+            y > last_m5_y - bally_br && y < last_m5_y + bally_br
         ) {
       dragging_which_ball = MIN5;
       searching = false;
     } else if (
-        x > last_s3_x - 2*bally_br && x < last_s3_x + 2*bally_br &&
-            y > last_s3_y - 2*bally_br && y < last_s3_y + 2*bally_br
+        x > last_s3_x - bally_br && x < last_s3_x + bally_br &&
+            y > last_s3_y - bally_br && y < last_s3_y + bally_br
         ) {
       dragging_which_ball = SEC3;
       searching = false;
     } else if (
-        x > last_s4_x - 2*bally_br && x < last_s4_x + 2*bally_br &&
-            y > last_s4_y - 2*bally_br && y < last_s4_y + 2*bally_br
+        x > last_s4_x - bally_br && x < last_s4_x + bally_br &&
+            y > last_s4_y - bally_br && y < last_s4_y + bally_br
         ) {
       dragging_which_ball = SEC4;
       searching = false;
     } else if (
-        x > last_s5_x - 2*bally_br && x < last_s5_x + 2*bally_br &&
-            y > last_s5_y - 2*bally_br && y < last_s5_y + 2*bally_br
+        x > last_s5_x - bally_br && x < last_s5_x + bally_br &&
+            y > last_s5_y - bally_br && y < last_s5_y + bally_br
         ) {
       dragging_which_ball = SEC5;
       searching = false;

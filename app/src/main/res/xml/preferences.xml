@@ -2,49 +2,6 @@
 <PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory
-        android:title="@string/pref_category_design"
-        tools:summary="@string/pref_category_design_summ">
-        <ListPreference
-            android:id="@+id/pref_draw_object"
-            android:defaultValue="1"
-            android:entries="@array/drawStrings"
-            android:entryValues="@array/drawStringValues"
-            android:key="saved_drawer"
-            android:summary="@string/design_pref_summary"
-            android:title="@string/pref_drawers" />
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="saved_color"
-            android:summaryOn="@string/color_pref_summary_on"
-            android:summaryOff="@string/color_pref_summary_off"
-            android:switchTextOff="@string/color_button_text_off"
-            android:switchTextOn="@string/color_button_text_on"
-            android:title="@string/color_pref_text" />
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="@string/saved_reverse_orientation"
-            android:summaryOff="@string/hs_order_pref_summ_off"
-            android:summaryOn="@string/hs_order_pref_summ_on"
-            android:title="@string/hs_order_pref_text" />
-        <yuku.ambilwarna.widget.AmbilWarnaPreference
-            android:key="@string/saved_bg_color"
-            android:defaultValue="0xff808080"
-            android:title="@string/bg_color_text" />
-        <yuku.ambilwarna.widget.AmbilWarnaPreference
-            android:key="@string/saved_hour_color"
-            android:defaultValue="0xff0000ff"
-            android:title="@string/hour_color_text" />
-        <yuku.ambilwarna.widget.AmbilWarnaPreference
-            android:key="@string/saved_minute_color"
-            android:defaultValue="0xffff0000"
-            android:title="@string/minute_color_text" />
-        <yuku.ambilwarna.widget.AmbilWarnaPreference
-            android:key="@string/saved_second_color"
-            android:defaultValue="0xff00ff00"
-            android:title="@string/second_color_text" />
-    </PreferenceCategory>
-
     <PreferenceCategory android:title="@string/pref_category_timekeeping">
         <SwitchPreference
             android:defaultValue="false"
@@ -65,4 +22,49 @@
             android:summaryOn="@string/hours_button_text_on_long"
             android:title="@string/hours_pref_text" />
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_category_design"
+        tools:summary="@string/pref_category_design_summ">
+        <ListPreference
+            android:id="@+id/pref_draw_object"
+            android:defaultValue="1"
+            android:entries="@array/drawStrings"
+            android:entryValues="@array/drawStringValues"
+            android:key="saved_drawer"
+            android:summary="@string/design_pref_summary"
+            android:title="@string/pref_drawers" />
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="@string/saved_reverse_orientation"
+            android:summaryOff="@string/hs_order_pref_summ_off"
+            android:summaryOn="@string/hs_order_pref_summ_on"
+            android:title="@string/hs_order_pref_text" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_category_color"
+        tools:summary="@string/pref_category_color_summ">
+        <yuku.ambilwarna.widget.AmbilWarnaPreference
+            android:key="@string/saved_bg_color"
+            android:defaultValue="0xff808080"
+            android:title="@string/bg_color_text" />
+        <yuku.ambilwarna.widget.AmbilWarnaPreference
+            android:key="@string/saved_line_color"
+            android:defaultValue="0xffffffff"
+            android:title="@string/line_color_text" />
+        <yuku.ambilwarna.widget.AmbilWarnaPreference
+            android:key="@string/saved_hour_color"
+            android:defaultValue="0xff0000ff"
+            android:title="@string/hour_color_text" />
+        <yuku.ambilwarna.widget.AmbilWarnaPreference
+            android:key="@string/saved_minute_color"
+            android:defaultValue="0xffff0000"
+            android:title="@string/minute_color_text" />
+        <yuku.ambilwarna.widget.AmbilWarnaPreference
+            android:key="@string/saved_second_color"
+            android:defaultValue="0xff00ff00"
+            android:title="@string/second_color_text" />
+    </PreferenceCategory>
+
 </PreferenceScreen>

@@ -53,7 +53,7 @@ public class CRC_View_Archy_Fade extends Clock_Drawer {
         }
         if (my_viewer.hour_modulus == 4) {
             for (int i = 0; i < 4; ++i) {
-                if (my_viewer.last_m != minute) {
+                if (my_viewer.last_h != hour) {
                     if (i == my_viewer.last_h % 4 && my_viewer.my_offset < 1.0) {
                         ball_paint.setStyle(FILL);
                         ball_paint.setAlpha((int) (255 * (1 - my_viewer.my_offset)));
@@ -168,7 +168,7 @@ public class CRC_View_Archy_Fade extends Clock_Drawer {
                     } else if (second % 3 == i) {
                         ball_paint.setStyle(FILL);
                         ball_paint.setAlpha(min(255, (int) (255 * my_viewer.my_offset)));
-                        ball_paint.setAlpha(255);
+                        //ball_paint.setAlpha(255);
                         canvas.drawPath(path_s3[i], ball_paint);
                     }
                 } else if (second % 3 == i) {

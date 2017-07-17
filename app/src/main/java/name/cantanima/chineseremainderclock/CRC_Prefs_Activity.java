@@ -24,6 +24,7 @@ public class CRC_Prefs_Activity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         crc_prefs = new CRC_Preferences();
         getFragmentManager().beginTransaction()
@@ -31,44 +32,15 @@ public class CRC_Prefs_Activity
                 .commit();
         PreferenceManager.getDefaultSharedPreferences(this)
                 .registerOnSharedPreferenceChangeListener(this);
+
     }
 
     public void onSharedPreferenceChanged(SharedPreferences pref, String key) {
+
         if (key.equals(getString(R.string.saved_drawer))) {
             ListPreference lp = (ListPreference) crc_prefs.findPreference(getString(R.string.saved_drawer));
             if (lp != null)
               lp.setSummary(lp.getEntry());
-        } else if (key.equals(getString(R.string.saved_color))) {
-            SwitchPreference cp = (SwitchPreference) crc_prefs.findPreference(getString(R.string.saved_color));
-            AmbilWarnaPreference hp = (AmbilWarnaPreference) crc_prefs.findPreference(getString(R.string.saved_hour_color));
-            AmbilWarnaPreference mp = (AmbilWarnaPreference) crc_prefs.findPreference(getString(R.string.saved_minute_color));
-            AmbilWarnaPreference sp = (AmbilWarnaPreference) crc_prefs.findPreference(getString(R.string.saved_second_color));
-            if (hp == null) hp = (AmbilWarnaPreference) crc_prefs.findPreference(getString(R.string.saved_bw_hour_color));
-            if (mp == null) mp = (AmbilWarnaPreference) crc_prefs.findPreference(getString(R.string.saved_bw_minute_color));
-            if (sp == null) sp = (AmbilWarnaPreference) crc_prefs.findPreference(getString(R.string.saved_bw_second_color));
-            if (cp != null) {
-              if (cp.isChecked()) {
-                int saved_bw_hour_color = pref.getInt(getString(R.string.saved_bw_hour_color), BLUE);
-                int saved_bw_minute_color = pref.getInt(getString(R.string.saved_bw_minute_color), RED);
-                int saved_bw_second_color = pref.getInt(getString(R.string.saved_bw_second_color), GREEN);
-                hp.setKey(getString(R.string.saved_bw_hour_color));
-                mp.setKey(getString(R.string.saved_bw_minute_color));
-                sp.setKey(getString(R.string.saved_bw_second_color));
-                hp.forceSetValue(saved_bw_hour_color);
-                mp.forceSetValue(saved_bw_minute_color);
-                sp.forceSetValue(saved_bw_second_color);
-              } else {
-                int saved_hour_color = pref.getInt(getString(R.string.saved_hour_color), BLUE);
-                int saved_minute_color = pref.getInt(getString(R.string.saved_minute_color), RED);
-                int saved_second_color = pref.getInt(getString(R.string.saved_second_color), GREEN);
-                hp.setKey(getString(R.string.saved_hour_color));
-                mp.setKey(getString(R.string.saved_minute_color));
-                sp.setKey(getString(R.string.saved_second_color));
-                hp.forceSetValue(saved_hour_color);
-                mp.forceSetValue(saved_minute_color);
-                sp.forceSetValue(saved_second_color);
-              }
-            }
         }
 
     }

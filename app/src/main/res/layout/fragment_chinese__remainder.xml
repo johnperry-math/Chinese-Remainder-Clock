@@ -15,32 +15,32 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/white"
         android:shadowColor="@color/black"
         android:shadowDx="5"
         android:shadowDy="5"
         android:shadowRadius="3"
         android:text="99:99:99"
-        android:textSize="48sp" />
-
-    <!--Button
-        android:id="@+id/helpButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/time_display"
-        android:layout_centerHorizontal="true"
-        android:text="@string/info_button_text" />-->
+        android:textColor="@color/white"
+        android:textSize="36sp"/>
 
     <view class="name.cantanima.chineseremainderclock.CRC_View"
         android:id="@+id/crc_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/activeToggle"
         android:layout_below="@+id/time_display"
+        android:layout_above="@+id/space_bw_crc_and_toggle"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true" />
+
+    <Space
+        android:id="@+id/space_bw_crc_and_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="12dp"
+        android:layout_above="@+id/activeToggle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"/>
 
     <ToggleButton
         android:id="@+id/activeToggle"
@@ -58,10 +58,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/timeEditor"
-        android:layout_alignLeft="@+id/toggleRowLayout"
-        android:layout_alignStart="@id/toggleRowLayout"
-        android:layout_alignRight="@+id/toggleRowLayout"
-        android:layout_alignEnd="@id/toggleRowLayout"
         android:weightSum="1"
         android:gravity="center"
         android:layout_centerHorizontal="true">
@@ -94,52 +90,11 @@
         android:id="@+id/timeEditor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/toggleRowLayout"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:ems="3"
         android:imeOptions="actionDone"
         android:inputType="number"
         android:selectAllOnFocus="true" />
-
-    <LinearLayout
-        android:id="@+id/toggleRowLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:weightSum="100"
-        android:layout_centerHorizontal="true" >
-
-        <ToggleButton
-            android:id="@+id/hourToggle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:focusable="false"
-            android:layout_weight="33"
-            android:text="@string/hours_button_text"
-            android:textOff="@string/hours_button_text_off"
-            android:textOn="@string/hours_button_text_on" />
-
-        <Spinner
-            android:id="@+id/drawSpinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="34"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:entries="@array/drawStrings" />
-
-        <ToggleButton
-            android:id="@+id/monochromeToggle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="33"
-            android:focusable="false"
-            android:text="@string/color_button_text"
-            android:textOff="@string/color_button_text_off"
-            android:textOn="@string/color_button_text_on" />
-
-    </LinearLayout>
 
 </RelativeLayout>

@@ -170,15 +170,9 @@ public abstract class Clock_Drawer {
     circle_paint = new Paint(ANTI_ALIAS_FLAG);
     circle_paint.setColor(WHITE);
     circle_paint.setStyle(STROKE);
-    if (color) {
-      second_color = GOODGREEN;
-      minute_color = RED;
-      hour_color = BLUE;
-    } else {
-      second_color = BLACK;
-      minute_color = LTGRAY;
-      hour_color = VERYLIGHTGRAY;
-    }
+    second_color = GOODGREEN;
+    minute_color = RED;
+    hour_color = BLUE;
 
     minsec_strings = my_viewer.minsec_strings;
     hour12_strings = my_viewer.hour12_strings;
@@ -230,16 +224,10 @@ public abstract class Clock_Drawer {
         else to_print = twelve_str;
       }
     } else if (print_hour > 0 && print_hour < 10) {
-      //to_print = zero_str + String.valueOf(print_hour);
       to_print = zero_str + hour12_strings[print_hour];
     } else {
       to_print = String.valueOf(print_hour);
     }
-      /*canvas.drawText(
-              to_print,
-              cx - diam * (2f / 3f + 1f / 8f), cy - diam * (2f / 3f + 1f / 8f) + textYOffset,
-              text_paint
-      );*/
     to_print += colon_str;
     if (print_minute == 60)
       to_print += dbl_zero_str;
@@ -249,11 +237,6 @@ public abstract class Clock_Drawer {
       else
         to_print += minsec_strings[print_minute];
     }
-      /*canvas.drawText(
-              to_print,
-              cx + diam * (2f / 3f + 1f / 24f), cy - diam * (2f / 3f + 1f / 8f) + textYOffset,
-              text_paint
-      );*/
     if (print_second == 60)
       to_print += colon_str + dbl_zero_str;
     else {
@@ -262,17 +245,8 @@ public abstract class Clock_Drawer {
       else
         to_print += colon_str + minsec_strings[print_second];
     }
-      /*canvas.drawText(
-              to_print,
-              cx + diam * (2f / 3f + 1f / 8f), cy + diam * (2f / 3f + 1f / 8f) + textYOffset,
-              text_paint
-      );*/
     tv.setText(to_print);
 
-  }
-
-  protected void set_color(boolean yesno) {
-    color = yesno; adjust_color();
   }
 
   protected void set_time_textview(TextView ttv) { tv = ttv; }
@@ -293,23 +267,7 @@ public abstract class Clock_Drawer {
 
   protected void set_reverse_orientation(boolean yesno) { reverse_orientation = yesno; }
 
-  protected void toggle_color() {
-      color = !color; adjust_color();
-  }
-
-  protected void adjust_color() {
-    if (color) {
-      second_color = GOODGREEN;
-      minute_color = RED;
-      hour_color = BLUE;
-    } else {
-      second_color = BLACK;
-      minute_color = LTGRAY;
-      hour_color = VERYLIGHTGRAY;
-    }
-  }
-
-  boolean is_color() { return color; }
+  protected void set_line_color(int new_line_color) { line_color = new_line_color; }
 
   void set_hour_color(int new_hour_color) { hour_color = new_hour_color; }
 
@@ -329,7 +287,7 @@ public abstract class Clock_Drawer {
   protected final static int GOODGREEN = Color.rgb(0, 224, 0);
   protected final static int BACKGROUND = Color.argb(192, 128, 128, 128);
   protected final static int VERYLIGHTGRAY = Color.rgb(223, 223, 233);
-  protected int second_color, minute_color, hour_color, bg_color;
+  protected int second_color, minute_color, hour_color, bg_color, line_color;
 
   // fields that control layout of all clock elements
   protected float min_x, min_y, max_x, max_y, w, h, cx, cy, diam, textYOffset;

@@ -13,6 +13,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.preference.ListPreference;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -49,6 +50,7 @@ import static android.graphics.Color.WHITE;
 import static android.view.MotionEvent.ACTION_DOWN;
 import static android.view.MotionEvent.ACTION_MOVE;
 import static android.view.MotionEvent.ACTION_UP;
+import static android.view.WindowManager.LayoutParams.FLAG_DIM_BEHIND;
 import static java.util.Calendar.HOUR;
 import static java.util.Calendar.HOUR_OF_DAY;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.CALENDAR;
@@ -442,7 +444,9 @@ public class CRC_View
 
   public void quiz_question() {
     quiz_dialog = new TimePickerDialog(
-        my_owner, my_owner.getApplicationInfo().theme, this, 0, 0, hour_modulus == 8
+        my_owner, /*my_owner.getApplicationInfo().theme,*/
+        AlertDialog.THEME_HOLO_LIGHT,
+        this, 0, 0, hour_modulus == 8
     );
     String title = my_owner.getString(R.string.quiz_what_time_is_it) + " "
         + String.valueOf(quiz_number_complete + 1) + "/"
@@ -450,6 +454,14 @@ public class CRC_View
     quiz_dialog.setTitle(title);
     Window quiz_win = quiz_dialog.getWindow();
     quiz_win.setBackgroundDrawable(new ColorDrawable(TRANSPARENT));
+    DisplayMetrics metrics = new DisplayMetrics();
+    my_owner.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+    int screen_height = metrics.heightPixels;
+    quiz_win.setLayout(getWidth(), screen_height - getBottom());
+    WindowManager.LayoutParams win_attr = quiz_win.getAttributes();
+    win_attr.y = getHeight();
+    win_attr.alpha = 0.65f;
+    quiz_dialog.getWindow().clearFlags(FLAG_DIM_BEHIND);
     quiz_dialog.show();
     Button quit_button = quiz_dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
     quit_button.setVisibility(INVISIBLE);

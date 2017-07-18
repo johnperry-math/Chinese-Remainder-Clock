@@ -9,11 +9,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Chinese_Remainder$PlaceholderFragment">
 
-    <TextView
-        android:id="@+id/time_display"
+    <view class="name.cantanima.chineseremainderclock.CRC_View"
+        android:id="@+id/crc_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/time_display"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:id="@+id/time_display"
+        android:layout_above="@+id/space_bw_crc_and_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:shadowColor="@color/black"
         android:shadowDx="5"
@@ -22,17 +33,6 @@
         android:text="99:99:99"
         android:textColor="@color/white"
         android:textSize="36sp"/>
-
-    <view class="name.cantanima.chineseremainderclock.CRC_View"
-        android:id="@+id/crc_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/time_display"
-        android:layout_above="@+id/space_bw_crc_and_toggle"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true" />
 
     <Space
         android:id="@+id/space_bw_crc_and_toggle"
@@ -95,6 +95,6 @@
         android:ems="3"
         android:imeOptions="actionDone"
         android:inputType="number"
-        android:selectAllOnFocus="true" />
+        android:selectAllOnFocus="true"/>
 
 </RelativeLayout>

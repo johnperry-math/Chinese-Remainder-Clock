@@ -22,20 +22,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b5dc24d-1c75-4245-8055-1c959373f4a1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/clock_launcher_icon-web.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/clock_launcher_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/clock_launcher_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/clock_launcher_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/clock_launcher_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/clock_launcher_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/clock_launcher_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/clock_launcher_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/clock_launcher_icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/clock_launcher_icon.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/crc_icon_hdpi.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/crc_icon_ldpi.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/crc_icon_mdpi.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/crc_icon_xhdpi.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/taskArtifacts/taskArtifacts.bin" />
@@ -43,19 +29,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/3.3/tasks/_app_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app-release.apk" afterPath="$PROJECT_DIR$/app/app-release.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View.java" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Chinese_Remainder.java" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Chinese_Remainder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Clock_Drawer.java" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Clock_Drawer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_chinese__remainder.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_chinese__remainder.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_chinese__remainder.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_chinese__remainder.xml" />
     </list>
     <ignored path="Chinese Remainder Clock.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -115,7 +91,7 @@
       <file leaf-file-name="TODO.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TODO.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
+            <state relative-caret-position="555">
               <caret line="37" column="32" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
               <folding />
             </state>
@@ -148,37 +124,92 @@
       <file leaf-file-name="CRC_View.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="447" column="49" selection-start-line="447" selection-start-column="49" selection-end-line="447" selection-end-column="49" />
+            <state relative-caret-position="150">
+              <caret line="447" column="36" selection-start-line="447" selection-start-column="36" selection-end-line="447" selection-end-column="36" />
               <folding>
+                <element signature="e#3156#3195#0" expanded="true" />
+                <element signature="e#3252#3299#0" expanded="true" />
+                <element signature="e#3353#3397#0" expanded="true" />
+                <element signature="e#3463#3517#0" expanded="true" />
+                <element signature="e#3565#3606#0" expanded="true" />
+                <element signature="e#3652#3695#0" expanded="true" />
+                <element signature="e#3746#3791#0" expanded="true" />
+                <element signature="e#3843#3888#0" expanded="true" />
+                <element signature="e#3941#3988#0" expanded="true" />
+                <element signature="e#4040#4087#0" expanded="true" />
                 <element signature="method#setButtonsToListen#0;class#CRC_View#0" expanded="false" />
                 <element signature="method#set_time_textview#0;class#CRC_View#0" expanded="false" />
+                <element signature="e#8014#8058#0" expanded="true" />
                 <element signature="method#onCheckedChanged#0;class#CRC_View#0" expanded="false" />
                 <element signature="method#onTouch#0;class#CRC_View#0" expanded="false" />
                 <element signature="method#onClick#0;class#CRC_View#0" expanded="false" />
                 <element signature="method#onItemSelected#0;class#CRC_View#0" expanded="false" />
                 <element signature="method#onSharedPreferenceChanged#0;class#CRC_View#0" expanded="false" />
-                <element signature="e#16715#16764#0" expanded="true" />
-                <element signature="e#17960#18010#0" expanded="true" />
-                <element signature="e#18037#18098#0" expanded="true" />
-                <element signature="e#18168#18221#0" expanded="true" />
-                <element signature="e#18248#18308#0" expanded="true" />
-                <element signature="e#18348#18400#0" expanded="true" />
-                <element signature="e#18427#18489#0" expanded="true" />
-                <element signature="e#18548#18594#0" expanded="true" />
-                <element signature="e#18919#19079#0" expanded="true" />
-                <element signature="e#19078#19079#0" expanded="true" />
-                <marker date="1500387460342" expanded="false" signature="15404:15451" ph="&quot;saved_minute_color&quot;" />
-                <marker date="1500387460342" expanded="false" signature="15492:15539" ph="&quot;saved_second_color&quot;" />
+                <element signature="e#13960#13999#0" expanded="true" />
+                <element signature="e#14053#14100#0" expanded="true" />
+                <element signature="e#14151#14195#0" expanded="true" />
+                <element signature="e#14261#14315#0" expanded="true" />
+                <element signature="e#14379#14420#0" expanded="true" />
+                <element signature="e#14468#14513#0" expanded="true" />
+                <element signature="e#14563#14610#0" expanded="true" />
+                <element signature="e#14659#14706#0" expanded="true" />
+                <element signature="e#14753#14796#0" expanded="true" />
+                <element signature="e#14844#14889#0" expanded="true" />
+                <element signature="e#15005#15044#0" expanded="true" />
+                <element signature="e#15081#15128#0" expanded="true" />
+                <element signature="e#15168#15212#0" expanded="true" />
+                <element signature="e#15249#15303#0" expanded="true" />
+                <element signature="e#15351#15392#0" expanded="true" />
+                <element signature="e#15427#15472#0" expanded="true" />
+                <element signature="e#15687#15730#0" expanded="true" />
+                <element signature="e#15767#15812#0" expanded="true" />
+                <element signature="e#16872#16921#0" expanded="true" />
+                <element signature="e#18535#18585#0" expanded="true" />
+                <element signature="e#18612#18673#0" expanded="true" />
+                <element signature="e#18743#18796#0" expanded="true" />
+                <element signature="e#18823#18883#0" expanded="true" />
+                <element signature="e#18923#18975#0" expanded="true" />
+                <element signature="e#19002#19064#0" expanded="true" />
+                <element signature="e#19123#19169#0" expanded="true" />
+                <element signature="e#19494#19654#0" expanded="true" />
+                <element signature="e#19653#19654#0" expanded="true" />
+                <marker date="1500404537257" expanded="false" signature="15511:15558" ph="&quot;saved_minute_color&quot;" />
+                <marker date="1500404537257" expanded="false" signature="15599:15646" ph="&quot;saved_second_color&quot;" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Chinese_Remainder.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Chinese_Remainder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="56" column="38" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
+              <folding>
+                <element signature="e#2059#2341#0" expanded="true" />
+                <element signature="e#2340#2341#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_chinese__remainder.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_chinese__remainder.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
+            <state relative-caret-position="1980">
               <caret line="132" column="55" selection-start-line="132" selection-start-column="55" selection-end-line="132" selection-end-column="55" />
               <folding />
             </state>
@@ -2031,7 +2062,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Linus.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-land/fragment_chinese__remainder.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Ballsy.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_chinese__remainder.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Archy_Fade.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Arcy.java" />
         <option value="$PROJECT_DIR$/TODO.txt" />
@@ -2040,6 +2070,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Clock_Drawer.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_chinese__remainder.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View.java" />
       </list>
     </option>
@@ -2076,6 +2107,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView">
+        <subPane />
+      </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2484,13 +2522,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="AndroidView">
-        <subPane />
-      </pane>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3021,7 +3052,14 @@
       <option name="project" value="LOCAL" />
       <updated>1500288275861</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="quiz mode! fixed broken launcher icon, too. maybe something else, which I can't recollect">
+      <created>1500388039174</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1500388039174</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3045,8 +3083,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4391892" sideWeight="0.47809666" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4391892" sideWeight="0.52190334" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32854986" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293919" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293919" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293919" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293919" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -3056,8 +3094,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41554055" sideWeight="0.5557971" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26435044" sideWeight="0.5120482" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41554055" sideWeight="0.5557971" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -3145,7 +3183,8 @@
     <MESSAGE value="Found a bug with touch &amp; drag in 8-hour time. Fixed. Added a note in the help about manual changes." />
     <MESSAGE value="Corrected error in displaying 24-hour time, apparently introduced with settings panel." />
     <MESSAGE value="Welcome screen, new design for Archy, and changed menu to toolbar." />
-    <option name="LAST_COMMIT_MESSAGE" value="Welcome screen, new design for Archy, and changed menu to toolbar." />
+    <MESSAGE value="quiz mode! fixed broken launcher icon, too. maybe something else, which I can't recollect" />
+    <option name="LAST_COMMIT_MESSAGE" value="quiz mode! fixed broken launcher icon, too. maybe something else, which I can't recollect" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3388,7 +3427,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3396,7 +3434,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3429,7 +3466,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TODO.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
+        <state relative-caret-position="555">
           <caret line="37" column="32" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
           <folding />
         </state>
@@ -3453,27 +3490,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/Help.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="117" column="40" selection-start-line="117" selection-start-column="40" selection-end-line="117" selection-end-column="40" />
-          <folding>
-            <marker date="1499773128607" expanded="false" signature="6932:6943" ph="..." />
-            <marker date="1499773128607" expanded="false" signature="6958:6970" ph="..." />
-            <marker date="1499773128607" expanded="false" signature="7135:7145" ph="..." />
-            <marker date="1499773128607" expanded="false" signature="7160:7172" ph="..." />
-            <marker date="1499773128607" expanded="false" signature="7393:7405" ph="..." />
-            <marker date="1499773128607" expanded="false" signature="7420:7432" ph="..." />
-            <marker date="1499773128607" expanded="false" signature="8139:8150" ph="..." />
-            <marker date="1499773128607" expanded="false" signature="8165:8177" ph="..." />
-            <marker date="1499773128607" expanded="false" signature="8319:8329" ph="..." />
-            <marker date="1499773128607" expanded="false" signature="8344:8356" ph="..." />
-            <marker date="1499773128607" expanded="false" signature="8472:8484" ph="..." />
-            <marker date="1499773128607" expanded="false" signature="8499:8511" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_chinese__remainder.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -3485,17 +3501,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_chinese__remainder.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="33" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Android/Sdk/sources/android-24/android/app/TimePickerDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -3504,21 +3509,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Chinese_Remainder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="56" column="38" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2059#2341#0" expanded="true" />
-            <element signature="e#2340#2341#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
+        <state relative-caret-position="1980">
           <caret line="132" column="55" selection-start-line="132" selection-start-column="55" selection-end-line="132" selection-end-column="55" />
           <folding />
         </state>
@@ -3555,7 +3548,7 @@
         <state relative-caret-position="68">
           <caret line="5" column="51" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
           <folding>
-            <element signature="e#464#482#0" expanded="true" />
+            <element signature="e#464#482#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3573,30 +3566,102 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/Help.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="117" column="40" selection-start-line="117" selection-start-column="40" selection-end-line="117" selection-end-column="40" />
+          <folding>
+            <marker date="1499773128607" expanded="false" signature="6932:6943" ph="..." />
+            <marker date="1499773128607" expanded="false" signature="6958:6970" ph="..." />
+            <marker date="1499773128607" expanded="false" signature="7135:7145" ph="..." />
+            <marker date="1499773128607" expanded="false" signature="7160:7172" ph="..." />
+            <marker date="1499773128607" expanded="false" signature="7393:7405" ph="..." />
+            <marker date="1499773128607" expanded="false" signature="7420:7432" ph="..." />
+            <marker date="1499773128607" expanded="false" signature="8139:8150" ph="..." />
+            <marker date="1499773128607" expanded="false" signature="8165:8177" ph="..." />
+            <marker date="1499773128607" expanded="false" signature="8319:8329" ph="..." />
+            <marker date="1499773128607" expanded="false" signature="8344:8356" ph="..." />
+            <marker date="1499773128607" expanded="false" signature="8472:8484" ph="..." />
+            <marker date="1499773128607" expanded="false" signature="8499:8511" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_chinese__remainder.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Chinese_Remainder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="56" column="38" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
+          <folding>
+            <element signature="e#2059#2341#0" expanded="true" />
+            <element signature="e#2340#2341#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="447" column="49" selection-start-line="447" selection-start-column="49" selection-end-line="447" selection-end-column="49" />
+        <state relative-caret-position="150">
+          <caret line="447" column="36" selection-start-line="447" selection-start-column="36" selection-end-line="447" selection-end-column="36" />
           <folding>
+            <element signature="e#3156#3195#0" expanded="true" />
+            <element signature="e#3252#3299#0" expanded="true" />
+            <element signature="e#3353#3397#0" expanded="true" />
+            <element signature="e#3463#3517#0" expanded="true" />
+            <element signature="e#3565#3606#0" expanded="true" />
+            <element signature="e#3652#3695#0" expanded="true" />
+            <element signature="e#3746#3791#0" expanded="true" />
+            <element signature="e#3843#3888#0" expanded="true" />
+            <element signature="e#3941#3988#0" expanded="true" />
+            <element signature="e#4040#4087#0" expanded="true" />
             <element signature="method#setButtonsToListen#0;class#CRC_View#0" expanded="false" />
             <element signature="method#set_time_textview#0;class#CRC_View#0" expanded="false" />
+            <element signature="e#8014#8058#0" expanded="true" />
             <element signature="method#onCheckedChanged#0;class#CRC_View#0" expanded="false" />
             <element signature="method#onTouch#0;class#CRC_View#0" expanded="false" />
             <element signature="method#onClick#0;class#CRC_View#0" expanded="false" />
             <element signature="method#onItemSelected#0;class#CRC_View#0" expanded="false" />
             <element signature="method#onSharedPreferenceChanged#0;class#CRC_View#0" expanded="false" />
-            <element signature="e#16715#16764#0" expanded="true" />
-            <element signature="e#17960#18010#0" expanded="true" />
-            <element signature="e#18037#18098#0" expanded="true" />
-            <element signature="e#18168#18221#0" expanded="true" />
-            <element signature="e#18248#18308#0" expanded="true" />
-            <element signature="e#18348#18400#0" expanded="true" />
-            <element signature="e#18427#18489#0" expanded="true" />
-            <element signature="e#18548#18594#0" expanded="true" />
-            <element signature="e#18919#19079#0" expanded="true" />
-            <element signature="e#19078#19079#0" expanded="true" />
-            <marker date="1500387460342" expanded="false" signature="15404:15451" ph="&quot;saved_minute_color&quot;" />
-            <marker date="1500387460342" expanded="false" signature="15492:15539" ph="&quot;saved_second_color&quot;" />
+            <element signature="e#13960#13999#0" expanded="true" />
+            <element signature="e#14053#14100#0" expanded="true" />
+            <element signature="e#14151#14195#0" expanded="true" />
+            <element signature="e#14261#14315#0" expanded="true" />
+            <element signature="e#14379#14420#0" expanded="true" />
+            <element signature="e#14468#14513#0" expanded="true" />
+            <element signature="e#14563#14610#0" expanded="true" />
+            <element signature="e#14659#14706#0" expanded="true" />
+            <element signature="e#14753#14796#0" expanded="true" />
+            <element signature="e#14844#14889#0" expanded="true" />
+            <element signature="e#15005#15044#0" expanded="true" />
+            <element signature="e#15081#15128#0" expanded="true" />
+            <element signature="e#15168#15212#0" expanded="true" />
+            <element signature="e#15249#15303#0" expanded="true" />
+            <element signature="e#15351#15392#0" expanded="true" />
+            <element signature="e#15427#15472#0" expanded="true" />
+            <element signature="e#15687#15730#0" expanded="true" />
+            <element signature="e#15767#15812#0" expanded="true" />
+            <element signature="e#16872#16921#0" expanded="true" />
+            <element signature="e#18535#18585#0" expanded="true" />
+            <element signature="e#18612#18673#0" expanded="true" />
+            <element signature="e#18743#18796#0" expanded="true" />
+            <element signature="e#18823#18883#0" expanded="true" />
+            <element signature="e#18923#18975#0" expanded="true" />
+            <element signature="e#19002#19064#0" expanded="true" />
+            <element signature="e#19123#19169#0" expanded="true" />
+            <element signature="e#19494#19654#0" expanded="true" />
+            <element signature="e#19653#19654#0" expanded="true" />
+            <marker date="1500404537257" expanded="false" signature="15511:15558" ph="&quot;saved_minute_color&quot;" />
+            <marker date="1500404537257" expanded="false" signature="15599:15646" ph="&quot;saved_second_color&quot;" />
           </folding>
         </state>
       </provider>

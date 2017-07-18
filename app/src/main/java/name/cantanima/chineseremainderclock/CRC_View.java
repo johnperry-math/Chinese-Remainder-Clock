@@ -1,18 +1,27 @@
 package name.cantanima.chineseremainderclock;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
+import android.graphics.drawable.ColorDrawable;
 import android.preference.ListPreference;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
@@ -22,9 +31,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
 import java.util.Calendar;
+import java.util.Random;
 
 import static android.content.Context.MODE_PRIVATE;
 import static android.graphics.Color.BLACK;
@@ -33,6 +44,7 @@ import static android.graphics.Color.GRAY;
 import static android.graphics.Color.GREEN;
 import static android.graphics.Color.LTGRAY;
 import static android.graphics.Color.RED;
+import static android.graphics.Color.TRANSPARENT;
 import static android.graphics.Color.WHITE;
 import static android.view.MotionEvent.ACTION_DOWN;
 import static android.view.MotionEvent.ACTION_MOVE;
@@ -52,7 +64,8 @@ public class CRC_View
     extends View
     implements OnTouchListener, OnCheckedChangeListener, OnClickListener,
                OnItemSelectedListener, OnEditorActionListener,
-               SharedPreferences.OnSharedPreferenceChangeListener
+               SharedPreferences.OnSharedPreferenceChangeListener,
+               TimePickerDialog.OnTimeSetListener
 {
 
   // constructor
@@ -416,6 +429,77 @@ public class CRC_View
 
   }
 
+  public void start_quiz() {
+    my_animator.pause();
+    if (quiz_generator == null) quiz_generator = new Random();
+    quiz_previous_time_visibility = tv.getVisibility();
+    quiz_previous_seconds_visibility = my_drawer.get_show_seconds();
+    my_drawer.set_show_seconds(false);
+    tv.setVisibility(INVISIBLE);
+    quiz_number_correct = quiz_number_complete = 0;
+    quiz_question();
+  }
+
+  public void quiz_question() {
+    quiz_dialog = new TimePickerDialog(
+        my_owner, my_owner.getApplicationInfo().theme, this, 0, 0, hour_modulus == 8
+    );
+    String title = my_owner.getString(R.string.quiz_what_time_is_it) + " "
+        + String.valueOf(quiz_number_complete + 1) + "/"
+        + String.valueOf(quiz_number_total);
+    quiz_dialog.setTitle(title);
+    Window quiz_win = quiz_dialog.getWindow();
+    quiz_win.setBackgroundDrawable(new ColorDrawable(TRANSPARENT));
+    quiz_dialog.show();
+    Button quit_button = quiz_dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+    quit_button.setVisibility(INVISIBLE);
+    time_guide = Modification.NEW_TIME;
+    new_hour_value = quiz_generator.nextInt(hour_modulus == 4 ? 12 : 24) + 1;
+    new_minute_value = quiz_generator.nextInt(60) + 1;
+    my_animator.resume();
+    my_animator.pause();
+  }
+
+  public void onTimeSet(TimePicker picker, int hourOfDay, int minute) {
+    int hmod = (hour_modulus == 4) ? 12 : 24;
+    int mmod = 60;
+    if ((hourOfDay % hmod) == (new_hour_value % hmod) && (minute % mmod) == (new_minute_value % mmod))
+      ++quiz_number_correct;
+    ++quiz_number_complete;
+    if (quiz_number_complete < quiz_number_total)
+      quiz_question();
+    else {
+      if (quiz_dialog.isShowing())
+        quiz_dialog.dismiss();
+      String quiz_message, dialog_dismiss;
+      if (quiz_number_correct == quiz_number_total) {
+        quiz_message = my_owner.getString(R.string.quiz_result_great_job);
+        dialog_dismiss = my_owner.getString(R.string.quiz_result_dismiss_dialog_great);
+      } else if (quiz_number_correct == 0) {
+        quiz_message = my_owner.getString(R.string.quiz_result_keep_day_job);
+        dialog_dismiss = my_owner.getString(R.string.quiz_result_dismiss_dialog_keep);
+      } else {
+        quiz_message = my_owner.getString(R.string.quiz_result_better_luck);
+        dialog_dismiss = my_owner.getString(R.string.quiz_result_dismiss_dialog_better);
+      }
+      new AlertDialog.Builder(my_owner).setTitle(my_owner.getString(R.string.quiz_result_title))
+              .setMessage(
+                  quiz_message + ": " + String.valueOf(quiz_number_correct) +
+                      "/" + String.valueOf(quiz_number_total)
+              )
+              .setIcon(R.drawable.ic_action_info)
+              .setPositiveButton(
+                    dialog_dismiss,
+                    new DialogInterface.OnClickListener() {
+                      public void onClick(DialogInterface dialog, int which) { dialog.dismiss(); }
+                    }
+              ).show();
+      tv.setVisibility(quiz_previous_time_visibility);
+      my_drawer.set_show_seconds(quiz_previous_seconds_visibility);
+      time_guide = Modification.CALENDAR;
+      my_animator.resume();
+    }
+  }
 
   protected float my_offset; // how far along the animation is (should range from 0 to 1)
 
@@ -445,7 +529,7 @@ public class CRC_View
   // useful constants to make code more legible
   enum Units { HOURS, MINUTES, SECONDS }
   protected Units which_unit_to_modify;
-  enum Modification { LEAVE_BE, CALENDAR, INCREMENT, DECREMENT, NEW_VALUE }
+  enum Modification { LEAVE_BE, CALENDAR, INCREMENT, DECREMENT, NEW_VALUE, NEW_TIME }
   protected Modification time_guide;
   protected int new_time_value;
 
@@ -471,5 +555,13 @@ public class CRC_View
           "50", "51", "52", "53", "54", "55", "56", "57", "58", "59",
   };
 
-    protected boolean dragging = false;
+  protected boolean dragging = false;
+
+  TimePickerDialog quiz_dialog;
+
+  final int quiz_number_total = 5;
+  int quiz_number_complete, quiz_number_correct, quiz_previous_time_visibility;
+  int new_hour_value, new_minute_value;
+  Random quiz_generator = null;
+  boolean quiz_previous_seconds_visibility;
 }

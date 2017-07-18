@@ -3,7 +3,7 @@
     package="name.cantanima.chineseremainderclock">
 
     <application
-        android:icon="@drawable/crc_icon"
+        android:icon="@drawable/clock_launcher_icon"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.DeviceDefault"
         android:background="@color/white">

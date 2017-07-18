@@ -5,6 +5,7 @@
 
     <!-- Strings related to UI -->
 
+    <string name="app_menu_title"></string>
     <string name="app_name">Chinese Remainder Clock</string>
     <string name="welcome_string">Welcome to the Chinese Remainder Clock!</string>
     <string name="welcome_dialog_text">
@@ -119,7 +120,18 @@
     <string name="hour_color_text">Hour color</string>
     <string name="minute_color_text">Minute color</string>
     <string name="second_color_text">Second color</string>
-    
+
+    <!-- Quizzes -->
+    <string name="quiz_what_time_is_it">What time is it?</string>
+    <string name="quiz_nice_try">Nice try</string>
+    <string name="quiz_result_title">Quiz result</string>
+    <string name="quiz_result_better_luck">Better luck next time!</string>
+    <string name="quiz_result_great_job">Great job!</string>
+    <string name="quiz_result_keep_day_job">Keep the day job!</string>
+    <string name="quiz_result_dismiss_dialog_great">Awesome Sauce!</string>
+    <string name="quiz_result_dismiss_dialog_better">Hope so!</string>
+    <string name="quiz_result_dismiss_dialog_keep">Oof!</string>
+
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 

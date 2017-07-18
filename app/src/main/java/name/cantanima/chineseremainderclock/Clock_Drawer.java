@@ -25,6 +25,7 @@ import static name.cantanima.chineseremainderclock.CRC_View.Modification.CALENDA
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.INCREMENT;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.LEAVE_BE;
+import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_TIME;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_VALUE;
 
 public abstract class Clock_Drawer {
@@ -53,6 +54,10 @@ public abstract class Clock_Drawer {
         case 1: minute = my_viewer.new_time_value; break;
         case 2: second = my_viewer.new_time_value; break;
       }
+    } else if (my_viewer.time_guide == NEW_TIME) {
+      hour = my_viewer.new_hour_value;
+      minute = my_viewer.new_minute_value;
+      second = my_viewer.last_s;
     } else if (my_viewer.time_guide == LEAVE_BE) { // use previous time
       hour = my_viewer.last_h;
       minute = my_viewer.last_m;

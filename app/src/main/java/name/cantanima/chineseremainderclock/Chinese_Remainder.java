@@ -12,8 +12,6 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,9 +44,9 @@ public class Chinese_Remainder
     }
 
     SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-    boolean first_run = pref.getBoolean(getString(R.string.first_run), false);
+    boolean first_run = pref.getBoolean(getString(R.string.first_run), true);
     String version_string = getString(R.string.current_version);
-    if (!first_run || !pref.contains(getString(R.string.version)) ||
+    if (first_run || !pref.contains(getString(R.string.version)) ||
         !pref.getString(getString(R.string.version), version_string).equals(version_string)) {
 
       new AlertDialog.Builder(this).setTitle(getString(R.string.welcome_string))
@@ -63,9 +61,12 @@ public class Chinese_Remainder
                                        }
                                    ).show();
       SharedPreferences.Editor edit = pref.edit();
-      edit.putBoolean(getString(R.string.first_run), true);
+      edit.putBoolean(getString(R.string.first_run), false);
+      edit.putString(getString(R.string.version), getString(R.string.current_version));
       edit.apply();
     }
+
+    setTitle(getString(R.string.app_menu_title));
 
   }
 
@@ -79,23 +80,26 @@ public class Chinese_Remainder
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
-      // Handle action bar item clicks here. The action bar will
-      // automatically handle clicks on the Home/Up button, so long
-      // as you specify a parent activity in AndroidManifest.xml.
-      int id = item.getItemId();
+    // Handle action bar item clicks here. The action bar will
+    // automatically handle clicks on the Home/Up button, so long
+    // as you specify a parent activity in AndroidManifest.xml.
+    int id = item.getItemId();
 
-      //noinspection SimplifiableIfStatement
-      if (id == R.id.action_settings) {
-          Intent i = new Intent(this, CRC_Prefs_Activity.class);
-          startActivity(i);
-          return true;
-      } else if (id == R.id.information) {
-          Intent i = new Intent(this, HelpActivity.class);
-          startActivity(i);
-          return true;
-      }
+    //noinspection SimplifiableIfStatement
+    if (id == R.id.action_settings) {
+      Intent i = new Intent(this, CRC_Prefs_Activity.class);
+      startActivity(i);
+      return true;
+    } else if (id == R.id.information) {
+      Intent i = new Intent(this, HelpActivity.class);
+      startActivity(i);
+      return true;
+    } else if (id == R.id.quiz) {
+      CRC_View crc_view = (CRC_View) findViewById(R.id.crc_view);
+      crc_view.start_quiz();
+    }
 
-      return super.onOptionsItemSelected(item);
+    return super.onOptionsItemSelected(item);
   }
 
   /**

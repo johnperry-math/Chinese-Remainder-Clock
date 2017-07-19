@@ -28,10 +28,38 @@ import static name.cantanima.chineseremainderclock.CRC_View.Modification.LEAVE_B
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_TIME;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_VALUE;
 
+/**
+ *
+ * Draws the clock. Implement all designs as a subclass of this one.
+ * When you implement the constructor, you can call initialize_fields() in order to gain access
+ * to routine and desirable information.
+ * The two functions you absolutely have to implement is draw() and preferred_step();
+ * see them for details.
+ * You will probably also want to implement recalculate_positions().
+ * @see #initialize_fields(CRC_View)
+ * @see #draw(Canvas)
+ * @see #preferred_step()
+ * @see #recalculate_positions()
+ *
+ */
 public abstract class Clock_Drawer {
 
+  /**
+   * This should draw the clock onto the specified Canvas.
+   * The usual order of events should be to invoke setup_time() FIRST, then (if desired)
+   * drawTimeAndRectangle(), which takes care of the background.
+   * Only then should you perform the drawing specific to the design!
+   * At the end, a subclass should also invoke usual_cleanup().
+   * If you follow this course of events, then the values hour, minute, second,
+   * last_h, last_m, last_s will be set up properly so that you can read them for animation,
+   * and all other "ordinary" set up and destruction will be taken care of.
+   * @param canvas Canvas on which to draw the clock
+   */
   abstract void draw(Canvas canvas);
 
+  /**
+   * Sets up time values according to CRC_View's time_guide.
+   */
   void setup_time() {
 
     // get the current time, compare to previous time, and animate accordingly
@@ -45,7 +73,7 @@ public abstract class Clock_Drawer {
       hour = time.get(my_viewer.which_hour);
       minute = time.get(MINUTE);
       second = time.get(SECOND);
-    } else if (my_viewer.time_guide == NEW_VALUE) { // user has manually entered a time
+    } else if (my_viewer.time_guide == NEW_VALUE) { // user has manually entered a value for a unit
       hour = my_viewer.last_h;
       minute = my_viewer.last_m;
       second = my_viewer.last_s;
@@ -54,7 +82,7 @@ public abstract class Clock_Drawer {
         case 1: minute = my_viewer.new_time_value; break;
         case 2: second = my_viewer.new_time_value; break;
       }
-    } else if (my_viewer.time_guide == NEW_TIME) {
+    } else if (my_viewer.time_guide == NEW_TIME) { // quiz has manually set the time
       hour = my_viewer.new_hour_value;
       minute = my_viewer.new_minute_value;
       second = my_viewer.last_s;
@@ -93,8 +121,13 @@ public abstract class Clock_Drawer {
 
   }
 
+  /**
+   *  Adjusts certain settings once the animation ends.
+   *  This includes adjusting CRC_View's time_guide when necessary, as well as the remembered
+   *  times last_h, last_m, last_s, and updating some interface elements.
+   *  A guard is placed on this so that it only works if the animation is really and truly complete.
+   */
   void usual_cleanup() {
-    // adjust certain settings once the animation ends
 
     if (my_viewer.my_offset >= 0.97f) {
 
@@ -138,8 +171,15 @@ public abstract class Clock_Drawer {
 
   }
 
+  /** Returns the preferred time step for an animation. */
   abstract float preferred_step();
 
+  /**
+   *  Recalculates positions necessary to drawing.
+   *  You should probably override this, but if so you may want to call
+   *  super.recalculate_positions() first, so that w, h, cx, cy, diam, min_x, max_x, min_y, max_y,
+   *  textYOffset, text_paint are set up properly.
+   */
   void recalculate_positions() {
     w = (float) my_viewer.getWidth();
     h = (float) my_viewer.getHeight();
@@ -157,8 +197,13 @@ public abstract class Clock_Drawer {
 
   }
 
+  /**
+   *
+   * Sets up my_viewer, back_paint, text_paint, ball_paint, circle_paint, second_color,
+   * minute_color, hour_color, minsec_strings, hour12_strings, hour24_strings.
+   * @param view  CRC_View we are responsible ot
+   */
   void initialize_fields(CRC_View view) {
-    // initialize fields:
 
     my_viewer = view;
 
@@ -185,11 +230,22 @@ public abstract class Clock_Drawer {
 
   }
 
-  // draws the background rectangle and writes in the time
+  /**
+   * Draws a background rectangle with rounded corners and then calls draw_time().
+   * @see #draw_time(int, int, int)
+   * @param canvas Canvas to draw onto
+   * @param hour hour to write
+   * @param minute minute to write
+   * @param second second to write
+   * @param cx horizontal center of the Canvas
+   * @param cy vertical center of the Canvas
+   * @param diam "radius" of the Canvas (don't ask why it's called diam)
+   */
   void drawTimeAndRectangle(
           Canvas canvas, int hour, int minute, int second,
-          float cx, float cy, float diam, boolean nextTime
+          float cx, float cy, float diam
   ) {
+
     // draw a rounded rectangle if we can
     back_paint.setColor(bg_color);
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -198,11 +254,12 @@ public abstract class Clock_Drawer {
       canvas.drawRect(min_x, min_y, max_x, max_y, back_paint);
     }
 
+    // show time if desired
     if (show_time) {
       // if the offset is roughly at 1, print the new time, else print the old time
       // (if someone is looking carefully, the clock will seem to be 1 second behind)
       int print_hour, print_minute, print_second;
-      if (my_viewer.my_offset >= 0.96f || !nextTime) {
+      if (my_viewer.my_offset >= 0.96f) {
         print_hour = hour;
         print_minute = minute;
         print_second = second;
@@ -214,8 +271,15 @@ public abstract class Clock_Drawer {
 
       draw_time(print_hour, print_minute, print_second);
     }
+
   }
 
+  /**
+   * Draws the indicated time onto the TextView for the time (tv).
+   * @param print_hour hour to print
+   * @param print_minute minute to print
+   * @param print_second second to print
+   */
   protected void draw_time(int print_hour, int print_minute, int print_second) {
 
     // print the correct times
@@ -254,49 +318,68 @@ public abstract class Clock_Drawer {
 
   }
 
+  /** remembers the TextView where we should write the time */
   protected void set_time_textview(TextView ttv) { tv = ttv; }
 
+  /** whether to show a representation of seconds in the clock */
   protected void set_show_seconds(boolean yesno) {
       show_seconds = yesno;
   }
 
+  /** whether to show a representation of seconds in the clock */
   protected boolean get_show_seconds() { return show_seconds; }
 
+  /**
+   *  whether to write the time in a TextView
+   *  @see #set_time_textview(TextView)
+   */
   protected void set_show_time(boolean yesno) {
       show_time = yesno;
   }
 
+  /** whether to write the time in a TextView */
   protected boolean get_show_time() { return show_time; }
 
+  /** whether to draw minutes inside/left of hours */
   protected boolean get_reverse_orientation() { return reverse_orientation; }
 
+  /** whether to draw minutes inside/left of hours */
   protected void set_reverse_orientation(boolean yesno) { reverse_orientation = yesno; }
 
+  /** which color to use when drawing lines */
   protected void set_line_color(int new_line_color) { line_color = new_line_color; }
 
+  /** which color to use when drawing hour objects */
   void set_hour_color(int new_hour_color) { hour_color = new_hour_color; }
 
+  /** which color to use when drawing minute objects */
   void set_minute_color(int new_minute_color) { minute_color = new_minute_color; }
 
+  /** which color to use when drawing second objects */
   void set_second_color(int new_second_color) { second_color = new_second_color; }
 
+  /** which color to use when drawing the background */
   void set_bg_color(int new_bg_color) { bg_color = new_bg_color; }
 
+  /** user has touched finger to clock */
   protected void notify_touched(MotionEvent e) { }
 
+  /** user has lifted finger off clock */
   protected void notify_released(MotionEvent e) { }
 
+  /** user is dragging finger around the clock */
   protected void notify_dragged(MotionEvent e) { }
 
-  // fields that control aspects of painting
+  /** fields that control aspects of painting */
   protected final static int GOODGREEN = Color.rgb(0, 224, 0);
   protected final static int BACKGROUND = Color.argb(192, 128, 128, 128);
   protected final static int VERYLIGHTGRAY = Color.rgb(223, 223, 233);
   protected int second_color, minute_color, hour_color, bg_color, line_color;
 
-  // fields that control layout of all clock elements
+  /** fields that control layout of all clock elements */
   protected float min_x, min_y, max_x, max_y, w, h, cx, cy, diam, textYOffset;
 
+  /** fields that control how to paint various objects */
   protected Paint ball_paint, text_paint, back_paint, circle_paint;
 
   // fields related to the UI elements
@@ -305,18 +388,23 @@ public abstract class Clock_Drawer {
   protected boolean show_time;
   protected boolean reverse_orientation;
 
+  /** fields related to writing the time */
   protected static final String zero_str = "0";
   protected static final String twelve_str = "12";
   protected static final String dbl_zero_str = "00";
   protected static final String colon_str = ":";
-
   protected static String [] minsec_strings = {};
   protected static String [] hour12_strings = {};
   protected static String [] hour24_strings = {};
 
+  /** stuff to listen to or update */
   protected CRC_View my_viewer;
   protected TextView tv;
 
+  /**
+   *  time information: hour, minute, second will record current time (to draw),
+   *  hours_max will indicate whether it's a 12- or 24-hour clock
+   */
   protected int hour, minute, second, millis, hour_max;
 
 }

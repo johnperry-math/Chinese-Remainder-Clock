@@ -27,10 +27,32 @@ import android.widget.ToggleButton;
 import org.w3c.dom.Text;
 
 
+/**
+ *
+ * The main Activity for the clock!
+ * This is the main Activity that controls the clock.
+ *    However, very little is done here; the meat of the work is taken care of in CRC_View,
+ *    and the meat of the layout is taken care of by the usual Android layout files
+ *    (see res/layout and res/layout-land).
+ *    Here we only take care of the minimum that has to be done: welcome screen, menu response,
+ *    and setting up some communication between this Activity and the CRC_View.
+ *    Note that the SharedPreferences are not necessarily the same in the various places they
+ *    are read (apparently the "Shared"Preferences aren't actually "shared").
+ *
+ *    To implement a new design, extend Clock_Drawer, add information to the strings.xml file,
+ *    and modify CRC_View accordingly (look for where drawers are assigned, etc.).
+ *
+ */
 public class Chinese_Remainder
     extends Activity
 {
 
+  /**
+   *
+   * @brief aside from what the superclass does, this checks the version and opens a welcome dialog
+   *    if we are running for the first time, OR if the version has changed
+   * @param savedInstanceState necessary for this
+   */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
 
@@ -74,6 +96,11 @@ public class Chinese_Remainder
   }
 
 
+  /**
+   * @brief sets up the options menu
+   * @param menu
+   * @return
+   */
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
@@ -81,6 +108,11 @@ public class Chinese_Remainder
     return true;
   }
 
+  /**
+   * @brief takes care of the menu items
+   * @param item
+   * @return
+   */
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     // Handle action bar item clicks here. The action bar will
@@ -90,14 +122,17 @@ public class Chinese_Remainder
 
     //noinspection SimplifiableIfStatement
     if (id == R.id.action_settings) {
+      // starts the settings panel
       Intent i = new Intent(this, CRC_Prefs_Activity.class);
       startActivity(i);
       return true;
     } else if (id == R.id.information) {
+      // starts the info page
       Intent i = new Intent(this, HelpActivity.class);
       startActivity(i);
       return true;
     } else if (id == R.id.quiz) {
+      // starts a quiz!
       CRC_View crc_view = (CRC_View) findViewById(R.id.crc_view);
       crc_view.start_quiz();
     }
@@ -106,13 +141,24 @@ public class Chinese_Remainder
   }
 
   /**
-   * A placeholder fragment containing a simple view.
+   * @brief a placeholder fragment containing a simple view
+   * @details This was created automatically by Android Studio and is apparently how Google wants
+   *    everything done henceforth and hereafter. Aside from the default,
+   *    this reads from the preferences file and assigns values to the CRC_View.
    */
   @TargetApi(Build.VERSION_CODES.HONEYCOMB)
   public static class PlaceholderFragment extends Fragment {
 
     public PlaceholderFragment() { }
 
+    /**
+     * @brief aside from the default behavior, we read preferences,
+     *    and pass information to the CRC_View
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return must return rootView; Android will pout big-time if you don't
+     */
     @Override
     public View onCreateView(
           LayoutInflater inflater, ViewGroup container,
@@ -129,6 +175,8 @@ public class Chinese_Remainder
 
       // Read preferences, assign to crc_view
       SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
+
+      // various boolean options
       boolean saved_hour = (prefs.contains(getString(R.string.saved_hour))) &&
               prefs.getBoolean(getString(R.string.saved_hour), false);
       boolean saved_seconds = (prefs.contains(getString(R.string.saved_show_seconds))) &&
@@ -138,9 +186,12 @@ public class Chinese_Remainder
       boolean saved_unit_orientation = prefs.contains(getString(R.string.saved_reverse_orientation)) &&
               prefs.getBoolean(getString(R.string.saved_reverse_orientation), false);
 
+      // read the preferred drawer/design
       final int default_drawer = 1;
       int saved_drawer = (prefs.contains(getString(R.string.saved_drawer))) ?
               prefs.getInt(getString(R.string.saved_drawer), default_drawer) : default_drawer;
+
+      // read the version and if there isn't one (because this is a first run) save the preferences
       String version_string = getString(R.string.current_version);
       if (
               !prefs.contains(getString(R.string.version)) ||
@@ -183,8 +234,11 @@ public class Chinese_Remainder
       timeEditor.setSelectAllOnFocus(true);
       timeEditor.setOnClickListener(crc_view);
 
+      // make crc_view listen to things that have to be shown/hidden and such
       crc_view.setButtonsToListen(pb, upButton, dnButton, spinner, timeEditor);
 
+      // crc_view also needs to show/hide the time, and for some reason
+      // I separated that from the buttons
       TextView tv = (TextView) rootView.findViewById(R.id.time_display);
       tv.setVisibility(View.INVISIBLE);
       crc_view.set_time_textview(tv);

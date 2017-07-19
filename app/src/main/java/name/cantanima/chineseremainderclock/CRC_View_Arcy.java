@@ -22,7 +22,7 @@ public class CRC_View_Arcy extends Clock_Drawer {
 
     setup_time();
 
-    drawTimeAndRectangle(canvas, hour, minute, second, cx, cy, diam, my_viewer.analog);
+    drawTimeAndRectangle(canvas, hour, minute, second, cx, cy, diam);
 
     ball_paint.setColor(hour_color);
     ball_paint.setStyle(STROKE);

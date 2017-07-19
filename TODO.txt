@@ -3,6 +3,9 @@ Some clocks (e.g., Bally) are 1 second behind. It's probably not noticeable,
 but we should consider fixing them.
 
 TODO
+Add documentation to source code.
+
+TODO
 Change Archy's animation to an expanding/collapsing arch.
 
 TODO

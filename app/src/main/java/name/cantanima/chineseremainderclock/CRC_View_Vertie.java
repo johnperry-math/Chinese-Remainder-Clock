@@ -39,7 +39,7 @@ public class CRC_View_Vertie extends Clock_Drawer {
 
     setup_time();
 
-    drawTimeAndRectangle(canvas, hour, minute, second, cx, cy, diam, my_viewer.analog);
+    drawTimeAndRectangle(canvas, hour, minute, second, cx, cy, diam);
 
     // in what follows, xmodi is the time unit x modulo i, while
     // lxmodi is last_x % i

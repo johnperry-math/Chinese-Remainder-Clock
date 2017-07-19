@@ -7,5 +7,6 @@
     <color name="green">#ff00ff00</color>
     <color name="blue">#ff0000ff</color>
     <drawable name="transparent_red">#77ff0000</drawable>
+    <drawable name="transparent_dialog">#20ffffff</drawable>
 
 </resources>

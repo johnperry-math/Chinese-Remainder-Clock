@@ -51,6 +51,7 @@ import static android.view.MotionEvent.ACTION_DOWN;
 import static android.view.MotionEvent.ACTION_MOVE;
 import static android.view.MotionEvent.ACTION_UP;
 import static android.view.WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+import static android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL;
 import static java.util.Calendar.HOUR;
 import static java.util.Calendar.HOUR_OF_DAY;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.CALENDAR;
@@ -66,8 +67,7 @@ public class CRC_View
     extends View
     implements OnTouchListener, OnCheckedChangeListener, OnClickListener,
                OnItemSelectedListener, OnEditorActionListener,
-               SharedPreferences.OnSharedPreferenceChangeListener,
-               TimePickerDialog.OnTimeSetListener
+               SharedPreferences.OnSharedPreferenceChangeListener
 {
 
   // constructor
@@ -443,28 +443,22 @@ public class CRC_View
   }
 
   public void quiz_question() {
-    quiz_dialog = new TimePickerDialog(
-        my_owner, /*my_owner.getApplicationInfo().theme,*/
+    /*quiz_dialog = new TimePickerDialog(
+        my_owner, //my_owner.getApplicationInfo().theme,
         AlertDialog.THEME_HOLO_LIGHT,
         this, 0, 0, hour_modulus == 8
-    );
-    String title = my_owner.getString(R.string.quiz_what_time_is_it) + " "
-        + String.valueOf(quiz_number_complete + 1) + "/"
-        + String.valueOf(quiz_number_total);
-    quiz_dialog.setTitle(title);
+    );*/
+    quiz_dialog = new TimeEntryDialog(my_owner, this, quiz_number_complete, quiz_number_total);
     Window quiz_win = quiz_dialog.getWindow();
     quiz_win.setBackgroundDrawable(new ColorDrawable(TRANSPARENT));
     DisplayMetrics metrics = new DisplayMetrics();
-    my_owner.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+    /*my_owner.getWindowManager().getDefaultDisplay().getMetrics(metrics);
     int screen_height = metrics.heightPixels;
-    quiz_win.setLayout(getWidth(), screen_height - getBottom());
+    quiz_win.setLayout(getWidth(), screen_height - getBottom());*/
     WindowManager.LayoutParams win_attr = quiz_win.getAttributes();
-    win_attr.y = getHeight();
-    win_attr.alpha = 0.65f;
+    //win_attr.y = getHeight();
     quiz_dialog.getWindow().clearFlags(FLAG_DIM_BEHIND);
     quiz_dialog.show();
-    Button quit_button = quiz_dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
-    quit_button.setVisibility(INVISIBLE);
     time_guide = Modification.NEW_TIME;
     new_hour_value = quiz_generator.nextInt(hour_modulus == 4 ? 12 : 24) + 1;
     new_minute_value = quiz_generator.nextInt(60) + 1;
@@ -472,7 +466,7 @@ public class CRC_View
     my_animator.pause();
   }
 
-  public void onTimeSet(TimePicker picker, int hourOfDay, int minute) {
+  public void quiz_answered(int hourOfDay, int minute) {
     int hmod = (hour_modulus == 4) ? 12 : 24;
     int mmod = 60;
     if ((hourOfDay % hmod) == (new_hour_value % hmod) && (minute % mmod) == (new_minute_value % mmod))
@@ -569,7 +563,8 @@ public class CRC_View
 
   protected boolean dragging = false;
 
-  TimePickerDialog quiz_dialog;
+  //TimePickerDialog quiz_dialog;
+  TimeEntryDialog quiz_dialog;
 
   final int quiz_number_total = 5;
   int quiz_number_complete, quiz_number_correct, quiz_previous_time_visibility;

@@ -5,14 +5,13 @@
 
     <!-- Strings related to UI -->
 
-    <string name="app_menu_title"></string>
+    <string name="app_menu_title">CR Clock</string>
     <string name="app_name">Chinese Remainder Clock</string>
     <string name="welcome_string">Welcome to the Chinese Remainder Clock!</string>
     <string name="welcome_dialog_text">
-        Thank you for having downloaded the Chinese Remainder Clock!
-
-        The menu offers Information on how the clock works,
-        and Settings for options on color, design, etc.
+        The tool bar offers Information on how the clock works (question mark),
+        Settings for options on color, design, etc. (wrench), and
+        simple Quizzes (pencil).
 
         If you touch the screen outside the clock,
         a button to allow manipulation of the clock will appear.
@@ -23,8 +22,8 @@
     <string name="info_button_text_short">Info</string>
 
     <string name="auto_button_text">Auto/Manual</string>
-    <string name="auto_button_text_off">Auto</string>
-    <string name="auto_button_text_on">Manual</string>
+    <string name="auto_button_text_off">Manual?</string>
+    <string name="auto_button_text_on">Manual!</string>
 
     <string name="dec_button">-1</string>
     <string name="inc_button">+1</string>
@@ -48,7 +47,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="version">version</string>
-    <string name="current_version">1.5</string>
+    <string name="current_version">1.6</string>
     <string name="first_run">first_run</string>
     <string name="saved_hour">saved_hour</string>
     <string name="saved_color">saved_color</string>
@@ -69,16 +68,16 @@
     <string name="pref_category_design_summ">Settings related to the clock\'s design</string>
 
     <string name="pref_drawers">Art</string>
-    <string name="design_pref_summary">Several analog and digital varieties available</string>
+    <string name="design_pref_summary">Several circular and polygonal varieties available</string>
     <integer name="num_drawers">7</integer>
     <string-array name="drawStrings">
-        <item>Archy</item>
-        <item>Archy Fade</item>
-        <item>Bally</item>
-        <item>Bubbly</item>
-        <item>Linus</item>
-        <item>Shady</item>
-        <item>Vertie</item>
+        <item>Archy: arc\'s position on circle tells remainder</item>
+        <item>Archy Fade: arc\'s position on circle tells remainder</item>
+        <item>Bally: ball\'s position on circle tells remainder</item>
+        <item>Bubbly: number of filled bubbles tells remainder</item>
+        <item>Linus: number of highlighted sides tells remainder</item>
+        <item>Shady: remainders displayed in shaded polygon</item>
+        <item>Vertie: higlighted vertex tells remainder</item>
     </string-array>
     <string-array name="drawStringValues">
         <item>0</item>
@@ -123,6 +122,10 @@
 
     <!-- Quizzes -->
     <string name="quiz_what_time_is_it">What time is it?</string>
+    <string name="quiz_hour_hint">HH</string>
+    <string name="quiz_time_sep">:</string>
+    <string name="quiz_minute_hint">MM</string>
+    <string name="quiz_next">Next!</string>
     <string name="quiz_nice_try">Nice try</string>
     <string name="quiz_result_title">Quiz result</string>
     <string name="quiz_result_better_luck">Better luck next time!</string>

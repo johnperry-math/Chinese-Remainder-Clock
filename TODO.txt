@@ -3,10 +3,62 @@ Some clocks (e.g., Bally) are 1 second behind. It's probably not noticeable,
 but we should consider fixing them.
 
 TODO
-Quiz mode! with "accomplishments!"
+Change Archy's animation to an expanding/collapsing arch.
 
 TODO
-Consider touch and drag time manually in Archy, Bubbly, Vertie.
+Touch and drag time manually in Archy, Vertie, maybe Bubbly.
+
+TODO
+Quiz "accomplishments!" (i.e., tie quizzes into Google API)
+
+TODO
+Other quizzes:
+- Set the clock
+  The easiest could be (in both items above) letting the computer choose
+  a random time.
+- Symmetries
+  Some more mathematical questions could be about symmetries (going back
+  or forward from time 00:00).
+  This works for the minutes but not for the hour (11:58 is on any
+  analog clock not symmetric to 00:02) because the hour are basically a
+  floor function...
+  More precisely it works for the smallest unity you are considering..
+  Maybe it is too complicated? Or indeed interesting?
+- Multiples
+  Questions
+  How do the multiples of 20 look like for the minutes?
+  How do the multiples of 12 look like for the minutes?
+  How do the multiples of 15 look like for the minutes?
+  Answers
+  The 4-remainder and the 5-remainder are zero.
+  The 3-remainder and the 4-remainder are zero.
+  The 3-remainder and the 5-remainder are zero.
+- Shifts
+  Question
+  What happens by increasing/decreasing the time by 20 minutes?
+  What happens by increasing/decreasing the time by 12 minutes?
+  What happens by increasing/decreasing the time by 15 minutes?
+  Only the 3-remainder changes. The 4-remainder and 5-remainder stay the same.
+  Only the 5-remainder changes. The 3-remainder and 4-remainder stay the same.
+  Only the 4-remainder changes. The 3-remainder and 5-remainder stay the same
+- Alignments
+  For Bally=Ringy (picture needed, or simply a link): For which times
+  are the balls vertically aligned?
+  The minute must be 0 or 30, and the same holds for the second. The
+  hour must be 0 (or 12, in the 24-hour clock).
+- Equalities
+  Suppose that the 4-remainder and the 5-remainder of the minute are
+  both equal to some integer N which is either 0,1,2,3. What can the
+  minute be?
+  N, 20+N, or 40+N
+  Suppose that the 3-remainder and the 4-remainder of the minute are
+  both equal to some integer N which is either 0,1,2. What can the
+  minute be?
+  N, 12+N, 24+N, 36+N, or 48+N
+  Suppose that the 3-remainder and the 5-remainder of the minute are
+  both equal to some integer N which is either 0,1,2. What can the
+  minute be?
+  N, 15+N, 30+N or 45+N
 
 DONE
 - Fade in/out of Polly (6ish June 2017).
@@ -36,3 +88,5 @@ DONE
 - Eliminated buttons obsoleted by settings interface.
 - Added welcome screen.
 - Changed Menu to Toolbar icons.
+- "What time is it?" quiz
+- Implement custom TimeEntryDialog.

@@ -49,7 +49,10 @@ public class Chinese_Remainder
     if (first_run || !pref.contains(getString(R.string.version)) ||
         !pref.getString(getString(R.string.version), version_string).equals(version_string)) {
 
-      new AlertDialog.Builder(this).setTitle(getString(R.string.welcome_string))
+      new AlertDialog.Builder(this).setTitle(
+                                        getString(R.string.welcome_string) +
+                                            " (v " + getString(R.string.current_version) + ")"
+                                   )
                                    .setMessage(getString(R.string.welcome_dialog_text))
                                    .setIcon(R.drawable.ic_action_info)
                                    .setPositiveButton(

@@ -588,6 +588,7 @@ public class CRC_View
     quiz_previous_time_visibility = tv.getVisibility();
     quiz_previous_seconds_visibility = my_drawer.get_show_seconds();
     my_drawer.set_show_seconds(false);
+    my_drawer.recalculate_positions();
     tv.setVisibility(INVISIBLE);
     quiz_number_correct = quiz_number_complete = 0;
     quiz_question();
@@ -685,6 +686,7 @@ public class CRC_View
               ).show();
       tv.setVisibility(quiz_previous_time_visibility);
       my_drawer.set_show_seconds(quiz_previous_seconds_visibility);
+      my_drawer.recalculate_positions();
       time_guide = Modification.CALENDAR;
       my_animator.resume();
 
@@ -743,7 +745,7 @@ public class CRC_View
     DECREMENT,
     /**
      *  a new value for the specified unit only; read from valueEditor
-     *  @see {@link Units}
+     *  @see Units
      */
     NEW_VALUE,
     /** a new value for all units of time; read from hour, minute, second */

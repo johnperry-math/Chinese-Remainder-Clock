@@ -49,8 +49,8 @@ public class Chinese_Remainder
 
   /**
    *
-   * @brief aside from what the superclass does, this checks the version and opens a welcome dialog
-   *    if we are running for the first time, OR if the version has changed
+   * Aside from what the superclass does, this checks the version and opens a welcome dialog
+   *    if we are running for the first time, OR if the version has changed.
    * @param savedInstanceState necessary for this
    */
   @Override
@@ -97,7 +97,7 @@ public class Chinese_Remainder
 
 
   /**
-   * @brief sets up the options menu
+   * Sets up the options menu.
    * @param menu
    * @return
    */
@@ -109,7 +109,7 @@ public class Chinese_Remainder
   }
 
   /**
-   * @brief takes care of the menu items
+   * Takes care of the menu items.
    * @param item
    * @return
    */
@@ -141,7 +141,7 @@ public class Chinese_Remainder
   }
 
   /**
-   * @brief a placeholder fragment containing a simple view
+   * A placeholder fragment containing a simple view.
    * @details This was created automatically by Android Studio and is apparently how Google wants
    *    everything done henceforth and hereafter. Aside from the default,
    *    this reads from the preferences file and assigns values to the CRC_View.
@@ -152,8 +152,7 @@ public class Chinese_Remainder
     public PlaceholderFragment() { }
 
     /**
-     * @brief aside from the default behavior, we read preferences,
-     *    and pass information to the CRC_View
+     * Aside from the default behavior, we read preferences, and pass information to the CRC_View.
      * @param inflater
      * @param container
      * @param savedInstanceState

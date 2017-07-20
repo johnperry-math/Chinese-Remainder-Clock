@@ -13,8 +13,8 @@ import java.util.Calendar;
  * the next half second. Time between frames will be determined by the Clock_Drawer's
  * preferred_step() method, and when it is time to draw a new frame the animator will call
  * the Clock_Drawer's draw() method (indirectly, through CRC_View's onDraw).
- * @see {@link Clock_Drawer#draw(Canvas)}
- * @see {@link CRC_View#onDraw(Canvas)}
+ * @see Clock_Drawer#draw(Canvas)
+ * @see CRC_View#onDraw(Canvas)
  */
 public class CRC_Animation implements Runnable {
 

@@ -36,10 +36,14 @@ import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_VAL
  * The two functions you absolutely have to implement is draw() and preferred_step();
  * see them for details.
  * You will probably also want to implement recalculate_positions().
+ * In many cases, and probably most, you should use recalculate_positions() to set up Paths
+ * for the various pieces of the design.
+ *
  * @see #initialize_fields(CRC_View)
  * @see #draw(Canvas)
  * @see #preferred_step()
  * @see #recalculate_positions()
+ * @see android.graphics.Path
  *
  */
 public abstract class Clock_Drawer {
@@ -179,6 +183,9 @@ public abstract class Clock_Drawer {
    *  You should probably override this, but if so you may want to call
    *  super.recalculate_positions() first, so that w, h, cx, cy, diam, min_x, max_x, min_y, max_y,
    *  textYOffset, text_paint are set up properly.
+   *  When you override this, it is a good idea to set up Paths to store various objects that make
+   *  up the design; then draw() can simply call drawPath() on the paths using different paints.
+   *  @see android.graphics.Path
    */
   void recalculate_positions() {
     w = (float) my_viewer.getWidth();

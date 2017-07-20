@@ -10,20 +10,40 @@ import static android.graphics.Paint.Style.FILL_AND_STROKE;
 import static android.graphics.Paint.Style.STROKE;
 import static java.lang.Math.min;
 
+/**
+ * This class extends Clock_Drawer for the Archy design,
+ * a circular design that highlights an arch to show the correct remainder.
+ * For general documentation on Clock_Drawer, see that class.
+ * This file only documents groups of lines to explain how Archy works.
+ * @see Clock_Drawer
+ */
 public class CRC_View_Arcy extends Clock_Drawer {
 
-  // constructor
+  // default construction
   public CRC_View_Arcy(CRC_View owner) { initialize_fields(owner); }
 
+  // animate every tenth of a second
   float preferred_step() { return 0.1f; }
 
   @Override
   void draw(Canvas canvas) {
 
+    // default setup
+
     setup_time();
 
     drawTimeAndRectangle(canvas, hour, minute, second, cx, cy, diam);
 
+    // each arch can be drawn in one of six ways:
+    // 1) if the last hour is not equal to the hour, then
+    //    a) if drawing the last hour, and we are animating (my_offset < 1.0) then draw bar
+    //    b) if drawing the current hour, choose alpha & draw bar
+    //    c) otherwise, draw arc
+    // 2) if the hour equals the current hour,
+    //    a) if drawing the current hour, draw bar
+    //    b) otherwise, draw arc
+
+    // hours: 3-remainder
     ball_paint.setColor(hour_color);
     ball_paint.setStyle(STROKE);
     ball_paint.setStrokeWidth(1f);
@@ -52,6 +72,7 @@ public class CRC_View_Arcy extends Clock_Drawer {
         canvas.drawPath(arc_h3[i], ball_paint);
       }
     }
+    // hours: 4- or 8-remainder
     if (my_viewer.hour_modulus == 4) {
       for (int i = 0; i < 4; ++i) {
         if (my_viewer.last_h != hour) {
@@ -106,6 +127,7 @@ public class CRC_View_Arcy extends Clock_Drawer {
       }
     }
 
+    // minutes: 3-remainder
     ball_paint.setColor(minute_color);
     for (int i = 0; i < 3; ++i) {
       if (my_viewer.last_m != minute) {
@@ -132,6 +154,7 @@ public class CRC_View_Arcy extends Clock_Drawer {
         canvas.drawPath(arc_m3[i], ball_paint);
       }
     }
+    // minutes: 4-remainder
     for (int i = 0; i < 4; ++i) {
       if (my_viewer.last_m != minute) {
         if (i == my_viewer.last_m % 4 && my_viewer.my_offset < 1.0) {
@@ -157,6 +180,7 @@ public class CRC_View_Arcy extends Clock_Drawer {
         canvas.drawPath(arc_m4[i], ball_paint);
       }
     }
+    // minutes: 5-remainder
     for (int i = 0; i < 5; ++i) {
       if (my_viewer.last_m != minute) {
         if (i == my_viewer.last_m % 5 && my_viewer.my_offset < 1.0) {
@@ -183,7 +207,9 @@ public class CRC_View_Arcy extends Clock_Drawer {
       }
     }
 
+    // showing seconds?
     if (show_seconds) {
+      // seconds: 3-remainder
       ball_paint.setColor(second_color);
       for (int i = 0; i < 3; ++i) {
         if (my_viewer.last_s != second) {
@@ -211,6 +237,7 @@ public class CRC_View_Arcy extends Clock_Drawer {
           canvas.drawPath(arc_s3[i], ball_paint);
         }
       }
+      // seconds: 4-remainder
       for (int i = 0; i < 4; ++i) {
         if (my_viewer.last_s != second) {
           if (i == my_viewer.last_s % 4 && my_viewer.my_offset < 1.0) {
@@ -237,6 +264,7 @@ public class CRC_View_Arcy extends Clock_Drawer {
           canvas.drawPath(arc_s4[i], ball_paint);
         }
       }
+      // seconds: 5-remainder
       for (int i = 0; i < 5; ++i) {
         if (my_viewer.last_s != second) {
           if (i == my_viewer.last_s % 5 && my_viewer.my_offset < 1.0) {
@@ -276,6 +304,7 @@ public class CRC_View_Arcy extends Clock_Drawer {
 
     float r_off;
 
+    // first determine the radii of each circle
     if (reverse_orientation) {
 
       if (show_seconds) {
@@ -320,6 +349,7 @@ public class CRC_View_Arcy extends Clock_Drawer {
 
     }
 
+    // prepare paths
     path_h3 = new Path [] { new Path(), new Path(), new Path() };
     path_h4 = new Path [] { new Path(), new Path(), new Path(), new Path() };
     path_h8 = new Path [] { new Path(), new Path(), new Path(), new Path() ,
@@ -342,6 +372,7 @@ public class CRC_View_Arcy extends Clock_Drawer {
     arc_s4 = new Path [] { new Path(), new Path(), new Path(), new Path() };
     arc_s5 = new Path [] { new Path(), new Path(), new Path(), new Path(), new Path() };
 
+    // paths for 3-remainders: each is determined using basic trigonometry along the circle
     for (int i = 0; i < 3; ++i) {
 
       path_h3[i].rewind(); path_m3[i].rewind(); path_s3[i].rewind();
@@ -386,6 +417,7 @@ public class CRC_View_Arcy extends Clock_Drawer {
 
     }
 
+    // paths for 4-remainders: each is determined using basic trigonometry along the circle
     for (int i = 0; i < 4; ++i) {
         
       path_h4[i].rewind(); path_m4[i].rewind(); path_s4[i].rewind();
@@ -429,6 +461,7 @@ public class CRC_View_Arcy extends Clock_Drawer {
 
     }
 
+    // paths for 8-remainders: each is determined using basic trigonometry along the circle
     for (int i = 0; i < 8; ++i) {
 
       path_h8[i].rewind();
@@ -447,7 +480,8 @@ public class CRC_View_Arcy extends Clock_Drawer {
       arc_h8[i].addArc(arect, 270 + i * 45 - 17.5f, 35);
 
     }
-    
+
+    // paths for 5-remainders: each is determined using basic trigonometry along the circle
     for (int i = 0; i < 5; ++i) {
 
       path_m5[i].rewind(); path_s5[i].rewind();

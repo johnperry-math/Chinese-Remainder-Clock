@@ -3,7 +3,8 @@ Some clocks (e.g., Bally) are 1 second behind. It's probably not noticeable,
 but we should consider fixing them.
 
 TODO
-Add documentation to source code.
+Combine Ballsy's drawing of circles and hatchmarks into paths prepared
+during recalculate_positions().
 
 TODO
 Change Archy's animation to an expanding/collapsing arch.
@@ -93,3 +94,5 @@ DONE
 - Changed Menu to Toolbar icons.
 - "What time is it?" quiz
 - Implement custom TimeEntryDialog.
+- Add documentation to source code.
+- Fixed aesthetic unsightliness in quiz mode where we forget to redraw.

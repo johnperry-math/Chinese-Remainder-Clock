@@ -44,6 +44,17 @@ import static name.cantanima.chineseremainderclock.CRC_View_Ballsy.DRAGGED_BALL.
  * Created by cantanima on 6/5/17.
  */
 
+/**
+ * This class extends Clock_Drawer for the Bally design,
+ * a circular design that moves a ball to show the correct remainder.
+ * For general documentation on Clock_Drawer, see that class.
+ * This file only documents groups of lines to explain how Bally works.
+ * 
+ * Since Bally is draggable, a number of tweaks are required, to make sure things are drawn
+ * properly. See the fields for various explanations, as well as comments within draw().
+ * @see Clock_Drawer
+ * @see #draw(Canvas) 
+ */
 public class CRC_View_Ballsy extends Clock_Drawer {
 
   // constructor
@@ -58,6 +69,10 @@ public class CRC_View_Ballsy extends Clock_Drawer {
   @TargetApi(Build.VERSION_CODES.LOLLIPOP)
   @Override
   protected void draw(Canvas canvas) {
+
+    // the analog version draws several concentric circles,
+    // and moves differently-colored balls on those circles
+    // to positions that reflect the remainder
 
     setup_time();
 
@@ -93,18 +108,13 @@ public class CRC_View_Ballsy extends Clock_Drawer {
     if (smod4 == 0) smod4 = 4;
     if (smod5 == 0) smod5 = 5;
 
+    // adjustments to remainders in case we are dragging, or if we just released the ball
+    // much of this is to prevent the animator from "snapping" to a previously saved positon
     if (dragging) {
-      Log.d(tag, "adjusting for dragging: " + String.valueOf(lhmod3) + "," + String.valueOf(lhmod4) + ";"
-            + String.valueOf(lmmod3) + "," + String.valueOf(lmmod4) + "," + String.valueOf(lmmod5) + ";"
-            + String.valueOf(lsmod3) + "," + String.valueOf(lsmod4) + "," + String.valueOf(lsmod5));
       hmod3 = lhmod3; hmod4 = lhmod4;
       mmod3 = lmmod3; mmod4 = lmmod4; mmod5 = lmmod5;
       smod3 = lsmod3; smod4 = lsmod4; smod5 = lsmod5;
-      Log.d(tag, "adjusted for dragging: " + String.valueOf(lhmod3) + "," + String.valueOf(lhmod4) + ";"
-          + String.valueOf(lmmod3) + "," + String.valueOf(lmmod4) + "," + String.valueOf(lmmod5) + ";"
-          + String.valueOf(lsmod3) + "," + String.valueOf(lsmod4) + "," + String.valueOf(lsmod5));
     } else if (just_released && dragging_which_ball != null) {
-      Log.d(tag, "adjusting " + String.valueOf(dragging_which_ball));
       switch (dragging_which_ball) {
         case HOUR3: hmod3 = lhmod3 = last_mod; break;
         case HOURH: hmod4 = lhmod4 = last_mod; break;
@@ -115,12 +125,14 @@ public class CRC_View_Ballsy extends Clock_Drawer {
         case SEC4 : smod4 = lsmod4 = last_mod; break;
         case SEC5 : smod5 = lsmod5 = last_mod; break;
       }
+      // in order to print the correct time, we need to reconstruct it from the remainder
       if (my_viewer.hour_modulus == 4)
         my_viewer.last_h = hour = (lhmod3 * 4 + lhmod4 * 9) % 12;
       else
         my_viewer.last_h = hour = (lhmod3 * 16 + lhmod4 * 9) % 24;
       my_viewer.last_m = minute = (lmmod3 * 40 + lmmod4 * 45 + lmmod5 * 36) % 60;
       my_viewer.last_s = second = (lsmod3 * 40 + lsmod4 * 45 + lsmod5 * 36) % 60;
+      // update the valueEditor (Manual mode, after all)
       switch (my_viewer.which_unit_to_modify) {
         case HOURS:
           my_viewer.valueEditor.setText(String.valueOf(hour));
@@ -132,18 +144,15 @@ public class CRC_View_Ballsy extends Clock_Drawer {
           my_viewer.valueEditor.setText(String.valueOf(second));
           break;
       }
+      // write the correct time
       draw_time(hour, minute, second);
-      Log.d(tag, "remainders: " + lhmod3 + "," + lhmod4 + ";" + lmmod3 + "," + lmmod4 + "," + lmmod5 + ";" + lsmod3 + "," + lsmod4 + "," + lsmod5);
-      Log.d(tag, "saved time: " + String.valueOf(my_viewer.last_h) + ":" + String.valueOf(my_viewer.last_m) + ":" + String.valueOf(my_viewer.last_s));
     }
-
-    // the analog version draws several concentric circles,
-    // and moves differently-colored balls on those circles
-    // to positions that reflect the remainder
 
     // make sure the ball doesn't move too far in the animation
     float ball_offset = (my_viewer.my_offset > 0.96) ? 1.0f : my_viewer.my_offset;
 
+    // a future improvement should combine the next two steps (circles and hatch marks)
+    // into Paths prepared during recalculate_positions(), then just put them on the screen here
     // draw concentric circles for the main paths
     circle_paint.setColor(line_color);
     canvas.drawCircle(cx, cy, bally_hr3, circle_paint);
@@ -269,7 +278,7 @@ public class CRC_View_Ballsy extends Clock_Drawer {
       sangle5 = (float) (2 * PI / 5 * (smod5 * ball_offset + lsmod5 * (1 - ball_offset)) - PI / 2);
     }
 
-    // if dragging, we need to modify stuff
+    // more adjustments for dragging...
     if (dragging) {
       switch (dragging_which_ball) {
         case HOUR3: hangle3 = new_angle; break;
@@ -285,7 +294,8 @@ public class CRC_View_Ballsy extends Clock_Drawer {
       Log.d(tag, String.valueOf(dragging_which_ball));
     }
 
-    // draw the balls
+    // draw the balls -- if we are dragging, then the ball is white
+    // we record the last x & y position of each ball to enable animation
 
     ball_paint.setStyle(FILL);
 
@@ -362,9 +372,11 @@ public class CRC_View_Ballsy extends Clock_Drawer {
   
   }
 
+  /** When touched, we need to determine and record position of the balls */
   @Override
   protected void notify_touched(MotionEvent e) {
     
+    // true until the ball's position is found
     boolean searching = true;
     
     float x = e.getX();
@@ -420,6 +432,7 @@ public class CRC_View_Ballsy extends Clock_Drawer {
       searching = false;
     }
 
+    // we are only dragging if a ball was found; compute the ball's initial angle
     if (!searching) {
       dragging = true;
       initial_angle = (float) atan2(y - cy, x - cx);
@@ -428,10 +441,17 @@ public class CRC_View_Ballsy extends Clock_Drawer {
 
   }
 
+  /**
+   *  Handles dragging motion. Dragging is only allowed once every 1/10 sec so as not to overwhelm
+   *  the device. If a smoother motion is desired, change the test bellow from 100 to something
+   *  smaller.
+   */
   @Override
   protected void notify_dragged(MotionEvent e) {
 
     int new_millis = Calendar.getInstance().get(Calendar.MILLISECOND);
+    // position is determined using basic trigonometry
+    // (arctangent of y/x after translated to center of View)
     if (new_millis - millis > 100 || millis - new_millis > 0) {
       float x = e.getX();
       float y = e.getY();
@@ -441,9 +461,12 @@ public class CRC_View_Ballsy extends Clock_Drawer {
 
   }
 
+  /** Handles release after dragging: snap the ball to the best position for it and then redraw */
   @Override
   protected void notify_released(MotionEvent e) {
+    
     if (dragging) {
+      
       dragging = false;
       step = 0.04f;
       if (dragging_which_ball != null) {
@@ -478,16 +501,16 @@ public class CRC_View_Ballsy extends Clock_Drawer {
       Log.d(tag, "last mod: " + String.valueOf(last_mod));
       just_released = true;
       my_viewer.invalidate();
+      
     }
+    
   }
 
-  // this should be needed only once in the lifetime of the View,
-  // but this can be many times because the View is re-constructed
-  // every time the orientation changes
   void recalculate_positions() {
   
     super.recalculate_positions();
 
+    // determine the locations of the circles and the radius of the balls
     if (reverse_orientation) {
 
       if (show_seconds) {
@@ -532,6 +555,7 @@ public class CRC_View_Ballsy extends Clock_Drawer {
 
     }
 
+    // information for hatch marks
     bally_hatch_dist = diam / 60;
     bally_hatch_hr3_inner = bally_hr3 - bally_hatch_dist;
     bally_hatch_h3_outer = bally_hr3 + bally_hatch_dist;
@@ -546,26 +570,48 @@ public class CRC_View_Ballsy extends Clock_Drawer {
   
   }
   
-  // fields that control layout of analog clock elements
+  /** fields that control layout of analog clock elements */
   protected float bally_hr3, bally_hr4, bally_mr3, bally_mr4, bally_mr5, bally_sr3, bally_sr4, bally_sr5,
           bally_br, bally_hatch_dist, bally_hatch_hr3_inner, bally_hatch_h3_outer,
           bally_hatch_hr4_inner, bally_hatch_h4_outer, bally_hatch_mr3_inner,
           bally_hatch_mr3_outer, bally_hatch_mr4_inner, bally_hatch_m4_outer,
           bally_hatch_mr5_inner, bally_hatch_m5_outer;
 
-  // fields that control dragging of balls
+  /** fields that control dragging of balls */
   protected boolean dragging = false;
   protected boolean just_released = false;
-  protected enum DRAGGED_BALL { HOUR3, HOURH, MIN3, MIN4, MIN5, SEC3, SEC4, SEC5 };
-  protected DRAGGED_BALL dragging_which_ball;
   protected float initial_angle, new_angle;
-  protected int last_mod, saved_time;
+  protected int last_mod;
+  /** counter for which ball is being dragged */
+  protected enum DRAGGED_BALL {
+    /** dragging the 3-remainder for the hour */
+    HOUR3,
+    /** dragging the 4- or 8-remainder for the hour */
+    HOURH,
+    /** dragging the 3-remainder for the minute */
+    MIN3,
+    /** dragging the 4-remainder for the minute */
+    MIN4,
+    /** dragging the 5-remainder for the minute */
+    MIN5,
+    /** dragging the 3-remainder for the second */
+    SEC3,
+    /** dragging the 4-remainder for the second */
+    SEC4,
+    /** dragging the 5-remainder for the second */
+    SEC5
+  };
+  /** which ball are we dragging? */
+  protected DRAGGED_BALL dragging_which_ball;
   
+  /** fields that record the last position of a ball (useful for dragging) */
   protected float last_h3_x, last_h3_y, last_hh_x, last_hh_y,
                   last_m3_x, last_m3_y, last_m4_x, last_m4_y, last_m5_x, last_m5_y,
                   last_s3_x, last_s3_y, last_s4_x, last_s4_y, last_s5_x, last_s5_y;
 
+  /** time for a frame during animation */
   protected float step = 0.04f;
 
+  /** tag for debugging */
   final protected static String tag = "Bally";
 }

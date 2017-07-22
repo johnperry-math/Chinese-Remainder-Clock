@@ -43,32 +43,31 @@ public class CRC_View_Arcy extends Clock_Drawer {
     //    a) if drawing the current hour, draw bar
     //    b) otherwise, draw arc
 
+    if (my_viewer.my_offset > 1.0) my_viewer.my_offset = 1.0f;
+
     // hours: 3-remainder
     ball_paint.setColor(hour_color);
-    ball_paint.setStyle(STROKE);
+    ball_paint.setAlpha(255);
     ball_paint.setStrokeWidth(1f);
     for (int i = 0; i < 3; ++i) {
       if (my_viewer.last_h != hour) {
         if (i == my_viewer.last_h % 3 && my_viewer.my_offset < 1.0) {
-          ball_paint.setStyle(FILL);
-          ball_paint.setAlpha((int) (255 * (1 - my_viewer.my_offset)));
-          canvas.drawPath(path_h3[i], ball_paint);
+          ball_paint.setStyle(FILL_AND_STROKE);
+          int j = (int) ((1 - (my_viewer.my_offset + .1)) * 10);
+          canvas.drawPath(path_h3[i][j], ball_paint);
         } else if (hour % 3 == i) {
-          ball_paint.setStyle(FILL);
-          ball_paint.setAlpha(min(255, (int) (255 * my_viewer.my_offset)));
-          canvas.drawPath(path_h3[i], ball_paint);
+          ball_paint.setStyle(FILL_AND_STROKE);
+          int j = (int) (my_viewer.my_offset * 10);
+          canvas.drawPath(path_h3[i][j], ball_paint);
         } else {
           ball_paint.setStyle(STROKE);
-          ball_paint.setAlpha(255);
           canvas.drawPath(arc_h3[i], ball_paint);
         }
       } else if (hour % 3 == i) {
         ball_paint.setStyle(FILL_AND_STROKE);
-        ball_paint.setAlpha(255);
-        canvas.drawPath(path_h3[i], ball_paint);
+        canvas.drawPath(path_h3[i][10], ball_paint);
       } else {
         ball_paint.setStyle(STROKE);
-        ball_paint.setAlpha(255);
         canvas.drawPath(arc_h3[i], ball_paint);
       }
     }
@@ -77,25 +76,22 @@ public class CRC_View_Arcy extends Clock_Drawer {
       for (int i = 0; i < 4; ++i) {
         if (my_viewer.last_h != hour) {
           if (i == my_viewer.last_h % 4 && my_viewer.my_offset < 1.0) {
-            ball_paint.setStyle(FILL);
-            ball_paint.setAlpha((int) (255 * (1 - my_viewer.my_offset)));
-            canvas.drawPath(path_h4[i], ball_paint);
+            ball_paint.setStyle(FILL_AND_STROKE);
+            int j = (int) ((1 - (my_viewer.my_offset + .1)) * 10);
+            canvas.drawPath(path_h4[i][j], ball_paint);
           } else if (hour % 4 == i) {
-            ball_paint.setStyle(FILL);
-            ball_paint.setAlpha(min(255, (int) (255 * my_viewer.my_offset)));
-            canvas.drawPath(path_h4[i], ball_paint);
+            ball_paint.setStyle(FILL_AND_STROKE);
+            int j = (int) (my_viewer.my_offset * 10);
+            canvas.drawPath(path_h4[i][j], ball_paint);
           } else {
             ball_paint.setStyle(STROKE);
-            ball_paint.setAlpha(255);
             canvas.drawPath(arc_h4[i], ball_paint);
           }
         } else if (hour % 4 == i) {
           ball_paint.setStyle(FILL_AND_STROKE);
-          ball_paint.setAlpha(255);
-          canvas.drawPath(path_h4[i], ball_paint);
+          canvas.drawPath(path_h4[i][10], ball_paint);
         } else {
           ball_paint.setStyle(STROKE);
-          ball_paint.setAlpha(255);
           canvas.drawPath(arc_h4[i], ball_paint);
         }
       }
@@ -104,24 +100,21 @@ public class CRC_View_Arcy extends Clock_Drawer {
         if (my_viewer.last_h != hour) {
           if (i == my_viewer.last_h % 8 && my_viewer.my_offset < 1.0) {
             ball_paint.setStyle(FILL);
-            ball_paint.setAlpha((int) (255 * (1 - my_viewer.my_offset)));
-            canvas.drawPath(path_h8[i], ball_paint);
+            int j = (int) ((1 - (my_viewer.my_offset + .1)) * 10);
+            canvas.drawPath(path_h8[i][j], ball_paint);
           } else if (hour % 8 == i) {
             ball_paint.setStyle(FILL);
-            ball_paint.setAlpha(min(255, (int) (255 * my_viewer.my_offset)));
-            canvas.drawPath(path_h8[i], ball_paint);
+            int j = (int) (my_viewer.my_offset * 10);
+            canvas.drawPath(path_h8[i][j], ball_paint);
           } else {
             ball_paint.setStyle(STROKE);
-            ball_paint.setAlpha(255);
             canvas.drawPath(arc_h8[i], ball_paint);
           }
         } else if (hour % 8 == i) {
           ball_paint.setStyle(FILL_AND_STROKE);
-          ball_paint.setAlpha(255);
-          canvas.drawPath(path_h8[i], ball_paint);
+          canvas.drawPath(path_h8[i][10], ball_paint);
         } else {
           ball_paint.setStyle(STROKE);
-          ball_paint.setAlpha(255);
           canvas.drawPath(arc_h8[i], ball_paint);
         }
       }
@@ -129,28 +122,26 @@ public class CRC_View_Arcy extends Clock_Drawer {
 
     // minutes: 3-remainder
     ball_paint.setColor(minute_color);
+    ball_paint.setAlpha(255);
     for (int i = 0; i < 3; ++i) {
       if (my_viewer.last_m != minute) {
         if (i == my_viewer.last_m % 3 && my_viewer.my_offset < 1.0) {
-          ball_paint.setStyle(FILL);
-          ball_paint.setAlpha((int) (255 * (1 - my_viewer.my_offset)));
-          canvas.drawPath(path_m3[i], ball_paint);
+          ball_paint.setStyle(FILL_AND_STROKE);
+          int j = (int) ((1 - (my_viewer.my_offset + .1)) * 10);
+          canvas.drawPath(path_m3[i][j], ball_paint);
         } else if (minute % 3 == i) {
-          ball_paint.setStyle(FILL);
-          ball_paint.setAlpha(min(255, (int) (255 * my_viewer.my_offset)));
-          canvas.drawPath(path_m3[i], ball_paint);
+          ball_paint.setStyle(FILL_AND_STROKE);
+          int j = (int) (my_viewer.my_offset * 10);
+          canvas.drawPath(path_m3[i][j], ball_paint);
         } else {
           ball_paint.setStyle(STROKE);
-          ball_paint.setAlpha(255);
           canvas.drawPath(arc_m3[i], ball_paint);
         }
       } else if (minute % 3 == i) {
         ball_paint.setStyle(FILL_AND_STROKE);
-        ball_paint.setAlpha(255);
-        canvas.drawPath(path_m3[i], ball_paint);
+        canvas.drawPath(path_m3[i][10], ball_paint);
       } else {
         ball_paint.setStyle(STROKE);
-        ball_paint.setAlpha(255);
         canvas.drawPath(arc_m3[i], ball_paint);
       }
     }
@@ -158,25 +149,22 @@ public class CRC_View_Arcy extends Clock_Drawer {
     for (int i = 0; i < 4; ++i) {
       if (my_viewer.last_m != minute) {
         if (i == my_viewer.last_m % 4 && my_viewer.my_offset < 1.0) {
-          ball_paint.setStyle(FILL);
-          ball_paint.setAlpha((int) (255 * (1 - my_viewer.my_offset)));
-          canvas.drawPath(path_m4[i], ball_paint);
+          ball_paint.setStyle(FILL_AND_STROKE);
+          int j = (int) ((1 - (my_viewer.my_offset + .1)) * 10);
+          canvas.drawPath(path_m4[i][j], ball_paint);
         } else if (minute % 4 == i) {
-          ball_paint.setStyle(FILL);
-          ball_paint.setAlpha(min(255, (int) (255 * my_viewer.my_offset)));
-          canvas.drawPath(path_m4[i], ball_paint);
+          ball_paint.setStyle(FILL_AND_STROKE);
+          int j = (int) (my_viewer.my_offset * 10);
+          canvas.drawPath(path_m4[i][j], ball_paint);
         } else {
           ball_paint.setStyle(STROKE);
-          ball_paint.setAlpha(255);
           canvas.drawPath(arc_m4[i], ball_paint);
         }
       } else if (minute % 4 == i) {
         ball_paint.setStyle(FILL_AND_STROKE);
-        ball_paint.setAlpha(255);
-        canvas.drawPath(path_m4[i], ball_paint);
+        canvas.drawPath(path_m4[i][10], ball_paint);
       } else {
         ball_paint.setStyle(STROKE);
-        ball_paint.setAlpha(255);
         canvas.drawPath(arc_m4[i], ball_paint);
       }
     }
@@ -184,56 +172,50 @@ public class CRC_View_Arcy extends Clock_Drawer {
     for (int i = 0; i < 5; ++i) {
       if (my_viewer.last_m != minute) {
         if (i == my_viewer.last_m % 5 && my_viewer.my_offset < 1.0) {
-          ball_paint.setStyle(FILL);
-          ball_paint.setAlpha((int) (255 * (1 - my_viewer.my_offset)));
-          canvas.drawPath(path_m5[i], ball_paint);
+          ball_paint.setStyle(FILL_AND_STROKE);
+          int j = (int) ((1 - (my_viewer.my_offset + .1)) * 10);
+          canvas.drawPath(path_m5[i][j], ball_paint);
         } else if (minute % 5 == i) {
-          ball_paint.setStyle(FILL);
-          ball_paint.setAlpha(min(255, (int) (255 * my_viewer.my_offset)));
-          canvas.drawPath(path_m5[i], ball_paint);
+          ball_paint.setStyle(FILL_AND_STROKE);
+          int j = (int) (my_viewer.my_offset * 10);
+          canvas.drawPath(path_m5[i][j], ball_paint);
         } else {
           ball_paint.setStyle(STROKE);
-          ball_paint.setAlpha(255);
           canvas.drawPath(arc_m5[i], ball_paint);
         }
       } else if (minute % 5 == i) {
         ball_paint.setStyle(FILL_AND_STROKE);
-        ball_paint.setAlpha(255);
-        canvas.drawPath(path_m5[i], ball_paint);
+        canvas.drawPath(path_m5[i][10], ball_paint);
       } else {
         ball_paint.setStyle(STROKE);
-        ball_paint.setAlpha(255);
         canvas.drawPath(arc_m5[i], ball_paint);
       }
     }
 
     // showing seconds?
     if (show_seconds) {
-      // seconds: 3-remainder
       ball_paint.setColor(second_color);
+      ball_paint.setAlpha(255);
+      // seconds: 3-remainder
       for (int i = 0; i < 3; ++i) {
         if (my_viewer.last_s != second) {
           if (i == my_viewer.last_s % 3 && my_viewer.my_offset < 1.0) {
-            ball_paint.setStyle(FILL);
-            ball_paint.setAlpha((int) (255 * (1 - my_viewer.my_offset)));
-            canvas.drawPath(path_s3[i], ball_paint);
+            ball_paint.setStyle(FILL_AND_STROKE);
+            int j = (int) ((1 - (my_viewer.my_offset + .1)) * 10);
+            canvas.drawPath(path_s3[i][j], ball_paint);
           } else if (second % 3 == i) {
-            ball_paint.setStyle(FILL);
-            ball_paint.setAlpha(min(255, (int) (255 * my_viewer.my_offset)));
-            //ball_paint.setAlpha(255);
-            canvas.drawPath(path_s3[i], ball_paint);
+            ball_paint.setStyle(FILL_AND_STROKE);
+            int j = (int) (my_viewer.my_offset * 10);
+            canvas.drawPath(path_s3[i][j], ball_paint);
           } else {
             ball_paint.setStyle(STROKE);
-            ball_paint.setAlpha(255);
             canvas.drawPath(arc_s3[i], ball_paint);
           }
         } else if (second % 3 == i) {
           ball_paint.setStyle(FILL_AND_STROKE);
-          ball_paint.setAlpha(255);
-          canvas.drawPath(path_s3[i], ball_paint);
+          canvas.drawPath(path_s3[i][10], ball_paint);
         } else {
           ball_paint.setStyle(STROKE);
-          ball_paint.setAlpha(255);
           canvas.drawPath(arc_s3[i], ball_paint);
         }
       }
@@ -241,26 +223,22 @@ public class CRC_View_Arcy extends Clock_Drawer {
       for (int i = 0; i < 4; ++i) {
         if (my_viewer.last_s != second) {
           if (i == my_viewer.last_s % 4 && my_viewer.my_offset < 1.0) {
-            ball_paint.setStyle(FILL);
-            ball_paint.setAlpha((int) (255 * (1 - my_viewer.my_offset)));
-            canvas.drawPath(path_s4[i], ball_paint);
+            ball_paint.setStyle(FILL_AND_STROKE);
+            int j = (int) ((1 - (my_viewer.my_offset + .1)) * 10);
+            canvas.drawPath(path_s4[i][j], ball_paint);
           } else if (second % 4 == i) {
-            ball_paint.setStyle(FILL);
-            ball_paint.setAlpha(min(255, (int) (255 * my_viewer.my_offset)));
-            //ball_paint.setAlpha(255);
-            canvas.drawPath(path_s4[i], ball_paint);
+            ball_paint.setStyle(FILL_AND_STROKE);
+            int j = (int) (my_viewer.my_offset * 10);
+            canvas.drawPath(path_s4[i][j], ball_paint);
           } else {
             ball_paint.setStyle(STROKE);
-            ball_paint.setAlpha(255);
             canvas.drawPath(arc_s4[i], ball_paint);
           }
         } else if (second % 4 == i) {
           ball_paint.setStyle(FILL_AND_STROKE);
-          ball_paint.setAlpha(255);
-          canvas.drawPath(path_s4[i], ball_paint);
+          canvas.drawPath(path_s4[i][10], ball_paint);
         } else {
           ball_paint.setStyle(STROKE);
-          ball_paint.setAlpha(255);
           canvas.drawPath(arc_s4[i], ball_paint);
         }
       }
@@ -268,26 +246,22 @@ public class CRC_View_Arcy extends Clock_Drawer {
       for (int i = 0; i < 5; ++i) {
         if (my_viewer.last_s != second) {
           if (i == my_viewer.last_s % 5 && my_viewer.my_offset < 1.0) {
-            ball_paint.setStyle(FILL);
-            ball_paint.setAlpha((int) (255 * (1 - my_viewer.my_offset)));
-            canvas.drawPath(path_s5[i], ball_paint);
+            ball_paint.setStyle(FILL_AND_STROKE);
+            int j = (int) ((1 - (my_viewer.my_offset + .1)) * 10);
+            canvas.drawPath(path_s5[i][j], ball_paint);
           } else if (second % 5 == i) {
-            ball_paint.setStyle(FILL);
-            ball_paint.setAlpha(min(255, (int) (255 * my_viewer.my_offset)));
-            //ball_paint.setAlpha(255);
-            canvas.drawPath(path_s5[i], ball_paint);
+            ball_paint.setStyle(FILL_AND_STROKE);
+            int j = (int) (my_viewer.my_offset * 10);
+            canvas.drawPath(path_s5[i][j], ball_paint);
           } else {
             ball_paint.setStyle(STROKE);
-            ball_paint.setAlpha(255);
             canvas.drawPath(arc_s5[i], ball_paint);
           }
         } else if (second % 5 == i) {
           ball_paint.setStyle(FILL_AND_STROKE);
-          ball_paint.setAlpha(255);
-          canvas.drawPath(path_s5[i], ball_paint);
+          canvas.drawPath(path_s5[i][10], ball_paint);
         } else {
           ball_paint.setStyle(STROKE);
-          ball_paint.setAlpha(255);
           canvas.drawPath(arc_s5[i], ball_paint);
         }
       }
@@ -350,16 +324,59 @@ public class CRC_View_Arcy extends Clock_Drawer {
     }
 
     // prepare paths
-    path_h3 = new Path [] { new Path(), new Path(), new Path() };
-    path_h4 = new Path [] { new Path(), new Path(), new Path(), new Path() };
-    path_h8 = new Path [] { new Path(), new Path(), new Path(), new Path() ,
-                            new Path(), new Path(), new Path(), new Path() };
-    path_m3 = new Path [] { new Path(), new Path(), new Path() };
-    path_m4 = new Path [] { new Path(), new Path(), new Path(), new Path() };
-    path_m5 = new Path [] { new Path(), new Path(), new Path(), new Path(), new Path() };
-    path_s3 = new Path [] { new Path(), new Path(), new Path() };
-    path_s4 = new Path [] { new Path(), new Path(), new Path(), new Path() };
-    path_s5 = new Path [] { new Path(), new Path(), new Path(), new Path(), new Path() };
+    path_h3 = new Path [3][];
+    path_h4 = new Path [4][];
+    path_h8 = new Path [8][];
+    path_m3 = new Path [3][];
+    path_m4 = new Path [4][];
+    path_m5 = new Path [5][];
+    path_s3 = new Path [3][];
+    path_s4 = new Path [4][];
+    path_s5 = new Path [5][];
+    for (int i = 0; i < 3; ++i) {
+      path_h3[i] = new Path[]{
+          new Path(), new Path(), new Path(), new Path(), new Path(), new Path(),
+          new Path(), new Path(), new Path(), new Path(), new Path()
+      };
+      path_m3[i] = new Path[]{
+          new Path(), new Path(), new Path(), new Path(), new Path(), new Path(),
+          new Path(), new Path(), new Path(), new Path(), new Path()
+      };
+      path_s3[i] = new Path[]{
+          new Path(), new Path(), new Path(), new Path(), new Path(), new Path(),
+          new Path(), new Path(), new Path(), new Path(), new Path()
+      };
+    }
+    for (int i = 0; i < 4; ++i) {
+      path_h4[i] = new Path[]{
+          new Path(), new Path(), new Path(), new Path(), new Path(), new Path(),
+          new Path(), new Path(), new Path(), new Path(), new Path()
+      };
+      path_m4[i] = new Path[]{
+          new Path(), new Path(), new Path(), new Path(), new Path(), new Path(),
+          new Path(), new Path(), new Path(), new Path(), new Path()
+      };
+      path_s4[i] = new Path[]{
+          new Path(), new Path(), new Path(), new Path(), new Path(), new Path(),
+          new Path(), new Path(), new Path(), new Path(), new Path()
+      };
+    }
+    for (int i = 0; i < 5; ++i) {
+      path_m5[i] = new Path[] {
+          new Path(), new Path(), new Path(), new Path(), new Path(), new Path(),
+          new Path(), new Path(), new Path(), new Path(), new Path()
+      };
+      path_s5[i] = new Path[] {
+          new Path(), new Path(), new Path(), new Path(), new Path(), new Path(),
+          new Path(), new Path(), new Path(), new Path(), new Path()
+      };
+    }
+    for (int i = 0; i < 8; ++i) {
+      path_h8[i] = new Path[] {
+          new Path(), new Path(), new Path(), new Path(), new Path(), new Path(),
+          new Path(), new Path(), new Path(), new Path(), new Path()
+      };
+    }
 
     arc_h3 = new Path [] { new Path(), new Path(), new Path() };
     arc_h4 = new Path [] { new Path(), new Path(), new Path(), new Path() };
@@ -375,38 +392,41 @@ public class CRC_View_Arcy extends Clock_Drawer {
     // paths for 3-remainders: each is determined using basic trigonometry along the circle
     for (int i = 0; i < 3; ++i) {
 
-      path_h3[i].rewind(); path_m3[i].rewind(); path_s3[i].rewind();
-      arc_h3[i].rewind(); arc_m3[i].rewind(); arc_s3[i].rewind();
+      for (int j = 0; j < 11; ++j) {
 
-      RectF hrect = new RectF(
-              cx - (rh3 - r_off), cy - (rh3 - r_off), cx + (rh3 - r_off), cy + (rh3 - r_off)
-      );
-      path_h3[i].arcTo(hrect, 270 + i*120 - 55, 110, true);
-      hrect = new RectF(
-              cx - (rh3 + r_off), cy - (rh3 + r_off), cx + (rh3 + r_off), cy + (rh3 + r_off)
-      );
-      path_h3[i].arcTo(hrect, 270 + i*120 + 55, -110, false);
-      path_h3[i].close();
+        float r_off_j = r_off / 11 * (j + 1);
 
-      RectF mrect = new RectF(
-              cx - (rm3 - r_off), cy - (rm3 - r_off), cx + (rm3 - r_off), cy + (rm3 - r_off)
-      );
-      path_m3[i].arcTo(mrect, 270 + i*120 - 55, 110, true);
-      mrect = new RectF(
-              cx - (rm3 + r_off), cy - (rm3 + r_off), cx + (rm3 + r_off), cy + (rm3 + r_off)
-      );
-      path_m3[i].arcTo(mrect, 270 + i*120 + 55, -110, false);
-      path_m3[i].close();
+        RectF hrect = new RectF(
+            cx - (rh3 - r_off_j), cy - (rh3 - r_off_j), cx + (rh3 - r_off_j), cy + (rh3 - r_off_j)
+        );
+        path_h3[i][j].arcTo(hrect, 270 + i*120 - 55, 110, true);
+        hrect = new RectF(
+            cx - (rh3 + r_off_j), cy - (rh3 + r_off_j), cx + (rh3 + r_off_j), cy + (rh3 + r_off_j)
+        );
+        path_h3[i][j].arcTo(hrect, 270 + i*120 + 55, -110, false);
+        path_h3[i][j].close();
 
-      RectF srect = new RectF(
-              cx - (rs3 - r_off), cy - (rs3 - r_off), cx + (rs3 - r_off), cy + (rs3 - r_off)
-      );
-      path_s3[i].arcTo(srect, 270 + i*120 - 55, 110, true);
-      srect = new RectF(
-              cx - (rs3 + r_off), cy - (rs3 + r_off), cx + (rs3 + r_off), cy + (rs3 + r_off)
-      );
-      path_s3[i].arcTo(srect, 270 + i*120 + 55, -110, false);
-      path_s3[i].close();
+        RectF mrect = new RectF(
+            cx - (rm3 - r_off_j), cy - (rm3 - r_off_j), cx + (rm3 - r_off_j), cy + (rm3 - r_off_j)
+        );
+        path_m3[i][j].arcTo(mrect, 270 + i * 120 - 55, 110, true);
+        mrect = new RectF(
+            cx - (rm3 + r_off_j), cy - (rm3 + r_off_j), cx + (rm3 + r_off_j), cy + (rm3 + r_off_j)
+        );
+        path_m3[i][j].arcTo(mrect, 270 + i * 120 + 55, -110, false);
+        path_m3[i][j].close();
+
+        RectF srect = new RectF(
+            cx - (rs3 - r_off_j), cy - (rs3 - r_off_j), cx + (rs3 - r_off_j), cy + (rs3 - r_off_j)
+        );
+        path_s3[i][j].arcTo(srect, 270 + i * 120 - 55, 110, true);
+        srect = new RectF(
+            cx - (rs3 + r_off_j), cy - (rs3 + r_off_j), cx + (rs3 + r_off_j), cy + (rs3 + r_off_j)
+        );
+        path_s3[i][j].arcTo(srect, 270 + i * 120 + 55, -110, false);
+        path_s3[i][j].close();
+        
+      }
 
       RectF arect = new RectF(cx - rh3, cy - rh3, cx + rh3, cy + rh3);
       arc_h3[i].addArc(arect, 270 + i*120 - 55, 110);
@@ -420,37 +440,41 @@ public class CRC_View_Arcy extends Clock_Drawer {
     // paths for 4-remainders: each is determined using basic trigonometry along the circle
     for (int i = 0; i < 4; ++i) {
         
-      path_h4[i].rewind(); path_m4[i].rewind(); path_s4[i].rewind();
+      for (int j = 0; j < 11; ++j) {
+        
+        float r_off_j = r_off / 11 * (j + 1);
 
-      RectF hrect = new RectF(
-              cx - (rhh - r_off), cy - (rhh - r_off), cx + (rhh - r_off), cy + (rhh - r_off)
-      );
-      path_h4[i].arcTo(hrect, 270 + i*90 - 40, 80, true);
-      hrect = new RectF(
-              cx - (rhh + r_off), cy - (rhh + r_off), cx + (rhh + r_off), cy + (rhh + r_off)
-      );
-      path_h4[i].arcTo(hrect, 270 + i*90 + 40, -80, false);
-      path_h4[i].close();
+        RectF hrect = new RectF(
+            cx - (rhh - r_off_j), cy - (rhh - r_off_j), cx + (rhh - r_off_j), cy + (rhh - r_off_j)
+        );
+        path_h4[i][j].arcTo(hrect, 270 + i*90 - 40, 80, true);
+        hrect = new RectF(
+            cx - (rhh + r_off_j), cy - (rhh + r_off_j), cx + (rhh + r_off_j), cy + (rhh + r_off_j)
+        );
+        path_h4[i][j].arcTo(hrect, 270 + i*90 + 40, -80, false);
+        path_h4[i][j].close();
 
-      RectF mrect = new RectF(
-              cx - (rm4 - r_off), cy - (rm4 - r_off), cx + (rm4 - r_off), cy + (rm4 - r_off)
-      );
-      path_m4[i].arcTo(mrect, 270 + i*90 - 40, 80, true);
-      mrect = new RectF(
-              cx - (rm4 + r_off), cy - (rm4 + r_off), cx + (rm4 + r_off), cy + (rm4 + r_off)
-      );
-      path_m4[i].arcTo(mrect, 270 + i*90 + 40, -80, false);
-      path_m4[i].close();
+        RectF mrect = new RectF(
+            cx - (rm4 - r_off_j), cy - (rm4 - r_off_j), cx + (rm4 - r_off_j), cy + (rm4 - r_off_j)
+        );
+        path_m4[i][j].arcTo(mrect, 270 + i*90 - 40, 80, true);
+        mrect = new RectF(
+            cx - (rm4 + r_off_j), cy - (rm4 + r_off_j), cx + (rm4 + r_off_j), cy + (rm4 + r_off_j)
+        );
+        path_m4[i][j].arcTo(mrect, 270 + i*90 + 40, -80, false);
+        path_m4[i][j].close();
 
-      RectF srect = new RectF(
-              cx - (rs4 - r_off), cy - (rs4 - r_off), cx + (rs4 - r_off), cy + (rs4 - r_off)
-      );
-      path_s4[i].arcTo(srect, 270 + i*90 - 40, 80, true);
-      srect = new RectF(
-              cx - (rs4 + r_off), cy - (rs4 + r_off), cx + (rs4 + r_off), cy + (rs4 + r_off)
-      );
-      path_s4[i].arcTo(srect, 270 + i*90 + 40, -80, false);
-      path_s4[i].close();
+        RectF srect = new RectF(
+            cx - (rs4 - r_off_j), cy - (rs4 - r_off_j), cx + (rs4 - r_off_j), cy + (rs4 - r_off_j)
+        );
+        path_s4[i][j].arcTo(srect, 270 + i * 90 - 40, 80, true);
+        srect = new RectF(
+            cx - (rs4 + r_off_j), cy - (rs4 + r_off_j), cx + (rs4 + r_off_j), cy + (rs4 + r_off_j)
+        );
+        path_s4[i][j].arcTo(srect, 270 + i * 90 + 40, -80, false);
+        path_s4[i][j].close();
+        
+      }
 
       RectF arect = new RectF(cx - rhh, cy - rhh, cx + rhh, cy + rhh);
       arc_h4[i].addArc(arect, 270 + i*90 - 40, 80);
@@ -463,48 +487,56 @@ public class CRC_View_Arcy extends Clock_Drawer {
 
     // paths for 8-remainders: each is determined using basic trigonometry along the circle
     for (int i = 0; i < 8; ++i) {
-
-      path_h8[i].rewind();
-
-      RectF hrect = new RectF(
-              cx - (rhh - r_off), cy - (rhh - r_off), cx + (rhh - r_off), cy + (rhh - r_off)
-      );
-      path_h8[i].arcTo(hrect, 270 + i * 45 - 17.5f, 35, true);
-      hrect = new RectF(
-              cx - (rhh + r_off), cy - (rhh + r_off), cx + (rhh + r_off), cy + (rhh + r_off)
-      );
-      path_h8[i].arcTo(hrect, 270 + i * 45 + 17.5f, -35, false);
-      path_h8[i].close();
       
-      RectF arect = new RectF(cx - rhh, cy - rhh, cx + rhh, cy + rhh);
-      arc_h8[i].addArc(arect, 270 + i * 45 - 17.5f, 35);
+      for (int j = 0; j < 11; ++j) {
+        
+        float r_off_j = r_off / 11 * (j + 1);
+
+        RectF hrect = new RectF(
+            cx - (rhh - r_off_j), cy - (rhh - r_off_j), cx + (rhh - r_off_j), cy + (rhh - r_off_j)
+        );
+        path_h8[i][j].arcTo(hrect, 270 + i * 45 - 17.5f, 35, true);
+        hrect = new RectF(
+            cx - (rhh + r_off_j), cy - (rhh + r_off_j), cx + (rhh + r_off_j), cy + (rhh + r_off_j)
+        );
+        path_h8[i][j].arcTo(hrect, 270 + i * 45 + 17.5f, -35, false);
+        path_h8[i][j].close();
+
+        RectF arect = new RectF(cx - rhh, cy - rhh, cx + rhh, cy + rhh);
+        arc_h8[i].addArc(arect, 270 + i * 45 - 17.5f, 35);
+        
+      }
 
     }
 
     // paths for 5-remainders: each is determined using basic trigonometry along the circle
     for (int i = 0; i < 5; ++i) {
 
-      path_m5[i].rewind(); path_s5[i].rewind();
+      for (int j = 0; j < 11; ++j) {
+        
+        float r_off_j = r_off / 11 * (j + 1);
 
-      RectF mrect = new RectF(
-              cx - (rm5 - r_off), cy - (rm5 - r_off), cx + (rm5 - r_off), cy + (rm5 - r_off)
-      );
-      path_m5[i].arcTo(mrect, 270 + i*72 - 31, 62, true);
-      mrect = new RectF(
-              cx - (rm5 + r_off), cy - (rm5 + r_off), cx + (rm5 + r_off), cy + (rm5 + r_off)
-      );
-      path_m5[i].arcTo(mrect, 270 + i*72 + 31, -62, false);
-      path_m5[i].close();
+        RectF mrect = new RectF(
+            cx - (rm5 - r_off_j), cy - (rm5 - r_off_j), cx + (rm5 - r_off_j), cy + (rm5 - r_off_j)
+        );
+        path_m5[i][j].arcTo(mrect, 270 + i*72 - 31, 62, true);
+        mrect = new RectF(
+            cx - (rm5 + r_off_j), cy - (rm5 + r_off_j), cx + (rm5 + r_off_j), cy + (rm5 + r_off_j)
+        );
+        path_m5[i][j].arcTo(mrect, 270 + i*72 + 31, -62, false);
+        path_m5[i][j].close();
 
-      RectF srect = new RectF(
-              cx - (rs5 - r_off), cy - (rs5 - r_off), cx + (rs5 - r_off), cy + (rs5 - r_off)
-      );
-      path_s5[i].arcTo(srect, 270 + i*72 - 31, 62, true);
-      srect = new RectF(
-              cx - (rs5 + r_off), cy - (rs5 + r_off), cx + (rs5 + r_off), cy + (rs5 + r_off)
-      );
-      path_s5[i].arcTo(srect, 270 + i*72 + 31, -62, false);
-      path_s5[i].close();
+        RectF srect = new RectF(
+            cx - (rs5 - r_off_j), cy - (rs5 - r_off_j), cx + (rs5 - r_off_j), cy + (rs5 - r_off_j)
+        );
+        path_s5[i][j].arcTo(srect, 270 + i * 72 - 31, 62, true);
+        srect = new RectF(
+            cx - (rs5 + r_off_j), cy - (rs5 + r_off_j), cx + (rs5 + r_off_j), cy + (rs5 + r_off_j)
+        );
+        path_s5[i][j].arcTo(srect, 270 + i * 72 + 31, -62, false);
+        path_s5[i][j].close();
+        
+      }
 
       RectF arect = new RectF(cx - rm5, cy - rm5, cx + rm5, cy + rm5);
       arc_m5[i].addArc(arect, 270 + i*72 - 31, 62);
@@ -517,8 +549,9 @@ public class CRC_View_Arcy extends Clock_Drawer {
 
   float rh3, rhh, rm3, rm4, rm5, rs3, rs4, rs5;
 
-  Path [] path_h3, path_h4, path_h8, path_m3, path_m4, path_m5, path_s3, path_s4, path_s5,
-          arc_h3, arc_h4, arc_h8, arc_m3, arc_m4, arc_m5, arc_s3, arc_s4, arc_s5;
+  Path [] [] path_h3, path_h4, path_h8, path_m3, path_m4, path_m5, path_s3, path_s4, path_s5;
+
+  Path [] arc_h3, arc_h4, arc_h8, arc_m3, arc_m4, arc_m5, arc_s3, arc_s4, arc_s5;
 
   final static String tag = "Archy";
 }

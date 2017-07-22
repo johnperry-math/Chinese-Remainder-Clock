@@ -1,13 +1,11 @@
 TODO
-Some clocks (e.g., Bally) are 1 second behind. It's probably not noticeable,
+Some clocks (e.g., Ringy) are 1 second behind. It's probably not noticeable,
 but we should consider fixing them.
+(Update: recent tests suggest this may not be true, if it ever was.)
 
 TODO
-Combine Ballsy's drawing of circles and hatchmarks into paths prepared
+Combine Ringy's drawing of circles and hatchmarks into paths prepared
 during recalculate_positions().
-
-TODO
-Change Archy's animation to an expanding/collapsing arch.
 
 TODO
 Touch and drag time manually in Archy, Vertie, maybe Bubbly.
@@ -46,7 +44,7 @@ Other quizzes:
   Only the 5-remainder changes. The 3-remainder and 4-remainder stay the same.
   Only the 4-remainder changes. The 3-remainder and 5-remainder stay the same
 - Alignments
-  For Bally=Ringy (picture needed, or simply a link): For which times
+  For Ringy=Ringy (picture needed, or simply a link): For which times
   are the balls vertically aligned?
   The minute must be 0 or 30, and the same holds for the second. The
   hour must be 0 (or 12, in the 24-hour clock).
@@ -71,7 +69,7 @@ DONE
 - Split Polly into three different designs:
   a) Linus simply moves lines about a polygon.
   b) Shady fills a polygon without using lines.
-  c) Vertie rotates a highlight around the vertices, much as Ballsy rotates a ball around a circle.
+  c) Vertie rotates a highlight around the vertices, much as Ringy rotates a ball around a circle.
 - Move strings to string file(s), to assist with eventual internationalization.
   (This may not be entirely done, but I'm cleaning it up wherever I find it.)
 - Add an honest settings panel and clean up the interface.
@@ -87,7 +85,7 @@ DONE
 - Move time out of clock design and into its own proper TextView.
 - Adjusted designs' sizes now that we have more space after moving time out of the design.
 - Update documentation to reflect new designs.
-- Make it possible to change the time manually by touch and drag motions. (in Bally)
+- Make it possible to change the time manually by touch and drag motions. (in Ringy)
 - Added background color option.
 - Eliminated buttons obsoleted by settings interface.
 - Added welcome screen.
@@ -96,3 +94,5 @@ DONE
 - Implement custom TimeEntryDialog.
 - Add documentation to source code.
 - Fixed aesthetic unsightliness in quiz mode where we forget to redraw.
+- Renamed Bally to Ringy. (Including everywhere in the to do file, except here.
+- Change Archy's animation to an expanding/collapsing arch.

@@ -98,7 +98,7 @@ public class CRC_View
     // this test is in here so that the layout designer will show a basic CRC_View; don't remove!
     if (isInEditMode()) {
 
-      my_drawer = new CRC_View_Ballsy(this);
+      my_drawer = new CRC_View_Ringy(this);
 
     } else {
 
@@ -238,13 +238,13 @@ public class CRC_View
 
     switch (which_drawer) {
       case 0: my_drawer = new CRC_View_Arcy(this); break;
-      case 1: my_drawer = new CRC_View_Archy_Fade(this); break;
-      case 2: my_drawer = new CRC_View_Ballsy(this); break;
-      case 3: my_drawer = new CRC_View_Bubbly(this); break;
-      case 4: my_drawer = new CRC_View_Linus(this); break;
-      case 5: my_drawer = new CRC_View_Shady(this); break;
-      case 6: my_drawer = new CRC_View_Vertie(this); break;
-      default: my_drawer = new CRC_View_Arcy(this); break;
+      case 1: my_drawer = new CRC_View_Bubbly(this); break;
+      case 2: my_drawer = new CRC_View_Linus(this); break;
+      case 3: my_drawer = new CRC_View_Ringy(this); break;
+      case 4: my_drawer = new CRC_View_Shady(this); break;
+      case 5: my_drawer = new CRC_View_Vertie(this); break;
+      default: my_drawer = new CRC_View_Ringy(this); break;
+      //case 1: my_drawer = new CRC_View_Archy_Fade(this); break;
     }
     my_drawer.set_show_seconds(show_seconds);
     my_drawer.set_show_time(show_time);
@@ -376,7 +376,7 @@ public class CRC_View
     if (event.getAction() == ACTION_UP) { // released
 
       // add drawer here if it's enabled for touch and drag
-      if (my_drawer.getClass() == CRC_View_Ballsy.class) {
+      if (my_drawer.getClass() == CRC_View_Ringy.class) {
         my_drawer.notify_released(event);
         dragging = false;
       }
@@ -407,7 +407,7 @@ public class CRC_View
           // inside; set up for dragging
           // add drawer here if it's enabled for touch and drag
           if (
-              my_drawer.getClass() == CRC_View_Ballsy.class &&
+              my_drawer.getClass() == CRC_View_Ringy.class &&
               activeToggle.getVisibility() == View.VISIBLE && activeToggle.isChecked()
           ) {
 

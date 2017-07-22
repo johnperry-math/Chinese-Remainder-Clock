@@ -1,48 +1,29 @@
 package name.cantanima.chineseremainderclock;
 
 import android.annotation.TargetApi;
-import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Path;
 import android.os.Build;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.Calendar;
 
-import static android.graphics.Color.BLACK;
-import static android.graphics.Color.BLUE;
-import static android.graphics.Color.RED;
 import static android.graphics.Color.WHITE;
-import static android.graphics.Paint.ANTI_ALIAS_FLAG;
-import static android.graphics.Paint.Align.CENTER;
 import static android.graphics.Paint.Style.FILL;
-import static android.graphics.Paint.Style.STROKE;
 import static java.lang.Math.PI;
 import static java.lang.Math.atan2;
 import static java.lang.Math.cos;
-import static java.lang.Math.min;
 import static java.lang.Math.round;
 import static java.lang.Math.sin;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.CALENDAR;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.INCREMENT;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.LEAVE_BE;
-import static name.cantanima.chineseremainderclock.CRC_View.Units.HOURS;
-import static name.cantanima.chineseremainderclock.CRC_View_Ballsy.DRAGGED_BALL.HOUR3;
-import static name.cantanima.chineseremainderclock.CRC_View_Ballsy.DRAGGED_BALL.HOURH;
-import static name.cantanima.chineseremainderclock.CRC_View_Ballsy.DRAGGED_BALL.MIN3;
-import static name.cantanima.chineseremainderclock.CRC_View_Ballsy.DRAGGED_BALL.MIN4;
-import static name.cantanima.chineseremainderclock.CRC_View_Ballsy.DRAGGED_BALL.MIN5;
-import static name.cantanima.chineseremainderclock.CRC_View_Ballsy.DRAGGED_BALL.SEC3;
-import static name.cantanima.chineseremainderclock.CRC_View_Ballsy.DRAGGED_BALL.SEC4;
-import static name.cantanima.chineseremainderclock.CRC_View_Ballsy.DRAGGED_BALL.SEC5;
-
-/**
- * Created by cantanima on 6/5/17.
- */
+import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.HOUR3;
+import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.HOURH;
+import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.MIN3;
+import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.MIN4;
+import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.MIN5;
+import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.SEC3;
+import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.SEC4;
+import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.SEC5;
 
 /**
  * This class extends Clock_Drawer for the Bally design,
@@ -55,10 +36,10 @@ import static name.cantanima.chineseremainderclock.CRC_View_Ballsy.DRAGGED_BALL.
  * @see Clock_Drawer
  * @see #draw(Canvas) 
  */
-public class CRC_View_Ballsy extends Clock_Drawer {
+public class CRC_View_Ringy extends Clock_Drawer {
 
   // constructor
-  public CRC_View_Ballsy(CRC_View owner) {
+  public CRC_View_Ringy(CRC_View owner) {
   
     initialize_fields(owner);
   

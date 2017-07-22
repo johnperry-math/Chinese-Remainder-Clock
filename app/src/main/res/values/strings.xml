@@ -47,7 +47,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="version">version</string>
-    <string name="current_version">1.6</string>
+    <string name="current_version">1.7</string>
     <string name="first_run">first_run</string>
     <string name="saved_hour">saved_hour</string>
     <string name="saved_color">saved_color</string>
@@ -72,10 +72,9 @@
     <integer name="num_drawers">7</integer>
     <string-array name="drawStrings">
         <item>Archy: arc\'s position on circle tells remainder</item>
-        <item>Archy Fade: arc\'s position on circle tells remainder</item>
-        <item>Bally: ball\'s position on circle tells remainder</item>
         <item>Bubbly: number of filled bubbles tells remainder</item>
         <item>Linus: number of highlighted sides tells remainder</item>
+        <item>Ringy: ball\'s position on ring tells remainder</item>
         <item>Shady: remainders displayed in shaded polygon</item>
         <item>Vertie: higlighted vertex tells remainder</item>
     </string-array>
@@ -86,7 +85,6 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
-        <item>6</item>
     </string-array>
 
     <string name="color_pref_text">Monochrome</string>

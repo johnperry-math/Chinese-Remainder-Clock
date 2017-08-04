@@ -3,7 +3,7 @@
               android:id="@+id/time_dialog_layout"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_gravity="center"
+              android:layout_gravity="bottom|center"
               android:background="@drawable/transparent_dialog"
               android:elevation="5dp"
               android:gravity="center"
@@ -29,8 +29,8 @@
             android:layout_height="wrap_content"
             android:hint="@string/quiz_hour_hint"
             android:inputType="number"
-            android:selectAllOnFocus="true"
             android:maxLines="1"
+            android:selectAllOnFocus="true"
             android:textSize="24sp"/>
 
         <TextView
@@ -44,8 +44,8 @@
             android:layout_height="wrap_content"
             android:hint="@string/quiz_minute_hint"
             android:inputType="number"
-            android:selectAllOnFocus="false"
             android:maxLines="1"
+            android:selectAllOnFocus="false"
             android:textSize="24sp"/>
 
     </LinearLayout>

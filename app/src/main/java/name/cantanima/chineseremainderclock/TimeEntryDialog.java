@@ -55,8 +55,6 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
 
     super.onCreate(savedInstanceState);
 
-    // don't want user skipping out of quiz
-    setCancelable(false);
     // no title bar (space is at a premium)
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     // set up layout according to device orientation
@@ -101,6 +99,18 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
 
     crc_view.quiz_answered(hour, minute);
     dismiss();
+
+  }
+
+  /**
+   * When the user presses the back button, we assume s/he wants to quit the quiz.
+   * This calls crc_view's quiz_cancelled() routine.
+   */
+  @Override
+  public void onBackPressed() {
+
+    dismiss();
+    crc_view.quiz_cancelled();
 
   }
 

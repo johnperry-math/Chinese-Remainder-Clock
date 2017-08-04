@@ -10,8 +10,9 @@
         android:id="@+id/time_display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:gravity="center_vertical|center_horizontal"
         android:textColor="@color/white"
         android:shadowColor="@color/black"
@@ -29,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_below="@id/time_display" />
+        android:layout_alignParentTop="true" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -72,15 +73,16 @@
 
         </LinearLayout>
 
-        <ToggleButton
+        <Switch
             android:id="@+id/activeToggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:checked="false"
+            android:showText="true"
             android:text="@string/auto_button_text"
             android:textOff="@string/auto_button_text_off"
-            android:textOn="@string/auto_button_text_on" />
+            android:textOn="@string/auto_button_text_on"/>
 
         <EditText
             android:id="@+id/timeEditor"

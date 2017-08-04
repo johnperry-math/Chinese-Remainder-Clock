@@ -1,20 +1,16 @@
 package name.cantanima.chineseremainderclock;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.ColorDrawable;
-import android.preference.ListPreference;
 import android.preference.PreferenceManager;
+import android.app.ActionBar;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -30,20 +26,16 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import android.widget.TimePicker;
-import android.widget.ToggleButton;
 
-import java.util.Calendar;
 import java.util.Random;
 
 import static android.content.Context.MODE_PRIVATE;
-import static android.graphics.Color.BLACK;
 import static android.graphics.Color.BLUE;
 import static android.graphics.Color.GRAY;
 import static android.graphics.Color.GREEN;
-import static android.graphics.Color.LTGRAY;
 import static android.graphics.Color.RED;
 import static android.graphics.Color.TRANSPARENT;
 import static android.graphics.Color.WHITE;
@@ -51,13 +43,10 @@ import static android.view.MotionEvent.ACTION_DOWN;
 import static android.view.MotionEvent.ACTION_MOVE;
 import static android.view.MotionEvent.ACTION_UP;
 import static android.view.WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-import static android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL;
 import static java.util.Calendar.HOUR;
 import static java.util.Calendar.HOUR_OF_DAY;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.CALENDAR;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.LEAVE_BE;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_VALUE;
-import static name.cantanima.chineseremainderclock.Clock_Drawer.VERYLIGHTGRAY;
 
 /**
  * Created by cantanima on 4/22/17.
@@ -277,7 +266,7 @@ public class CRC_View
    */
   //
   // see code for indication of which parameter corresponds to which button
-  void setButtonsToListen(ToggleButton pb, Button dn, Button up, Spinner spin, EditText vb) {
+  void setButtonsToListen(Switch pb, Button dn, Button up, Spinner spin, EditText vb) {
     activeToggle = pb;
     incrementer = up;
     decrementer = dn;
@@ -585,8 +574,27 @@ public class CRC_View
 
     my_animator.pause();
     if (quiz_generator == null) quiz_generator = new Random();
+
+    android.support.v7.app.ActionBar ab = my_owner.getSupportActionBar();
+    ab.hide();
+
+    // visibility
     quiz_previous_time_visibility = tv.getVisibility();
     quiz_previous_seconds_visibility = my_drawer.get_show_seconds();
+    // we need to hide buttons if we were in manual mode
+    if (activeToggle.getVisibility() != VISIBLE)
+      quiz_active_toggle_was_visible = false;
+    else {
+      quiz_active_toggle_was_visible = true;
+      activeToggle.setVisibility(INVISIBLE);
+      if (activeToggle.isChecked()) {
+        unitSelecter.setVisibility(INVISIBLE);
+        incrementer.setVisibility(INVISIBLE);
+        decrementer.setVisibility(INVISIBLE);
+        valueEditor.setVisibility(INVISIBLE);
+      }
+    }
+
     my_drawer.set_show_seconds(false);
     my_drawer.recalculate_positions();
     tv.setVisibility(INVISIBLE);
@@ -603,34 +611,32 @@ public class CRC_View
    */
   public void quiz_question() {
 
-    // old way: TimePickerDialog
-    /*quiz_dialog = new TimePickerDialog(
-        my_owner, //my_owner.getApplicationInfo().theme, // (really old way)
-        AlertDialog.THEME_HOLO_LIGHT,
-        this, 0, 0, hour_modulus == 8
-    );*/
-    // new way: TimeEntryDialog
     quiz_dialog = new TimeEntryDialog(my_owner, this, quiz_number_complete, quiz_number_total);
     Window quiz_win = quiz_dialog.getWindow();
-    quiz_win.setBackgroundDrawable(new ColorDrawable(TRANSPARENT));
-    // old way
-    /*DisplayMetrics metrics = new DisplayMetrics();
-    my_owner.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-    int screen_height = metrics.heightPixels;
-    quiz_win.setLayout(getWidth(), screen_height - getBottom());*/
+    if (quiz_win != null) {
 
-    // we DO NOT want to dim the clock; user needs to see it
-    WindowManager.LayoutParams win_attr = quiz_win.getAttributes();
-    //win_attr.y = getHeight();
-    quiz_dialog.getWindow().clearFlags(FLAG_DIM_BEHIND);
-    quiz_dialog.show();
+      //quiz_win.setBackgroundDrawable(new ColorDrawable(TRANSPARENT));
 
-    // move the clock to the quiz question's desired position
-    time_guide = Modification.NEW_TIME;
-    new_hour_value = quiz_generator.nextInt(hour_modulus == 4 ? 12 : 24) + 1;
-    new_minute_value = quiz_generator.nextInt(60) + 1;
-    my_animator.resume();
-    my_animator.pause();
+      // we DO NOT want to dim the clock; user needs to see it
+      int screen_config = my_owner.getResources().getConfiguration().orientation;
+      WindowManager.LayoutParams win_attr = quiz_win.getAttributes();
+      if (screen_config == Configuration.ORIENTATION_PORTRAIT)
+        win_attr.gravity = Gravity.BOTTOM;
+      else if (screen_config == Configuration.ORIENTATION_LANDSCAPE)
+        win_attr.gravity = Gravity.LEFT;
+      quiz_win.setAttributes(win_attr);
+      quiz_dialog.getWindow().clearFlags(FLAG_DIM_BEHIND);
+      quiz_dialog.show();
+
+      // move the clock to the quiz question's desired position
+      time_guide = Modification.NEW_TIME;
+      new_hour_value = quiz_generator.nextInt(hour_modulus == 4 ? 12 : 24) + 1;
+      new_minute_value = quiz_generator.nextInt(60) + 1;
+      my_animator.resume();
+      my_animator.pause();
+
+    }
+
 
   }
 
@@ -684,12 +690,32 @@ public class CRC_View
                       public void onClick(DialogInterface dialog, int which) { dialog.dismiss(); }
                     }
               ).show();
-      tv.setVisibility(quiz_previous_time_visibility);
-      my_drawer.set_show_seconds(quiz_previous_seconds_visibility);
-      my_drawer.recalculate_positions();
+
+      quiz_cancelled();
+
+    }
+
+  }
+
+  public void quiz_cancelled() {
+
+    tv.setVisibility(quiz_previous_time_visibility);
+    my_drawer.set_show_seconds(quiz_previous_seconds_visibility);
+    my_drawer.recalculate_positions();
+    android.support.v7.app.ActionBar ab = my_owner.getSupportActionBar();
+    ab.show();
+    if (quiz_active_toggle_was_visible) {
+      activeToggle.setVisibility(VISIBLE);
+      if (activeToggle.isChecked()) {
+        unitSelecter.setVisibility(VISIBLE);
+        incrementer.setVisibility(VISIBLE);
+        decrementer.setVisibility(VISIBLE);
+        valueEditor.setVisibility(VISIBLE);
+      }
+    }
+    if (!activeToggle.isChecked()) {
       time_guide = Modification.CALENDAR;
       my_animator.resume();
-
     }
 
   }
@@ -704,7 +730,7 @@ public class CRC_View
   protected Chinese_Remainder my_owner;
 
   /** enable or disable Manual mode */
-  protected ToggleButton activeToggle;
+  protected Switch activeToggle;
   /** increment or decrement the time (Manual mode only) */
   protected Button incrementer, decrementer;
   /** select which unit to modify (Manual mode only) */
@@ -799,4 +825,6 @@ public class CRC_View
   Random quiz_generator = null;
   /** quiz data: whether seconds were visible before we started the quiz */
   boolean quiz_previous_seconds_visibility;
+  /** quiz data: whether user could see manual button */
+  boolean quiz_active_toggle_was_visible;
 }

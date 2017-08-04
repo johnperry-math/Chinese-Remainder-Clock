@@ -10,6 +10,7 @@ import android.os.Build;
 import static android.graphics.Color.WHITE;
 import static android.graphics.Paint.ANTI_ALIAS_FLAG;
 import static android.graphics.Paint.Align.CENTER;
+import static android.graphics.Paint.Join.ROUND;
 import static android.graphics.Paint.Style.STROKE;
 import static java.lang.Math.PI;
 import static java.lang.Math.abs;
@@ -86,6 +87,7 @@ public class CRC_View_Linus extends Clock_Drawer {
     ball_paint.setAlpha(255);
     ball_paint.setStyle(STROKE);
     ball_paint.setStrokeWidth(4);
+    ball_paint.setStrokeCap(android.graphics.Paint.Cap.ROUND);
 
     circle_paint.setColor(line_color);
     circle_paint.setStrokeWidth(1);
@@ -220,7 +222,6 @@ public class CRC_View_Linus extends Clock_Drawer {
     // minute, modulo 4
 
     canvas.drawLines(digi_m4_pts, circle_paint);
-    ball_paint.setStrokeWidth(4);
     if (abs(my_viewer.last_m - minute) == 1 && my_viewer.time_guide != DECREMENT) {
       canvas.drawLines(digi_m4_pts, 0, (lmmod4 % 4) << 2, ball_paint);
       canvas.drawLine(

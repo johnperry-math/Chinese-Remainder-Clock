@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.Notification;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +13,8 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,8 +24,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+import android.widget.Toolbar;
 
 import org.w3c.dom.Text;
 
@@ -44,7 +49,7 @@ import org.w3c.dom.Text;
  *
  */
 public class Chinese_Remainder
-    extends Activity
+    extends AppCompatActivity
 {
 
   /**
@@ -211,7 +216,7 @@ public class Chinese_Remainder
       // and should have crc_view as an appropriate listener
       // (since that's where I take care of the interaction)
 
-      ToggleButton pb = (ToggleButton) rootView.findViewById(R.id.activeToggle);
+      Switch pb = (Switch) rootView.findViewById(R.id.activeToggle);
       pb.setOnCheckedChangeListener(crc_view);
       pb.setVisibility(View.INVISIBLE);
 

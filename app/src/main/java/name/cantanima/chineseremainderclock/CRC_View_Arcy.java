@@ -1,6 +1,7 @@
 package name.cantanima.chineseremainderclock;
 
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.Log;
@@ -48,7 +49,8 @@ public class CRC_View_Arcy extends Clock_Drawer {
     // hours: 3-remainder
     ball_paint.setColor(hour_color);
     ball_paint.setAlpha(255);
-    ball_paint.setStrokeWidth(1f);
+    ball_paint.setStrokeWidth(1.5f);
+    ball_paint.setFlags(Paint.ANTI_ALIAS_FLAG);
     for (int i = 0; i < 3; ++i) {
       if (my_viewer.last_h != hour) {
         if (i == my_viewer.last_h % 3 && my_viewer.my_offset < 1.0) {

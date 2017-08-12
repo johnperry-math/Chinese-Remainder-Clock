@@ -91,7 +91,7 @@ public class CRC_View
 
     } else {
 
-      // remember Activity; needed for preferences if nothign else
+      // remember Activity; needed for preferences if nothing else
       my_owner = (Chinese_Remainder) context;
 
       // read and set up preferences

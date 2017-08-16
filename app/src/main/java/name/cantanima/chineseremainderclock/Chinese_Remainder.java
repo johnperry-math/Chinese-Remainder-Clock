@@ -191,7 +191,7 @@ public class Chinese_Remainder
               prefs.getBoolean(getString(R.string.saved_reverse_orientation), false);
 
       // read the preferred drawer/design
-      final int default_drawer = 1;
+      final int default_drawer = 3;
       int saved_drawer = (prefs.contains(getString(R.string.saved_drawer))) ?
               prefs.getInt(getString(R.string.saved_drawer), default_drawer) : default_drawer;
 

@@ -141,7 +141,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
     canvas.drawCircle(cx, cy, bally_mr3, circle_paint);
     canvas.drawCircle(cx, cy, bally_mr4, circle_paint);
     canvas.drawCircle(cx, cy, bally_mr5, circle_paint);
-    if (reverse_orientation) {
+    if (reverse_orientation && show_seconds) {
       canvas.drawCircle(cx, cy, bally_sr3, circle_paint);
       canvas.drawCircle(cx, cy, bally_sr4, circle_paint);
       canvas.drawCircle(cx, cy, bally_sr5, circle_paint);

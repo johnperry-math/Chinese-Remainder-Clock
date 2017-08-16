@@ -93,9 +93,11 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
     Editable minute_editable = minute_text.getText();
     int hour = 0, minute = 0;
     if (hour_editable != null && hour_editable.length() != 0)
-      hour = Integer.valueOf(hour_editable.toString());
+      try { hour = Integer.valueOf(hour_editable.toString()); }
+      catch (Exception e) { }
     if (minute_editable != null && minute_editable.length() != 0)
-      minute = Integer.valueOf(minute_editable.toString());
+      try { minute = Integer.valueOf(minute_editable.toString()); }
+      catch (Exception e) { }
 
     crc_view.quiz_answered(hour, minute);
     dismiss();

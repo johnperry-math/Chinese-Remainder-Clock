@@ -100,7 +100,7 @@ public class CRC_View
       boolean saved_seconds = prefs.getBoolean(my_owner.getString(R.string.saved_show_seconds), false);
       boolean saved_time = prefs.getBoolean(my_owner.getString(R.string.saved_show_time), false);
       boolean saved_unit_orientation = prefs.getBoolean(my_owner.getString(R.string.saved_reverse_orientation), false);
-      int saved_drawer = prefs.getInt(my_owner.getString(R.string.saved_drawer), 0);
+      int saved_drawer = prefs.getInt(my_owner.getString(R.string.saved_drawer), 3);
       int saved_bg_color = prefs.getInt(my_owner.getString(R.string.saved_bg_color), GRAY);
       int saved_line_color = prefs.getInt(my_owner.getString(R.string.saved_line_color), WHITE);
       int saved_hour_color = prefs.getInt(my_owner.getString(R.string.saved_hour_color), BLUE);

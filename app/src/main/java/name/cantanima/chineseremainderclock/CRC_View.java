@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -47,6 +48,7 @@ import static java.util.Calendar.HOUR;
 import static java.util.Calendar.HOUR_OF_DAY;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.CALENDAR;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.LEAVE_BE;
+import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_TIME;
 
 /**
  * Created by cantanima on 4/22/17.
@@ -266,12 +268,15 @@ public class CRC_View
    */
   //
   // see code for indication of which parameter corresponds to which button
-  void setButtonsToListen(Switch pb, Button dn, Button up, Spinner spin, EditText vb) {
+  void setButtonsToListen(
+      Switch pb, Button dn, Button up, Spinner spin, EditText vb, LinearLayout ll
+  ) {
     activeToggle = pb;
     incrementer = up;
     decrementer = dn;
     unitSelecter = spin;
     valueEditor = vb;
+    manual_button_layout = ll;
   }
 
   /**
@@ -308,10 +313,11 @@ public class CRC_View
         // if animation is paused, let's resume it
         my_animator.resume();
         // hide manual buttons
-        incrementer.setVisibility(View.INVISIBLE);
-        decrementer.setVisibility(View.INVISIBLE);
-        unitSelecter.setVisibility(View.INVISIBLE);
-        valueEditor.setVisibility(View.INVISIBLE);
+        incrementer.setVisibility(INVISIBLE);
+        decrementer.setVisibility(INVISIBLE);
+        unitSelecter.setVisibility(INVISIBLE);
+        valueEditor.setVisibility(INVISIBLE);
+        manual_button_layout.setVisibility(INVISIBLE);
         // when drawing, we need to check the calendar for the time
         time_guide = CALENDAR;
 
@@ -332,10 +338,11 @@ public class CRC_View
         }
         valueEditor.selectAll(); // (this doesn't actually seem to work)
         // show manual buttons
-        incrementer.setVisibility(View.VISIBLE);
-        decrementer.setVisibility(View.VISIBLE);
-        unitSelecter.setVisibility(View.VISIBLE);
-        valueEditor.setVisibility(View.VISIBLE);
+        incrementer.setVisibility(VISIBLE);
+        decrementer.setVisibility(VISIBLE);
+        unitSelecter.setVisibility(VISIBLE);
+        valueEditor.setVisibility(VISIBLE);
+        manual_button_layout.setVisibility(VISIBLE);
         valueEditor.selectAll(); // (this might work)
 
       }
@@ -388,6 +395,7 @@ public class CRC_View
         unitSelecter.setVisibility(INVISIBLE);
         incrementer.setVisibility(INVISIBLE);
         decrementer.setVisibility(INVISIBLE);
+        manual_button_layout.setVisibility(INVISIBLE);
 
       } else {
 
@@ -397,7 +405,7 @@ public class CRC_View
           // add drawer here if it's enabled for touch and drag
           if (
               my_drawer.getClass() == CRC_View_Ringy.class &&
-              activeToggle.getVisibility() == View.VISIBLE && activeToggle.isChecked()
+              activeToggle.getVisibility() == VISIBLE && activeToggle.isChecked()
           ) {
 
             my_drawer.notify_touched(event);
@@ -409,7 +417,7 @@ public class CRC_View
         } else {
 
           // outside; show or hide manual buttons as appropriate
-          if (activeToggle.getVisibility() == View.INVISIBLE) {
+          if (activeToggle.getVisibility() == INVISIBLE) {
 
             activeToggle.setVisibility(VISIBLE);
             if (!activeToggle.isChecked()) {
@@ -417,12 +425,14 @@ public class CRC_View
               unitSelecter.setVisibility(INVISIBLE);
               incrementer.setVisibility(INVISIBLE);
               decrementer.setVisibility(INVISIBLE);
+              manual_button_layout.setVisibility(INVISIBLE);
             } else {
               valueEditor.setVisibility(VISIBLE);
               valueEditor.selectAll();
               unitSelecter.setVisibility(VISIBLE);
               incrementer.setVisibility(VISIBLE);
               decrementer.setVisibility(VISIBLE);
+              manual_button_layout.setVisibility(VISIBLE);
             }
 
           }
@@ -565,159 +575,31 @@ public class CRC_View
   }
 
   /**
-   * User wants to take a quiz. Only sets up the basics, including hiding the conventional time!
-   * Then it calls quiz_question, where quiz-specific interface issues and the rest should occur.
-   * @see #quiz_question()
-   * @see #quiz_answered(int, int)
+   * Pauses the animation of the clock.
+   * Does not change any related flags; it ONLY pauses the animation.
    */
-  public void start_quiz() {
+  public void pause_animation() { my_animator.pause(); }
 
+  /**
+   * Restarts (if not already started) the animation and sets the time guide to CALENDAR.
+   */
+  public void restart_animation_by_calendar() {
+    time_guide = CALENDAR;
+    my_animator.resume();
+  }
+
+  /**
+   * Moves the clock to h hours, m minutes, then pauses the animation.
+   * If the animation is not already paused, it will be after this method completes.
+   * @param h  hours on the clock
+   * @param m  minutes on the clock
+   */
+  public void move_time_to(int h, int m) {
+    new_hour_value = h;
+    new_minute_value = m;
+    time_guide = NEW_TIME;
+    my_animator.resume();
     my_animator.pause();
-    if (quiz_generator == null) quiz_generator = new Random();
-
-    android.support.v7.app.ActionBar ab = my_owner.getSupportActionBar();
-    ab.hide();
-
-    // visibility
-    quiz_previous_time_visibility = tv.getVisibility();
-    quiz_previous_seconds_visibility = my_drawer.get_show_seconds();
-    // we need to hide buttons if we were in manual mode
-    if (activeToggle.getVisibility() != VISIBLE)
-      quiz_active_toggle_was_visible = false;
-    else {
-      quiz_active_toggle_was_visible = true;
-      activeToggle.setVisibility(INVISIBLE);
-      if (activeToggle.isChecked()) {
-        unitSelecter.setVisibility(INVISIBLE);
-        incrementer.setVisibility(INVISIBLE);
-        decrementer.setVisibility(INVISIBLE);
-        valueEditor.setVisibility(INVISIBLE);
-      }
-    }
-
-    my_drawer.set_show_seconds(false);
-    my_drawer.recalculate_positions();
-    tv.setVisibility(INVISIBLE);
-    quiz_number_correct = quiz_number_complete = 0;
-    quiz_question();
-
-  }
-
-  /**
-   * Create a new quiz question. In the long run, this should be modularized to invoke a particular
-   * class of quiz question.
-   * @see TimeEntryDialog
-   * @see #quiz_answered(int, int)
-   */
-  public void quiz_question() {
-
-    quiz_dialog = new TimeEntryDialog(my_owner, this, quiz_number_complete, quiz_number_total);
-    Window quiz_win = quiz_dialog.getWindow();
-    if (quiz_win != null) {
-
-      //quiz_win.setBackgroundDrawable(new ColorDrawable(TRANSPARENT));
-
-      // we DO NOT want to dim the clock; user needs to see it
-      int screen_config = my_owner.getResources().getConfiguration().orientation;
-      WindowManager.LayoutParams win_attr = quiz_win.getAttributes();
-      if (screen_config == Configuration.ORIENTATION_PORTRAIT)
-        win_attr.gravity = Gravity.BOTTOM;
-      else if (screen_config == Configuration.ORIENTATION_LANDSCAPE)
-        win_attr.gravity = Gravity.LEFT;
-      quiz_win.setAttributes(win_attr);
-      quiz_dialog.getWindow().clearFlags(FLAG_DIM_BEHIND);
-      quiz_dialog.show();
-
-      // move the clock to the quiz question's desired position
-      time_guide = Modification.NEW_TIME;
-      new_hour_value = quiz_generator.nextInt(hour_modulus == 4 ? 12 : 24) + 1;
-      new_minute_value = quiz_generator.nextInt(60) + 1;
-      my_animator.resume();
-      my_animator.pause();
-
-    }
-
-
-  }
-
-  /**
-   * User has answered quiz question. This function processes the answer.
-   * If the quiz is not complete, a new question is generated; otherwise,
-   * a result w/a light-hearted comment is displayed in an AlertDialog.
-   * @see TimeEntryDialog
-   * @see #quiz_question()
-   * @param hourOfDay the hour entered by the user
-   * @param minute the minute entered by the user
-   */
-  public void quiz_answered(int hourOfDay, int minute) {
-
-    // check response according to time
-    int hmod = (hour_modulus == 4) ? 12 : 24;
-    int mmod = 60;
-    if ((hourOfDay % hmod) == (new_hour_value % hmod) && (minute % mmod) == (new_minute_value % mmod))
-      ++quiz_number_correct;
-    ++quiz_number_complete;
-
-    // either provide a new question or wrap up the quiz
-    if (quiz_number_complete < quiz_number_total)
-
-      quiz_question();
-
-    else {
-
-      if (quiz_dialog.isShowing())
-        quiz_dialog.dismiss();
-      String quiz_message, dialog_dismiss;
-      if (quiz_number_correct == quiz_number_total) {
-        quiz_message = my_owner.getString(R.string.quiz_result_great_job);
-        dialog_dismiss = my_owner.getString(R.string.quiz_result_dismiss_dialog_great);
-      } else if (quiz_number_correct == 0) {
-        quiz_message = my_owner.getString(R.string.quiz_result_keep_day_job);
-        dialog_dismiss = my_owner.getString(R.string.quiz_result_dismiss_dialog_keep);
-      } else {
-        quiz_message = my_owner.getString(R.string.quiz_result_better_luck);
-        dialog_dismiss = my_owner.getString(R.string.quiz_result_dismiss_dialog_better);
-      }
-      new AlertDialog.Builder(my_owner).setTitle(my_owner.getString(R.string.quiz_result_title))
-              .setMessage(
-                  quiz_message + ": " + String.valueOf(quiz_number_correct) +
-                      "/" + String.valueOf(quiz_number_total)
-              )
-              .setIcon(R.drawable.ic_action_info)
-              .setPositiveButton(
-                    dialog_dismiss,
-                    new DialogInterface.OnClickListener() {
-                      public void onClick(DialogInterface dialog, int which) { dialog.dismiss(); }
-                    }
-              ).show();
-
-      quiz_cancelled();
-
-    }
-
-  }
-
-  public void quiz_cancelled() {
-
-    tv.setVisibility(quiz_previous_time_visibility);
-    my_drawer.set_show_seconds(quiz_previous_seconds_visibility);
-    my_drawer.recalculate_positions();
-    android.support.v7.app.ActionBar ab = my_owner.getSupportActionBar();
-    ab.show();
-    if (quiz_active_toggle_was_visible) {
-      activeToggle.setVisibility(VISIBLE);
-      if (activeToggle.isChecked()) {
-        unitSelecter.setVisibility(VISIBLE);
-        incrementer.setVisibility(VISIBLE);
-        decrementer.setVisibility(VISIBLE);
-        valueEditor.setVisibility(VISIBLE);
-      }
-    }
-    if (!activeToggle.isChecked()) {
-      time_guide = Modification.CALENDAR;
-      my_animator.resume();
-    }
-
   }
 
   /** how far along the animation is (should range from 0 to 1) */
@@ -735,6 +617,9 @@ public class CRC_View
   protected Button incrementer, decrementer;
   /** select which unit to modify (Manual mode only) */
   protected Spinner unitSelecter;
+  /** layout that contains the manual buttons */
+  protected LinearLayout manual_button_layout;
+
   /**
    *  enter the new value for the time unit specified by unitSelecter (Manual mode only)
    *  @see #unitSelecter

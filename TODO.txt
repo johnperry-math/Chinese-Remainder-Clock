@@ -96,3 +96,4 @@ DONE
 - Fixed aesthetic unsightliness in quiz mode where we forget to redraw.
 - Renamed Bally to Ringy. (Including everywhere in the to do file, except here.
 - Change Archy's animation to an expanding/collapsing arch.
+- Made quizzes modular, so that it should be easy to add more.

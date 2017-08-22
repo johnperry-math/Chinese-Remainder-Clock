@@ -55,7 +55,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="1"
-            android:id="@+id/linearLayout" >
+            android:id="@+id/linearLayout"
+            android:background="@drawable/box">
 
             <Button
                 android:id="@+id/decrementButton"

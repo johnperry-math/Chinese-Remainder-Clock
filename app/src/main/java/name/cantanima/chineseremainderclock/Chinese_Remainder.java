@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -138,8 +139,9 @@ public class Chinese_Remainder
       return true;
     } else if (id == R.id.quiz) {
       // starts a quiz!
-      CRC_View crc_view = (CRC_View) findViewById(R.id.crc_view);
-      crc_view.start_quiz();
+      /*CRC_View crc_view = (CRC_View) findViewById(R.id.crc_view);
+      crc_view.start_quiz();*/
+      new Quiz_WhatTimeIsIt(this);
     }
 
     return super.onOptionsItemSelected(item);
@@ -238,8 +240,11 @@ public class Chinese_Remainder
       timeEditor.setSelectAllOnFocus(true);
       timeEditor.setOnClickListener(crc_view);
 
+      LinearLayout button_row = (LinearLayout) rootView.findViewById(R.id.manual_buttons);
+      button_row.setVisibility(View.INVISIBLE);
+
       // make crc_view listen to things that have to be shown/hidden and such
-      crc_view.setButtonsToListen(pb, upButton, dnButton, spinner, timeEditor);
+      crc_view.setButtonsToListen(pb, upButton, dnButton, spinner, timeEditor, button_row);
 
       // crc_view also needs to show/hide the time, and for some reason
       // I separated that from the buttons

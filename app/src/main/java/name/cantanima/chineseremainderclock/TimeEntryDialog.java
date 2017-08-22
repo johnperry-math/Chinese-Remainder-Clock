@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.LinkedList;
+
 /**
  * Created by cantanima on 7/19/17.
  */
@@ -25,19 +27,23 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
 
   /**
    * assigns values passed in
-   * @param my_activity Activity that opened this dialog
-   * @param owning_view view that owns this dialog
+   * @param activity Activity that opened this dialog
+   * @param new_listener TimeEntryListener to receive events
    * @param finished how many questions have been finished (from 0 to total - 1 (we hope!))
    * @param total how many total questions are desired
    */
-  public TimeEntryDialog(Activity my_activity, CRC_View owning_view, int finished, int total) {
+  public TimeEntryDialog(
+      Activity activity, TimeEntryDialogListener new_listener, int finished, int total
+  ) {
 
-    super(my_activity);
+    super(activity);
 
-    cr_activity = my_activity;
-    crc_view = owning_view;
+    cr_activity = activity;
+    listeners = new LinkedList<>();
+    listeners.add(new_listener);
     number_complete = finished;
     number_total = total;
+    setCanceledOnTouchOutside(false);
 
   }
 
@@ -99,7 +105,8 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
       try { minute = Integer.valueOf(minute_editable.toString()); }
       catch (Exception e) { }
 
-    crc_view.quiz_answered(hour, minute);
+    for (TimeEntryDialogListener listener : listeners)
+      listener.time_received(hour, minute);
     dismiss();
 
   }
@@ -112,14 +119,23 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
   public void onBackPressed() {
 
     dismiss();
-    crc_view.quiz_cancelled();
+    for (TimeEntryDialogListener listener : listeners)
+      listener.cancelled();
 
+  }
+
+  public void addTimeEntryDialogListener(TimeEntryDialogListener listener) {
+    listeners.add(listener);
+  }
+
+  public void removeTimeEntryDialogListener(TimeEntryDialogListener listener) {
+    listeners.remove(listener);
   }
 
   /** Activity that started this dialog */
   protected Activity cr_activity;
   /** CRC_View with which we must interact */
-  protected CRC_View crc_view;
+  protected LinkedList<TimeEntryDialogListener> listeners;
   /** button to request next question */
   protected Button next_button;
   /** text for hour, minute */

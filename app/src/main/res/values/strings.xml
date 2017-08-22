@@ -133,6 +133,8 @@
     <string name="quiz_result_dismiss_dialog_great">Awesome Sauce!</string>
     <string name="quiz_result_dismiss_dialog_better">Hope so!</string>
     <string name="quiz_result_dismiss_dialog_keep">Oof!</string>
+    <string name="quiz_sorry">Sorry!</string>
+    <string name="quiz_correct">Correct!</string>
 
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>

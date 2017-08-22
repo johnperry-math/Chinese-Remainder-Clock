@@ -61,7 +61,8 @@
         android:layout_above="@+id/timeEditor"
         android:weightSum="1"
         android:gravity="center"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/box">
 
         <Button
             android:id="@+id/decrementButton"

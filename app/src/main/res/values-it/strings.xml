@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Orologio Cinese</string>
+    <string name="app_menu_title">Orologio Cinese</string>
+    <string name="welcome_string">funziona l\'Orologio Cinese (punto interrogativo),</string>
+    <string name="welcome_dialog_text">La barra degli strumenti contiene Informazioni su come funziona l\'Orologio Cinese (punto interrogativo), Impostazioni per scegliere colore, design ecc. (chiave inglese) e un Quiz (matita). Se tocchi lo schermo fuori dall\'Orologio puoi entrare nella versione manuale e settare l\'ora.</string>
+    <string name="proceed_string">Vai!</string>
+    <string name="info_button_text">Informazioni</string>
+    <string name="info_button_text_short">Info</string>
+    <string name="auto_button_text">Automatico/Manuale</string>
+    <string name="auto_button_text_on">M</string>
+    <string name="auto_button_text_off">A</string>
+    <string name="dec_button">-1</string>
+    <string name="inc_button">+1</string>
+    <string name="color_button_text">Colore/Monochromatico</string>
+    <string name="color_button_text_on">B/N</string>
+    <string name="color_button_text_off">Colore</string>
+    <string name="hours_button_text">12/24 ore</string>
+    <string name="hours_button_text_off">12 ore</string>
+    <string name="hours_button_text_on">24 ore</string>
+    <string name="color_pref_text">Monocromatico</string>
+    <string name="color_pref_summary_on">Disegna l\'Orologio in bianco e nero</string>
+    <string name="color_pref_summary_off">Disegna l\'Orologio a colori</string>
+    <string name="hs_order_pref_text">Ordine di ore e secondi</string>
+    <string name="hs_order_pref_summ_on">Disegna i secondi dentro o a sinistra</string>
+    <string name="hs_order_pref_summ_off">Disegna i secondi fuori o a destra</string>
+    <string name="pref_category_timekeeping">Misura di tempo</string>
+    <string name="pref_category_timekeeping_summ">Opzioni per mostrare il tempo</string>
+    <string name="seconds_pref_text">Secondi, sì!</string>
+    <string name="seconds_pref_summ_on">Mostra anche i secondi</string>
+    <string name="seconds_pref_summ_off">Nascondi i secondi</string>
+    <string name="show_time_pref_text">Mostra l\'ora</string>
+    <string name="show_time_pref_summ_on">Scrivi l\'ora anche in modo canonico</string>
+    <string name="show_time_pref_summ_off">Non mostrare l\'ora in modo canonico</string>
+    <string name="hours_pref_text">Ore</string>
+    <string name="hours_button_text_off_long">12 ore</string>
+    <string name="hours_button_text_on_long">24 ore</string>
+    <string name="pref_category_color">Colori</string>
+    <string name="pref_category_color_summ">Cambia i vari colori</string>
+    <string name="bg_color_text">Background</string>
+    <string name="line_color_text">Linee (quando appropriato)</string>
+    <string name="hour_color_text">Ore</string>
+    <string name="minute_color_text">Minuti</string>
+    <string name="second_color_text">Secondi</string>
+    <string name="quiz_what_time_is_it">Che ore sono?</string>
+    <string name="quiz_hour_hint">HH</string>
+    <string name="quiz_time_sep">:</string>
+    <string name="quiz_minute_hint">MM</string>
+    <string name="quiz_next">Prossimo!</string>
+    <string name="quiz_nice_try">Non male</string>
+    <string name="quiz_result_title">Quiz result</string>
+    <string name="quiz_result_better_luck">Ritenta, sarai più fortunato!</string>
+    <string name="quiz_result_great_job">Eccellente!</string>
+    <string name="quiz_result_keep_day_job">Proprio non ci siamo!</string>
+    <string name="quiz_result_dismiss_dialog_great">Fantastico!</string>
+    <string name="quiz_result_dismiss_dialog_better">Speriamo!</string>
+    <string name="quiz_result_dismiss_dialog_keep">Oops/&#8320;</string>
+    <string name="quiz_correct">Giusto!</string>
+    <string name="quiz_sorry">Dispiace!</string>
+    <string name="action_settings">Opzioni</string>
+    <string name="pref_drawers">Disegno</string>
+
+    <string-array name="unitStrings">
+        <item>Ore</item>
+        <item>Minuti</item>
+        <item>Secondi</item>
+    </string-array>
+
+    <string-array name="drawStrings">
+        <item>Archy: Guarda la posizione degli archi</item>
+        <item>Bubbly: Conta le bolle</item>
+        <item>Linus: Conta i lati marcati</item>
+        <item>Ringy: Guarda la posizione delle palline</item>
+        <item>Shady: I resti appaiono dentro a poligoni</item>
+        <item>Vertie: Guarda il vertice marcato</item>
+    </string-array>
+
+</resources>

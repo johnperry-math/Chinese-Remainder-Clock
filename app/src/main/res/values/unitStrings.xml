@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="unitStrings">
-        <item>Hours</item>
-        <item>Minutes</item>
-        <item>Seconds</item>
-    </string-array>
-</resources>

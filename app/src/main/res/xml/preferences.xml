@@ -28,7 +28,7 @@
         tools:summary="@string/pref_category_design_summ">
         <ListPreference
             android:id="@+id/pref_draw_object"
-            android:defaultValue="1"
+            android:defaultValue="3"
             android:entries="@array/drawStrings"
             android:entryValues="@array/drawStringValues"
             android:key="saved_drawer"

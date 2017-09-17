@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion '25.0.0'
+    compileSdkVersion 26
+    buildToolsVersion '25.0.3'
 
     defaultConfig {
         applicationId "name.cantanima.chineseremainderclock"
         minSdkVersion 16
-        targetSdkVersion 24
+        targetSdkVersion 26
         versionCode 6
         versionName "2.0.5"
         vectorDrawables.useSupportLibrary = true
@@ -22,8 +22,8 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:support-v4:24.2.1'
-    compile 'com.android.support:support-vector-drawable:24.2.1'
-    compile 'com.android.support:appcompat-v7:24.2.1' // where X.X.X version
+    compile 'com.android.support:support-v4:26.1.0'
+    compile 'com.android.support:support-vector-drawable:26.1.0'
+    compile 'com.android.support:appcompat-v7:26.1.0' // where X.X.X version
     compile 'com.github.yukuku:ambilwarna:2.0.1'
 }

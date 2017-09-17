@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Orologio Cinese</string>
     <string name="app_menu_title">Orologio Cinese</string>
-    <string name="welcome_string">funziona l\'Orologio Cinese (punto interrogativo),</string>
+    <string name="welcome_string">Benvenuto a l\'Orologio Cinese!</string>
     <string name="welcome_dialog_text">La barra degli strumenti contiene Informazioni su come funziona l\'Orologio Cinese (punto interrogativo), Impostazioni per scegliere colore, design ecc. (chiave inglese) e un Quiz (matita). Se tocchi lo schermo fuori dall\'Orologio puoi entrare nella versione manuale e settare l\'ora.</string>
     <string name="proceed_string">Vai!</string>
     <string name="info_button_text">Informazioni</string>
@@ -22,9 +22,9 @@
     <string name="color_pref_summary_on">Disegna l\'Orologio in bianco e nero</string>
     <string name="color_pref_summary_off">Disegna l\'Orologio a colori</string>
     <string name="hs_order_pref_text">Ordine di ore e secondi</string>
-    <string name="hs_order_pref_summ_on">Disegna i secondi dentro o a sinistra</string>
-    <string name="hs_order_pref_summ_off">Disegna i secondi fuori o a destra</string>
-    <string name="pref_category_timekeeping">Misura di tempo</string>
+    <string name="hs_order_pref_summ_on">Mostra i secondi dentro o a sinistra</string>
+    <string name="hs_order_pref_summ_off">Mostra i secondi fuori o a destra</string>
+    <string name="pref_category_timekeeping">Tieni il tempo</string>
     <string name="pref_category_timekeeping_summ">Opzioni per mostrare il tempo</string>
     <string name="seconds_pref_text">Secondi, sì!</string>
     <string name="seconds_pref_summ_on">Mostra anche i secondi</string>
@@ -37,8 +37,8 @@
     <string name="hours_button_text_on_long">24 ore</string>
     <string name="pref_category_color">Colori</string>
     <string name="pref_category_color_summ">Cambia i vari colori</string>
-    <string name="bg_color_text">Background</string>
-    <string name="line_color_text">Linee (quando appropriato)</string>
+    <string name="bg_color_text">Sfondo</string>
+    <string name="line_color_text">Linee (se ci sono)</string>
     <string name="hour_color_text">Ore</string>
     <string name="minute_color_text">Minuti</string>
     <string name="second_color_text">Secondi</string>
@@ -56,9 +56,9 @@
     <string name="quiz_result_dismiss_dialog_better">Speriamo!</string>
     <string name="quiz_result_dismiss_dialog_keep">Oops/&#8320;</string>
     <string name="quiz_correct">Giusto!</string>
-    <string name="quiz_sorry">Dispiace!</string>
+    <string name="quiz_sorry">Sbagliato!</string>
     <string name="action_settings">Opzioni</string>
-    <string name="pref_drawers">Disegno</string>
+    <string name="pref_drawers">Design</string>
 
     <string-array name="unitStrings">
         <item>Ore</item>
@@ -74,5 +74,9 @@
         <item>Shady: I resti appaiono dentro a poligoni</item>
         <item>Vertie: Guarda il vertice marcato</item>
     </string-array>
+    <string name="pref_category_design">Design artistico</string>
+    <string name="pref_category_design_summ">Opzioni per il disegno</string>
+    <string name="quiz_menu_title">Quiz</string>
+    <string name="version">versione</string>
 
 </resources>

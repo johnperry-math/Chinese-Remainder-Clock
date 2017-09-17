@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="dummy_content">dummy</string>
+    <string name="dummy_content" translatable="false">dummy</string>
 
     <!-- Strings related to UI -->
 
@@ -43,37 +43,37 @@
 
     <!-- Strings related to Help (not sure I actually use this) -->
 
-    <string name="title_activity_help_activity.java">Help Activity</string>
+    <string name="title_activity_help_activity.java" translatable="false">Help Activity</string>
 
-    <string name="title_activity_help">HelpActivity</string>
-    <string name="title_activity_settings">Arghackle</string>
+    <string name="title_activity_help" translatable="false">HelpActivity</string>
+    <string name="title_activity_settings" translatable="false">Arghackle</string>
 
     <!-- Strings related to Settings -->
     <string name="action_settings">Settings</string>
 
     <string name="version">version</string>
-    <string name="current_version">2.04</string>
-    <string name="first_run">first_run</string>
-    <string name="saved_hour">saved_hour</string>
-    <string name="saved_color">saved_color</string>
-    <string name="saved_drawer">saved_drawer</string>
-    <string name="saved_show_seconds">saved_show_seconds</string>
-    <string name="saved_show_time">saved_show_time</string>
-    <string name="saved_reverse_orientation">saved_reverse_orientation</string>
-    <string name="saved_bg_color">saved_bg_color</string>
-    <string name="saved_line_color">saved_line_color</string>
-    <string name="saved_hour_color">saved_hour_color</string>
-    <string name="saved_minute_color">saved_minute_color</string>
-    <string name="saved_second_color">saved_second_color</string>
-    <string name="saved_bw_hour_color">saved_bw_hour_color</string>
-    <string name="saved_bw_minute_color">saved_bw_minute_color</string>
-    <string name="saved_bw_second_color">saved_bw_second_color</string>
+    <string name="current_version" translatable="false">2.04</string>
+    <string name="first_run" translatable="false">first_run</string>
+    <string name="saved_hour" translatable="false">saved_hour</string>
+    <string name="saved_color" translatable="false">saved_color</string>
+    <string name="saved_drawer" translatable="false">saved_drawer</string>
+    <string name="saved_show_seconds" translatable="false">saved_show_seconds</string>
+    <string name="saved_show_time" translatable="false">saved_show_time</string>
+    <string name="saved_reverse_orientation" translatable="false">saved_reverse_orientation</string>
+    <string name="saved_bg_color" translatable="false">saved_bg_color</string>
+    <string name="saved_line_color" translatable="false">saved_line_color</string>
+    <string name="saved_hour_color" translatable="false">saved_hour_color</string>
+    <string name="saved_minute_color" translatable="false">saved_minute_color</string>
+    <string name="saved_second_color" translatable="false">saved_second_color</string>
+    <string name="saved_bw_hour_color" translatable="false">saved_bw_hour_color</string>
+    <string name="saved_bw_minute_color" translatable="false">saved_bw_minute_color</string>
+    <string name="saved_bw_second_color" translatable="false">saved_bw_second_color</string>
 
     <string name="pref_category_design">Design</string>
     <string name="pref_category_design_summ">Settings related to the clock\'s design</string>
 
     <string name="pref_drawers">Art</string>
-    <string name="design_pref_summary">Several circular and polygonal varieties available</string>
+    <string name="design_pref_summary" translatable="false">Several circular and polygonal varieties available</string>
     <integer name="num_drawers">7</integer>
     <string-array name="drawStrings">
         <item>Archy: arc\'s position on circle tells remainder</item>
@@ -83,7 +83,7 @@
         <item>Shady: remainders displayed in shaded polygon</item>
         <item>Vertie: higlighted vertex tells remainder</item>
     </string-array>
-    <string-array name="drawStringValues">
+    <string-array name="drawStringValues" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -140,82 +140,5 @@
     <string name="quiz_result_dismiss_dialog_keep">Oof!</string>
     <string name="quiz_sorry">Sorry!</string>
     <string name="quiz_correct">Correct!</string>
-
-    <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
-
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
-    </string>
-
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
-
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-    </string-array>
-
-    <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
-
-    <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string-array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_sync_frequency_values">
-        <item>15</item>
-        <item>30</item>
-        <item>60</item>
-        <item>180</item>
-        <item>360</item>
-        <item>-1</item>
-    </string-array>
-
-    <string-array name="list_preference_entries">
-        <item>Entry 1</item>
-        <item>Entry 2</item>
-        <item>Entry 3</item>
-    </string-array>
-
-    <string-array name="list_preference_entry_values">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
-
-    <string-array name="multi_select_list_preference_default_value" />
-
-    <string name="pref_title_system_sync_settings">System sync settings</string>
-
-    <!-- Example settings for Notifications -->
-    <string name="pref_header_notifications">Notifications</string>
-
-    <string name="pref_title_new_message_notifications">New message notifications</string>
-
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
-
-    <string name="pref_title_vibrate">Vibrate</string>
-
-    <!-- Default text for a button that can be toggled on and off. -->
-    <string name="capital_on">ON</string>
-    <!-- Default text for a button that can be toggled on and off. -->
-    <string name="capital_off">OFF</string>
-
-
 
 </resources>

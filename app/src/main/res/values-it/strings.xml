@@ -75,7 +75,7 @@
         <item>Vertie: Guarda il vertice marcato</item>
     </string-array>
     <string name="pref_category_design">Design artistico</string>
-    <string name="pref_category_design_summ">Opzioni per il disegno</string>
+    <string name="pref_category_design_summ">Opzioni per il design</string>
     <string name="quiz_menu_title">Quiz</string>
     <string name="version">versione</string>
 

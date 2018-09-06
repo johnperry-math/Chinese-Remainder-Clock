@@ -32,7 +32,6 @@ import android.widget.Toolbar;
 
 import org.w3c.dom.Text;
 
-
 /**
  *
  * The main Activity for the clock!
@@ -137,10 +136,16 @@ public class Chinese_Remainder
       Intent i = new Intent(this, HelpActivity.class);
       startActivity(i);
       return true;
-    } else if (id == R.id.quiz) {
+    } else if (id == R.id.number34) {
       // starts a quiz!
-      /*CRC_View crc_view = (CRC_View) findViewById(R.id.crc_view);
-      crc_view.start_quiz();*/
+      new Quiz_abTime(this, 3, 4);
+    } else if (id == R.id.number35) {
+      // starts a quiz!
+      new Quiz_abTime(this, 3, 5);
+    } else if (id == R.id.number45) {
+      // starts a quiz!
+      new Quiz_abTime(this, 4, 5);
+    } else if (id == R.id.clockmaster) {
       new Quiz_WhatTimeIsIt(this);
     }
 

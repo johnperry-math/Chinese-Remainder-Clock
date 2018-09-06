@@ -50,7 +50,7 @@ import static name.cantanima.chineseremainderclock.CRC_View.Modification.CALENDA
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.LEAVE_BE;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_TIME;
 
-/**
+/*
  * Created by cantanima on 4/22/17.
  */
 
@@ -74,8 +74,6 @@ public class CRC_View
 
   /**
    * Constructs the CRC_View (obviously) and sets up various options.
-   * @param context
-   * @param attrs
    */
   public CRC_View(Context context, AttributeSet attrs) {
 
@@ -235,7 +233,6 @@ public class CRC_View
       case 4: my_drawer = new CRC_View_Shady(this); break;
       case 5: my_drawer = new CRC_View_Vertie(this); break;
       default: my_drawer = new CRC_View_Ringy(this); break;
-      //case 1: my_drawer = new CRC_View_Archy_Fade(this); break;
     }
     my_drawer.set_show_seconds(show_seconds);
     my_drawer.set_show_time(show_time);

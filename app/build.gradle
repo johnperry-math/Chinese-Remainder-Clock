@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '25.0.3'
 
     defaultConfig {
         applicationId "name.cantanima.chineseremainderclock"
@@ -21,9 +21,14 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:support-v4:26.1.0'
-    compile 'com.android.support:support-vector-drawable:26.1.0'
-    compile 'com.android.support:appcompat-v7:26.1.0' // where X.X.X version
-    compile 'com.github.yukuku:ambilwarna:2.0.1'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.android.support:support-vector-drawable:26.1.0'
+    implementation 'com.android.support:appcompat-v7:26.1.0' // where X.X.X version
+    implementation 'com.github.yukuku:ambilwarna:2.0.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

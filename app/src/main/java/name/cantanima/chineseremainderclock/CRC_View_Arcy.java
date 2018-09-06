@@ -286,12 +286,12 @@ public class CRC_View_Arcy extends Clock_Drawer {
       if (show_seconds) {
         rh3 = diam * 7f / 9f;
         rhh = diam * 8f / 9f;
-        rm3 = diam * 6f / 9f;
-        rs3 = diam * 5f / 9f;
-        rm4 = diam * 4f / 9f;
-        rs4 = diam * 3f / 9f;
-        rm5 = diam * 2f / 9f;
-        rs5 = diam * 1f / 9f;
+        rm3 = diam * 6f / 9f; // was: 6/9
+        rm4 = diam * 5f / 9f; // was: 4/9
+        rm5 = diam * 4f / 9f; // was: 2/9
+        rs3 = diam * 3f / 9f; // was: 5/9
+        rs4 = diam * 2f / 9f; // was: 3/9
+        rs5 = diam * 1f / 9f; // was: 1/9
         r_off = diam / 35f;
       } else {
         rm3 = diam * 1f / 6f;
@@ -307,12 +307,12 @@ public class CRC_View_Arcy extends Clock_Drawer {
       if (show_seconds) {
         rh3 = diam * 1f / 9f;
         rhh = diam * 2f / 9f;
-        rs3 = diam * 3f / 9f;
-        rm3 = diam * 4f / 9f;
-        rs4 = diam * 5f / 9f;
-        rm4 = diam * 6f / 9f;
-        rs5 = diam * 7f / 9f;
-        rm5 = diam * 8f / 9f;
+        rm3 = diam * 3f / 9f; // was: 4/9
+        rm4 = diam * 4f / 9f; // was: 6/9
+        rm5 = diam * 5f / 9f; // was: 8/9
+        rs3 = diam * 6f / 9f; // was: 3/9
+        rs4 = diam * 7f / 9f; // was: 5/9
+        rs5 = diam * 8f / 9f; // was: 7/9
         r_off = diam / 35f;
       } else {
         rh3 = diam * 1f / 6f;
@@ -549,11 +549,11 @@ public class CRC_View_Arcy extends Clock_Drawer {
 
   }
 
-  float rh3, rhh, rm3, rm4, rm5, rs3, rs4, rs5;
+  private float rh3, rhh, rm3, rm4, rm5, rs3, rs4, rs5;
 
-  Path [] [] path_h3, path_h4, path_h8, path_m3, path_m4, path_m5, path_s3, path_s4, path_s5;
+  private Path [] [] path_h3, path_h4, path_h8, path_m3, path_m4, path_m5, path_s3, path_s4, path_s5;
 
-  Path [] arc_h3, arc_h4, arc_h8, arc_m3, arc_m4, arc_m5, arc_s3, arc_s4, arc_s5;
+  private Path [] arc_h3, arc_h4, arc_h8, arc_m3, arc_m4, arc_m5, arc_s3, arc_s4, arc_s5;
 
-  final static String tag = "Archy";
+  private final static String tag = "Archy";
 }

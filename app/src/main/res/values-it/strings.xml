@@ -78,5 +78,9 @@
     <string name="pref_category_design_summ">Opzioni per il design</string>
     <string name="quiz_menu_title">Quiz</string>
     <string name="version">versione</string>
+    <string name="quiz_ab_guess">Che numero è?</string>
+    <string name="quiz_number_has_remainders">I resti di un numero sono</string>
+    <string name="quiz_after_division_by">dopo essersi divisi da</string>
+    <string name="string_and">e</string>
 
 </resources>

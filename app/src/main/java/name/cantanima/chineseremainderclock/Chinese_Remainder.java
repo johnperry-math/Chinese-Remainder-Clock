@@ -145,6 +145,9 @@ public class Chinese_Remainder
     } else if (id == R.id.number45) {
       // starts a quiz!
       new Quiz_abTime(this, 4, 5);
+    } else if (id == R.id.number345) {
+      // starts a quiz!
+      new Quiz_abcTime(this, 3, 4, 5);
     } else if (id == R.id.clockmaster) {
       new Quiz_WhatTimeIsIt(this);
     }

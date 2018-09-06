@@ -65,6 +65,42 @@
             android:textStyle="bold"
             />
 
+        <Space
+            android:layout_width="6sp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:text="@string/string_and"
+            />
+
+        <Space
+            android:layout_width="6sp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:text="@string/string_and"
+            />
+
+        <Space
+            android:layout_width="6sp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/remainder_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            />
+
     </LinearLayout>
 
     <TextView
@@ -108,6 +144,30 @@
 
         <TextView
             android:id="@+id/divisor_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            />
+
+        <Space
+            android:layout_width="6sp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:text="@string/string_and"
+            />
+
+        <Space
+            android:layout_width="6sp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/divisor_c"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"

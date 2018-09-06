@@ -34,6 +34,12 @@
                 app:showAsAction="always"
                 />
             <item
+                android:id="@+id/number345"
+                android:icon="@android:drawable/ic_menu_edit"
+                android:title="3-4-5"
+                app:showAsAction="always"
+                />
+            <item
                 android:id="@+id/clockmaster"
                 android:icon="@android:drawable/ic_menu_edit"
                 android:title="Master"

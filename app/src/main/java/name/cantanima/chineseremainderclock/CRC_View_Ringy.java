@@ -26,12 +26,12 @@ import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.S
 import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.SEC5;
 
 /**
- * This class extends Clock_Drawer for the Bally design,
+ * This class extends Clock_Drawer for the Ringy design,
  * a circular design that moves a ball to show the correct remainder.
  * For general documentation on Clock_Drawer, see that class.
- * This file only documents groups of lines to explain how Bally works.
+ * This file only documents groups of lines to explain how Ringy works.
  * 
- * Since Bally is draggable, a number of tweaks are required, to make sure things are drawn
+ * Since Ringy is draggable, a number of tweaks are required, to make sure things are drawn
  * properly. See the fields for various explanations, as well as comments within draw().
  * @see Clock_Drawer
  * @see #draw(Canvas) 
@@ -594,5 +594,5 @@ public class CRC_View_Ringy extends Clock_Drawer {
   protected float step = 0.04f;
 
   /** tag for debugging */
-  final protected static String tag = "Bally";
+  final protected static String tag = "Ringy";
 }

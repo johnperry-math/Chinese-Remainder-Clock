@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.Editable;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -16,9 +17,6 @@ import java.util.LinkedList;
 
 /**
  * Created by cantanima on 7/19/17.
- */
-
-/**
  *
  * Used to obtain user's input in a "What time is it?" quiz.
  *
@@ -32,7 +30,7 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
    * @param finished how many questions have been finished (from 0 to total - 1 (we hope!))
    * @param total how many total questions are desired
    */
-  public TimeEntryDialog(
+  TimeEntryDialog(
       Activity activity, TimeEntryDialogListener new_listener, int finished, int total
   ) {
 
@@ -69,26 +67,28 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
     else
       setContentView(R.layout.time_dialog);
     // find and remember important interface elements
-    next_button = (Button) findViewById(R.id.quiz_accept_button);
-    hour_text = (EditText) findViewById(R.id.quiz_hour_entry);
-    minute_text = (EditText) findViewById(R.id.quiz_min_entry);
+    next_button = findViewById(R.id.quiz_accept_button);
+    hour_text = findViewById(R.id.quiz_hour_entry);
+    minute_text = findViewById(R.id.quiz_min_entry);
     // message to indicate quiz name & progress on question
     String title = cr_activity.getString(R.string.quiz_what_time_is_it) + " "
         + String.valueOf(number_complete + 1) + "/"
         + String.valueOf(number_total);
-    TextView message_text = (TextView) findViewById(R.id.quiz_message);
+    TextView message_text = findViewById(R.id.quiz_message);
     message_text.setText(title);
     // listen for next button
     next_button.setOnClickListener(this);
     // hide keyboard
-    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    Window win = getWindow();
+    if (win != null)
+      win.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
   }
 
   /**
    * When the next button is clicked (and we're only listening to the next button)
-   * we collect information, pass it to our CRC_View via quiz_answered(), and dismiss the dialog.
-   * @see CRC_View#quiz_answered(int, int)
+   * we collect information, pass it to the listeners time_received(), and dismiss the dialog.
+   * @see TimeEntryDialogListener#time_received(int, int)
    *
    * @param v The view that was clicked.
    */
@@ -100,10 +100,10 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
     int hour = 0, minute = 0;
     if (hour_editable != null && hour_editable.length() != 0)
       try { hour = Integer.valueOf(hour_editable.toString()); }
-      catch (Exception e) { }
+      catch (Exception e) { Log.d(tag, "Caught an exception when getting the hour on a click."); }
     if (minute_editable != null && minute_editable.length() != 0)
       try { minute = Integer.valueOf(minute_editable.toString()); }
-      catch (Exception e) { }
+      catch (Exception e) { Log.d(tag, "Caught an exception when getting the minute on a click."); }
 
     for (TimeEntryDialogListener listener : listeners)
       listener.time_received(hour, minute);
@@ -133,14 +133,16 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
   }
 
   /** Activity that started this dialog */
-  protected Activity cr_activity;
+  private Activity cr_activity;
   /** CRC_View with which we must interact */
-  protected LinkedList<TimeEntryDialogListener> listeners;
+  private LinkedList<TimeEntryDialogListener> listeners;
   /** button to request next question */
-  protected Button next_button;
+  private Button next_button;
   /** text for hour, minute */
-  protected EditText hour_text, minute_text;
+  private EditText hour_text, minute_text;
   /** number of questions completed and total */
-  protected int number_complete, number_total;
+  private int number_complete, number_total;
+  /** for debugging */
+  private String tag = "TimeEntryDialog";
 
 }

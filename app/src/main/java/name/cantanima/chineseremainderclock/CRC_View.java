@@ -1,24 +1,15 @@
 package name.cantanima.chineseremainderclock;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.drawable.ColorDrawable;
 import android.preference.PreferenceManager;
-import android.app.ActionBar;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
@@ -31,19 +22,16 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-import java.util.Random;
 
 import static android.content.Context.MODE_PRIVATE;
 import static android.graphics.Color.BLUE;
 import static android.graphics.Color.GRAY;
 import static android.graphics.Color.GREEN;
 import static android.graphics.Color.RED;
-import static android.graphics.Color.TRANSPARENT;
 import static android.graphics.Color.WHITE;
 import static android.view.MotionEvent.ACTION_DOWN;
 import static android.view.MotionEvent.ACTION_MOVE;
 import static android.view.MotionEvent.ACTION_UP;
-import static android.view.WindowManager.LayoutParams.FLAG_DIM_BEHIND;
 import static java.util.Calendar.HOUR;
 import static java.util.Calendar.HOUR_OF_DAY;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.CALENDAR;
@@ -444,6 +432,19 @@ public class CRC_View
   }
 
   /**
+   * Call this view's OnClickListener, if it is defined.  Performs all normal
+   * actions associated with clicking: reporting accessibility event, playing
+   * a sound, etc.
+   *
+   * @return True there was an assigned OnClickListener that was called, false
+   * otherwise is returned.
+   */
+  @Override
+  public boolean performClick() {
+    return super.performClick();
+  }
+
+  /**
    * handle buttons (+1, -1, info) and clicking in the text editor
    * @param v which view was clocked
    */
@@ -692,21 +693,6 @@ public class CRC_View
   /** is user dragging on the clock? */
   protected boolean dragging = false;
 
-  //TimePickerDialog quiz_dialog;
-  TimeEntryDialog quiz_dialog;
-
-  /** quiz data: total number of questions */
-  final int quiz_number_total = 5;
-  /** quiz data */
-  int quiz_number_complete, quiz_number_correct;
-  /** quiz data: whether time TextView's visibility value before we started the quiz */
-  int quiz_previous_time_visibility;
   /** quiz data: new time to show */
   int new_hour_value, new_minute_value;
-  /** quiz data: need a random number generator */
-  Random quiz_generator = null;
-  /** quiz data: whether seconds were visible before we started the quiz */
-  boolean quiz_previous_seconds_visibility;
-  /** quiz data: whether user could see manual button */
-  boolean quiz_active_toggle_was_visible;
 }

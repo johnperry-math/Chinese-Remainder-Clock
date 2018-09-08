@@ -1,8 +1,6 @@
 package name.cantanima.chineseremainderclock;
 
-import android.content.Context;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 
@@ -26,8 +24,8 @@ public abstract class CRC_Quiz {
   public CRC_Quiz(Chinese_Remainder context) {
     crc_context = context;
     android.support.v7.app.ActionBar ab = crc_context.getSupportActionBar();
-    ab.hide();
-    crc_view = (CRC_View) crc_context.findViewById(R.id.crc_view);
+    if (ab != null) ab.hide();
+    crc_view = crc_context.findViewById(R.id.crc_view);
     crc_view.pause_animation();
     activeToggle = crc_view.activeToggle;
     unitSelecter = crc_view.unitSelecter;
@@ -97,7 +95,7 @@ public abstract class CRC_Quiz {
     crc_drawer.set_show_seconds(quiz_previous_seconds_visibility);
     crc_drawer.recalculate_positions();
     android.support.v7.app.ActionBar ab = crc_context.getSupportActionBar();
-    ab.show();
+    if (ab != null) ab.show();
     if (quiz_active_toggle_was_visible) {
       activeToggle.setVisibility(VISIBLE);
       if (activeToggle.isChecked()) {
@@ -112,13 +110,13 @@ public abstract class CRC_Quiz {
       crc_view.restart_animation_by_calendar();
   }
 
-  protected Chinese_Remainder crc_context;
+  Chinese_Remainder crc_context;
   protected CRC_View crc_view;
-  protected Clock_Drawer crc_drawer;
-  protected int quiz_previous_time_visibility;
-  protected boolean quiz_previous_seconds_visibility, quiz_active_toggle_was_visible;
-  protected Switch activeToggle;
-  protected View unitSelecter, incrementer, decrementer, valueEditor, tv;
-  protected LinearLayout button_row;
+  private Clock_Drawer crc_drawer;
+  private int quiz_previous_time_visibility;
+  private boolean quiz_previous_seconds_visibility, quiz_active_toggle_was_visible;
+  private Switch activeToggle;
+  private View unitSelecter, incrementer, decrementer, valueEditor, tv;
+  private LinearLayout button_row;
   
 }

@@ -1,11 +1,10 @@
 package name.cantanima.chineseremainderclock;
 
+import android.support.v7.app.AppCompatActivity;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.Notification;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,11 +12,10 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -27,10 +25,6 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.ToggleButton;
-import android.widget.Toolbar;
-
-import org.w3c.dom.Text;
 
 /**
  *
@@ -103,8 +97,8 @@ public class Chinese_Remainder
 
   /**
    * Sets up the options menu.
-   * @param menu
-   * @return
+   * @param menu menu to inflate into
+   * @return always returns true
    */
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
@@ -115,8 +109,8 @@ public class Chinese_Remainder
 
   /**
    * Takes care of the menu items.
-   * @param item
-   * @return
+   * @param item item that has been selected
+   * @return true if one of our items; otherwise, whatever the superclass returns when we pass the call
    */
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
@@ -157,7 +151,7 @@ public class Chinese_Remainder
 
   /**
    * A placeholder fragment containing a simple view.
-   * @details This was created automatically by Android Studio and is apparently how Google wants
+   * This was created automatically by Android Studio and is apparently how Google wants
    *    everything done henceforth and hereafter. Aside from the default,
    *    this reads from the preferences file and assigns values to the CRC_View.
    */
@@ -168,9 +162,9 @@ public class Chinese_Remainder
 
     /**
      * Aside from the default behavior, we read preferences, and pass information to the CRC_View.
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
+     * @param inflater layout to inflate
+     * @param container container in which to inflate it (I guess)
+     * @param savedInstanceState past data, if saved
      * @return must return rootView; Android will pout big-time if you don't
      */
     @Override
@@ -184,8 +178,8 @@ public class Chinese_Remainder
       );
 
       // initialize root view for touch
-      CRC_View crc_view = (CRC_View) rootView.findViewById(R.id.crc_view);
-      rootView.setOnTouchListener(crc_view);
+      CRC_View crc_view = rootView.findViewById(R.id.crc_view);
+      crc_view.setOnTouchListener(crc_view);
 
       // Read preferences, assign to crc_view
       SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
@@ -226,29 +220,29 @@ public class Chinese_Remainder
       // and should have crc_view as an appropriate listener
       // (since that's where I take care of the interaction)
 
-      Switch pb = (Switch) rootView.findViewById(R.id.activeToggle);
+      Switch pb = rootView.findViewById(R.id.activeToggle);
       pb.setOnCheckedChangeListener(crc_view);
       pb.setVisibility(View.INVISIBLE);
 
-      Button upButton = (Button) rootView.findViewById(R.id.decrementButton);
+      Button upButton = rootView.findViewById(R.id.decrementButton);
       upButton.setOnClickListener(crc_view);
       upButton.setVisibility(View.INVISIBLE);
 
-      Button dnButton = (Button) rootView.findViewById(R.id.incrementButton);
+      Button dnButton = rootView.findViewById(R.id.incrementButton);
       dnButton.setOnClickListener(crc_view);
       dnButton.setVisibility(View.INVISIBLE);
 
-      Spinner spinner = (Spinner) rootView.findViewById(R.id.selectUnit);
+      Spinner spinner = rootView.findViewById(R.id.selectUnit);
       spinner.setOnItemSelectedListener(crc_view);
       spinner.setVisibility(View.INVISIBLE);
 
-      EditText timeEditor = (EditText) rootView.findViewById(R.id.timeEditor);
+      EditText timeEditor = rootView.findViewById(R.id.timeEditor);
       timeEditor.setOnEditorActionListener(crc_view);
       timeEditor.setVisibility(View.INVISIBLE);
       timeEditor.setSelectAllOnFocus(true);
       timeEditor.setOnClickListener(crc_view);
 
-      LinearLayout button_row = (LinearLayout) rootView.findViewById(R.id.manual_buttons);
+      LinearLayout button_row = rootView.findViewById(R.id.manual_buttons);
       button_row.setVisibility(View.INVISIBLE);
 
       // make crc_view listen to things that have to be shown/hidden and such
@@ -256,7 +250,7 @@ public class Chinese_Remainder
 
       // crc_view also needs to show/hide the time, and for some reason
       // I separated that from the buttons
-      TextView tv = (TextView) rootView.findViewById(R.id.time_display);
+      TextView tv = rootView.findViewById(R.id.time_display);
       tv.setVisibility(View.INVISIBLE);
       crc_view.set_time_textview(tv);
 
@@ -265,7 +259,26 @@ public class Chinese_Remainder
 
   }
 
+  /**
+   * Called to process touch screen events.  You can override this to
+   * intercept all touch screen events before they are dispatched to the
+   * window.  Be sure to call this implementation for touch screen events
+   * that should be handled normally.
+   *
+   * @param ev The touch screen event.
+   * @return boolean Return true if this event was consumed.
+   */
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent ev) {
+    boolean consumed = super.dispatchTouchEvent(ev);
+    if (!consumed) {
+      CRC_View crc_view = findViewById(R.id.crc_view);
+      crc_view.onTouch(null, ev);
+    }
+    return true;
+  }
+
   // used when debugging w/Log.d()
-  private static final String tag = "Chinese Remainer";
+  // private static final String tag = "Chinese Remainer";
 
 }

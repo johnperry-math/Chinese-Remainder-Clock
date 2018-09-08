@@ -66,17 +66,15 @@ class Quiz_abTime (
         // this is not used here
     }
 
-    override fun cancelled() { quiz_cancelled() }
-
     override fun num_received(n: Int) {
         val activity = context as Activity
         ++complete
-        var message: String
-        message = activity.getString(R.string.quiz_correct)
-        if (n == value) {
+        val message: String
+        message = if (n == value) {
             ++correct
+            activity.getString(R.string.quiz_correct)
         } else {
-            message += " " + value.toString()
+            activity.getString(R.string.quiz_sorry) + " " + value.toString()
         }
         val toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
         toast.show()
@@ -102,16 +100,15 @@ class Quiz_abTime (
             quiz_message += ": " + correct.toString() + "/" + total.toString()
             AlertDialog.Builder(activity).setTitle(activity.getString(R.string.quiz_result_title))
                     .setMessage(quiz_message).setIcon(R.drawable.ic_action_info)
-                    .setPositiveButton(
-                            dialog_dismiss,
-                            {
-                                dialog: DialogInterface, _: Int -> dialog.dismiss()
-                            }
-                    )
+                    .setPositiveButton( dialog_dismiss ) {
+                        dialog: DialogInterface, _: Int -> dialog.dismiss()
+                    }
                     .show()
             quiz_cancelled()
         }
     }
+
+    override fun cancelled() { quiz_cancelled() }
 
     var quiz_dialog: ABNumberDialog? = null
     var value = 0
@@ -127,7 +124,7 @@ class Quiz_abTime (
 }
 
 class ABNumberDialog(
-        val crc_activity: Activity,
+        crc_activity: Activity,
         val listener: ABNumberDialogListener,
         val min: Int, val max: Int, val rem_1: Int, val rem_2: Int, val div_1: Int, val div_2: Int,
         val complete: Int, val total: Int
@@ -150,9 +147,10 @@ class ABNumberDialog(
         setContentView(R.layout.quiz_ab_layout)
         val next_button: Button = findViewById(R.id.quiz_accept_button)
         next_button.setOnClickListener(this)
-        val number_picker : NumberPicker = findViewById(R.id.quiz_ab_number_picker)
-        number_picker.minValue = min
-        number_picker.maxValue = max
+        //val number_picker : NumberPicker = findViewById(R.id.quiz_ab_number_picker)
+        val number_picker : FlexibleNumberPicker = findViewById(R.id.quiz_ab_number_picker)
+        number_picker.min = min
+        number_picker.max = max
         var update_text : TextView = findViewById(R.id.quiz_which)
         val which_problem = complete.toString() + "/" + total.toString()
         update_text.text = which_problem
@@ -172,7 +170,7 @@ class ABNumberDialog(
      * @param v The view that was clicked.
      */
     override fun onClick(v: View?) {
-        val number_picker : NumberPicker = findViewById(R.id.quiz_ab_number_picker)
+        val number_picker : FlexibleNumberPicker = findViewById(R.id.quiz_ab_number_picker)
         listener.num_received(number_picker.value)
         dismiss()
     }
@@ -233,17 +231,15 @@ class Quiz_abcTime (
         // this is not used here
     }
 
-    override fun cancelled() { quiz_cancelled() }
-
     override fun num_received(n: Int) {
         val activity = context as Activity
         ++complete
-        var message: String
-        message = activity.getString(R.string.quiz_correct)
-        if (n == value) {
+        val message: String
+        message = if (n == value) {
             ++correct
+            activity.getString(R.string.quiz_correct)
         } else {
-            message += " " + value.toString()
+            activity.getString(R.string.quiz_sorry) + " " + value.toString()
         }
         val toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
         toast.show()
@@ -270,14 +266,17 @@ class Quiz_abcTime (
             AlertDialog.Builder(activity).setTitle(activity.getString(R.string.quiz_result_title))
                     .setMessage(quiz_message).setIcon(R.drawable.ic_action_info)
                     .setPositiveButton(
-                            dialog_dismiss,
-                            {
-                                dialog: DialogInterface, _: Int -> dialog.dismiss()
-                            }
-                    )
+                            dialog_dismiss
+                    ) {
+                        dialog: DialogInterface, _: Int -> dialog.dismiss()
+                    }
                     .show()
             quiz_cancelled()
         }
+    }
+
+    override fun cancelled() {
+        quiz_cancelled()
     }
 
     var quiz_dialog: ABCNumberDialog? = null
@@ -294,7 +293,7 @@ class Quiz_abcTime (
 }
 
 class ABCNumberDialog(
-        val crc_activity: Activity,
+        crc_activity: Activity,
         val listener: ABNumberDialogListener,
         val max: Int,
         val rem_1: Int, val rem_2: Int, val rem_3: Int,

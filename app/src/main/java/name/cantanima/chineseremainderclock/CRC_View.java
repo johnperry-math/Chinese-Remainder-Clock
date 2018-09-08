@@ -80,15 +80,21 @@ public class CRC_View
     } else {
 
       // remember Activity; needed for preferences if nothing else
-      my_owner = (Chinese_Remainder) context;
+      my_owner = context;
+
 
       // read and set up preferences
-      SharedPreferences prefs = my_owner.getPreferences(MODE_PRIVATE);
+      SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(my_owner);
       boolean saved_hour = prefs.getBoolean(my_owner.getString(R.string.saved_hour), false);
       boolean saved_seconds = prefs.getBoolean(my_owner.getString(R.string.saved_show_seconds), false);
       boolean saved_time = prefs.getBoolean(my_owner.getString(R.string.saved_show_time), false);
       boolean saved_unit_orientation = prefs.getBoolean(my_owner.getString(R.string.saved_reverse_orientation), false);
-      int saved_drawer = prefs.getInt(my_owner.getString(R.string.saved_drawer), 3);
+      int saved_drawer;
+      try {
+        saved_drawer = Integer.valueOf(prefs.getString(my_owner.getString(R.string.saved_drawer), String.valueOf(3)));
+      } catch (java.lang.ClassCastException e) {
+        saved_drawer = prefs.getInt(my_owner.getString(R.string.saved_drawer), 0);
+      }
       int saved_bg_color = prefs.getInt(my_owner.getString(R.string.saved_bg_color), GRAY);
       int saved_line_color = prefs.getInt(my_owner.getString(R.string.saved_line_color), WHITE);
       int saved_hour_color = prefs.getInt(my_owner.getString(R.string.saved_hour_color), BLUE);
@@ -272,7 +278,7 @@ public class CRC_View
     tv = ttv;
     if (my_drawer != null) my_drawer.set_time_textview(tv);
     if (tv != null) {
-      SharedPreferences pref = my_owner.getPreferences(MODE_PRIVATE);
+      SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(my_owner);
       boolean show_time = pref.getBoolean(my_owner.getString(R.string.saved_show_time), false);
       if (show_time) tv.setVisibility(VISIBLE);
       else tv.setVisibility(INVISIBLE);
@@ -535,7 +541,12 @@ public class CRC_View
     boolean saved_seconds = pref.getBoolean(my_owner.getString(R.string.saved_show_seconds), false);
     boolean saved_time = pref.getBoolean(my_owner.getString(R.string.saved_show_time), false);
     boolean saved_reverse_orientation = pref.getBoolean(my_owner.getString(R.string.saved_reverse_orientation), false);
-    int saved_drawer = Integer.valueOf(pref.getString(my_owner.getString(R.string.saved_drawer), "0"));
+    int saved_drawer;
+    try {
+      saved_drawer = Integer.valueOf(pref.getString(my_owner.getString(R.string.saved_drawer), "0"));
+    } catch (java.lang.ClassCastException e) {
+      saved_drawer = pref.getInt(my_owner.getString(R.string.saved_drawer), 0);
+    }
     int saved_hour_color = pref.getInt(my_owner.getString(R.string.saved_hour_color), BLUE);
     int saved_minute_color = pref.getInt(my_owner.getString(R.string.saved_minute_color), RED);
     int saved_second_color = pref.getInt(my_owner.getString(R.string.saved_second_color), GREEN);
@@ -545,7 +556,7 @@ public class CRC_View
     // the preference file may actual be that for the PreferenceActivity,
     // in which case we need to save to the Activity's preference file
     // (figuring out this boneheaded design took place on a bad, bad day)
-    SharedPreferences.Editor editor = my_owner.getPreferences(MODE_PRIVATE).edit();
+    SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(my_owner).edit();
     editor.putBoolean(my_owner.getString(R.string.saved_hour), saved_hour);
     editor.putBoolean(my_owner.getString(R.string.saved_show_seconds), saved_seconds);
     editor.putBoolean(my_owner.getString(R.string.saved_show_time), saved_time);
@@ -607,7 +618,7 @@ public class CRC_View
   protected CRC_Animation my_animator;
 
   /** activity controlling this clock */
-  protected Chinese_Remainder my_owner;
+  protected Context my_owner;
 
   /** enable or disable Manual mode */
   protected Switch activeToggle;

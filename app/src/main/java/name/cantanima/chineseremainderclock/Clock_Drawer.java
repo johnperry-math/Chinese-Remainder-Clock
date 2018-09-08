@@ -147,29 +147,31 @@ public abstract class Clock_Drawer {
       }
 
       // this seems necessary for some reason I haven't yet worked out
-      switch (my_viewer.unitSelecter.getSelectedItemPosition()) {
-        case 0:
-          //default:
-          switch (my_viewer.hour_modulus) {
-            case 4:
-              //default:
-              my_viewer.valueEditor.setText(hour12_strings[hour]);
-              my_viewer.valueEditor.selectAll();
-              break;
-            case 8:
-              my_viewer.valueEditor.setText(hour24_strings[hour]);
-              my_viewer.valueEditor.selectAll();
-              break;
-          }
-          break;
-        case 1:
-          my_viewer.valueEditor.setText(String.valueOf(minute));
-          my_viewer.valueEditor.selectAll();
-          break;
-        case 2:
-          my_viewer.valueEditor.setText(String.valueOf(second));
-          my_viewer.valueEditor.selectAll();
-          break;
+      if (my_viewer.unitSelecter != null) {
+        switch (my_viewer.unitSelecter.getSelectedItemPosition()) {
+          case 0:
+            //default:
+            switch (my_viewer.hour_modulus) {
+              case 4:
+                //default:
+                my_viewer.valueEditor.setText(hour12_strings[hour]);
+                my_viewer.valueEditor.selectAll();
+                break;
+              case 8:
+                my_viewer.valueEditor.setText(hour24_strings[hour]);
+                my_viewer.valueEditor.selectAll();
+                break;
+            }
+            break;
+          case 1:
+            my_viewer.valueEditor.setText(String.valueOf(minute));
+            my_viewer.valueEditor.selectAll();
+            break;
+          case 2:
+            my_viewer.valueEditor.setText(String.valueOf(second));
+            my_viewer.valueEditor.selectAll();
+            break;
+        }
       }
     }
 
@@ -262,7 +264,7 @@ public abstract class Clock_Drawer {
     }
 
     // show time if desired
-    if (show_time) {
+    if (show_time && tv != null) {
       // if the offset is roughly at 1, print the new time, else print the old time
       // (if someone is looking carefully, the clock will seem to be 1 second behind)
       int print_hour, print_minute, print_second;
@@ -313,13 +315,15 @@ public abstract class Clock_Drawer {
       else
         to_print += minsec_strings[print_minute];
     }
-    if (print_second == 60)
-      to_print += colon_str + dbl_zero_str;
-    else {
-      if (print_second < 10)
-        to_print += colon_str + zero_str + minsec_strings[print_second];
-      else
-        to_print += colon_str + minsec_strings[print_second];
+    if (show_seconds) {
+      if (print_second == 60)
+        to_print += colon_str + dbl_zero_str;
+      else {
+        if (print_second < 10)
+          to_print += colon_str + zero_str + minsec_strings[print_second];
+        else
+          to_print += colon_str + minsec_strings[print_second];
+      }
     }
     tv.setText(to_print);
 

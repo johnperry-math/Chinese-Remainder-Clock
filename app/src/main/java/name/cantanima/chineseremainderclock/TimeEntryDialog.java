@@ -63,7 +63,7 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     // set up layout according to device orientation
     if (cr_activity.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
-      setContentView(R.layout.time_dialog_landscape);
+      setContentView(R.layout.time_dialog);
     else
       setContentView(R.layout.time_dialog);
     // find and remember important interface elements

@@ -10,8 +10,6 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-import static android.view.View.INVISIBLE;
-import static android.view.View.VISIBLE;
 import static android.view.WindowManager.LayoutParams.FLAG_DIM_BEHIND;
 
 /**
@@ -20,7 +18,7 @@ import static android.view.WindowManager.LayoutParams.FLAG_DIM_BEHIND;
 
 public class Quiz_WhatTimeIsIt extends CRC_Quiz implements TimeEntryDialogListener {
 
-  public Quiz_WhatTimeIsIt(Chinese_Remainder context) {
+  Quiz_WhatTimeIsIt(Chinese_Remainder context) {
     super(context);
     quiz_number_correct = quiz_number_complete = 0;
     quiz_number_total = 5;
@@ -45,7 +43,7 @@ public class Quiz_WhatTimeIsIt extends CRC_Quiz implements TimeEntryDialogListen
       if (screen_config == Configuration.ORIENTATION_PORTRAIT)
         win_attr.gravity = Gravity.BOTTOM;
       else if (screen_config == Configuration.ORIENTATION_LANDSCAPE)
-        win_attr.gravity = Gravity.LEFT;
+        win_attr.gravity = Gravity.START;
       win_attr.alpha = 0.75f;
       quiz_win.setAttributes(win_attr);
       quiz_dialog.getWindow().clearFlags(FLAG_DIM_BEHIND);
@@ -115,8 +113,8 @@ public class Quiz_WhatTimeIsIt extends CRC_Quiz implements TimeEntryDialogListen
    * Call this from show_question().
    * This is optional, and the default does nothing.
    *
-   * @param hr
-   * @param min
+   * @param hr hour chosen
+   * @param min minute chosen
    */
   @Override
   public void react_to_answer(int hr, int min) {
@@ -136,10 +134,10 @@ public class Quiz_WhatTimeIsIt extends CRC_Quiz implements TimeEntryDialogListen
   @Override
   public void time_received(int h, int m) { accept_answer(h, m); }
 
-  protected TimeEntryDialog quiz_dialog;
-  int new_hour_value, new_minute_value;
-  int quiz_number_correct, quiz_number_complete, quiz_number_total;
-  boolean twelve_hour_clock;
-  Random quiz_generator;
+  private TimeEntryDialog quiz_dialog;
+  private int new_hour_value, new_minute_value;
+  private int quiz_number_correct, quiz_number_complete, quiz_number_total;
+  private boolean twelve_hour_clock;
+  private Random quiz_generator;
 
 }

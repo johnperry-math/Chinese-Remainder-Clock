@@ -132,15 +132,19 @@ public class Chinese_Remainder
       return true;
     } else if (id == R.id.number34) {
       // starts a quiz!
+      findViewById(R.id.crc_view).setVisibility(View.INVISIBLE);
       new Quiz_abTime(this, 3, 4);
     } else if (id == R.id.number35) {
       // starts a quiz!
+      findViewById(R.id.crc_view).setVisibility(View.INVISIBLE);
       new Quiz_abTime(this, 3, 5);
     } else if (id == R.id.number45) {
       // starts a quiz!
+      findViewById(R.id.crc_view).setVisibility(View.INVISIBLE);
       new Quiz_abTime(this, 4, 5);
     } else if (id == R.id.number345) {
       // starts a quiz!
+      findViewById(R.id.crc_view).setVisibility(View.INVISIBLE);
       new Quiz_abcTime(this, 3, 4, 5);
     } else if (id == R.id.clockmaster) {
       new Quiz_WhatTimeIsIt(this);

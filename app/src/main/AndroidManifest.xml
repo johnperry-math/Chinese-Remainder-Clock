@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="name.cantanima.chineseremainderclock">
+    package="name.cantanima.chineseremainderclock"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <application
         android:icon="@drawable/clock_launcher_icon"
@@ -8,7 +10,8 @@
         android:theme="@style/Theme.AppCompat"
         android:background="@color/white"
         android:allowBackup="true"
-        android:fullBackupContent="true">
+        android:fullBackupContent="true"
+        tools:ignore="GoogleAppIndexingWarning">
 
         <activity
             android:name=".Chinese_Remainder"

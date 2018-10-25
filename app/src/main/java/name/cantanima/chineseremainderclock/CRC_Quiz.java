@@ -94,6 +94,7 @@ public abstract class CRC_Quiz {
     tv.setVisibility(quiz_previous_time_visibility);
     crc_drawer.set_show_seconds(quiz_previous_seconds_visibility);
     crc_drawer.recalculate_positions();
+    crc_view.setVisibility(VISIBLE);
     android.support.v7.app.ActionBar ab = crc_context.getSupportActionBar();
     if (ab != null) ab.show();
     if (quiz_active_toggle_was_visible) {

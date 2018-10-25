@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:id="@+id/quiz_ab_layout"
               android:orientation="vertical"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+              android:padding="20dp"
               android:layout_gravity="center"
               android:background="@drawable/transparent_dialog"
-              android:elevation="5dp"
               android:gravity="center"
->
+    >
 
     <TextView
         android:id="@+id/quiz_which"
@@ -18,13 +19,34 @@
         android:textSize="12sp"
         android:textStyle="bold"/>
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/quiz_number_has_remainders"
-        android:textSize="12sp"
-        android:textStyle="bold"/>
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/quiz_number_between"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
+
+        <Space
+            android:layout_width="6sp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/max_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -180,18 +202,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:text="@string/respectively"
+        android:textSize="12sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="@string/quiz_ab_guess"
         android:textSize="12sp"
         android:textStyle="bold"/>
 
-    <NumberPicker
+    <name.cantanima.chineseremainderclock.FlexibleNumberPicker
         android:id="@+id/quiz_ab_number_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-    </NumberPicker>
+        app:back_color="@drawable/transparent_dialog"
+        />
 
     <Button
         android:id="@+id/quiz_accept_button"
@@ -199,7 +227,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/transparent_dialog"
-        android:elevation="5dp"
         android:text="@string/quiz_next"
         android:textSize="12sp"/>
 

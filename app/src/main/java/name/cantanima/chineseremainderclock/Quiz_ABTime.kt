@@ -36,12 +36,11 @@ class Quiz_abTime (
     override fun show_question() {
         val prod = d1*d2
         randomizer = Random()
-        val min = randomizer!!.nextInt(60 - prod)
-        value = min + randomizer!!.nextInt(prod)
+        value = randomizer!!.nextInt(prod)
         val r1 = value % d1
         val r2 = value % d2
         quiz_dialog = ABNumberDialog(
-                context as Activity, this, min, min + prod - 1,
+                context as Activity, this, 0, prod - 1,
                 r1, r2, d1, d2, complete, total
         )
         val qd = quiz_dialog
@@ -78,7 +77,7 @@ class Quiz_abTime (
         }
         val toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
         toast.show()
-        if (complete < total) show_question()
+        if (complete <= total) show_question()
         else {
             if (quiz_dialog!!.isShowing) quiz_dialog!!.dismiss()
             var quiz_message: String
@@ -114,7 +113,7 @@ class Quiz_abTime (
     var value = 0
     var randomizer : Random? = Random()
     var correct = 0
-    var complete = 0
+    var complete = 1
     val total = 5
 
     init {
@@ -147,13 +146,14 @@ class ABNumberDialog(
         setContentView(R.layout.quiz_ab_layout)
         val next_button: Button = findViewById(R.id.quiz_accept_button)
         next_button.setOnClickListener(this)
-        //val number_picker : NumberPicker = findViewById(R.id.quiz_ab_number_picker)
         val number_picker : FlexibleNumberPicker = findViewById(R.id.quiz_ab_number_picker)
-        number_picker.min = min
+        number_picker.min = 0
         number_picker.max = max
         var update_text : TextView = findViewById(R.id.quiz_which)
         val which_problem = complete.toString() + "/" + total.toString()
         update_text.text = which_problem
+        update_text = findViewById(R.id.max_value)
+        update_text.text = max.toString()
         update_text = findViewById(R.id.remainder_a)
         update_text.text = rem_1.toString()
         update_text = findViewById(R.id.remainder_b)
@@ -243,7 +243,7 @@ class Quiz_abcTime (
         }
         val toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
         toast.show()
-        if (complete < total) show_question()
+        if (complete <= total) show_question()
         else {
             if (quiz_dialog!!.isShowing) quiz_dialog!!.dismiss()
             var quiz_message: String
@@ -283,7 +283,7 @@ class Quiz_abcTime (
     var value = 0
     var randomizer : Random? = Random()
     var correct = 0
-    var complete = 0
+    var complete = 1
     val total = 5
 
     init {
@@ -324,6 +324,8 @@ class ABCNumberDialog(
         var update_text : TextView = findViewById(R.id.quiz_which)
         val which_problem = complete.toString() + "/" + total.toString()
         update_text.text = which_problem
+        update_text = findViewById(R.id.max_value)
+        update_text.text = max.toString()
         update_text = findViewById(R.id.remainder_a)
         update_text.text = rem_1.toString()
         update_text = findViewById(R.id.remainder_b)

@@ -11,7 +11,7 @@
     <string name="welcome_dialog_text">
         The tool bar offers Information on how the clock works (question mark),
         Settings for options on color, design, etc. (wrench), and
-        simple Quizzes (pencil).
+        simple Quizzes (pencil). The new version offers more quizzes!
 
         If you touch the screen outside the clock,
         a button to allow manipulation of the clock will appear.
@@ -43,8 +43,6 @@
 
     <!-- Strings related to Help (not sure I actually use this) -->
 
-    <string name="title_activity_help_activity.java" translatable="false">Help Activity</string>
-
     <string name="title_activity_help" translatable="false">HelpActivity</string>
     <string name="title_activity_settings" translatable="false">Arghackle</string>
 
@@ -52,7 +50,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="version">version</string>
-    <string name="current_version" translatable="false">2.05</string>
+    <string name="current_version" translatable="false">2.06</string>
     <string name="first_run" translatable="false">first_run</string>
     <string name="saved_hour" translatable="false">saved_hour</string>
     <string name="saved_color" translatable="false">saved_color</string>
@@ -129,9 +127,11 @@
     <string name="quiz_what_time_is_it">What time is it?</string>
 
     <string name="quiz_ab_guess">What number is it?</string>
-    <string name="quiz_number_has_remainders">A number has remainders</string>
+    <string name="quiz_number_between">A number between 0 and</string>
+    <string name="has_remainders">has remainders</string>
     <string name="quiz_after_division_by">after division by</string>
     <string name="string_and"> and </string>
+    <string name="respectively">respectively.</string>
 
     <string name="quiz_hour_hint">HH</string>
     <string name="quiz_time_sep">:</string>

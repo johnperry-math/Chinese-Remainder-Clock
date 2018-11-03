@@ -201,9 +201,9 @@ class FlexibleNumberPicker(context: Context, attrs: AttributeSet)
      */
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        high_paint.getTextBounds(min.toString(), 0, min.toString().length, bounds)
+        high_paint.getTextBounds((min * 10).toString(), 0, (min * 10).toString().length, bounds)
         val min_width = bounds.width()
-        high_paint.getTextBounds(max.toString(), 0, max.toString().length, bounds)
+        high_paint.getTextBounds((max * 10).toString(), 0, (max * 10).toString().length, bounds)
         val max_width = bounds.width()
         single_width = max(min_width, max_width)
         view_width  = single_width * 3 + padding_between * 2 + padding_left + padding_right

@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.Window
 import android.widget.Button
-import android.widget.NumberPicker
 import android.widget.TextView
 import android.widget.Toast
 import java.util.*
@@ -27,6 +26,8 @@ class Quiz_abTime (
 ) : CRC_Quiz(context), ABNumberDialogListener
 {
 
+    var previous_values = HashSet<Int>(5)
+
     /**
      * Create a new quiz question.
      * This is the place to start a new dialog, which in its turn should invoke
@@ -35,8 +36,10 @@ class Quiz_abTime (
      */
     override fun show_question() {
         val prod = d1*d2
-        randomizer = Random()
-        value = randomizer!!.nextInt(prod)
+        do
+            value = randomizer.nextInt(prod)
+        while (value in previous_values)
+        previous_values.add(value)
         val r1 = value % d1
         val r2 = value % d2
         quiz_dialog = ABNumberDialog(
@@ -111,7 +114,7 @@ class Quiz_abTime (
 
     var quiz_dialog: ABNumberDialog? = null
     var value = 0
-    var randomizer : Random? = Random()
+    val randomizer = Random()
     var correct = 0
     var complete = 1
     val total = 5
@@ -192,6 +195,8 @@ class Quiz_abcTime (
 ) : CRC_Quiz(context), ABNumberDialogListener
 {
 
+    val previous_values = HashSet<Int>()
+
     /**
      * Create a new quiz question.
      * This is the place to start a new dialog, which in its turn should invoke
@@ -200,8 +205,10 @@ class Quiz_abcTime (
      */
     override fun show_question() {
         val prod = d1*d2*d3
-        randomizer = Random()
-        value = randomizer!!.nextInt(prod)
+        do
+            value = randomizer!!.nextInt(prod)
+        while (value in previous_values)
+        previous_values.add(value)
         val r1 = value % d1
         val r2 = value % d2
         val r3 = value % d3
@@ -281,7 +288,7 @@ class Quiz_abcTime (
 
     var quiz_dialog: ABCNumberDialog? = null
     var value = 0
-    var randomizer : Random? = Random()
+    val randomizer = Random()
     var correct = 0
     var complete = 1
     val total = 5
@@ -318,9 +325,9 @@ class ABCNumberDialog(
         setContentView(R.layout.quiz_abc_layout)
         val next_button: Button = findViewById(R.id.quiz_accept_button)
         next_button.setOnClickListener(this)
-        val number_picker : NumberPicker = findViewById(R.id.quiz_ab_number_picker)
-        number_picker.minValue = 0
-        number_picker.maxValue = max
+        val number_picker : FlexibleNumberPicker = findViewById(R.id.quiz_ab_number_picker)
+        number_picker.min = 0
+        number_picker.max = max
         var update_text : TextView = findViewById(R.id.quiz_which)
         val which_problem = complete.toString() + "/" + total.toString()
         update_text.text = which_problem
@@ -346,7 +353,7 @@ class ABCNumberDialog(
      * @param v The view that was clicked.
      */
     override fun onClick(v: View?) {
-        val number_picker : NumberPicker = findViewById(R.id.quiz_ab_number_picker)
+        val number_picker : FlexibleNumberPicker = findViewById(R.id.quiz_ab_number_picker)
         listener.num_received(number_picker.value)
         dismiss()
     }

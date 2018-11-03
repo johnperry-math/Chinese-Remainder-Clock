@@ -4,7 +4,7 @@ but we should consider fixing them.
 (Update: recent tests suggest this may not be true, if it ever was.)
 
 TODO
-Combine Ringy's drawing of circles and hatchmarks into paths prepared
+Combine Ringy's drawing of circles and hatch marks into paths prepared
 during recalculate_positions().
 
 TODO

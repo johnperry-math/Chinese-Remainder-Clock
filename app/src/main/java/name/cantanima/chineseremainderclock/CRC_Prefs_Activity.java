@@ -2,20 +2,9 @@ package name.cantanima.chineseremainderclock;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
-import android.preference.SwitchPreference;
-
-import yuku.ambilwarna.widget.AmbilWarnaPreference;
-
-import static android.graphics.Color.BLACK;
-import static android.graphics.Color.BLUE;
-import static android.graphics.Color.GREEN;
-import static android.graphics.Color.LTGRAY;
-import static android.graphics.Color.RED;
-import static name.cantanima.chineseremainderclock.Clock_Drawer.VERYLIGHTGRAY;
 
 public class CRC_Prefs_Activity
         extends PreferenceActivity

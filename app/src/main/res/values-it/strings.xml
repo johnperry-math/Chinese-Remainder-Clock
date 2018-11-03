@@ -3,12 +3,7 @@
     <string name="app_name">Orologio Cinese</string>
     <string name="app_menu_title">Orologio Cinese</string>
     <string name="welcome_string">Benvenuto a l\'Orologio Cinese!</string>
-    <string name="welcome_dialog_text">
-        La barra degli strumenti contiene Informazioni su come funziona
-        l\'Orologio Cinese (punto interrogativo), Impostazioni per scegliere colore,
-        design ecc. (chiave inglese) e alcuni Quiz (matita).
-        Questa versione vi offre nuovi Quiz!
-        Se tocchi lo schermo fuori dall\'Orologio puoi entrare nella versione manuale e settare l\'ora.</string>
+    <string name="welcome_dialog_text">La barra degli strumenti contiene Informazioni su come funziona l\'Orologio Cinese (punto interrogativo), Impostazioni per scegliere ad esempio il design (chiave inglese) ed alcuni Quiz (matita). Questa versione vi offre nuovi Quiz! Se tocchi lo schermo fuori dall\'Orologio puoi entrare nella versione manuale e settare l\'ora.</string>
     <string name="proceed_string">Vai!</string>
     <string name="info_button_text">Informazioni</string>
     <string name="info_button_text_short">Info</string>
@@ -84,10 +79,11 @@
     <string name="quiz_menu_title">Quiz</string>
     <string name="version">versione</string>
     <string name="quiz_ab_guess">Che numero è?</string>
-    <string name="quiz_number_between">Un numero fra 0 e</string>
-    <string name="has_remainders">ha i resti</string>
-    <string name="quiz_after_division_by">dopo divisione per</string>
-    <string name="respectively">rispettivamente.</string>
+    <string name="quiz_number_between">Il numero tra 0 e</string>
+    <string name="quiz_after_division_by">nella divisione per</string>
     <string name="string_and">e</string>
+    <string name="has">ha</string>
+    <string name="remainder">resto</string>
+    <string name="question">Domanda</string>
 
 </resources>

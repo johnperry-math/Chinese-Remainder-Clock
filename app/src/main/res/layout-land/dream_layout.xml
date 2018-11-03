@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:layout_weight="100"
     >
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="10"/>
-
     <name.cantanima.chineseremainderclock.CRC_View
         android:id="@+id/CRC_View"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center"/>
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="10"/>
-
     <TextView
         android:id="@+id/time_display"
+        app:layout_constraintEnd_toEndOf="@id/CRC_View"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:shadowColor="@color/black"
@@ -32,12 +29,7 @@
         android:shadowRadius="3"
         android:text="99:99:99"
         android:textColor="@color/white"
-        android:textSize="36sp"
+        android:textSize="27sp"
         android:layout_gravity="center"/>
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="10"/>
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

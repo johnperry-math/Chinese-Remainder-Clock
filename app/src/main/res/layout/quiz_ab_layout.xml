@@ -5,18 +5,33 @@
               android:orientation="vertical"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:padding="20dp"
+              android:paddingLeft="20dp"
+              android:paddingRight="20dp"
+              android:paddingTop="5dp"
+              android:paddingBottom="5dp"
               android:layout_gravity="center"
               android:background="@drawable/transparent_dialog"
               android:gravity="center"
 >
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/question"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <Space
+        android:layout_width="6sp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
         android:id="@+id/quiz_which"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:textStyle="bold"/>
 
     <LinearLayout
@@ -31,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/quiz_number_between"
-            android:textSize="12sp"
+            android:textSize="16sp"
             android:textStyle="bold"/>
 
         <Space
@@ -42,7 +57,7 @@
             android:id="@+id/max_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             />
 
@@ -51,10 +66,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/has"
         android:layout_gravity="center"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:text="@string/has_remainders"
         />
 
     <LinearLayout
@@ -65,10 +80,23 @@
     >
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/remainder"
+            />
+
+        <Space
+            android:layout_width="6sp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
             android:id="@+id/remainder_a"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             />
 
@@ -79,9 +107,48 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
+            android:layout_gravity="center"
+            android:text="@string/quiz_after_division_by"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <Space
+            android:layout_width="6sp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/divisor_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:text="@string/string_and"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/string_and"
+        android:layout_gravity="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/remainder"
             />
 
         <Space
@@ -92,31 +159,7 @@
             android:id="@+id/remainder_b"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            />
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/quiz_after_division_by"
-        android:textSize="12sp"
-        android:textStyle="bold"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/divisor_a"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             />
 
@@ -127,10 +170,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:text="@string/string_and"
-            />
+            android:layout_gravity="center"
+            android:text="@string/quiz_after_division_by"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
         <Space
             android:layout_width="6sp"
@@ -140,32 +183,36 @@
             android:id="@+id/divisor_b"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/period"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
-    <TextView
+    <Space
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/respectively"
-        android:textSize="12sp"
-        android:textStyle="bold"/>
+        android:layout_height="16sp"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/quiz_ab_guess"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:textStyle="bold"/>
 
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="12sp"
+        android:layout_height="16sp"
         />
 
     <name.cantanima.chineseremainderclock.FlexibleNumberPicker
@@ -176,7 +223,7 @@
 
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="12sp"
+        android:layout_height="16sp"
         />
 
     <Button
@@ -186,6 +233,6 @@
         android:layout_gravity="center"
         android:background="@drawable/transparent_dialog"
         android:text="@string/quiz_next"
-        android:textSize="12sp"/>
+        android:textSize="16sp"/>
 
 </LinearLayout>

@@ -5,14 +5,12 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Build;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.TextView;
 
 import java.util.Calendar;
 
 import static android.graphics.Color.BLACK;
 import static android.graphics.Color.BLUE;
-import static android.graphics.Color.LTGRAY;
 import static android.graphics.Color.RED;
 import static android.graphics.Color.WHITE;
 import static android.graphics.Paint.ANTI_ALIAS_FLAG;
@@ -98,7 +96,7 @@ public abstract class Clock_Drawer {
       hour = my_viewer.last_h;
       minute = my_viewer.last_m;
       second = my_viewer.last_s;
-      int direction = 0;
+      int direction;
       if (my_viewer.time_guide == INCREMENT) direction = 1;
       else direction = -1;
       switch (my_viewer.which_unit_to_modify) {
@@ -115,7 +113,7 @@ public abstract class Clock_Drawer {
     }
 
     // modify for better writing/graphics
-    hour_max = (my_viewer.hour_modulus == 4) ? 12 : 24;
+    int hour_max = (my_viewer.hour_modulus == 4) ? 12 : 24;
     if (hour < 0) hour += hour_max;
     else if (hour >= hour_max) hour %= hour_max;
     if (minute < 0) minute += 60;
@@ -199,8 +197,6 @@ public abstract class Clock_Drawer {
     min_x = cx - diam; max_x = cx + diam;
     min_y = cy - diam; max_y = cy + diam;
 
-    textYOffset = diam / 24f;
-
     text_paint.setTextSize(diam / 6f);
     text_paint.setShadowLayer(diam / 24f, diam / 48f, diam / 48f, BLACK);
 
@@ -246,14 +242,9 @@ public abstract class Clock_Drawer {
    * @param hour hour to write
    * @param minute minute to write
    * @param second second to write
-   * @param cx horizontal center of the Canvas
-   * @param cy vertical center of the Canvas
    * @param diam "radius" of the Canvas (don't ask why it's called diam)
    */
-  void drawTimeAndRectangle(
-          Canvas canvas, int hour, int minute, int second,
-          float cx, float cy, float diam
-  ) {
+  void drawTimeAndRectangle(Canvas canvas, int hour, int minute, int second, float diam) {
 
     // draw a rounded rectangle if we can
     back_paint.setColor(bg_color);
@@ -289,7 +280,7 @@ public abstract class Clock_Drawer {
    * @param print_minute minute to print
    * @param print_second second to print
    */
-  protected void draw_time(int print_hour, int print_minute, int print_second) {
+  void draw_time(int print_hour, int print_minute, int print_second) {
 
     // print the correct times
     String to_print;
@@ -330,35 +321,29 @@ public abstract class Clock_Drawer {
   }
 
   /** remembers the TextView where we should write the time */
-  protected void set_time_textview(TextView ttv) { tv = ttv; }
+  void set_time_textview(TextView ttv) { tv = ttv; }
 
   /** whether to show a representation of seconds in the clock */
-  protected void set_show_seconds(boolean yesno) {
+  void set_show_seconds(boolean yesno) {
       show_seconds = yesno;
   }
 
   /** whether to show a representation of seconds in the clock */
-  protected boolean get_show_seconds() { return show_seconds; }
+  boolean get_show_seconds() { return show_seconds; }
 
   /**
    *  whether to write the time in a TextView
    *  @see #set_time_textview(TextView)
    */
-  protected void set_show_time(boolean yesno) {
+  void set_show_time(boolean yesno) {
       show_time = yesno;
   }
 
-  /** whether to write the time in a TextView */
-  protected boolean get_show_time() { return show_time; }
-
   /** whether to draw minutes inside/left of hours */
-  protected boolean get_reverse_orientation() { return reverse_orientation; }
-
-  /** whether to draw minutes inside/left of hours */
-  protected void set_reverse_orientation(boolean yesno) { reverse_orientation = yesno; }
+  void set_reverse_orientation(boolean yesno) { reverse_orientation = yesno; }
 
   /** which color to use when drawing lines */
-  protected void set_line_color(int new_line_color) { line_color = new_line_color; }
+  void set_line_color(int new_line_color) { line_color = new_line_color; }
 
   /** which color to use when drawing hour objects */
   void set_hour_color(int new_hour_color) { hour_color = new_hour_color; }
@@ -382,40 +367,43 @@ public abstract class Clock_Drawer {
   protected void notify_dragged(MotionEvent e) { }
 
   /** fields that control aspects of painting */
-  protected final static int GOODGREEN = Color.rgb(0, 224, 0);
-  protected final static int BACKGROUND = Color.argb(192, 128, 128, 128);
-  protected final static int VERYLIGHTGRAY = Color.rgb(223, 223, 233);
-  protected int second_color, minute_color, hour_color, bg_color, line_color;
+  private final static int GOODGREEN = Color.rgb(0, 224, 0);
+  private final static int BACKGROUND = Color.argb(192, 128, 128, 128);
+  final static int VERYLIGHTGRAY = Color.rgb(223, 223, 233);
+  int second_color, minute_color, hour_color, line_color;
+  private int bg_color;
 
   /** fields that control layout of all clock elements */
-  protected float min_x, min_y, max_x, max_y, w, h, cx, cy, diam, textYOffset;
+  private float min_x, min_y, max_x, max_y;
+  float w, h, cx, cy, diam;
 
   /** fields that control how to paint various objects */
-  protected Paint ball_paint, text_paint, back_paint, circle_paint;
+  Paint ball_paint, circle_paint;
+  private Paint text_paint, back_paint;
 
   // fields related to the UI elements
   protected boolean color;
-  protected boolean show_seconds;
-  protected boolean show_time;
-  protected boolean reverse_orientation;
+  boolean show_seconds;
+  private boolean show_time;
+  boolean reverse_orientation;
 
   /** fields related to writing the time */
-  protected static final String zero_str = "0";
-  protected static final String twelve_str = "12";
-  protected static final String dbl_zero_str = "00";
-  protected static final String colon_str = ":";
-  protected static String [] minsec_strings = {};
-  protected static String [] hour12_strings = {};
-  protected static String [] hour24_strings = {};
+  static final String zero_str = "0";
+  private static final String twelve_str = "12";
+  private static final String dbl_zero_str = "00";
+  private static final String colon_str = ":";
+  private static String [] minsec_strings = {};
+  private static String [] hour12_strings = {};
+  private static String [] hour24_strings = {};
 
   /** stuff to listen to or update */
-  protected CRC_View my_viewer;
-  protected TextView tv;
+  CRC_View my_viewer;
+  private TextView tv;
 
   /**
    *  time information: hour, minute, second will record current time (to draw),
    *  hours_max will indicate whether it's a 12- or 24-hour clock
    */
-  protected int hour, minute, second, millis, hour_max;
+  int hour, minute, second, millis;
 
 }

@@ -10,7 +10,6 @@ import android.os.Build;
 import static android.graphics.Color.WHITE;
 import static android.graphics.Paint.ANTI_ALIAS_FLAG;
 import static android.graphics.Paint.Align.CENTER;
-import static android.graphics.Paint.Join.ROUND;
 import static android.graphics.Paint.Style.STROKE;
 import static java.lang.Math.PI;
 import static java.lang.Math.abs;
@@ -28,7 +27,7 @@ import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREME
 public class CRC_View_Linus extends Clock_Drawer {
 
   // constructor
-  public CRC_View_Linus(CRC_View owner) {
+  CRC_View_Linus(CRC_View owner) {
 
       initialize_fields(owner);
       digi_paint = new Paint(ANTI_ALIAS_FLAG);
@@ -48,7 +47,7 @@ public class CRC_View_Linus extends Clock_Drawer {
 
     setup_time();
 
-    drawTimeAndRectangle(canvas, hour, minute, second, cx, cy, diam);
+    drawTimeAndRectangle(canvas, hour, minute, second, diam);
 
     // in what follows, xmodi is the time unit x modulo i, while
     // lxmodi is last_x % i
@@ -392,23 +391,18 @@ public class CRC_View_Linus extends Clock_Drawer {
    */
   void recalculate_positions() {
 
+    float digi_step, digi_hcy1, digi_hcy2, digi_mscy1, digi_mscy3, obj_w2;
+
     super.recalculate_positions();
 
     // positions and sizes
     obj_w2 = diam / 4;
     digi_paint.setTextSize(obj_w2 * 0.75f);
-    Paint.FontMetrics fm = digi_paint.getFontMetrics();
-    float digi_t_adjust = -fm.ascent;
-    digi_ty = cy + digi_t_adjust / 2.5f;
     digi_step = diam / 4;
     digi_hcy1 = cy - obj_w2;
     digi_hcy2 = cy + obj_w2;
-    digi_hty1 = digi_hcy1 + digi_t_adjust / 2.5f;
-    digi_hty2 = digi_hcy2 + digi_t_adjust / 2.5f;
     digi_mscy1 = cy - obj_w2 * 5 / 2;
     digi_mscy3 = cy + obj_w2 * 5 / 2;
-    digi_msty1 = digi_mscy1 + digi_t_adjust / 2.5f;
-    digi_msty3 = digi_mscy3 + digi_t_adjust / 2.5f;
 
     // polygons are set up using trigonometry (equally-spaced points on a circle),
     // but there may be some offset in order to make it look good,
@@ -609,12 +603,12 @@ public class CRC_View_Linus extends Clock_Drawer {
 
     // now set up the paths which makes the polygons efficient to draw
 
-    h_tria = new Path();
+    Path h_tria = new Path();
     h_tria.rewind();
     h_tria.moveTo(digi_h3_pts[0], digi_h3_pts[1]); h_tria.lineTo(digi_h3_pts[2], digi_h3_pts[3]);
     h_tria.lineTo(digi_h3_pts[4], digi_h3_pts[5]); h_tria.lineTo(digi_h3_pts[6], digi_h3_pts[7]);
 
-    h_quad = new Path();
+    Path h_quad = new Path();
     h_quad.rewind();
     h_quad.moveTo(digi_h4_pts[0], digi_h4_pts[1]);
     h_quad.lineTo(digi_h4_pts[2], digi_h4_pts[3]);
@@ -625,7 +619,7 @@ public class CRC_View_Linus extends Clock_Drawer {
     h_quad.lineTo(digi_h4_pts[12], digi_h4_pts[13]);
     h_quad.lineTo(digi_h4_pts[14], digi_h4_pts[15]);
 
-    h_octo = new Path();
+    Path h_octo = new Path();
     h_octo.rewind();
     h_octo.moveTo(digi_h8_pts[0], digi_h8_pts[1]);
     h_octo.lineTo(digi_h8_pts[2], digi_h8_pts[3]);
@@ -644,19 +638,19 @@ public class CRC_View_Linus extends Clock_Drawer {
     h_octo.lineTo(digi_h8_pts[28], digi_h8_pts[29]);
     h_octo.lineTo(digi_h8_pts[30], digi_h8_pts[31]);
 
-    m_tria = new Path();
+    Path m_tria = new Path();
     m_tria.rewind();
     m_tria.moveTo(digi_m3_pts[0], digi_m3_pts[1]); m_tria.lineTo(digi_m3_pts[2], digi_m3_pts[3]);
     m_tria.lineTo(digi_m3_pts[4], digi_m3_pts[5]); m_tria.lineTo(digi_m3_pts[6], digi_m3_pts[7]);
 
-    m_quad = new Path();
+    Path m_quad = new Path();
     m_quad.rewind();
     m_quad.moveTo(digi_m4_pts[0], digi_m4_pts[1]); m_quad.lineTo(digi_m4_pts[2], digi_m4_pts[3]);
     m_quad.lineTo(digi_m4_pts[4], digi_m4_pts[5]); m_quad.lineTo(digi_m4_pts[6], digi_m4_pts[7]);
     m_quad.lineTo(digi_m4_pts[8], digi_m4_pts[9]); m_quad.lineTo(digi_m4_pts[10], digi_m4_pts[11]);
     m_quad.lineTo(digi_m4_pts[12], digi_m4_pts[13]); m_quad.lineTo(digi_m4_pts[14], digi_m4_pts[15]);
 
-    m_pent = new Path();
+    Path m_pent = new Path();
     m_pent.rewind();
     m_pent.moveTo(digi_m5_pts[0], digi_m5_pts[1]); m_pent.lineTo(digi_m5_pts[2], digi_m5_pts[3]);
     m_pent.lineTo(digi_m5_pts[4], digi_m5_pts[5]); m_pent.lineTo(digi_m5_pts[6], digi_m5_pts[7]);
@@ -664,9 +658,9 @@ public class CRC_View_Linus extends Clock_Drawer {
     m_pent.lineTo(digi_m5_pts[12], digi_m5_pts[13]); m_pent.lineTo(digi_m5_pts[14], digi_m5_pts[15]);
     m_pent.lineTo(digi_m5_pts[16], digi_m5_pts[17]); m_pent.lineTo(digi_m5_pts[18], digi_m5_pts[19]);
 
-    s_tria = new Path();
-    s_quad = new Path();
-    s_pent = new Path();
+    Path s_tria = new Path();
+    Path s_quad = new Path();
+    Path s_pent = new Path();
 
     if (show_seconds) {
 
@@ -702,19 +696,11 @@ public class CRC_View_Linus extends Clock_Drawer {
 
   }
 
-  /** fields that control layout of digital clock elements (except the polygons) */
-  protected float digi_step, digi_ty, digi_hcy1, digi_hcy2, digi_hty1, digi_hty2,
-          digi_mscy1, digi_mscy3, digi_msty1, digi_msty3, obj_w2;
   /** arrays that store points to draw the polygons */
-  protected float [] digi_h3_pts, digi_h4_pts, digi_h8_pts, digi_m3_pts, digi_m4_pts, digi_m5_pts,
+  private float [] digi_h3_pts, digi_h4_pts, digi_h8_pts, digi_m3_pts, digi_m4_pts, digi_m5_pts,
           digi_s3_pts, digi_s4_pts, digi_s5_pts;
-  /** Paths to draw polygons */
-  protected Path h_tria, h_quad, h_octo, m_tria, m_quad, m_pent, s_tria, s_quad, s_pent;
 
   /** used to vary the painting between objects */
-  protected Paint digi_paint;
-
-  /** for debugging purposes */
-  protected static final String tag = "Linus";
+  private Paint digi_paint;
 
 }

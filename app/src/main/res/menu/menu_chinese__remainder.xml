@@ -53,4 +53,8 @@
         android:orderInCategory="300"
         android:title="@string/info_button_text"
         app:showAsAction="ifRoom"/>
+    <item android:id="@+id/automanual"
+          android:title="Manual"
+          app:showAsAction="never"
+          />
 </menu>

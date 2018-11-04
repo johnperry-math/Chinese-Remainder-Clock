@@ -11,10 +11,10 @@
     <string name="welcome_dialog_text">
         The tool bar offers Information on how the clock works (question mark),
         Settings for options on color, design, etc. (wrench), and
-        simple Quizzes (pencil). The new version offers more quizzes!
+        simple Quizzes (pencil).
 
-        If you touch the screen outside the clock,
-        a button to allow manipulation of the clock will appear.
+        There is no longer a switch for manual and automatic mode.
+        Use the menu instead.
     </string>
     <string name="proceed_string">Go!</string>
 
@@ -50,7 +50,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="version">version</string>
-    <string name="current_version" translatable="false">2.07</string>
+    <string name="current_version" translatable="false">2.071</string>
     <string name="first_run" translatable="false">first_run</string>
     <string name="saved_hour" translatable="false">saved_hour</string>
     <string name="saved_color" translatable="false">saved_color</string>
@@ -135,6 +135,8 @@
     <string name="quiz_hour_hint">HH</string>
     <string name="quiz_time_sep">:</string>
     <string name="quiz_minute_hint">MM</string>
+    <string name="dummy_time" translatable="false">99:99:99</string>
+    <string name="autofill_hint_edittext">enter</string>
 
     <string name="quiz_next">Next!</string>
     <string name="quiz_result_title">Quiz result</string>

@@ -4,12 +4,10 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.util.Log;
 
 import static android.graphics.Paint.Style.FILL;
 import static android.graphics.Paint.Style.FILL_AND_STROKE;
 import static android.graphics.Paint.Style.STROKE;
-import static java.lang.Math.min;
 
 /**
  * This class extends Clock_Drawer for the Archy design,
@@ -21,7 +19,7 @@ import static java.lang.Math.min;
 public class CRC_View_Arcy extends Clock_Drawer {
 
   // default construction
-  public CRC_View_Arcy(CRC_View owner) { initialize_fields(owner); }
+  CRC_View_Arcy(CRC_View owner) { initialize_fields(owner); }
 
   // animate every tenth of a second
   float preferred_step() { return 0.1f; }
@@ -33,7 +31,7 @@ public class CRC_View_Arcy extends Clock_Drawer {
 
     setup_time();
 
-    drawTimeAndRectangle(canvas, hour, minute, second, cx, cy, diam);
+    drawTimeAndRectangle(canvas, hour, minute, second, diam);
 
     // each arch can be drawn in one of six ways:
     // 1) if the last hour is not equal to the hour, then
@@ -275,6 +273,8 @@ public class CRC_View_Arcy extends Clock_Drawer {
   
   @Override
   void recalculate_positions() {
+
+    float rh3, rhh, rm3, rm4, rm5, rs3 = 0, rs4 = 0, rs5 = 0;
 
     super.recalculate_positions();
 
@@ -549,11 +549,8 @@ public class CRC_View_Arcy extends Clock_Drawer {
 
   }
 
-  private float rh3, rhh, rm3, rm4, rm5, rs3, rs4, rs5;
-
   private Path [] [] path_h3, path_h4, path_h8, path_m3, path_m4, path_m5, path_s3, path_s4, path_s5;
 
   private Path [] arc_h3, arc_h4, arc_h8, arc_m3, arc_m4, arc_m5, arc_s3, arc_s4, arc_s5;
 
-  private final static String tag = "Archy";
 }

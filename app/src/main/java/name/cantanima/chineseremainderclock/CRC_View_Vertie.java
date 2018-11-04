@@ -14,7 +14,7 @@ import static java.lang.Math.PI;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 
-/**
+/*
  * Created by cantanima on 6/5/17.
  */
 
@@ -29,7 +29,7 @@ import static java.lang.Math.sin;
 public class CRC_View_Vertie extends Clock_Drawer {
 
   // constructor
-  public CRC_View_Vertie(CRC_View owner) {
+  CRC_View_Vertie(CRC_View owner) {
 
     // aside from default setup, we also setup the paint for the polygons
     initialize_fields(owner);
@@ -51,7 +51,7 @@ public class CRC_View_Vertie extends Clock_Drawer {
 
     setup_time();
 
-    drawTimeAndRectangle(canvas, hour, minute, second, cx, cy, diam);
+    drawTimeAndRectangle(canvas, hour, minute, second, diam);
 
     // in what follows, xmodi is the time unit x modulo i, while
     // lxmodi is last_x % i
@@ -294,6 +294,9 @@ public class CRC_View_Vertie extends Clock_Drawer {
    */
   void recalculate_positions() {
 
+    /* fields that control layout of digital clock elements (except the polygons) */
+    float digi_step, digi_hcy1, digi_hcy2, digi_mscy1, digi_mscy3, obj_w2;
+
     super.recalculate_positions();
 
     // first find basic positions and sizes
@@ -308,7 +311,7 @@ public class CRC_View_Vertie extends Clock_Drawer {
     digi_mscy1 = cy - obj_w2 * 5 / 2;
     digi_mscy3 = cy + obj_w2 * 5 / 2;
 
-    // the vertives of each polygon are determined using basic trigonometry on a circle; however,
+    // the vertices of each polygon are determined using basic trigonometry on a circle; however,
     // in order to have the polygons align in a pleasing way, they the centers of the
     // circumscribing circles may be offset somewhat, hence not all the same
 
@@ -508,6 +511,8 @@ public class CRC_View_Vertie extends Clock_Drawer {
 
     // now set up the paths
 
+    Path h_tria, h_quad, h_octo, m_tria, m_quad, m_pent, s_tria, s_quad, s_pent;
+
     h_tria = new Path();
     h_tria.rewind();
     h_tria.moveTo(digi_h3_pts[0], digi_h3_pts[1]); h_tria.lineTo(digi_h3_pts[2], digi_h3_pts[3]);
@@ -601,21 +606,14 @@ public class CRC_View_Vertie extends Clock_Drawer {
 
   }
 
-  /** fields that control layout of digital clock elements (except the polygons) */
-  protected float digi_step,  digi_hcy1, digi_hcy2, digi_mscy1, digi_mscy3, obj_w2;
   /** arrays that store points to draw the polygons */
-  protected float [] digi_h3_pts, digi_h4_pts, digi_h8_pts, digi_m3_pts, digi_m4_pts, digi_m5_pts,
+  private float [] digi_h3_pts, digi_h4_pts, digi_h8_pts, digi_m3_pts, digi_m4_pts, digi_m5_pts,
           digi_s3_pts, digi_s4_pts, digi_s5_pts;
-  /** Paths to draw polygons */
-  protected Path h_tria, h_quad, h_octo, m_tria, m_quad, m_pent, s_tria, s_quad, s_pent;
 
   /** how to paint the polygons */
-  protected Paint poly_paint;
+  private Paint poly_paint;
 
   /** positions */
-  protected float cradius;
-
-  /** tag useful for debugging with Log.d() */
-  protected static final String tag = "Vertie";
+  private float cradius;
 
 }

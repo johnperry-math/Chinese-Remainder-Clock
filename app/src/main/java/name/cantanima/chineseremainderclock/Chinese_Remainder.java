@@ -23,7 +23,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 
 /**
@@ -148,6 +147,9 @@ public class Chinese_Remainder
       new Quiz_abcTime(this, 3, 4, 5);
     } else if (id == R.id.clockmaster) {
       new Quiz_WhatTimeIsIt(this);
+    } else if (id == R.id.automanual) {
+      CRC_View view = findViewById(R.id.crc_view);
+      view.switchMode(item);
     }
 
     return super.onOptionsItemSelected(item);
@@ -200,8 +202,9 @@ public class Chinese_Remainder
 
       // read the preferred drawer/design
       final int default_drawer = 3;
-      int saved_drawer = (prefs.contains(getString(R.string.saved_drawer))) ?
-              prefs.getInt(getString(R.string.saved_drawer), default_drawer) : default_drawer;
+      int saved_drawer = (prefs.contains(getString(R.string.saved_drawer)))
+          ? Integer.valueOf(prefs.getString(getString(R.string.saved_drawer), String.valueOf(default_drawer)))
+          : default_drawer;
 
       // read the version and if there isn't one (because this is a first run) save the preferences
       String version_string = getString(R.string.current_version);
@@ -216,17 +219,13 @@ public class Chinese_Remainder
           editor.putBoolean(getString(R.string.saved_show_seconds), saved_seconds);
           editor.putBoolean(getString(R.string.saved_show_time), saved_time);
           editor.putBoolean(getString(R.string.saved_reverse_orientation), saved_unit_orientation);
-          editor.putInt(getString(R.string.saved_drawer), saved_drawer);
+          editor.putString(getString(R.string.saved_drawer), String.valueOf(saved_drawer));
           editor.apply();
       }
 
       // setup user interface elements: all should start off invisible,
       // and should have crc_view as an appropriate listener
       // (since that's where I take care of the interaction)
-
-      Switch pb = rootView.findViewById(R.id.activeToggle);
-      pb.setOnCheckedChangeListener(crc_view);
-      pb.setVisibility(View.INVISIBLE);
 
       Button upButton = rootView.findViewById(R.id.decrementButton);
       upButton.setOnClickListener(crc_view);
@@ -250,7 +249,7 @@ public class Chinese_Remainder
       button_row.setVisibility(View.INVISIBLE);
 
       // make crc_view listen to things that have to be shown/hidden and such
-      crc_view.setButtonsToListen(pb, upButton, dnButton, spinner, timeEditor, button_row);
+      crc_view.setButtonsToListen(upButton, dnButton, spinner, timeEditor, button_row);
 
       // crc_view also needs to show/hide the time, and for some reason
       // I separated that from the buttons

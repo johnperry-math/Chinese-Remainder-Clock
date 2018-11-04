@@ -282,6 +282,8 @@
         android:id="@+id/quiz_ab_number_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:text_size="16.0"
+        app:high_size="18.0"
         app:back_color="@drawable/transparent_dialog"
         />
 

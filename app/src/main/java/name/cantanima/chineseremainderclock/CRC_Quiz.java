@@ -2,7 +2,6 @@ package name.cantanima.chineseremainderclock;
 
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
@@ -27,7 +26,6 @@ public abstract class CRC_Quiz {
     if (ab != null) ab.hide();
     crc_view = crc_context.findViewById(R.id.crc_view);
     crc_view.pause_animation();
-    activeToggle = crc_view.activeToggle;
     unitSelecter = crc_view.unitSelecter;
     incrementer = crc_view.incrementer;
     decrementer = crc_view.decrementer;
@@ -39,18 +37,15 @@ public abstract class CRC_Quiz {
     quiz_previous_time_visibility = tv.getVisibility();
     quiz_previous_seconds_visibility = crc_drawer.get_show_seconds();
     // we need to hide buttons if we were in manual mode
-    if (activeToggle.getVisibility() != VISIBLE)
-      quiz_active_toggle_was_visible = false;
+    if (crc_view.getCurrentMode() == CRC_View.Mode.AUTOMATIC)
+      was_in_manual_mode = false;
     else {
-      quiz_active_toggle_was_visible = true;
-      activeToggle.setVisibility(INVISIBLE);
-      if (activeToggle.isChecked()) {
-        unitSelecter.setVisibility(INVISIBLE);
-        incrementer.setVisibility(INVISIBLE);
-        decrementer.setVisibility(INVISIBLE);
-        valueEditor.setVisibility(INVISIBLE);
-        button_row.setVisibility(INVISIBLE);
-      }
+      was_in_manual_mode = true;
+      unitSelecter.setVisibility(INVISIBLE);
+      incrementer.setVisibility(INVISIBLE);
+      decrementer.setVisibility(INVISIBLE);
+      valueEditor.setVisibility(INVISIBLE);
+      button_row.setVisibility(INVISIBLE);
     }
 
     crc_drawer.set_show_seconds(false);
@@ -97,17 +92,14 @@ public abstract class CRC_Quiz {
     crc_view.setVisibility(VISIBLE);
     android.support.v7.app.ActionBar ab = crc_context.getSupportActionBar();
     if (ab != null) ab.show();
-    if (quiz_active_toggle_was_visible) {
-      activeToggle.setVisibility(VISIBLE);
-      if (activeToggle.isChecked()) {
-        unitSelecter.setVisibility(VISIBLE);
-        incrementer.setVisibility(VISIBLE);
-        decrementer.setVisibility(VISIBLE);
-        valueEditor.setVisibility(VISIBLE);
-        button_row.setVisibility(VISIBLE);
-      }
+    if (was_in_manual_mode) {
+      unitSelecter.setVisibility(VISIBLE);
+      incrementer.setVisibility(VISIBLE);
+      decrementer.setVisibility(VISIBLE);
+      valueEditor.setVisibility(VISIBLE);
+      button_row.setVisibility(VISIBLE);
     }
-    if (!activeToggle.isChecked())
+    else
       crc_view.restart_animation_by_calendar();
   }
 
@@ -115,8 +107,7 @@ public abstract class CRC_Quiz {
   protected CRC_View crc_view;
   private Clock_Drawer crc_drawer;
   private int quiz_previous_time_visibility;
-  private boolean quiz_previous_seconds_visibility, quiz_active_toggle_was_visible;
-  private Switch activeToggle;
+  private boolean quiz_previous_seconds_visibility, was_in_manual_mode;
   private View unitSelecter, incrementer, decrementer, valueEditor, tv;
   private LinearLayout button_row;
   

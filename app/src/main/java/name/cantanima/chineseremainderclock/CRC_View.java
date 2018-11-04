@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,12 +19,10 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
 
-import static android.content.Context.MODE_PRIVATE;
 import static android.graphics.Color.BLUE;
 import static android.graphics.Color.GRAY;
 import static android.graphics.Color.GREEN;
@@ -251,7 +250,7 @@ public class CRC_View
 
   /**
    * Buttons we need to listen to in order to implement manual mode.
-   * @param pb "pause button", currently labeled "Manual" because that's how we use it
+   * //@param pb "pause button", currently labeled "Manual" because that's how we use it
    * @param dn decrement the time (Manual mode)
    * @param up increment the time (Manual mode)
    * @param spin which time unit to modify (Manual mode)
@@ -260,9 +259,8 @@ public class CRC_View
   //
   // see code for indication of which parameter corresponds to which button
   void setButtonsToListen(
-      Switch pb, Button dn, Button up, Spinner spin, EditText vb, LinearLayout ll
+      /*Switch pb, */Button dn, Button up, Spinner spin, EditText vb, LinearLayout ll
   ) {
-    activeToggle = pb;
     incrementer = up;
     decrementer = dn;
     unitSelecter = spin;
@@ -295,48 +293,52 @@ public class CRC_View
   @Override
   public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-    // We only have one toggle right now, but we'll go ahead and check.
-    if (buttonView == activeToggle) {
+    /* This is not used. */
 
-      // it may be a better idea to check whether isChecked is true
-      if (my_animator.is_paused()) {
+  }
 
-        // if animation is paused, let's resume it
-        my_animator.resume();
-        // hide manual buttons
-        incrementer.setVisibility(INVISIBLE);
-        decrementer.setVisibility(INVISIBLE);
-        unitSelecter.setVisibility(INVISIBLE);
-        valueEditor.setVisibility(INVISIBLE);
-        manual_button_layout.setVisibility(INVISIBLE);
-        // when drawing, we need to check the calendar for the time
-        time_guide = CALENDAR;
+  public void switchMode(MenuItem item) {
 
-      } else {
+    if (currentMode == Mode.MANUAL) {
 
-        // if animation is current, let's pause it
-        my_animator.pause();
-        // set up manual interface
-        unitSelecter.setSelection(0);
-        switch (hour_modulus) {
+      item.setTitle("Manual");
+      currentMode = Mode.AUTOMATIC;
+      // animation is paused, let's resume it
+      my_animator.resume();
+      // outside & showing buttons; hide them
+      valueEditor.setVisibility(INVISIBLE);
+      unitSelecter.setVisibility(INVISIBLE);
+      incrementer.setVisibility(INVISIBLE);
+      decrementer.setVisibility(INVISIBLE);
+      manual_button_layout.setVisibility(INVISIBLE);
+      // when drawing, we need to check the calendar for the time
+      time_guide = CALENDAR;
+
+    } else {
+
+      item.setTitle("Automatic");
+      currentMode = Mode.MANUAL;
+      // animation is current, let's pause it
+      my_animator.pause();
+      // set up manual interface
+      unitSelecter.setSelection(0);
+      switch (hour_modulus) {
         case 4:
-        //default:
+          //default:
           valueEditor.setText(hour12_strings[last_h]);
           break;
         case 8:
           valueEditor.setText(hour24_strings[last_h]);
           break;
-        }
-        valueEditor.selectAll(); // (this doesn't actually seem to work)
-        // show manual buttons
-        incrementer.setVisibility(VISIBLE);
-        decrementer.setVisibility(VISIBLE);
-        unitSelecter.setVisibility(VISIBLE);
-        valueEditor.setVisibility(VISIBLE);
-        manual_button_layout.setVisibility(VISIBLE);
-        valueEditor.selectAll(); // (this might work)
-
       }
+      valueEditor.selectAll(); // (this doesn't actually seem to work)
+      // show manual buttons
+      incrementer.setVisibility(VISIBLE);
+      decrementer.setVisibility(VISIBLE);
+      unitSelecter.setVisibility(VISIBLE);
+      valueEditor.setVisibility(VISIBLE);
+      manual_button_layout.setVisibility(VISIBLE);
+      valueEditor.selectAll(); // (this might work)
 
     }
 
@@ -374,59 +376,19 @@ public class CRC_View
 
     } else if (event.getAction() == ACTION_DOWN) { // pressed down
 
-      // if touched outside view, hide or show the manual buttons
-      // otherwise react appropriately
-      if (activeToggle.getVisibility() == VISIBLE &&
-          (x < my_loc[0] || y < my_loc[1] || x > xmax || y > ymax)
-      ) {
+      // if touched inside view, allow dragging for appropriate class
+      if (x > my_loc[0] && y > my_loc[1] && x < xmax && y < ymax) {
 
-        // outside & showing buttons; hide them
-        activeToggle.setVisibility(INVISIBLE);
-        valueEditor.setVisibility(INVISIBLE);
-        unitSelecter.setVisibility(INVISIBLE);
-        incrementer.setVisibility(INVISIBLE);
-        decrementer.setVisibility(INVISIBLE);
-        manual_button_layout.setVisibility(INVISIBLE);
+        // inside; set up for dragging
+        // add drawer here if it's enabled for touch and drag
+        if (
+            my_drawer.getClass() == CRC_View_Ringy.class &&
+            currentMode == Mode.MANUAL
+        ) {
 
-      } else {
-
-        if (x > my_loc[0] && y > my_loc[1] && x < xmax && y < ymax) {
-
-          // inside; set up for dragging
-          // add drawer here if it's enabled for touch and drag
-          if (
-              my_drawer.getClass() == CRC_View_Ringy.class &&
-              activeToggle.getVisibility() == VISIBLE && activeToggle.isChecked()
-          ) {
-
-            my_drawer.notify_touched(event);
-            dragging = true;
-            time_guide = LEAVE_BE;
-
-          }
-
-        } else {
-
-          // outside; show or hide manual buttons as appropriate
-          if (activeToggle.getVisibility() == INVISIBLE) {
-
-            activeToggle.setVisibility(VISIBLE);
-            if (!activeToggle.isChecked()) {
-              valueEditor.setVisibility(INVISIBLE);
-              unitSelecter.setVisibility(INVISIBLE);
-              incrementer.setVisibility(INVISIBLE);
-              decrementer.setVisibility(INVISIBLE);
-              manual_button_layout.setVisibility(INVISIBLE);
-            } else {
-              valueEditor.setVisibility(VISIBLE);
-              valueEditor.selectAll();
-              unitSelecter.setVisibility(VISIBLE);
-              incrementer.setVisibility(VISIBLE);
-              decrementer.setVisibility(VISIBLE);
-              manual_button_layout.setVisibility(VISIBLE);
-            }
-
-          }
+          my_drawer.notify_touched(event);
+          dragging = true;
+          time_guide = LEAVE_BE;
 
         }
 
@@ -532,7 +494,7 @@ public class CRC_View
   /**
    * Handle a change to the preferences files. Calls setPrefs().
    * @param pref preference file that changed
-   * @param key I gues the key that changed, but I don't use it.
+   * @param key I guess the key that changed, but I don't use it.
    */
   public void onSharedPreferenceChanged(SharedPreferences pref, String key) {
 
@@ -541,12 +503,7 @@ public class CRC_View
     boolean saved_seconds = pref.getBoolean(my_owner.getString(R.string.saved_show_seconds), false);
     boolean saved_time = pref.getBoolean(my_owner.getString(R.string.saved_show_time), false);
     boolean saved_reverse_orientation = pref.getBoolean(my_owner.getString(R.string.saved_reverse_orientation), false);
-    int saved_drawer;
-    try {
-      saved_drawer = Integer.valueOf(pref.getString(my_owner.getString(R.string.saved_drawer), "0"));
-    } catch (java.lang.ClassCastException e) {
-      saved_drawer = pref.getInt(my_owner.getString(R.string.saved_drawer), 0);
-    }
+    int saved_drawer = Integer.valueOf(pref.getString(my_owner.getString(R.string.saved_drawer), "0"));
     int saved_hour_color = pref.getInt(my_owner.getString(R.string.saved_hour_color), BLUE);
     int saved_minute_color = pref.getInt(my_owner.getString(R.string.saved_minute_color), RED);
     int saved_second_color = pref.getInt(my_owner.getString(R.string.saved_second_color), GREEN);
@@ -561,7 +518,7 @@ public class CRC_View
     editor.putBoolean(my_owner.getString(R.string.saved_show_seconds), saved_seconds);
     editor.putBoolean(my_owner.getString(R.string.saved_show_time), saved_time);
     editor.putBoolean(my_owner.getString(R.string.saved_reverse_orientation), saved_reverse_orientation);
-    editor.putInt(my_owner.getString(R.string.saved_drawer), saved_drawer);
+    editor.putString(my_owner.getString(R.string.saved_drawer), String.valueOf(saved_drawer));
     editor.putInt(my_owner.getString(R.string.saved_hour_color), saved_hour_color);
     editor.putInt(my_owner.getString(R.string.saved_minute_color), saved_minute_color);
     editor.putInt(my_owner.getString(R.string.saved_second_color), saved_second_color);
@@ -611,6 +568,8 @@ public class CRC_View
     my_animator.pause();
   }
 
+  public Mode getCurrentMode() { return currentMode; }
+
   /** how far along the animation is (should range from 0 to 1) */
   protected float my_offset;
 
@@ -621,7 +580,9 @@ public class CRC_View
   protected Context my_owner;
 
   /** enable or disable Manual mode */
-  protected Switch activeToggle;
+  public enum Mode { AUTOMATIC, MANUAL }
+  private Mode currentMode = Mode.AUTOMATIC;
+
   /** increment or decrement the time (Manual mode only) */
   protected Button incrementer, decrementer;
   /** select which unit to modify (Manual mode only) */

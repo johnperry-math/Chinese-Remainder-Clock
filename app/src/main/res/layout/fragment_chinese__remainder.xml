@@ -30,7 +30,7 @@
         android:shadowDx="5"
         android:shadowDy="5"
         android:shadowRadius="3"
-        android:text="99:99:99"
+        android:text="@string/dummy_time"
         android:textColor="@color/white"
         android:textSize="36sp"/>
 
@@ -38,21 +38,9 @@
         android:id="@+id/space_bw_crc_and_toggle"
         android:layout_width="wrap_content"
         android:layout_height="12dp"
-        android:layout_above="@+id/activeToggle"
+        android:layout_above="@id/manual_buttons"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp"/>
-
-    <Switch
-        android:id="@+id/activeToggle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/manual_buttons"
-        android:layout_centerHorizontal="true"
-        android:checked="false"
-        android:showText="true"
-        android:text="@string/auto_button_text"
-        android:textOff="@string/auto_button_text_off"
-        android:textOn="@string/auto_button_text_on"/>
 
     <LinearLayout
         android:id="@+id/manual_buttons"
@@ -94,9 +82,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:ems="3"
+        android:gravity="center"
+        android:ems="5"
         android:imeOptions="actionDone"
         android:inputType="number"
+        android:hint="@string/autofill_hint_edittext"
+        android:autofillHints="@string/autofill_hint_edittext"
         android:selectAllOnFocus="true"/>
 
 </RelativeLayout>

@@ -23,7 +23,7 @@ import static java.lang.Math.sin;
  */
 public class CRC_View_Shady extends Clock_Drawer {
 
-  public CRC_View_Shady(CRC_View owner) {
+  CRC_View_Shady(CRC_View owner) {
 
     // we set up the paint for the text here, since that is invariant
     initialize_fields(owner);
@@ -44,7 +44,7 @@ public class CRC_View_Shady extends Clock_Drawer {
 
     setup_time();
 
-    drawTimeAndRectangle(canvas, hour, minute, second, cx, cy, diam);
+    drawTimeAndRectangle(canvas, hour, minute, second, diam);
 
     // in what follows, xmodi is the time unit x modulo i, while
     // lxmodi is last_x % i
@@ -251,7 +251,10 @@ public class CRC_View_Shady extends Clock_Drawer {
    */
   void recalculate_positions() {
 
-    super.recalculate_positions();
+    float [] digi_h3_pts, digi_h4_pts, digi_h8_pts, digi_m3_pts, digi_m4_pts, digi_m5_pts;
+    float digi_step, digi_hcy1, digi_hcy2, digi_mscy1, digi_mscy3, obj_w2;
+
+        super.recalculate_positions();
 
     // set up positions and sizes of objects
     obj_w2 = diam / 4;
@@ -561,18 +564,14 @@ public class CRC_View_Shady extends Clock_Drawer {
   }
 
   /** fields that control layout of digital clock elements (except the polygons) */
-  protected float digi_step, digi_ty, digi_hcy1, digi_hcy2, digi_hty1, digi_hty2,
-          digi_mscy1, digi_mscy3, digi_msty1, digi_msty3, digi_hx, digi_mx, digi_sx, obj_w2;
+  private float digi_ty, digi_hty1, digi_hty2,
+      digi_msty1, digi_msty3, digi_hx, digi_mx, digi_sx;
   /** arrays that store points to draw the polygons */
-  protected float [] digi_h3_pts, digi_h4_pts, digi_h8_pts, digi_m3_pts, digi_m4_pts, digi_m5_pts,
-          digi_s3_pts, digi_s4_pts, digi_s5_pts;
+  private float [] digi_s3_pts, digi_s4_pts, digi_s5_pts;
   /** used to draw polygons */
-  protected Path h_tria, h_quad, h_octo, m_tria, m_quad, m_pent, s_tria, s_quad, s_pent;
+  private Path h_tria, h_quad, h_octo, m_tria, m_quad, m_pent, s_tria, s_quad, s_pent;
 
   /** used to paint the remainders in the polygons */
-  protected Paint digi_paint;
-
-  /** used for debugging with Log.d() */
-  protected static final String tag = "Shady";
+  private Paint digi_paint;
 
 }

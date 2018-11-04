@@ -1,29 +1,17 @@
 package name.cantanima.chineseremainderclock;
 
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.Path;
-import android.util.Log;
-
-import java.util.Calendar;
 
 import static android.graphics.Paint.Style.FILL;
-import static android.graphics.Paint.Style.FILL_AND_STROKE;
 import static android.graphics.Paint.Style.STROKE;
 import static java.lang.Math.PI;
 import static java.lang.Math.cos;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 import static java.lang.Math.sin;
-import static java.util.Calendar.MINUTE;
-import static java.util.Calendar.SECOND;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.CALENDAR;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.INCREMENT;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.LEAVE_BE;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_VALUE;
 
-/**
+/*
  * Created by cantanima on 6/6/17.
  */
 
@@ -37,7 +25,7 @@ import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_VAL
 public class CRC_View_Bubbly extends Clock_Drawer {
 
   // constructor
-  public CRC_View_Bubbly(CRC_View owner) { initialize_fields(owner); }
+  CRC_View_Bubbly(CRC_View owner) { initialize_fields(owner); }
 
   @Override
   void draw(Canvas canvas) {
@@ -46,7 +34,7 @@ public class CRC_View_Bubbly extends Clock_Drawer {
 
     setup_time();
 
-    drawTimeAndRectangle(canvas, hour, minute, second, cx, cy, diam);
+    drawTimeAndRectangle(canvas, hour, minute, second, diam);
 
     // draw the hours
     // the paths are already set up, so it's basically a question of how many bubbles to fill in
@@ -339,6 +327,8 @@ public class CRC_View_Bubbly extends Clock_Drawer {
   @Override
   void recalculate_positions() {
 
+    float radius;
+
     super.recalculate_positions();
 
     // find appropriate locations
@@ -503,14 +493,12 @@ public class CRC_View_Bubbly extends Clock_Drawer {
   float preferred_step() { return 0.15f; }
 
   /** data points regarding the polygons' and bubbles' sizes and/or positions */
-  float hstep, vstep, radius, cradius, cstep;
+  private float hstep, vstep, cradius, cstep;
 
   /** data points regarding the polygons' and bubbles' positions */
-  float h_x3, h_xh, m_x3, m_x4, m_x5, s_x3, s_x4, s_x5, h_y, m_y, s_y;
+  private float h_x3, h_xh, m_x3, m_x4, m_x5, s_x3, s_x4, s_x5, h_y, m_y, s_y;
 
   /** Paths to record how to draw each polygon */
-  Path h_tria, h_quad, h_octo, m_tria, m_quad, m_pent, s_tria, s_quad, s_pent;
+  private Path h_tria, h_quad, h_octo, m_tria, m_quad, m_pent, s_tria, s_quad, s_pent;
 
-  /** tag for debugging purposes */
-  private static final String tag = "Bubbly";
 }

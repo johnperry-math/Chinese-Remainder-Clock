@@ -85,5 +85,6 @@
     <string name="has">ha</string>
     <string name="remainder">resto</string>
     <string name="question">Domanda</string>
+    <string name="autofill_hint_edittext">scelga</string>
 
 </resources>

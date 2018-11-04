@@ -3,7 +3,6 @@ package name.cantanima.chineseremainderclock;
 import android.annotation.TargetApi;
 import android.graphics.Canvas;
 import android.os.Build;
-import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.Calendar;
@@ -39,7 +38,7 @@ import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.S
 public class CRC_View_Ringy extends Clock_Drawer {
 
   // constructor
-  public CRC_View_Ringy(CRC_View owner) {
+  CRC_View_Ringy(CRC_View owner) {
   
     initialize_fields(owner);
   
@@ -57,7 +56,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
 
     setup_time();
 
-    drawTimeAndRectangle(canvas, hour, minute, second, cx, cy, diam);
+    drawTimeAndRectangle(canvas, hour, minute, second, diam);
 
     // in what follows, xmodi is the time unit x modulo i, while
     // lxmodi is last_x % i
@@ -90,7 +89,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
     if (smod5 == 0) smod5 = 5;
 
     // adjustments to remainders in case we are dragging, or if we just released the ball
-    // much of this is to prevent the animator from "snapping" to a previously saved positon
+    // much of this is to prevent the animator from "snapping" to a previously saved position
     if (dragging) {
       hmod3 = lhmod3; hmod4 = lhmod4;
       mmod3 = lmmod3; mmod4 = lmmod4; mmod5 = lmmod5;
@@ -271,8 +270,6 @@ public class CRC_View_Ringy extends Clock_Drawer {
         case SEC4 : sangle4 = new_angle; break;
         case SEC5 : sangle5 = new_angle; break;
       }
-      Log.d(tag, "angle " + String.valueOf(initial_angle) + " to " + String.valueOf(new_angle));
-      Log.d(tag, String.valueOf(dragging_which_ball));
     }
 
     // draw the balls -- if we are dragging, then the ball is white
@@ -416,7 +413,6 @@ public class CRC_View_Ringy extends Clock_Drawer {
     // we are only dragging if a ball was found; compute the ball's initial angle
     if (!searching) {
       dragging = true;
-      initial_angle = (float) atan2(y - cy, x - cx);
       step = 0f;
     }
 
@@ -479,7 +475,6 @@ public class CRC_View_Ringy extends Clock_Drawer {
             break;
         }
       }
-      Log.d(tag, "last mod: " + String.valueOf(last_mod));
       just_released = true;
       my_viewer.invalidate();
       
@@ -537,7 +532,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
     }
 
     // information for hatch marks
-    bally_hatch_dist = diam / 60;
+    float bally_hatch_dist = diam / 60;
     bally_hatch_hr3_inner = bally_hr3 - bally_hatch_dist;
     bally_hatch_h3_outer = bally_hr3 + bally_hatch_dist;
     bally_hatch_hr4_inner = bally_hr4 - bally_hatch_dist;
@@ -552,17 +547,17 @@ public class CRC_View_Ringy extends Clock_Drawer {
   }
   
   /** fields that control layout of analog clock elements */
-  protected float bally_hr3, bally_hr4, bally_mr3, bally_mr4, bally_mr5, bally_sr3, bally_sr4, bally_sr5,
-          bally_br, bally_hatch_dist, bally_hatch_hr3_inner, bally_hatch_h3_outer,
+  private float bally_hr3, bally_hr4, bally_mr3, bally_mr4, bally_mr5, bally_sr3, bally_sr4, bally_sr5,
+          bally_br, bally_hatch_hr3_inner, bally_hatch_h3_outer,
           bally_hatch_hr4_inner, bally_hatch_h4_outer, bally_hatch_mr3_inner,
           bally_hatch_mr3_outer, bally_hatch_mr4_inner, bally_hatch_m4_outer,
           bally_hatch_mr5_inner, bally_hatch_m5_outer;
 
   /** fields that control dragging of balls */
-  protected boolean dragging = false;
-  protected boolean just_released = false;
-  protected float initial_angle, new_angle;
-  protected int last_mod;
+  private boolean dragging = false;
+  private boolean just_released = false;
+  private float new_angle;
+  private int last_mod;
   /** counter for which ball is being dragged */
   protected enum DRAGGED_BALL {
     /** dragging the 3-remainder for the hour */
@@ -581,18 +576,16 @@ public class CRC_View_Ringy extends Clock_Drawer {
     SEC4,
     /** dragging the 5-remainder for the second */
     SEC5
-  };
+  }
   /** which ball are we dragging? */
-  protected DRAGGED_BALL dragging_which_ball;
+  private DRAGGED_BALL dragging_which_ball;
   
   /** fields that record the last position of a ball (useful for dragging) */
-  protected float last_h3_x, last_h3_y, last_hh_x, last_hh_y,
+  private float last_h3_x, last_h3_y, last_hh_x, last_hh_y,
                   last_m3_x, last_m3_y, last_m4_x, last_m4_y, last_m5_x, last_m5_y,
                   last_s3_x, last_s3_y, last_s4_x, last_s4_y, last_s5_x, last_s5_y;
 
   /** time for a frame during animation */
-  protected float step = 0.04f;
+  private float step = 0.04f;
 
-  /** tag for debugging */
-  final protected static String tag = "Ringy";
 }

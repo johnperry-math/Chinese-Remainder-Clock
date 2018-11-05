@@ -51,7 +51,7 @@ public class Quiz_WhatTimeIsIt extends CRC_Quiz implements TimeEntryDialogListen
 
       // move the clock to the quiz question's desired position
       new_hour_value = quiz_generator.nextInt(twelve_hour_clock ? 12 : 24) + 1;
-      new_minute_value = quiz_generator.nextInt(60) + 1;
+      new_minute_value = quiz_generator.nextInt(60);
       crc_view.move_time_to(new_hour_value, new_minute_value);
 
     }
@@ -122,7 +122,9 @@ public class Quiz_WhatTimeIsIt extends CRC_Quiz implements TimeEntryDialogListen
     String message = (hr == new_hour_value && min == new_minute_value)
         ? crc_context.getString(R.string.quiz_correct)
         : crc_context.getString(R.string.quiz_sorry) + " "
-            + String.valueOf(new_hour_value) + ":" + String.valueOf(new_minute_value);
+            + String.valueOf(new_hour_value) + ":"
+            + ( ( new_minute_value < 10 ) ? "0" : "" )
+            + String.valueOf(new_minute_value);
     Toast toast = Toast.makeText(crc_context, message, Toast.LENGTH_SHORT);
     toast.setGravity(Gravity.TOP, 0, 0);
     toast.show();

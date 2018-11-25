@@ -1,5 +1,10 @@
 <resources>
 
+    <attr name="back_color" format="color"/>
+    <attr name="high_color" format="color"/>
+    <attr name="text_color" format="color"/>
+    <attr name="text_size" format="float"/>
+
     <!-- Declare custom theme attributes that allow changing which styles are
          used for button bars depending on the API level.
          ?android:attr/buttonBarStyle is new as of API 11 so this is
@@ -10,12 +15,12 @@
     </declare-styleable>
     
     <declare-styleable name="FlexibleNumberPicker">
-        <attr name="back_color" format="color"/>
-        <attr name="high_color" format="color"/>
-        <attr name="text_color" format="color"/>
         <attr name="horizontal" format="boolean"/>
+        <attr name="back_color"/>
+        <attr name="high_color"/>
+        <attr name="text_color"/>
+        <attr name="text_size"/>
         <!--<attr name="typeface" format="string"/>-->
-        <attr name="text_size" format="float"/>
         <attr name="high_size" format="float"/>
         <attr name="min" format="integer"/>
         <attr name="max" format="integer"/>
@@ -23,5 +28,17 @@
         <attr name="skip" format="integer"/>
     </declare-styleable>
 
+    <declare-styleable name="NumberArray">
+        <!--<attr name="typeface" format="string"/>-->
+        <attr name="back_color"/>
+        <attr name="high_color"/>
+        <attr name="text_color"/>
+        <attr name="text_size"/>
+        <attr name="pad_zeros" format="boolean"/>
+        <attr name="rows" format="integer"/>
+        <attr name="columns" format="integer"/>
+        <attr name="start" format="integer"/>
+        <attr name="number" format="integer"/>
+    </declare-styleable>
 
 </resources>

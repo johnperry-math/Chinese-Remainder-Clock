@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="horizontal"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:paddingLeft="20dp"
+              android:paddingRight="20dp"
+              android:paddingTop="5dp"
+              android:paddingBottom="5dp"
+              android:layout_gravity="center"
+              android:background="@drawable/transparent_dialog"
+              android:gravity="center"
+              >
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  android:id="@+id/quiz_ab_layout"
+                  android:orientation="vertical"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:paddingLeft="20dp"
+                  android:paddingRight="20dp"
+                  android:paddingTop="5dp"
+                  android:paddingBottom="5dp"
+                  android:layout_gravity="center"
+                  android:background="@drawable/transparent_dialog"
+                  android:gravity="center"
+    >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/question"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <Space
+            android:layout_width="6sp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/quiz_which"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/quiz_number_between"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <Space
+                android:layout_width="6sp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/max_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/has"
+            android:layout_gravity="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+        >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="@string/remainder"
+                />
+
+            <Space
+                android:layout_width="6sp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/remainder_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+
+            <Space
+                android:layout_width="6sp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/quiz_after_division_by"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <Space
+                android:layout_width="6sp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/divisor_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_and"
+            android:layout_gravity="center"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="@string/remainder"
+                />
+
+            <Space
+                android:layout_width="6sp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/remainder_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+
+            <Space
+                android:layout_width="6sp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/quiz_after_division_by"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <Space
+                android:layout_width="6sp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/divisor_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/period"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="16sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/quiz_ab_guess"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="16sp"
+            />
+
+    </LinearLayout>
+
+    <android.support.v4.widget.Space
+        android:layout_width="16sp"
+        android:layout_height="wrap_content"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <name.cantanima.chineseremainderclock.NumberArray
+            android:id="@+id/quiz_ab_number_array"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:text_size="16.0"
+            app:back_color="@drawable/transparent_dialog"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="16sp"
+            />
+
+        <Button
+            android:id="@+id/quiz_accept_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/transparent_dialog"
+            android:text="@string/quiz_next"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

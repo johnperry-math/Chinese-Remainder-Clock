@@ -230,15 +230,12 @@ class FlexibleNumberPicker(context: Context, attrs: AttributeSet)
         if (event.action == ACTION_UP) { // released
 
             moving = false
-            Log.d(tag, "up")
 
         } else if (event.action == ACTION_MOVE) { // moved/dragged
 
             if (moving) {
 
                 var redraw = true
-
-                Log.d(tag, "move to " + x.toString() + " , " + y.toString())
 
                 draw_offset += x - xprev
                 if (draw_offset <= -single_width) {
@@ -256,8 +253,6 @@ class FlexibleNumberPicker(context: Context, attrs: AttributeSet)
                 }
                 xprev = x
                 if (redraw) invalidate()
-                Log.d(tag, "offset is " + draw_offset.toString())
-                Log.d(tag, "value is " + value.toString())
 
             }
 

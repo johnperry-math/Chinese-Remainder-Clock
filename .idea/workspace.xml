@@ -25,9 +25,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b5dc24d-1c75-4245-8055-1c959373f4a1" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/NumberArray.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/quiz_ab_layout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_WhatTimeIsIt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_WhatTimeIsIt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/FlexibleNumberPicker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/FlexibleNumberPicker.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_ABTime.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_ABTime.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/quiz_ab_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/quiz_ab_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" afterDir="false" />
     </list>
     <ignored path="Chinese Remainder Clock.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,7 +77,15 @@
     <system id="GRADLE">
       <state>
         <projects_view>
-          <tree_state />
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ChineseRemainderClock" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
         </projects_view>
       </state>
     </system>
@@ -83,24 +95,67 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Quiz_WhatTimeIsIt.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Quiz_WhatTimeIsIt.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_WhatTimeIsIt.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="458">
-              <caret line="127" column="75" lean-forward="true" selection-start-line="127" selection-start-column="75" selection-end-line="127" selection-end-column="75" />
+              <caret line="127" column="75" selection-start-line="127" selection-start-column="75" selection-end-line="127" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2605#2658#0" expanded="true" />
-                <element signature="e#2685#2749#0" expanded="true" />
-                <element signature="e#2819#2875#0" expanded="true" />
-                <element signature="e#2902#2965#0" expanded="true" />
-                <element signature="e#3005#3060#0" expanded="true" />
-                <element signature="e#3087#3152#0" expanded="true" />
-                <element signature="e#3214#3263#0" expanded="true" />
-                <element signature="e#3552#3700#0" expanded="true" />
-                <element signature="e#3699#3700#0" expanded="true" />
-                <element signature="e#4177#4221#0" expanded="true" />
-                <element signature="e#4232#4274#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FlexibleNumberPicker.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/FlexibleNumberPicker.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="253" column="23" selection-start-line="253" selection-start-column="16" selection-end-line="253" selection-end-column="23" />
+              <folding>
+                <element signature="e#46#480#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Quiz_ABTime.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_ABTime.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="357" column="90" selection-start-line="357" selection-start-column="90" selection-end-line="357" selection-end-column="90" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="quiz_abc_layout.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/quiz_abc_layout.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="227">
+              <caret line="285" column="27" selection-start-line="285" selection-start-column="27" selection-end-line="285" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="attrs.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/attrs.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NumberArray.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/NumberArray.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="186" column="5" selection-start-line="186" selection-start-column="5" selection-end-line="186" selection-end-column="5" />
+              <folding>
+                <element signature="e#46#327#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -115,32 +170,14 @@
         <option value="Class" />
         <option value="Interface" />
         <option value="valueResourceFile" />
-        <option value="Kotlin Class" />
         <option value="Kotlin File" />
         <option value="layoutResourceFile_vertical" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>activeToggle =</find>
-      <find>manual</find>
-      <find>getpersistedstr</find>
-      <find>putBoolean</find>
-      <find>putboolean</find>
-      <find>setprefs</find>
-      <find>draw</find>
-      <find>putint</find>
-      <find>drawstr</find>
-      <find>getboo</find>
-      <find>getInt</find>
-      <find>setbutt</find>
-      <find>activet</find>
-      <find>toggle</find>
-      <find>switch</find>
-      <find>time</find>
-      <find>sep</find>
-      <find>dummy</find>
       <find>activeT</find>
       <find>drag</find>
       <find>pb</find>
@@ -153,6 +190,24 @@
       <find>setup_ti</find>
       <find>reverse</find>
       <find>version</find>
+      <find>number</find>
+      <find>FlexibleNumberPicker</find>
+      <find>box_width</find>
+      <find>single_width</find>
+      <find>log10</find>
+      <find>truncate</find>
+      <find>ceil</find>
+      <find>high_size</find>
+      <find>number_picker</find>
+      <find>ontouch</find>
+      <find>xprev =</find>
+      <find>start</find>
+      <find>Log.d</find>
+      <find>num =</find>
+      <find>tag +</find>
+      <find>tag,</find>
+      <find>num</find>
+      <find>log.d</find>
     </findStrings>
     <replaceStrings>
       <replace>Ringy</replace>
@@ -161,6 +216,12 @@
       <replace>16sp</replace>
       <replace>putString</replace>
       <replace>private</replace>
+      <replace>NumberArray</replace>
+      <replace>number_width</replace>
+      <replace>digit_width</replace>
+      <replace>ceil</replace>
+      <replace>truncate</replace>
+      <replace>num_nums</replace>
     </replaceStrings>
   </component>
   <component name="FindManager">
@@ -2549,8 +2610,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/time_dialog_landscape.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/build/intermediates/manifests/instant-run/debug/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Archy_Fade.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_Animation.java" />
@@ -2562,7 +2621,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/unitStrings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_Webview.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_34Time.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/TimeEntryDialog.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_Dreams.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/table34.xml" />
@@ -2576,14 +2634,11 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/time_dialog.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_Prefs_Activity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_Preferences.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_ABTime.kt" />
         <option value="$PROJECT_DIR$/TODO.txt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dream_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-land/dream_layout.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/FlexibleNumberPicker.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/quiz_abc_layout.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/quiz_ab_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_chinese__remainder.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/xml/preferences.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_chinese__remainder.xml" />
@@ -2600,6 +2655,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Clock_Drawer.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_WhatTimeIsIt.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/FlexibleNumberPicker.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/quiz_ab_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-land/quiz_ab_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_ABTime.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/NumberArray.kt" />
       </list>
     </option>
   </component>
@@ -2772,9 +2833,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2799,12 +2860,12 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/layout-land" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
-      <recent name="$PROJECT_DIR$/app/src/main/assets" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-mdpi" />
     </key>
     <key name="android.template.packageName">
       <recent name="name.cantanima.chineseremainderclock" />
@@ -2818,12 +2879,12 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="name.cantanima.chineseremainderclock" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/layout-land" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/app/src/main/assets" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-mdpi" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -3343,7 +3404,14 @@
       <option name="project" value="LOCAL" />
       <updated>1541292275483</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Fixed a couple of small bugs in the Clock Master quiz.">
+      <created>1541449997309</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1541449997309</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3364,57 +3432,59 @@
       <window_info id="Palette&#9;" order="5" />
       <window_info id="Image Layers" order="7" />
       <window_info id="Build Variants" order="3" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.489426" side_tool="true" weight="0.38265306" />
+      <window_info anchor="right" id="Preview" order="9" weight="0.32854986" />
       <window_info anchor="bottom" id="Run" order="5" weight="0.3293919" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.3293919" />
       <window_info anchor="bottom" id="Terminal" order="20" weight="0.3282313" />
       <window_info anchor="bottom" id="Logcat" order="0" weight="0.42857143" />
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" order="6" />
-      <window_info anchor="right" id="Designer" order="9" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48795182" visible="true" weight="0.22356495" />
+      <window_info anchor="right" id="Designer" order="8" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48795182" visible="true" weight="0.22356495" />
       <window_info anchor="bottom" id="Build" order="1" sideWeight="0.51057404" weight="0.38265306" />
-      <window_info anchor="right" id="Gradle" order="5" weight="0.32949513" />
+      <window_info anchor="right" id="Gradle" order="4" weight="0.32930514" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Device File Explorer" order="12" side_tool="true" weight="0.32930514" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.5557971" weight="0.414966" />
       <window_info id="Favorites" order="4" sideWeight="0.5120482" side_tool="true" weight="0.26435044" />
       <window_info anchor="bottom" id="Inspection Results" order="12" weight="0.32993197" />
       <window_info anchor="bottom" id="Application Servers" order="14" />
       <window_info anchor="bottom" id="Changes" order="15" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
-      <window_info anchor="right" id="Preview" order="10" weight="0.32854986" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Android" order="16" />
-      <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info anchor="right" id="StringPreview" order="12" />
-      <window_info anchor="right" id="Android Model" order="11" side_tool="true" weight="0.32930514" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info anchor="right" id="StringPreview" order="11" />
+      <window_info anchor="right" id="Android Model" order="10" side_tool="true" weight="0.32930514" />
       <window_info anchor="bottom" id="Android Monitor" order="18" sideWeight="0.52190334" weight="0.4391892" />
       <window_info anchor="bottom" id="Memory Monitor" order="17" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="4" sideWeight="0.4978701" weight="0.3265306" />
-      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Messages" order="19" sideWeight="0.4645048" weight="0.3260135" />
       <window_info anchor="bottom" id="Gradle Console" order="13" sideWeight="0.53549516" side_tool="true" weight="0.32912844" />
-      <window_info anchor="right" id="Palette" order="7" />
+      <window_info anchor="right" id="Palette" order="6" />
     </layout>
     <layout-to-restore>
-      <window_info anchor="right" id="StringPreview" order="12" />
+      <window_info anchor="bottom" id="Build" order="1" sideWeight="0.51057404" weight="0.38265306" />
       <window_info anchor="right" id="Designer" order="9" />
       <window_info anchor="bottom" id="Gradle Console" order="13" sideWeight="0.53549516" side_tool="true" weight="0.32912844" />
+      <window_info anchor="right" id="Android Model" order="11" side_tool="true" weight="0.32930514" />
       <window_info anchor="right" id="Palette" order="7" />
       <window_info anchor="bottom" id="Memory Monitor" order="17" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Android" order="16" />
       <window_info anchor="bottom" id="Run" order="5" weight="0.3293919" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Changes" order="15" />
-      <window_info anchor="bottom" id="Android Profiler" order="2" />
+      <window_info anchor="bottom" id="Android Profiler" order="2" show_stripe_button="false" />
       <window_info anchor="bottom" id="Android Monitor" order="18" sideWeight="0.52190334" weight="0.4391892" />
       <window_info id="Favorites" order="4" sideWeight="0.5120482" side_tool="true" weight="0.26435044" />
       <window_info id="Captures" order="2" weight="0.25" />
@@ -3422,28 +3492,26 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Inspection Results" order="12" weight="0.32993197" />
       <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="right" id="StringPreview" order="12" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.489426" side_tool="true" weight="0.38265306" />
       <window_info anchor="right" id="Preview" order="10" weight="0.32854986" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="4" sideWeight="0.4978701" weight="0.3265306" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="1" sideWeight="0.51057404" weight="0.38265306" />
       <window_info anchor="bottom" id="Logcat" order="0" weight="0.42857143" />
       <window_info anchor="bottom" id="Application Servers" order="14" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.3293919" />
-      <window_info anchor="right" id="Android Model" order="11" side_tool="true" weight="0.32930514" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
       <window_info anchor="bottom" id="Terminal" order="20" weight="0.3282313" />
-      <window_info anchor="bottom" id="TODO" order="9" weight="0.3293919" />
-      <window_info anchor="right" id="Gradle" order="5" weight="0.32949513" />
+      <window_info anchor="right" id="Gradle" order="5" weight="0.32930514" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48795182" visible="true" weight="0.22356495" />
       <window_info anchor="bottom" id="Messages" order="19" sideWeight="0.4645048" weight="0.3260135" />
       <window_info anchor="bottom" id="Message" order="3" />
-      <window_info id="Image Layers" order="7" />
+      <window_info anchor="bottom" id="TODO" order="9" weight="0.3293919" />
       <window_info id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="8" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="4" sideWeight="0.4978701" weight="0.3265306" />
       <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.5557971" weight="0.414966" />
     </layout-to-restore>
   </component>
@@ -3461,7 +3529,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Found a bug with touch &amp; drag in 8-hour time. Fixed. Added a note in the help about manual changes." />
     <MESSAGE value="Corrected error in displaying 24-hour time, apparently introduced with settings panel." />
     <MESSAGE value="Welcome screen, new design for Archy, and changed menu to toolbar." />
     <MESSAGE value="quiz mode! fixed broken launcher icon, too. maybe something else, which I can't recollect" />
@@ -3486,14 +3553,15 @@
     <MESSAGE value="Mostly some changes requested by Antonella. A few tweaks here and there, too." />
     <MESSAGE value="some bug fixes and improvements" />
     <MESSAGE value="Horrible preferences bug fixed. Also removed the switch for manual/automatic mode and introduced a menu option for the same thing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Horrible preferences bug fixed. Also removed the switch for manual/automatic mode and introduced a menu option for the same thing." />
+    <MESSAGE value="Fixed a couple of small bugs in the Clock Master quiz." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a couple of small bugs in the Clock Master quiz." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="297" />
+      <option name="time" value="300" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -3548,27 +3616,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Android/Sdk/sources/android-26/android/support/v7/app/AppCompatDelegateImplV9.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="673" selection-start-line="673" selection-end-line="673" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/appcompat-v7/26.1.0/2b34456c30d6b6e5db5fa3e8fa02f6cebd5531fd/appcompat-v7-26.1.0-sources.jar!/android/support/v7/view/menu/MenuBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="962" selection-start-line="962" selection-end-line="962" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Android/Sdk/sources/android-26/android/support/v7/widget/ActionMenuView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="623" selection-start-line="623" selection-end-line="623" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Android/Sdk/sources/android-26/android/support/v7/view/menu/ActionMenuItemView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -3640,13 +3687,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/table34.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/attrs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/assets/Help-it.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -3699,40 +3739,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_ABTime.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="290" column="7" selection-start-line="290" selection-start-column="7" selection-end-line="290" selection-end-column="7" />
-          <folding>
-            <element signature="e#46#388#0" expanded="true" />
-            <element signature="e#2163#2204#0" expanded="true" />
-            <element signature="e#2234#2273#0" expanded="true" />
-            <element signature="e#2697#2747#0" expanded="true" />
-            <element signature="e#2785#2846#0" expanded="true" />
-            <element signature="e#2923#2976#0" expanded="true" />
-            <element signature="e#3014#3074#0" expanded="true" />
-            <element signature="e#3154#3206#0" expanded="true" />
-            <element signature="e#3244#3306#0" expanded="true" />
-            <element signature="e#3469#3515#1" expanded="true" />
-            <element signature="e#8337#8378#0" expanded="true" />
-            <element signature="e#8408#8447#0" expanded="true" />
-            <element signature="e#8871#8921#0" expanded="true" />
-            <element signature="e#8959#9020#0" expanded="true" />
-            <element signature="e#9097#9150#0" expanded="true" />
-            <element signature="e#9188#9248#0" expanded="true" />
-            <element signature="e#9328#9380#0" expanded="true" />
-            <element signature="e#9418#9480#0" expanded="true" />
-            <element signature="e#9643#9689#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dream_layout.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
       </provider>
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="403">
+        <state relative-caret-position="510">
           <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
         </state>
       </provider>
@@ -3765,54 +3777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/FlexibleNumberPicker.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="75" column="20" selection-start-line="75" selection-start-column="20" selection-end-line="75" selection-end-column="20" />
-          <folding>
-            <element signature="e#46#480#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/quiz_abc_layout.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="285" column="27" selection-start-line="285" selection-start-column="27" selection-end-line="285" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/quiz_ab_layout.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="222" column="27" selection-start-line="222" selection-start-column="27" selection-end-line="222" selection-end-column="27" />
-          <folding>
-            <element signature="e#851#869#0" expanded="true" />
-            <element signature="e#1663#1692#0" expanded="true" />
-            <element signature="e#2264#2277#0" expanded="true" />
-            <element signature="e#2847#2866#0" expanded="true" />
-            <element signature="e#3525#3557#0" expanded="true" />
-            <element signature="e#4129#4149#0" expanded="true" />
-            <element signature="e#4723#4742#0" expanded="true" />
-            <element signature="e#5401#5433#0" expanded="true" />
-            <element signature="e#6044#6060#0" expanded="true" />
-            <element signature="e#6426#6449#0" expanded="true" />
-            <element signature="e#7306#7325#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -4015,23 +3979,90 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_WhatTimeIsIt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
-          <caret line="127" column="75" lean-forward="true" selection-start-line="127" selection-start-column="75" selection-end-line="127" selection-end-column="75" />
+          <caret line="127" column="75" selection-start-line="127" selection-start-column="75" selection-end-line="127" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2605#2658#0" expanded="true" />
-            <element signature="e#2685#2749#0" expanded="true" />
-            <element signature="e#2819#2875#0" expanded="true" />
-            <element signature="e#2902#2965#0" expanded="true" />
-            <element signature="e#3005#3060#0" expanded="true" />
-            <element signature="e#3087#3152#0" expanded="true" />
-            <element signature="e#3214#3263#0" expanded="true" />
-            <element signature="e#3552#3700#0" expanded="true" />
-            <element signature="e#3699#3700#0" expanded="true" />
-            <element signature="e#4177#4221#0" expanded="true" />
-            <element signature="e#4232#4274#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Android/Sdk/sources/android-26/android/view/LayoutInflater.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="638" selection-start-line="638" selection-end-line="638" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/FlexibleNumberPicker.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="253" column="23" selection-start-line="253" selection-start-column="16" selection-end-line="253" selection-end-column="23" />
+          <folding>
+            <element signature="e#46#480#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/quiz_ab_layout.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="218" column="45" selection-start-line="218" selection-start-column="45" selection-end-line="218" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-land/quiz_ab_layout.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="245" column="40" selection-start-line="245" selection-start-column="37" selection-end-line="245" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_ABTime.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="357" column="90" selection-start-line="357" selection-start-column="90" selection-end-line="357" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/quiz_abc_layout.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="285" column="27" selection-start-line="285" selection-start-column="27" selection-end-line="285" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/attrs.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/NumberArray.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="186" column="5" selection-start-line="186" selection-start-column="5" selection-end-line="186" selection-end-column="5" />
+          <folding>
+            <element signature="e#46#327#0" expanded="true" />
           </folding>
         </state>
       </provider>

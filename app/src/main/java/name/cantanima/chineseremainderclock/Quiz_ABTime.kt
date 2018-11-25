@@ -149,9 +149,11 @@ class ABNumberDialog(
         setContentView(R.layout.quiz_ab_layout)
         val next_button: Button = findViewById(R.id.quiz_accept_button)
         next_button.setOnClickListener(this)
-        val number_picker : FlexibleNumberPicker = findViewById(R.id.quiz_ab_number_picker)
-        number_picker.min = 0
-        number_picker.max = max
+        val number_picker : NumberArray = findViewById(R.id.quiz_ab_number_array)
+        number_picker.start = 0
+        number_picker.num = max + 1
+        number_picker.rows = div_1
+        number_picker.columns = div_2
         var update_text : TextView = findViewById(R.id.quiz_which)
         val which_problem = complete.toString() + "/" + total.toString()
         update_text.text = which_problem
@@ -173,8 +175,8 @@ class ABNumberDialog(
      * @param v The view that was clicked.
      */
     override fun onClick(v: View?) {
-        val number_picker : FlexibleNumberPicker = findViewById(R.id.quiz_ab_number_picker)
-        listener.num_received(number_picker.value)
+        val number_picker : NumberArray = findViewById(R.id.quiz_ab_number_array)
+        listener.num_received(number_picker.which_num_chosen)
         dismiss()
     }
 

@@ -3,7 +3,6 @@ package name.cantanima.chineseremainderclock
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.MotionEvent.*
@@ -14,8 +13,6 @@ class NumberArray(context: Context, attrs: AttributeSet)
     : View(context, attrs), View.OnTouchListener
 {
     
-    val tag = "NumberArray"
-
     var rows: Int = 3
     var columns: Int = 4
     var start: Int = 0
@@ -106,7 +103,7 @@ class NumberArray(context: Context, attrs: AttributeSet)
             val y = digit_height * (i + 1)
             if (pad_with_zeros) {
                 for (k in 1..(num_digits - numberOfDigits(a))) {
-                    canvas.drawText("0", x.toFloat(), y.toFloat(),
+                    canvas.drawText(" ", x.toFloat(), y.toFloat(),
                             if (a == which_num_chosen) high_paint else text_paint
                     )
                     x += digit_width
@@ -178,7 +175,7 @@ class NumberArray(context: Context, attrs: AttributeSet)
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         high_paint.getTextBounds("9", 0, start.toString().length, bounds)
         digit_width = bounds.width()
-        digit_height = bounds.height()
+        digit_height = bounds.height() + high_paint.descent().toInt()
         high_paint.getTextBounds((start + num).toString(), 0, (start + num).toString().length, bounds)
         number_width = bounds.width()
         view_width = (digit_width + number_width) * columns
@@ -218,4 +215,5 @@ class NumberArray(context: Context, attrs: AttributeSet)
 
         return true
     }
+
 }

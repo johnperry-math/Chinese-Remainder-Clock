@@ -155,7 +155,7 @@ class ABNumberDialog(
         number_picker.rows = div_1
         number_picker.columns = div_2
         var update_text : TextView = findViewById(R.id.quiz_which)
-        val which_problem = complete.toString() + "/" + total.toString()
+        val which_problem = complete.toString() + "/" + total.toString() + ":"
         update_text.text = which_problem
         update_text = findViewById(R.id.max_value)
         update_text.text = max.toString()
@@ -208,7 +208,7 @@ class Quiz_abcTime (
     override fun show_question() {
         val prod = d1*d2*d3
         do
-            value = randomizer!!.nextInt(prod)
+            value = randomizer.nextInt(prod)
         while (value in previous_values)
         previous_values.add(value)
         val r1 = value % d1
@@ -331,7 +331,7 @@ class ABCNumberDialog(
         number_picker.min = 0
         number_picker.max = max
         var update_text : TextView = findViewById(R.id.quiz_which)
-        val which_problem = complete.toString() + "/" + total.toString()
+        val which_problem = complete.toString() + "/" + total.toString() + ":"
         update_text.text = which_problem
         update_text = findViewById(R.id.max_value)
         update_text.text = max.toString()

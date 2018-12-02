@@ -67,9 +67,8 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
     else
       setContentView(R.layout.time_dialog);
     // find and remember important interface elements
-    next_button = findViewById(R.id.quiz_accept_button);
-    hour_text = findViewById(R.id.quiz_hour_entry);
-    minute_text = findViewById(R.id.quiz_min_entry);
+    Button next_button = findViewById(R.id.quiz_accept_button);
+    time_entry_clock = findViewById(R.id.twohanded_clock);
     // message to indicate quiz name & progress on question
     String title = cr_activity.getString(R.string.quiz_what_time_is_it) + " "
         + String.valueOf(number_complete + 1) + "/"
@@ -95,15 +94,8 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
   @Override
   public void onClick(View v) {
 
-    Editable hour_editable = hour_text.getText();
-    Editable minute_editable = minute_text.getText();
-    int hour = 0, minute = 0;
-    if (hour_editable != null && hour_editable.length() != 0)
-      try { hour = Integer.valueOf(hour_editable.toString()); }
-      catch (Exception e) { Log.d(tag, "Caught an exception when getting the hour on a click."); }
-    if (minute_editable != null && minute_editable.length() != 0)
-      try { minute = Integer.valueOf(minute_editable.toString()); }
-      catch (Exception e) { Log.d(tag, "Caught an exception when getting the minute on a click."); }
+    int hour = time_entry_clock.getHour();
+    int minute = time_entry_clock.getMin();
 
     for (TimeEntryDialogListener listener : listeners)
       listener.time_received(hour, minute);
@@ -136,10 +128,8 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
   private Activity cr_activity;
   /** CRC_View with which we must interact */
   private LinkedList<TimeEntryDialogListener> listeners;
-  /** button to request next question */
-  private Button next_button;
-  /** text for hour, minute */
-  private EditText hour_text, minute_text;
+  /** Twohanded_Clock for time entry */
+  private Twohanded_Clock time_entry_clock;
   /** number of questions completed and total */
   private int number_complete, number_total;
   /** for debugging */

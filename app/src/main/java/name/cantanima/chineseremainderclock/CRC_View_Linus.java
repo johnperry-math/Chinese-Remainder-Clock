@@ -91,7 +91,7 @@ public class CRC_View_Linus extends Clock_Drawer {
     circle_paint.setColor(line_color);
     circle_paint.setStrokeWidth(1);
 
-    // hour, modulo 3
+    // short_hand, modulo 3
 
     ball_paint.setColor(hour_color);
     canvas.drawLines(digi_h3_pts, circle_paint);
@@ -122,7 +122,7 @@ public class CRC_View_Linus extends Clock_Drawer {
       canvas.drawLines(digi_h3_pts, 0, hmod3 << 2, ball_paint);
     }
 
-    // hour, modulo 4 or 8, depending on the kind of time
+    // short_hand, modulo 4 or 8, depending on the kind of time
 
     if (my_viewer.hour_modulus == 4) {
 
@@ -154,7 +154,7 @@ public class CRC_View_Linus extends Clock_Drawer {
           canvas.drawLines(digi_h4_pts, 0, hmod4 << 2, ball_paint);
       }
 
-    } else { // hour modulo 8
+    } else { // short_hand modulo 8
 
       canvas.drawLines(digi_h8_pts, circle_paint);
       if (abs(my_viewer.last_h - hour) == 1 && my_viewer.time_guide != DECREMENT) {

@@ -12,15 +12,14 @@
         The tool bar offers Information on how the clock works (question mark),
         Settings for options on color, design, etc. (wrench), and
         simple Quizzes (pencil).
-
-        There is no longer a switch for manual and automatic mode.
-        Use the menu instead.
+        Use the menu to switch from automatic to manual mode.
     </string>
     <string name="proceed_string">Go!</string>
 
     <string name="info_button_text">Information</string>
     <string name="info_button_text_short">Info</string>
 
+    <string name="menu_manual">Manual</string>
     <string name="auto_button_text">Auto/Manual</string>
     <string name="auto_button_text_off">A</string>
     <string name="auto_button_text_on">M</string>
@@ -79,7 +78,7 @@
         <item>Linus: number of highlighted sides tells remainder</item>
         <item>Ringy: ball\'s position on ring tells remainder</item>
         <item>Shady: remainders displayed in shaded polygon</item>
-        <item>Vertie: higlighted vertex tells remainder</item>
+        <item>Vertie: highlighted vertex tells remainder</item>
     </string-array>
     <string-array name="drawStringValues" translatable="false">
         <item>0</item>
@@ -123,6 +122,12 @@
 
     <!-- Quizzes -->
     <string name="quiz_menu_title">Quiz</string>
+    <string name="quiz_3_4" translatable="false">3-4</string>
+    <string name="quiz_3_5" translatable="false">3-5</string>
+    <string name="quiz_4_5" translatable="false">4-5</string>
+    <string name="quiz_3_4_5" translatable="false">3-4-5</string>
+    <string name="quiz_master">Master</string>
+
     <string name="question">Question</string>
 
     <string name="quiz_what_time_is_it">What time is it?</string>
@@ -147,7 +152,7 @@
     <string name="quiz_result_dismiss_dialog_great">Awesome Sauce!</string>
     <string name="quiz_result_dismiss_dialog_better">Hope so!</string>
     <string name="quiz_result_dismiss_dialog_keep">Oof!</string>
-    <string name="quiz_sorry">Sorry!</string>
+    <string name="quiz_sorry">Sorry! it was</string>
     <string name="quiz_correct">Correct!</string>
     <string name="has">has</string>
     <string name="remainder">remainder</string>

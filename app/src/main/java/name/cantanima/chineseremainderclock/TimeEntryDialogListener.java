@@ -13,7 +13,7 @@ public interface TimeEntryDialogListener {
 
   /**
    * The user entered a time.
-   * @param h the hour entered
+   * @param h the short_hand entered
    * @param m the minute entered
    */
   public void time_received(int h, int m);

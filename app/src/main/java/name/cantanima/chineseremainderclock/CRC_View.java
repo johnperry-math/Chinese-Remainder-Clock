@@ -197,14 +197,14 @@ public class CRC_View
    * Sets the default values for certain fields
    *
    * @param prefs no longer needed; we should remove this
-   * @param hour_12_24 whether we are using a 12-hour or a 24-hour clock
+   * @param hour_12_24 whether we are using a 12-short_hand or a 24-short_hand clock
    * @param show_seconds whether to show the seconds
    * @param show_time whether to display the time in conventional format
    * @param saved_unit_orientation whether to keep put minutes inside/left of hours
    * @param which_drawer which @link{Clock_Drawer} to use
    * @param bg_color clock's background color
    * @param line_color clock's line color (when appropriate)
-   * @param hour_color color used to draw objects that represent the current hour
+   * @param hour_color color used to draw objects that represent the current short_hand
    * @param minute_color color used to draw objects that represent the current minute
    * @param second_color color used to draw objects that represent the current second
    */
@@ -629,7 +629,7 @@ public class CRC_View
      *  @see Units
      */
     NEW_VALUE,
-    /** a new value for all units of time; read from hour, minute, second */
+    /** a new value for all units of time; read from short_hand, minute, second */
     NEW_TIME
   }
   /** how time is being modified */
@@ -637,9 +637,9 @@ public class CRC_View
   /** new value for the time when using {@link Modification#NEW_VALUE} */
   protected int new_time_value;
 
-  /** whether we are calculating 12- or 24-hour time */
+  /** whether we are calculating 12- or 24-short_hand time */
   protected int which_hour;
-  /** which hour modulus (for 12- or 24-hour time) */
+  /** which short_hand modulus (for 12- or 24-short_hand time) */
   protected int hour_modulus;
 
   /** used to store previous time (useful for animation) */

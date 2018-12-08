@@ -34,12 +34,12 @@ public class CRC_View_Arcy extends Clock_Drawer {
     drawTimeAndRectangle(canvas, hour, minute, second, diam);
 
     // each arch can be drawn in one of six ways:
-    // 1) if the last hour is not equal to the hour, then
-    //    a) if drawing the last hour, and we are animating (my_offset < 1.0) then draw bar
-    //    b) if drawing the current hour, choose alpha & draw bar
+    // 1) if the last short_hand is not equal to the short_hand, then
+    //    a) if drawing the last short_hand, and we are animating (my_offset < 1.0) then draw bar
+    //    b) if drawing the current short_hand, choose alpha & draw bar
     //    c) otherwise, draw arc
-    // 2) if the hour equals the current hour,
-    //    a) if drawing the current hour, draw bar
+    // 2) if the short_hand equals the current short_hand,
+    //    a) if drawing the current short_hand, draw bar
     //    b) otherwise, draw arc
 
     if (my_viewer.my_offset > 1.0) my_viewer.my_offset = 1.0f;

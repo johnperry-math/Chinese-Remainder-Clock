@@ -3,7 +3,7 @@
     <string name="app_name">Orologio Cinese</string>
     <string name="app_menu_title">Orologio Cinese</string>
     <string name="welcome_string">Benvenuto a l\'Orologio Cinese!</string>
-    <string name="welcome_dialog_text">La barra degli strumenti contiene Informazioni su come funziona l\'Orologio Cinese (punto interrogativo), Impostazioni per scegliere ad esempio il design (chiave inglese) ed alcuni Quiz (matita). Questa versione vi offre nuovi Quiz! Se tocchi lo schermo fuori dall\'Orologio puoi entrare nella versione manuale e settare l\'ora.</string>
+    <string name="welcome_dialog_text">La barra degli strumenti contiene Informazioni su come funziona l\'Orologio Cinese (punto interrogativo), Impostazioni per scegliere ad esempio il design (chiave inglese) ed alcuni Quiz (matita). Questa versione vi offre nuovi Quiz! Utilizzare il menù per entrare nella versione manuale e settare l\'ora.</string>
     <string name="proceed_string">Vai!</string>
     <string name="info_button_text">Informazioni</string>
     <string name="info_button_text_short">Info</string>
@@ -56,7 +56,7 @@
     <string name="quiz_result_dismiss_dialog_better">Speriamo!</string>
     <string name="quiz_result_dismiss_dialog_keep">Oops/&#8320;</string>
     <string name="quiz_correct">Giusto!</string>
-    <string name="quiz_sorry">Sbagliato!</string>
+    <string name="quiz_sorry">Sbagliato! era</string>
     <string name="action_settings">Opzioni</string>
     <string name="pref_drawers">Design</string>
 
@@ -86,5 +86,7 @@
     <string name="remainder">resto</string>
     <string name="question">Domanda</string>
     <string name="autofill_hint_edittext">scelga</string>
+    <string name="quiz_master">Maestro</string>
+    <string name="menu_manual">Manuale</string>
 
 </resources>

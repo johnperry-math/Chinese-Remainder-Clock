@@ -222,12 +222,17 @@
         android:layout_height="16sp"
         />
 
-    <name.cantanima.chineseremainderclock.NumberArray
-        android:id="@+id/quiz_ab_number_array"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:text_size="24.0"
-        app:back_color="@drawable/transparent_dialog"/>
+    <name.cantanima.chineseremainderclock.Dial_Entry
+        android:id="@+id/quiz_ab_number_dial"
+        android:layout_width="144dp"
+        android:layout_height="144dp"
+        app:two_handed="false"
+        app:time_text="true"
+        app:long_per_short="1"
+        app:short_min="0"
+        app:short_num="12"
+        app:short_min_val="0"
+        />
 
     <Space
         android:layout_width="wrap_content"

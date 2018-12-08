@@ -61,7 +61,7 @@ class Quiz_abTime (
      * If the quiz is not complete, a new question is generated; otherwise,
      * a result w/a light-hearted comment is displayed in an AlertDialog.
      * @see .show_question
-     * @param hr the hour entered by the user
+     * @param hr the short_hand entered by the user
      * @param min the minute entered by the user
      */
     override fun accept_answer(hr: Int, min: Int) {
@@ -149,11 +149,10 @@ class ABNumberDialog(
         setContentView(R.layout.quiz_ab_layout)
         val next_button: Button = findViewById(R.id.quiz_accept_button)
         next_button.setOnClickListener(this)
-        val number_picker : NumberArray = findViewById(R.id.quiz_ab_number_array)
-        number_picker.start = 0
-        number_picker.num = max + 1
-        number_picker.rows = div_1
-        number_picker.columns = div_2
+        val number_picker : Dial_Entry = findViewById(R.id.quiz_ab_number_dial)
+        number_picker.short_min = 0
+        number_picker.short_num = max + 1
+        number_picker.long_per_short = 1
         var update_text : TextView = findViewById(R.id.quiz_which)
         val which_problem = complete.toString() + "/" + total.toString() + ":"
         update_text.text = which_problem
@@ -175,8 +174,8 @@ class ABNumberDialog(
      * @param v The view that was clicked.
      */
     override fun onClick(v: View?) {
-        val number_picker : NumberArray = findViewById(R.id.quiz_ab_number_array)
-        listener.num_received(number_picker.which_num_chosen)
+        val number_picker : Dial_Entry = findViewById(R.id.quiz_ab_number_dial)
+        listener.num_received(number_picker.long_value())
         dismiss()
     }
 
@@ -233,7 +232,7 @@ class Quiz_abcTime (
      * If the quiz is not complete, a new question is generated; otherwise,
      * a result w/a light-hearted comment is displayed in an AlertDialog.
      * @see .show_question
-     * @param hr the hour entered by the user
+     * @param hr the short_hand entered by the user
      * @param min the minute entered by the user
      */
     override fun accept_answer(hr: Int, min: Int) {
@@ -327,9 +326,6 @@ class ABCNumberDialog(
         setContentView(R.layout.quiz_abc_layout)
         val next_button: Button = findViewById(R.id.quiz_accept_button)
         next_button.setOnClickListener(this)
-        val number_picker : FlexibleNumberPicker = findViewById(R.id.quiz_ab_number_picker)
-        number_picker.min = 0
-        number_picker.max = max
         var update_text : TextView = findViewById(R.id.quiz_which)
         val which_problem = complete.toString() + "/" + total.toString() + ":"
         update_text.text = which_problem
@@ -355,8 +351,8 @@ class ABCNumberDialog(
      * @param v The view that was clicked.
      */
     override fun onClick(v: View?) {
-        val number_picker : FlexibleNumberPicker = findViewById(R.id.quiz_ab_number_picker)
-        listener.num_received(number_picker.value)
+        val number_picker : Dial_Entry = findViewById(R.id.quiz_abc_60_number_picker)
+        listener.num_received(number_picker.long_value())
         dismiss()
     }
 

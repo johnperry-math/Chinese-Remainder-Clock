@@ -99,7 +99,7 @@ public class CRC_View_Vertie extends Clock_Drawer {
     //       for the ball
     //    b) if the time unit is not changing, draw the ball in the correct position
 
-    // hour, modulo 3
+    // short_hand, modulo 3
 
     ball_paint.setColor(hour_color);
 
@@ -120,7 +120,7 @@ public class CRC_View_Vertie extends Clock_Drawer {
       );
     }
 
-    // hour, modulo 4 or 8, depending on the kind of time
+    // short_hand, modulo 4 or 8, depending on the kind of time
 
     if (my_viewer.hour_modulus == 4) {
 
@@ -141,7 +141,7 @@ public class CRC_View_Vertie extends Clock_Drawer {
         );
       }
 
-  } else { // hour modulo 8
+  } else { // short_hand modulo 8
 
       canvas.drawLines(digi_h8_pts, poly_paint);
       ball_paint.setColor(hour_color);

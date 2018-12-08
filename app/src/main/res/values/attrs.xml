@@ -41,4 +41,23 @@
         <attr name="number" format="integer"/>
     </declare-styleable>
 
+    <declare-styleable name="Dial_Entry">
+        <attr name="back_color"/>
+        <attr name="high_color"/>
+        <attr name="text_color"/>
+        <attr name="text_size"/>
+        <attr name="min_size" format="float"/>
+        <attr name="hour_size" format="float"/>
+        <attr name="hatch_size" format="float"/>
+        <attr name="hand_color" format="color"/>
+        <attr name="hatch_color" format="color"/>
+        <attr name="time_text" format="boolean"/>
+        <attr name="two_handed" format="boolean"/>
+        <attr name="short_min" format="integer"/>
+        <attr name="short_min_val" format="integer"/>
+        <attr name="short_num" format="integer"/>
+        <attr name="long_min" format="integer"/>
+        <attr name="long_per_short" format="integer"/>
+    </declare-styleable>
+
 </resources>

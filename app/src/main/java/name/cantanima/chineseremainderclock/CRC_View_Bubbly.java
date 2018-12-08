@@ -40,9 +40,9 @@ public class CRC_View_Bubbly extends Clock_Drawer {
     // the paths are already set up, so it's basically a question of how many bubbles to fill in
     // for any particular remainder, we do the following:
     // 1) draw the polygon hint as to the kind of remainder (triangle for 3-remainder, etc.)
-    // 2) if the last hour is the same as the current hour, shade corresponding number of bubbles
+    // 2) if the last short_hand is the same as the current short_hand, shade corresponding number of bubbles
     // 3) otherwise,
-    //    a) if the current hour corresponds to the modulus, fade (out) all the balls
+    //    a) if the current short_hand corresponds to the modulus, fade (out) all the balls
     //    b) otherwise, increase the ball's shade (fade in)
     // 4) draw a circle (necessary in case the ball isn't shaded)
 

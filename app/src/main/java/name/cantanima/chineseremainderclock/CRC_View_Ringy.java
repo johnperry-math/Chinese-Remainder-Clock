@@ -164,7 +164,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
       );
     }
 
-    // draw hatch marks for hour's second positions (modulo 4 or 8 as appropriate)
+    // draw hatch marks for short_hand's second positions (modulo 4 or 8 as appropriate)
     for (int i = 0; i < my_viewer.hour_modulus; ++i) {
       canvas.drawLine(
           (float) (cx + bally_hatch_hr4_inner * cos(2 * PI / my_viewer.hour_modulus * i - PI / 2)),
@@ -197,7 +197,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
       );
     }
 
-    // determine the hour ball's position:
+    // determine the short_hand ball's position:
     // hangle3 determines the position for the inner ball (modulo 3)
     // and hangle4 determines the position for the outer ball (modulo 4 or 8)
     float hangle3, hangle4;
@@ -560,9 +560,9 @@ public class CRC_View_Ringy extends Clock_Drawer {
   private int last_mod;
   /** counter for which ball is being dragged */
   protected enum DRAGGED_BALL {
-    /** dragging the 3-remainder for the hour */
+    /** dragging the 3-remainder for the short_hand */
     HOUR3,
-    /** dragging the 4- or 8-remainder for the hour */
+    /** dragging the 4- or 8-remainder for the short_hand */
     HOURH,
     /** dragging the 3-remainder for the minute */
     MIN3,

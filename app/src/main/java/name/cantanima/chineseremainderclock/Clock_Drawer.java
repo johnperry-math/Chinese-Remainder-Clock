@@ -52,7 +52,7 @@ public abstract class Clock_Drawer {
    * drawTimeAndRectangle(), which takes care of the background.
    * Only then should you perform the drawing specific to the design!
    * At the end, a subclass should also invoke usual_cleanup().
-   * If you follow this course of events, then the values hour, minute, second,
+   * If you follow this course of events, then the values short_hand, minute, second,
    * last_h, last_m, last_s will be set up properly so that you can read them for animation,
    * and all other "ordinary" set up and destruction will be taken care of.
    * @param canvas Canvas on which to draw the clock
@@ -239,7 +239,7 @@ public abstract class Clock_Drawer {
    * Draws a background rectangle with rounded corners and then calls draw_time().
    * @see #draw_time(int, int, int)
    * @param canvas Canvas to draw onto
-   * @param hour hour to write
+   * @param hour short_hand to write
    * @param minute minute to write
    * @param second second to write
    * @param diam "radius" of the Canvas (don't ask why it's called diam)
@@ -276,7 +276,7 @@ public abstract class Clock_Drawer {
 
   /**
    * Draws the indicated time onto the TextView for the time (tv).
-   * @param print_hour hour to print
+   * @param print_hour short_hand to print
    * @param print_minute minute to print
    * @param print_second second to print
    */
@@ -345,7 +345,7 @@ public abstract class Clock_Drawer {
   /** which color to use when drawing lines */
   void set_line_color(int new_line_color) { line_color = new_line_color; }
 
-  /** which color to use when drawing hour objects */
+  /** which color to use when drawing short_hand objects */
   void set_hour_color(int new_hour_color) { hour_color = new_hour_color; }
 
   /** which color to use when drawing minute objects */
@@ -401,8 +401,8 @@ public abstract class Clock_Drawer {
   private TextView tv;
 
   /**
-   *  time information: hour, minute, second will record current time (to draw),
-   *  hours_max will indicate whether it's a 12- or 24-hour clock
+   *  time information: short_hand, minute, second will record current time (to draw),
+   *  hours_max will indicate whether it's a 12- or 24-short_hand clock
    */
   int hour, minute, second, millis;
 

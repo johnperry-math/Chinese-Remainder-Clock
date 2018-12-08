@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="6sp"/>
 
-    <name.cantanima.chineseremainderclock.Twohanded_Clock
+    <name.cantanima.chineseremainderclock.Dial_Entry
         android:id="@+id/twohanded_clock"
         android:layout_width="144dp"
         android:layout_height="144dp"

@@ -18,32 +18,32 @@
             <item
                 android:id="@+id/number34"
                 android:icon="@android:drawable/ic_menu_edit"
-                android:title="3-4"
-                app:showAsAction="always"
+                android:title="@string/quiz_3_4"
+                app:showAsAction="never"
                 />
             <item
                 android:id="@+id/number35"
                 android:icon="@android:drawable/ic_menu_edit"
-                android:title="3-5"
-                app:showAsAction="always"
+                android:title="@string/quiz_3_5"
+                app:showAsAction="never"
                 />
             <item
                 android:id="@+id/number45"
                 android:icon="@android:drawable/ic_menu_edit"
-                android:title="4-5"
-                app:showAsAction="always"
+                android:title="@string/quiz_4_5"
+                app:showAsAction="never"
                 />
             <item
                 android:id="@+id/number345"
                 android:icon="@android:drawable/ic_menu_edit"
-                android:title="3-4-5"
-                app:showAsAction="always"
+                android:title="@string/quiz_3_4_5"
+                app:showAsAction="never"
                 />
             <item
                 android:id="@+id/clockmaster"
                 android:icon="@android:drawable/ic_menu_edit"
-                android:title="Master"
-                app:showAsAction="always"
+                android:title="@string/quiz_master"
+                app:showAsAction="never"
                 />
         </menu>
     </item>
@@ -54,7 +54,7 @@
         android:title="@string/info_button_text"
         app:showAsAction="ifRoom"/>
     <item android:id="@+id/automanual"
-          android:title="Manual"
+          android:title="@string/menu_manual"
           app:showAsAction="never"
           />
 </menu>

@@ -4,13 +4,10 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.text.Editable;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.LinkedList;
@@ -94,8 +91,8 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
   @Override
   public void onClick(View v) {
 
-    int hour = time_entry_clock.getHour();
-    int minute = time_entry_clock.getMin();
+    int hour = time_entry_clock.short_value();
+    int minute = time_entry_clock.long_value();
 
     for (TimeEntryDialogListener listener : listeners)
       listener.time_received(hour, minute);
@@ -116,23 +113,13 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
 
   }
 
-  public void addTimeEntryDialogListener(TimeEntryDialogListener listener) {
-    listeners.add(listener);
-  }
-
-  public void removeTimeEntryDialogListener(TimeEntryDialogListener listener) {
-    listeners.remove(listener);
-  }
-
   /** Activity that started this dialog */
   private Activity cr_activity;
   /** CRC_View with which we must interact */
   private LinkedList<TimeEntryDialogListener> listeners;
-  /** Twohanded_Clock for time entry */
-  private Twohanded_Clock time_entry_clock;
+  /** Dial_Entry for time entry */
+  private Dial_Entry time_entry_clock;
   /** number of questions completed and total */
   private int number_complete, number_total;
-  /** for debugging */
-  private String tag = "TimeEntryDialog";
 
 }

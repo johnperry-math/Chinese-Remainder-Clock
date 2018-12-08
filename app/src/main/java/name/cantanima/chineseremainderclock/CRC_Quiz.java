@@ -67,7 +67,7 @@ public abstract class CRC_Quiz {
    * If the quiz is not complete, a new question is generated; otherwise,
    * a result w/a light-hearted comment is displayed in an AlertDialog.
    * @see #show_question() ()
-   * @param hr the hour entered by the user
+   * @param hr the short_hand entered by the user
    * @param min the minute entered by the user
    */
   abstract public void accept_answer(int hr, int min);

@@ -80,7 +80,7 @@ public class CRC_View_Shady extends Clock_Drawer {
     // the fill's transparency varies according to the remainder:
     // the closer the remainder is to the modulus, the more opaque the fill
 
-    // hour, modulo 3
+    // short_hand, modulo 3
 
     ball_paint.setColor(hour_color);
     ball_paint.setStyle(FILL);
@@ -98,7 +98,7 @@ public class CRC_View_Shady extends Clock_Drawer {
     else
       canvas.drawText(String.valueOf(hmod3), digi_hx, digi_hty1, digi_paint);
 
-    // hour, modulo 4 or 8, depending on the kind of time
+    // short_hand, modulo 4 or 8, depending on the kind of time
 
     if (my_viewer.hour_modulus == 4) {
 
@@ -116,7 +116,7 @@ public class CRC_View_Shady extends Clock_Drawer {
       else
         canvas.drawText(String.valueOf(hmod4), digi_hx, digi_hty2, digi_paint);
 
-    } else { // hour modulo 8
+    } else { // short_hand modulo 8
 
       if (my_viewer.last_h != hour) {
         ball_paint.setAlpha((int) (

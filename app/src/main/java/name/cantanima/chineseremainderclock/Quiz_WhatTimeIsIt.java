@@ -113,7 +113,7 @@ public class Quiz_WhatTimeIsIt extends CRC_Quiz implements TimeEntryDialogListen
    * Call this from show_question().
    * This is optional, and the default does nothing.
    *
-   * @param hr hour chosen
+   * @param hr short_hand chosen
    * @param min minute chosen
    */
   @Override

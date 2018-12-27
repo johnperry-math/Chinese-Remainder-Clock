@@ -15,6 +15,7 @@
     <string name="info_button_text_short">Info</string>
 
     <string name="menu_manual">Manuale</string>
+    <string name="menu_automatic">Automatico</string>
     <string name="auto_button_text">Automatico/Manuale</string>
     <string name="auto_button_text_off">A</string>
     <string name="auto_button_text_on">M</string>

@@ -53,8 +53,9 @@
         android:orderInCategory="300"
         android:title="@string/info_button_text"
         app:showAsAction="ifRoom"/>
-    <item android:id="@+id/automanual"
-          android:title="@string/menu_manual"
-          app:showAsAction="never"
-          />
+    <item
+        android:id="@+id/automanual"
+        android:icon="@drawable/ic_pointing_hand"
+        android:title="@string/menu_manual"
+        app:showAsAction="ifRoom"/>
 </menu>

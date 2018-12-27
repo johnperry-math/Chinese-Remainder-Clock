@@ -3,10 +3,17 @@
     <string name="app_name">Часы основанные на Китайской Теореме Остатков</string>
     <string name="app_menu_title">Часы КТО</string>
     <string name="welcome_string">Добро пожаловать!</string>
+    <string name="welcome_dialog_text">
+        Панель инструментов содержит информацию о работе часов ("?"),
+        выбор цвета, дизайна, и т.д. ("гаечный ключ"), и
+        простые тесты ("карандаш").
+        Используй меню для перехода в автоматический/ручной режим.
+    </string>
     <string name="proceed_string">Входите!</string>
     <string name="info_button_text">Информация</string>
     <string name="info_button_text_short">Инфо</string>
     <string name="menu_manual">Ручной</string>
+    <string name="menu_automatic">Автоматический</string>
     <string name="auto_button_text_off">А</string>
     <string name="auto_button_text_on">Р</string>
     <string name="auto_button_text">Автоматический/Ручной</string>

@@ -301,7 +301,7 @@ public class CRC_View
 
     if (currentMode == Mode.MANUAL) {
 
-      item.setTitle("Manual");
+      item.setTitle(R.string.menu_manual);
       currentMode = Mode.AUTOMATIC;
       my_drawer.notify_manual(false);
       // animation is paused, let's resume it
@@ -317,7 +317,7 @@ public class CRC_View
 
     } else {
 
-      item.setTitle("Automatic");
+      item.setTitle(R.string.menu_automatic);
       currentMode = Mode.MANUAL;
       my_drawer.notify_manual(true);
       // animation is current, let's pause it

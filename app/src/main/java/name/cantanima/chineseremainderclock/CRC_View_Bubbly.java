@@ -2,7 +2,6 @@ package name.cantanima.chineseremainderclock;
 
 import android.graphics.Canvas;
 import android.graphics.Path;
-import android.util.Log;
 import android.view.MotionEvent;
 
 import static android.graphics.Paint.Style.FILL;
@@ -36,9 +35,12 @@ public class CRC_View_Bubbly extends Clock_Drawer {
 
     // default setup
 
-    setup_time();
-
-    drawTimeAndRectangle(canvas, hour, minute, second, diam);
+    if (!manual_mode) {
+      setup_time();
+      drawTimeAndRectangle(canvas, hour, minute, second, diam);
+    } else {
+      drawTimeAndRectangle(canvas, my_viewer.last_h, my_viewer.last_m, my_viewer.last_s, diam);
+    }
 
     // draw the hours
     // the paths are already set up, so it's basically a question of how many bubbles to fill in
@@ -522,28 +524,24 @@ public class CRC_View_Bubbly extends Clock_Drawer {
     float x = e.getX(), y = e.getY();
     float radius = min(hstep, vstep) / 2.25f;
 
-    Log.d("bubbly", "touched");
-    Log.d("bubbly", String.valueOf(h_y) + ", " + String.valueOf(radius) + ", " + String.valueOf(cstep) + ", " + String.valueOf(vstep) + ": " + String.valueOf(y));
-
-    if ((abs(h_x3 - x) < radius) && (h_y + radius - y < radius * 2 + cstep * 2))
+    if ((abs(h_x3 - x) < radius) && (h_y + radius - y > 0) && (h_y + radius - y < radius * 2 + cstep * 2))
       moving = TOUCHED_UNIT.HOUR3;
-    else if ((abs(h_xh - x) < radius) && (h_y + radius - y < radius * 2 + cstep * 3))
+    else if ((abs(h_xh - x) < radius) && (h_y + radius - y > 0) && (h_y + radius - y < radius * 2 + cstep * 3))
       moving = TOUCHED_UNIT.HOURH;
-    else if ((abs(m_x3 - x) < radius) && (m_y + radius - y < radius * 2 + cstep * 2))
+    else if ((abs(m_x3 - x) < radius) && (m_y + radius - y > 0) && (m_y + radius - y < radius * 2 + cstep * 2))
       moving = TOUCHED_UNIT.MIN3;
-    else if ((abs(m_x4 - x) < radius) && (m_y + radius - y < radius * 2 + cstep * 3))
+    else if ((abs(m_x4 - x) < radius) && (m_y + radius - y > 0) && (m_y + radius - y < radius * 2 + cstep * 3))
       moving = TOUCHED_UNIT.MIN4;
-    else if ((abs(m_x5 - x) < radius) && (m_y + radius - y < radius * 2 + cstep * 4))
+    else if ((abs(m_x5 - x) < radius) && (m_y + radius - y > 0) && (m_y + radius - y < radius * 2 + cstep * 4))
       moving = TOUCHED_UNIT.MIN5;
-    else if ((abs(s_x3 - x) < radius) && (s_y + radius - y < radius * 2 + cstep * 2))
+    else if ((abs(s_x3 - x) < radius) && (s_y + radius - y > 0) && (s_y + radius - y < radius * 2 + cstep * 2))
       moving = TOUCHED_UNIT.SEC3;
-    else if ((abs(s_x4 - x) < radius) && (s_y + radius - y < radius * 2 + cstep * 3))
+    else if ((abs(s_x4 - x) < radius) && (s_y + radius - y > 0) && (s_y + radius - y < radius * 2 + cstep * 3))
       moving = TOUCHED_UNIT.SEC4;
-    else if ((abs(s_x5 - x) < radius) && (s_y + radius - y < radius * 2 + cstep * 4))
+    else if ((abs(s_x5 - x) < radius) && (s_y + radius - y > 0) && (s_y + radius - y < radius * 2 + cstep * 4))
       moving = TOUCHED_UNIT.SEC5;
     else
       moving = TOUCHED_UNIT.NONE;
-    Log.d("bubbly", moving.name());
 
     move_to(x, y, radius);
   }
@@ -553,53 +551,52 @@ public class CRC_View_Bubbly extends Clock_Drawer {
       case HOUR3:
         if (abs(h_y - y) < radius || y > h_y) dragged_h3 = 0;
         else dragged_h3 = round((h_y - radius - y ) / cstep - 0.5f) + 1;
-        Log.d("bubbly", "dragged to " + String.valueOf(dragged_h3));
         break;
       case HOURH:
         if (abs(h_y - y) < radius || y > h_y) dragged_hh = 0;
-        else dragged_hh = round((h_y - radius - y ) / cstep - 0.5f) + 1;
-        Log.d("bubbly", "dragged to " + String.valueOf(dragged_h3));
+        else {
+          dragged_hh = round((h_y - radius - y) / cstep - 0.5f) + 1;
+          if (my_viewer.hour_modulus == 8) {
+            dragged_hh *= 2;
+            if (dragged_hh < 7 && x < h_xh) dragged_hh -= 1;
+            else if (dragged_hh == 8) dragged_hh = 7;
+          }
+        }
         break;
       case MIN3:
-        if (abs(h_y - y) < radius || y > h_y) dragged_m3 = 0;
-        else dragged_m3 = round((h_y - radius - y ) / cstep - 0.5f) + 1;
-        Log.d("bubbly", "dragged to " + String.valueOf(dragged_h3));
+        if (abs(m_y - y) < radius || y > m_y) dragged_m3 = 0;
+        else dragged_m3 = round((m_y - radius - y ) / cstep - 0.5f) + 1;
         break;
       case MIN4:
-        if (abs(h_y - y) < radius || y > h_y) dragged_m4 = 0;
-        else dragged_m4 = round((h_y - radius - y ) / cstep - 0.5f) + 1;
-        Log.d("bubbly", "dragged to " + String.valueOf(dragged_h3));
+        if (abs(m_y - y) < radius || y > m_y) dragged_m4 = 0;
+        else dragged_m4 = round((m_y - radius - y ) / cstep - 0.5f) + 1;
         break;
       case MIN5:
-        if (abs(h_y - y) < radius || y > h_y) dragged_m5 = 0;
-        else dragged_m5 = round((h_y - radius - y ) / cstep - 0.5f) + 1;
-        Log.d("bubbly", "dragged to " + String.valueOf(dragged_h3));
+        if (abs(m_y - y) < radius || y > m_y) dragged_m5 = 0;
+        else dragged_m5 = round((m_y - radius - y ) / cstep - 0.5f) + 1;
         break;
       case SEC3:
-        if (abs(h_y - y) < radius || y > h_y) dragged_s3 = 0;
-        else dragged_s3 = round((h_y - radius - y ) / cstep - 0.5f) + 1;
-        Log.d("bubbly", "dragged to " + String.valueOf(dragged_h3));
+        if (abs(s_y - y) < radius || y > s_y) dragged_s3 = 0;
+        else dragged_s3 = round((s_y - radius - y ) / cstep - 0.5f) + 1;
         break;
       case SEC4:
-        if (abs(h_y - y) < radius || y > h_y) dragged_s4 = 0;
-        else dragged_s4 = round((h_y - radius - y ) / cstep - 0.5f) + 1;
-        Log.d("bubbly", "dragged to " + String.valueOf(dragged_h3));
+        if (abs(s_y - y) < radius || y > s_y) dragged_s4 = 0;
+        else dragged_s4 = round((s_y - radius - y ) / cstep - 0.5f) + 1;
         break;
       case SEC5:
-        if (abs(h_y - y) < radius || y > h_y) dragged_s5 = 0;
-        else dragged_s5 = round((h_y - radius - y ) / cstep - 0.5f) + 1;
-        Log.d("bubbly", "dragged to " + String.valueOf(dragged_h3));
+        if (abs(s_y - y) < radius || y > s_y) dragged_s5 = 0;
+        else dragged_s5 = round((s_y - radius - y ) / cstep - 0.5f) + 1;
         break;
       default:
         break;
     }
     // reconstruct time and update
     if (my_viewer.hour_modulus == 4)
-      my_viewer.last_h = (dragged_h3 * 4 + dragged_hh * 9) % 12;
+      hour = my_viewer.last_h = (dragged_h3 * 4 + dragged_hh * 9) % 12;
     else
-      my_viewer.last_h = (dragged_h3 * 16 + dragged_hh * 9) % 24;
-    my_viewer.last_m = (dragged_m3 * 40 + dragged_m4 * 45 + dragged_m5 * 36) % 60;
-    my_viewer.last_s = (dragged_s3 * 40 + dragged_s4 * 45 + dragged_s5 * 36) % 60;
+      hour = my_viewer.last_h = (dragged_h3 * 16 + dragged_hh * 9) % 24;
+    minute = my_viewer.last_m = (dragged_m3 * 40 + dragged_m4 * 45 + dragged_m5 * 36) % 60;
+    second = my_viewer.last_s = (dragged_s3 * 40 + dragged_s4 * 45 + dragged_s5 * 36) % 60;
     switch (my_viewer.which_unit_to_modify) {
       case HOURS:
         my_viewer.valueEditor.setText(String.valueOf(my_viewer.last_h));
@@ -651,8 +648,11 @@ public class CRC_View_Bubbly extends Clock_Drawer {
       dragged_s3 = second % 3;
       dragged_s4 = second % 4;
       dragged_s5 = second % 5;
-    } else
+      manual_mode = true;
+    } else {
       moving = TOUCHED_UNIT.NONE;
+      manual_mode = false;
+    }
   }
 
   /** Returns .15f, because we don't need very many frames for this kind of animation */
@@ -682,4 +682,5 @@ public class CRC_View_Bubbly extends Clock_Drawer {
   private TOUCHED_UNIT moving = TOUCHED_UNIT.NONE;
   private int dragged_h3, dragged_hh, dragged_m3, dragged_m4, dragged_m5,
     dragged_s3, dragged_s4, dragged_s5;
+  private boolean manual_mode = false;
 }

@@ -285,7 +285,7 @@ public abstract class Clock_Drawer {
     // print the correct times
     String to_print;
     if (print_hour % 12 == 0) {
-      if (my_viewer.which_hour == Calendar.HOUR && (this instanceof CRC_View_Ringy)) {
+      if (my_viewer.which_hour == Calendar.HOUR) {
         to_print = twelve_str;
       } else {
         if (print_hour == 0 || print_hour == 24)

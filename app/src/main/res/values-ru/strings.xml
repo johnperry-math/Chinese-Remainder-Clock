@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Часы основанные на Китайской Теореме Остатков</string>
+    <string name="app_menu_title">Часы КТО</string>
+    <string name="welcome_string">Добро пожаловать!</string>
+    <string name="proceed_string">Входите!</string>
+    <string name="info_button_text">Информация</string>
+    <string name="info_button_text_short">Инфо</string>
+    <string name="menu_manual">Ручной</string>
+    <string name="auto_button_text_off">А</string>
+    <string name="auto_button_text_on">Р</string>
+    <string name="auto_button_text">Автоматический/Ручной</string>
+    <string name="dec_button">-1</string>
+    <string name="inc_button">+1</string>
+    <string name="color_button_text">Цветной/Чёрно-белый</string>
+    <string name="color_button_text_on">Ч-Б</string>
+    <string name="color_button_text_off">Цветной</string>
+    <string name="hours_button_text">12/24 часа</string>
+    <string name="hours_button_text_off">12 часа</string>
+    <string name="hours_button_text_on">24 часа</string>
+    <string name="action_settings">Опции</string>
+    <string name="version">версия</string>
+    <string name="pref_category_design">Дизайн</string>
+    <string name="pref_category_design_summ">Варианты</string>
+    <string name="pref_drawers">Изображение</string>
+    <string name="color_pref_text">Чёрно-Белый</string>
+    <string name="color_pref_summary_on">Нарисовать часы в чёрно-белом изображении</string>
+    <string name="color_pref_summary_off">Нарисовать часы в цвете</string>
+    <string name="hs_order_pref_text">Порядок</string>
+    <string name="hs_order_pref_summ_on">Нарисовать секунды вариант 1</string>
+    <string name="hs_order_pref_summ_off">Нарисовать секунды вариант 2</string>
+    <string name="pref_category_timekeeping">Хронометраж</string>
+    <string name="pref_category_timekeeping_summ">Опции для измерения и отображения времени</string>
+    <string name="seconds_pref_text">Покажи секунды</string>
+    <string name="seconds_pref_summ_on">Покажи секунды</string>
+    <string name="seconds_pref_summ_off">Спрячь секунды</string>
+    <string name="show_time_pref_text">Покажи время</string>
+    <string name="show_time_pref_summ_on">Напиши время в общепринятой форме</string>
+    <string name="show_time_pref_summ_off">Спрячь время в общепринятой форме</string>
+    <string name="hours_pref_text">Часы</string>
+    <string name="hours_button_text_off_long">12 часы</string>
+    <string name="hours_button_text_on_long">24 часы</string>
+    <string name="pref_category_color">Цвета</string>
+    <string name="pref_category_color_summ">Измени цвета</string>
+    <string name="bg_color_text">Цвета фона</string>
+    <string name="line_color_text">Цвет линии</string>
+    <string name="hour_color_text">Цвет часа</string>
+    <string name="minute_color_text">Цвет минуты</string>
+    <string name="second_color_text">Цвет секунды</string>
+    <string name="quiz_menu_title">Тест</string>
+    <string name="quiz_3_4">Тест 3&#8211;4</string>
+    <string name="quiz_3_5">Тест 3&#8211;5</string>
+    <string name="quiz_4_5">Тест 4&#8211;5</string>
+    <string name="quiz_3_4_5">Тест 3&#8211;4&#8211;5</string>
+    <string name="quiz_master">Полный</string>
+    <string name="question">Вопрос</string>
+    <string name="quiz_what_time_is_it">Который час?</string>
+    <string name="quiz_ab_guess">Какое это число?</string>
+    <string name="quiz_number_between">Число от 0 до</string>
+    <string name="quiz_after_division_by">после деления на</string>
+    <string name="string_and">и</string>
+    <string name="quiz_hour_hint">ЧЧ</string>
+    <string name="quiz_time_sep">:</string>
+    <string name="quiz_minute_hint">ММ</string>
+    <string name="autofill_hint_edittext">видите</string>
+    <string name="quiz_next">Следующий вопрос</string>
+    <string name="quiz_result_title">Результаты</string>
+    <string name="quiz_nice_try">Не плохо</string>
+    <string name="quiz_result_better_luck">Попробуй снова</string>
+    <string name="quiz_result_great_job">Здорово</string>
+    <string name="quiz_result_keep_day_job">Ну, не знаю</string>
+    <string name="quiz_result_you_earned">Твой результат</string>
+    <string name="quiz_result_dismiss_dialog_great">Феерично!</string>
+    <string name="quiz_result_dismiss_dialog_better">Хорошо</string>
+    <string name="quiz_result_dismiss_dialog_keep">Плохо</string>
+    <string name="quiz_sorry">Нет! Правильный ответ</string>
+    <string name="quiz_correct">Ура!</string>
+    <string name="has">имеет</string>
+    <string name="remainder">остаток</string>
+    <string name="dial_use">Поверни стрелку часов</string>
+    <string-array name="unitStrings">
+        <item>Часы</item>
+        <item>Минуты</item>
+        <item>Секунды</item>
+    </string-array>
+    <string-array name="drawStrings">
+        <item>Archy: положение арки показывает остаток</item>
+        <item>Bubbly: количество пузырей показывает остаток</item>
+        <item>Linus: количество линий показывает остаток</item>
+        <item>Ringy: положение мяча в круге показывает остаток</item>
+        <item>Shady: остаток записан в затемнённом многоугольнике</item>
+        <item>Vertie: положение мяча в многоугольнике показывает остаток</item>
+    </string-array>
+
+</resources>

@@ -9,6 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.LinkedList;
 
@@ -78,6 +79,12 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
     Window win = getWindow();
     if (win != null)
       win.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    if (number_complete == 0) {
+      Toast toast = Toast.makeText(
+          cr_activity, cr_activity.getString(R.string.dial_use), Toast.LENGTH_SHORT
+      );
+      toast.show();
+    }
 
   }
 

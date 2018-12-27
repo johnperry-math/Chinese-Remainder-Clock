@@ -70,7 +70,9 @@
     <string name="pref_category_design_summ">Settings related to the clock\'s design</string>
 
     <string name="pref_drawers">Art</string>
-    <string name="design_pref_summary" translatable="false">Several circular and polygonal varieties available</string>
+    <string name="design_pref_summary" translatable="false">
+        Several circular and polygonal varieties available
+    </string>
     <integer name="num_drawers">7</integer>
     <string-array name="drawStrings">
         <item>Archy: arc\'s position on circle tells remainder</item>
@@ -122,16 +124,15 @@
 
     <!-- Quizzes -->
     <string name="quiz_menu_title">Quiz</string>
-    <string name="quiz_3_4" translatable="false">3-4</string>
-    <string name="quiz_3_5" translatable="false">3-5</string>
-    <string name="quiz_4_5" translatable="false">4-5</string>
-    <string name="quiz_3_4_5" translatable="false">3-4-5</string>
-    <string name="quiz_master">Master</string>
+    <string name="quiz_3_4">3&#8211;4 Quiz</string>
+    <string name="quiz_3_5">3&#8211;5 Quiz</string>
+    <string name="quiz_4_5">4&#8211;5 Quiz</string>
+    <string name="quiz_3_4_5">3&#8211;4&#8211;5 Quiz</string>
+    <string name="quiz_master">Clock Master</string>
 
     <string name="question">Question</string>
 
     <string name="quiz_what_time_is_it">What time is it?</string>
-
     <string name="quiz_ab_guess">What number is it?</string>
     <string name="quiz_number_between">A number between 0 and</string>
     <string name="quiz_after_division_by">after division by</string>
@@ -149,6 +150,7 @@
     <string name="quiz_result_better_luck">Better luck next time!</string>
     <string name="quiz_result_great_job">Great job!</string>
     <string name="quiz_result_keep_day_job">Keep the day job!</string>
+    <string name="quiz_result_you_earned">You earned</string>
     <string name="quiz_result_dismiss_dialog_great">Awesome Sauce!</string>
     <string name="quiz_result_dismiss_dialog_better">Hope so!</string>
     <string name="quiz_result_dismiss_dialog_keep">Oof!</string>
@@ -157,5 +159,7 @@
     <string name="has">has</string>
     <string name="remainder">remainder</string>
     <string name="period" translatable="false">.</string>
+
+    <string name="dial_use">Turn clock hand to answer</string>
 
 </resources>

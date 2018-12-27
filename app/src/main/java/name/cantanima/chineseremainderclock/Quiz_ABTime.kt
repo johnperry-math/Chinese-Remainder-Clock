@@ -99,7 +99,8 @@ class Quiz_abTime (
                     dialog_dismiss = activity.getString(R.string.quiz_result_dismiss_dialog_better)
                 }
             }
-            quiz_message += ": " + correct.toString() + "/" + total.toString()
+            quiz_message += ": " + activity.getString(R.string.quiz_result_you_earned) + " " +
+                    correct.toString() + "/" + total.toString()
             AlertDialog.Builder(activity).setTitle(activity.getString(R.string.quiz_result_title))
                     .setMessage(quiz_message).setIcon(R.drawable.ic_action_info)
                     .setPositiveButton( dialog_dismiss ) {
@@ -154,6 +155,12 @@ class ABNumberDialog(
         number_picker.short_num = max + 1
         number_picker.long_per_short = 1
         var update_text : TextView = findViewById(R.id.quiz_which)
+        if (complete == 1) {
+            val toast = Toast.makeText(
+                    context, context.getString(R.string.dial_use), Toast.LENGTH_SHORT
+            )
+            toast.show()
+        }
         val which_problem = complete.toString() + "/" + total.toString() + ":"
         update_text.text = which_problem
         update_text = findViewById(R.id.max_value)
@@ -270,7 +277,8 @@ class Quiz_abcTime (
                     dialog_dismiss = activity.getString(R.string.quiz_result_dismiss_dialog_better)
                 }
             }
-            quiz_message += ": " + correct.toString() + "/" + total.toString()
+            quiz_message += ": " + crc_context.getString(R.string.quiz_result_you_earned) + " " +
+                    correct.toString() + "/" + total.toString()
             AlertDialog.Builder(activity).setTitle(activity.getString(R.string.quiz_result_title))
                     .setMessage(quiz_message).setIcon(R.drawable.ic_action_info)
                     .setPositiveButton(
@@ -328,6 +336,12 @@ class ABCNumberDialog(
         next_button.setOnClickListener(this)
         var update_text : TextView = findViewById(R.id.quiz_which)
         val which_problem = complete.toString() + "/" + total.toString() + ":"
+        if (complete == 1) {
+            val toast = Toast.makeText(
+                    context, context.getString(R.string.dial_use), Toast.LENGTH_SHORT
+            )
+            toast.show()
+        }
         update_text.text = which_problem
         update_text = findViewById(R.id.max_value)
         update_text.text = max.toString()

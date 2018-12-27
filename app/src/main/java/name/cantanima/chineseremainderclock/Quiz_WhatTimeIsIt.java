@@ -91,7 +91,8 @@ public class Quiz_WhatTimeIsIt extends CRC_Quiz implements TimeEntryDialogListen
       }
       new AlertDialog.Builder(crc_context).setTitle(crc_context.getString(R.string.quiz_result_title))
           .setMessage(
-              quiz_message + ": " + String.valueOf(quiz_number_correct) +
+              quiz_message + ": " + crc_context.getString(R.string.quiz_result_you_earned) +
+                  String.valueOf(quiz_number_correct) +
                   "/" + String.valueOf(quiz_number_total)
           )
           .setIcon(R.drawable.ic_action_info)

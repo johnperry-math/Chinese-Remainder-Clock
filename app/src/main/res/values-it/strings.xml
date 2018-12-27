@@ -1,71 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Orologio Cinese</string>
+
     <string name="app_menu_title">Orologio Cinese</string>
+    <string name="app_name">Orologio Cinese</string>
     <string name="welcome_string">Benvenuto a l\'Orologio Cinese!</string>
-    <string name="welcome_dialog_text">La barra degli strumenti contiene Informazioni su come funziona l\'Orologio Cinese (punto interrogativo), Impostazioni per scegliere ad esempio il design (chiave inglese) ed alcuni Quiz (matita). Questa versione vi offre nuovi Quiz! Utilizzare il menù per entrare nella versione manuale e settare l\'ora.</string>
+    <string name="welcome_dialog_text">
+        La barra degli strumenti contiene Informazioni su come funziona l\'Orologio Cinese
+        (punto interrogativo), Impostazioni per scegliere ad esempio il design (chiave inglese)
+        ed alcuni Quiz (matita).
+        Utilizzare il menù per entrare nella versione manuale e settare l\'ora.</string>
     <string name="proceed_string">Vai!</string>
+
     <string name="info_button_text">Informazioni</string>
     <string name="info_button_text_short">Info</string>
+
+    <string name="menu_manual">Manuale</string>
     <string name="auto_button_text">Automatico/Manuale</string>
-    <string name="auto_button_text_on">M</string>
     <string name="auto_button_text_off">A</string>
+    <string name="auto_button_text_on">M</string>
+
     <string name="dec_button">-1</string>
     <string name="inc_button">+1</string>
-    <string name="color_button_text">Colore/Monochromatico</string>
-    <string name="color_button_text_on">B/N</string>
-    <string name="color_button_text_off">Colore</string>
-    <string name="hours_button_text">12/24 ore</string>
-    <string name="hours_button_text_off">12 ore</string>
-    <string name="hours_button_text_on">24 ore</string>
-    <string name="color_pref_text">Monocromatico</string>
-    <string name="color_pref_summary_on">Disegna l\'Orologio in bianco e nero</string>
-    <string name="color_pref_summary_off">Disegna l\'Orologio a colori</string>
-    <string name="hs_order_pref_text">Ordine di ore e secondi</string>
-    <string name="hs_order_pref_summ_on">Mostra i secondi dentro o a sinistra</string>
-    <string name="hs_order_pref_summ_off">Mostra i secondi fuori o a destra</string>
-    <string name="pref_category_timekeeping">Tieni il tempo</string>
-    <string name="pref_category_timekeeping_summ">Opzioni per mostrare il tempo</string>
-    <string name="seconds_pref_text">Secondi, sì!</string>
-    <string name="seconds_pref_summ_on">Mostra anche i secondi</string>
-    <string name="seconds_pref_summ_off">Nascondi i secondi</string>
-    <string name="show_time_pref_text">Mostra l\'ora</string>
-    <string name="show_time_pref_summ_on">Scrivi l\'ora anche in modo canonico</string>
-    <string name="show_time_pref_summ_off">Non mostrare l\'ora in modo canonico</string>
-    <string name="hours_pref_text">Ore</string>
-    <string name="hours_button_text_off_long">12 ore</string>
-    <string name="hours_button_text_on_long">24 ore</string>
-    <string name="pref_category_color">Colori</string>
-    <string name="pref_category_color_summ">Cambia i vari colori</string>
-    <string name="bg_color_text">Sfondo</string>
-    <string name="line_color_text">Linee (se ci sono)</string>
-    <string name="hour_color_text">Ore</string>
-    <string name="minute_color_text">Minuti</string>
-    <string name="second_color_text">Secondi</string>
-    <string name="quiz_what_time_is_it">Che ore sono?</string>
-    <string name="quiz_hour_hint">HH</string>
-    <string name="quiz_time_sep">:</string>
-    <string name="quiz_minute_hint">MM</string>
-    <string name="quiz_next">Prossimo!</string>
-    <string name="quiz_nice_try">Non male</string>
-    <string name="quiz_result_title">Quiz result</string>
-    <string name="quiz_result_better_luck">Ritenta, sarai più fortunato!</string>
-    <string name="quiz_result_great_job">Eccellente!</string>
-    <string name="quiz_result_keep_day_job">Proprio non ci siamo!</string>
-    <string name="quiz_result_dismiss_dialog_great">Fantastico!</string>
-    <string name="quiz_result_dismiss_dialog_better">Speriamo!</string>
-    <string name="quiz_result_dismiss_dialog_keep">Oops/&#8320;</string>
-    <string name="quiz_correct">Giusto!</string>
-    <string name="quiz_sorry">Sbagliato! era</string>
-    <string name="action_settings">Opzioni</string>
-    <string name="pref_drawers">Design</string>
-
     <string-array name="unitStrings">
         <item>Ore</item>
         <item>Minuti</item>
         <item>Secondi</item>
     </string-array>
 
+    <string name="color_button_text">Colore/Monochromatico</string>
+    <string name="color_button_text_off">Colore</string>
+    <string name="color_button_text_on">B/N</string>
+
+    <string name="hours_button_text">12/24 ore</string>
+    <string name="hours_button_text_off">12 ore</string>
+    <string name="hours_button_text_on">24 ore</string>
+
+    <string name="action_settings">Opzioni</string>
+
+    <string name="version">versione</string>
+
+    <string name="pref_category_design">Design artistico</string>
+    <string name="pref_category_design_summ">Opzioni per il design</string>
+
+    <string name="pref_drawers">Design</string>
     <string-array name="drawStrings">
         <item>Archy: Guarda la posizione degli archi</item>
         <item>Bubbly: Conta le bolle</item>
@@ -74,19 +51,73 @@
         <item>Shady: I resti appaiono dentro a poligoni</item>
         <item>Vertie: Guarda il vertice marcato</item>
     </string-array>
-    <string name="pref_category_design">Design artistico</string>
-    <string name="pref_category_design_summ">Opzioni per il design</string>
+
+    <string name="color_pref_text">Monocromatico</string>
+    <string name="color_pref_summary_on">Disegna l\'Orologio in bianco e nero</string>
+    <string name="color_pref_summary_off">Disegna l\'Orologio a colori</string>
+
+    <string name="hs_order_pref_text">Ordine di ore e secondi</string>
+    <string name="hs_order_pref_summ_on">Mostra i secondi dentro o a sinistra</string>
+    <string name="hs_order_pref_summ_off">Mostra i secondi fuori o a destra</string>
+
+    <string name="pref_category_timekeeping">Tieni il tempo</string>
+    <string name="pref_category_timekeeping_summ">Opzioni per mostrare il tempo</string>
+
+    <string name="seconds_pref_text">Secondi, sì!</string>
+    <string name="seconds_pref_summ_on">Mostra anche i secondi</string>
+    <string name="seconds_pref_summ_off">Nascondi i secondi</string>
+    <string name="show_time_pref_text">Mostra l\'ora</string>
+    <string name="show_time_pref_summ_on">Scrivi l\'ora anche in modo canonico</string>
+    <string name="show_time_pref_summ_off">Non mostrare l\'ora in modo canonico</string>
+
+    <string name="hours_pref_text">Ore</string>
+    <string name="hours_button_text_off_long">12 ore</string>
+    <string name="hours_button_text_on_long">24 ore</string>
+
+    <string name="pref_category_color">Colori</string>
+    <string name="pref_category_color_summ">Cambia i vari colori</string>
+
+    <string name="bg_color_text">Sfondo</string>
+    <string name="line_color_text">Linee (se ci sono)</string>
+    <string name="hour_color_text">Ore</string>
+    <string name="minute_color_text">Minuti</string>
+    <string name="second_color_text">Secondi</string>
+
     <string name="quiz_menu_title">Quiz</string>
-    <string name="version">versione</string>
+    <string name="quiz_3_4">3&#8211;4 Quiz</string>
+    <string name="quiz_3_5">3&#8211;5 Quiz</string>
+    <string name="quiz_4_5">4&#8211;5 Quiz</string>
+    <string name="quiz_3_4_5">3&#8211;4&#8211;5 Quiz</string>
+    <string name="quiz_master">Maestro</string>
+
+    <string name="question">Domanda</string>
+
+    <string name="quiz_what_time_is_it">Che ore sono?</string>
     <string name="quiz_ab_guess">Che numero è?</string>
     <string name="quiz_number_between">Il numero tra 0 e</string>
     <string name="quiz_after_division_by">nella divisione per</string>
     <string name="string_and">e</string>
+
+    <string name="quiz_hour_hint">HH</string>
+    <string name="quiz_time_sep">:</string>
+    <string name="quiz_minute_hint">MM</string>
+    <string name="autofill_hint_edittext">scelga</string>
+
+    <string name="quiz_next">Prossimo!</string>
+    <string name="quiz_result_title">Quiz result</string>
+    <string name="quiz_nice_try">Non male</string>
+    <string name="quiz_result_better_luck">Ritenta, sarai più fortunato!</string>
+    <string name="quiz_result_great_job">Eccellente!</string>
+    <string name="quiz_result_keep_day_job">Proprio non ci siamo!</string>
+    <string name="quiz_result_you_earned">Hai guadagnato</string>
+    <string name="quiz_result_dismiss_dialog_great">Fantastico!</string>
+    <string name="quiz_result_dismiss_dialog_better">Speriamo!</string>
+    <string name="quiz_result_dismiss_dialog_keep">Oops/&#8320;</string>
+    <string name="quiz_sorry">Sbagliato! era</string>
+    <string name="quiz_correct">Giusto!</string>
     <string name="has">ha</string>
     <string name="remainder">resto</string>
-    <string name="question">Domanda</string>
-    <string name="autofill_hint_edittext">scelga</string>
-    <string name="quiz_master">Maestro</string>
-    <string name="menu_manual">Manuale</string>
+
+    <string name="dial_use">Muovere la lancetta per risondere</string>
 
 </resources>

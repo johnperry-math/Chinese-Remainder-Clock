@@ -303,6 +303,7 @@ public class CRC_View
 
       item.setTitle("Manual");
       currentMode = Mode.AUTOMATIC;
+      my_drawer.notify_manual(false);
       // animation is paused, let's resume it
       my_animator.resume();
       // outside & showing buttons; hide them
@@ -318,6 +319,7 @@ public class CRC_View
 
       item.setTitle("Automatic");
       currentMode = Mode.MANUAL;
+      my_drawer.notify_manual(true);
       // animation is current, let's pause it
       my_animator.pause();
       // set up manual interface
@@ -382,7 +384,10 @@ public class CRC_View
         // inside; set up for dragging
         // add drawer here if it's enabled for touch and drag
         if (
-            my_drawer.getClass() == CRC_View_Ringy.class &&
+            (
+                my_drawer.getClass() == CRC_View_Ringy.class ||
+                    my_drawer.getClass() == CRC_View_Bubbly.class
+            ) &&
             currentMode == Mode.MANUAL
         ) {
 
@@ -600,8 +605,8 @@ public class CRC_View
    */
   protected TextView tv;
 
-  /** useful for Log.d when debugging */
-  protected static final String tag = "CRC_View";
+  /* useful for Log.d when debugging */
+  //protected static final String tag = "CRC_View";
 
   /** preferences file */
   protected SharedPreferences my_prefs;

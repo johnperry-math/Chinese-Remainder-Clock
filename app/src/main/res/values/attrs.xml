@@ -58,6 +58,8 @@
         <attr name="short_num" format="integer"/>
         <attr name="long_min" format="integer"/>
         <attr name="long_per_short" format="integer"/>
+        <attr name="highlight_by_color" format="boolean"/>
+        <attr name="high_width" format="integer"/>
     </declare-styleable>
 
 </resources>

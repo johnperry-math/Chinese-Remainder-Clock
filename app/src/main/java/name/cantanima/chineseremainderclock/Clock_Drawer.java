@@ -366,6 +366,9 @@ public abstract class Clock_Drawer {
   /** user is dragging finger around the clock */
   protected void notify_dragged(MotionEvent e) { }
 
+  /** user has switched to manual mode; make necessary adjustments */
+  protected void notify_manual(boolean switched_on) { }
+
   /** fields that control aspects of painting */
   private final static int GOODGREEN = Color.rgb(0, 224, 0);
   private final static int BACKGROUND = Color.argb(192, 128, 128, 128);

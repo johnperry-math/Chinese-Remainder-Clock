@@ -27,8 +27,8 @@
     <string name="color_pref_summary_on">Нарисовать часы в чёрно-белом изображении</string>
     <string name="color_pref_summary_off">Нарисовать часы в цвете</string>
     <string name="hs_order_pref_text">Порядок</string>
-    <string name="hs_order_pref_summ_on">Нарисовать секунды вариант 1</string>
-    <string name="hs_order_pref_summ_off">Нарисовать секунды вариант 2</string>
+    <string name="hs_order_pref_summ_on">Нарисовать секунды вариант 2</string>
+    <string name="hs_order_pref_summ_off">Нарисовать секунды вариант 1</string>
     <string name="pref_category_timekeeping">Хронометраж</string>
     <string name="pref_category_timekeeping_summ">Опции для измерения и отображения времени</string>
     <string name="seconds_pref_text">Покажи секунды</string>

@@ -60,6 +60,9 @@ class Dial_Entry(context: Context, attrs: AttributeSet)
             invalidate()
         }
 
+    private var highlight_by_color = false
+    private var highlight_width = 10f
+
     private val background_default = Color.WHITE
     private val hatch_default = Color.GRAY
     private var highlight_color = Color.RED
@@ -80,18 +83,29 @@ class Dial_Entry(context: Context, attrs: AttributeSet)
     private var moving_hour_hand = false
     private var moving_minute_hand = false
 
+    private var hour_width = 6f
+    private var min_width = 4f
+
     init {
         val choices = context.obtainStyledAttributes(attrs, R.styleable.Dial_Entry)
+        // get highlighting options
+        highlight_by_color = choices
+                .getBoolean(R.styleable.Dial_Entry_highlight_by_color, highlight_by_color)
+        highlight_width = choices
+                .getInteger(R.styleable.Dial_Entry_high_width, highlight_width.toInt()).toFloat()
         // get colors
         highlight_color = choices.getColor(R.styleable.Dial_Entry_high_color, highlight_color)
-        background_paint.color = choices.getColor(R.styleable.Dial_Entry_back_color, background_default)
+        background_paint.color = choices
+                .getColor(R.styleable.Dial_Entry_back_color, background_default)
         hour_paint.color = choices.getColor(R.styleable.Dial_Entry_hand_color, hand_default)
         min_paint.color = choices.getColor(R.styleable.Dial_Entry_hand_color, hand_default)
         hatch_paint.color = choices.getColor(R.styleable.Dial_Entry_hatch_color, hatch_default)
         text_paint.color = choices.getColor(R.styleable.Dial_Entry_text_color, text_color_default)
         // stroke widths
-        hour_paint.strokeWidth = choices.getFloat(R.styleable.Dial_Entry_hour_size, 6f)
-        min_paint.strokeWidth = choices.getFloat(R.styleable.Dial_Entry_min_size, 4f)
+        hour_paint.strokeWidth = choices
+                .getFloat(R.styleable.Dial_Entry_hour_size, hour_width)
+        min_paint.strokeWidth = choices
+                .getFloat(R.styleable.Dial_Entry_min_size, min_width)
         hatch_paint.strokeWidth = choices.getFloat(R.styleable.Dial_Entry_hatch_size, 4f)
         // text size
         text_paint.textSize = choices.getFloat(R.styleable.Dial_Entry_text_size, 24f)
@@ -171,7 +185,7 @@ class Dial_Entry(context: Context, attrs: AttributeSet)
             text_paint.getTextBounds(text, 0, text.length, text_bounds)
             canvas.drawText(
                     text,
-                    cx - text_bounds.width() / 2, cy - (radius - text_bounds.height()) / 2,
+                    cx - text_bounds.width() / 2, cy + (radius - text_bounds.height()) / 2,
                     text_paint
             )
         }
@@ -266,6 +280,8 @@ class Dial_Entry(context: Context, attrs: AttributeSet)
             moving_minute_hand = false
             hour_paint.color = hand_default
             min_paint.color = hand_default
+            hour_paint.strokeWidth = hour_width
+            min_paint.strokeWidth = min_width
             invalidate()
 
         } else {
@@ -293,14 +309,16 @@ class Dial_Entry(context: Context, attrs: AttributeSet)
                     ) {
                         moving = true
                         moving_minute_hand = true
-                        min_paint.color = highlight_color
+                        if (!highlight_by_color) min_paint.strokeWidth = highlight_width
+                        else min_paint.color = highlight_color
                     } else if (
                             (abs(touch_alpha - hour_alpha) < pi/6f) ||
                             (abs(touch_alpha - (hour_alpha + 2*pi)) < pi/6f)
                     ) {
                         moving = true
                         moving_hour_hand = true
-                        hour_paint.color = highlight_color
+                        if (!highlight_by_color) hour_paint.strokeWidth = highlight_width
+                        else hour_paint.color = highlight_color
                     }
 
                 }

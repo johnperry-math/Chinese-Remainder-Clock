@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="dummy_content" translatable="false">dummy</string>
+
+    <!-- Strings related to UI -->
+
+    <string name="app_menu_title">CR Uhr</string>
+    <string name="app_name">Chinesische Restuhr</string>
+    <string name="welcome_string">Willkommen bei der Chinesischen Restuhr!</string>
+    <string name="welcome_dialog_text">
+        Die Symbolleiste enth&#x00e4;lt Informationen &#x00fc;ber die Uhr (Fragezeichen),
+        Einstellungen bzgl. Farben, Design usw. (Schraubenschlüssel), und einige Quiz (Bleistift).
+        In der Symbolleiste k&#x00e4;nn man zwischen automatischem und manuellem Modus wechseln.
+    </string>
+    <string name="proceed_string">Los!</string>
+
+    <string name="info_button_text">Informationen</string>
+    <string name="info_button_text_short">Infos</string>
+
+    <string name="menu_manual">Manuell</string>
+    <string name="menu_automatic">Automatisch</string>
+    <string name="auto_button_text">Automatisch/Manuell</string>
+    <string name="auto_button_text_off">A</string>
+    <string name="auto_button_text_on">M</string>
+
+    <string name="dec_button">-1</string>
+    <string name="inc_button">+1</string>
+    <string-array name="unitStrings">
+        <item>Stunden</item>
+        <item>Minuten</item>
+        <item>Sekunden</item>
+    </string-array>
+
+    <string name="color_button_text">Farbig/Schwarzwei&#x00df;</string>
+    <string name="color_button_text_off">Farbe</string>
+    <string name="color_button_text_on">SW</string>
+
+    <string name="hours_button_text">12/24 Stunden</string>
+    <string name="hours_button_text_off">12 Stunden</string>
+    <string name="hours_button_text_on">24 Stunden</string>
+
+    <!-- Strings related to Help (not sure I actually use this) -->
+
+    <string name="title_activity_help" translatable="false">Hilfe</string>
+    <string name="title_activity_settings" translatable="false">Argh</string>
+
+    <!-- Strings related to Settings -->
+    <string name="action_settings">Einstellungen</string>
+
+    <string name="version">Version</string>
+    <string name="current_version" translatable="false">2.071</string>
+    <string name="first_run" translatable="false">erster_run</string>
+    <string name="saved_hour" translatable="false">gespeicherte_stunde</string>
+    <string name="saved_color" translatable="false">gespeicherte_farbe</string>
+    <string name="saved_drawer" translatable="false">gespeicherte_schublade</string>
+    <string name="saved_show_seconds" translatable="false">gespeicherte_zeige_sekunden</string>
+    <string name="saved_show_time" translatable="false">gespeicherte_zeige_zeit</string>
+    <string name="saved_reverse_orientation" translatable="false">gespeicherte_umgekehrte_orientierung</string>
+    <string name="saved_bg_color" translatable="false">gespeicherte_sw_farbe</string>
+    <string name="saved_line_color" translatable="false">gespeicherte_linien_farbe</string>
+    <string name="saved_hour_color" translatable="false">gespeicherte_stunden_farbe</string>
+    <string name="saved_minute_color" translatable="false">gespeicherte_minuten_farbe</string>
+    <string name="saved_second_color" translatable="false">gespeicherte_sekunden_farbe</string>
+    <string name="saved_bw_hour_color" translatable="false">gespeicherte_sw_stunden_farbe</string>
+    <string name="saved_bw_minute_color" translatable="false">gespeicherte_sw_minuten_farbe</string>
+    <string name="saved_bw_second_color" translatable="false">gespeicherte_sw_sekunden_farbe</string>
+
+    <string name="pref_category_design">Design</string>
+    <string name="pref_category_design_summ">Design-Einstellungen</string>
+
+    <string name="pref_drawers">K&#x00fc;nsterisches Design</string>
+    <string name="design_pref_summary" translatable="false">
+        Verschiedene kreisf&#x00f6;rmige und polygonale Varianten
+    </string>
+    <integer name="num_drawers">7</integer>
+    <string-array name="drawStrings">
+        <item>Archy: Rest = Bogenposition auf Kreis</item>
+        <item>Bubbly: Rest = Anzahl der gef&#x00fc;llten Blasen</item>
+        <item>Linus: Rest = Anzahl der markierten Seiten</item>
+        <item>Ringy: Rest = Ballposition auf Kreis</item>
+        <item>Shady: Der Rest wird in einem schattigen Polygon dargestellt</item>
+        <item>Vertie: Rest = Markierter Eckpunkt</item>
+    </string-array>
+    <string-array name="drawStringValues" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string name="color_pref_text">Schwarzwei&#x00df;</string>
+    <string name="color_pref_summary_on">Zeige die Uhr schwarzwei&#x00df;</string>
+    <string name="color_pref_summary_off">Zeige die Uhr in Farbe</string>
+
+    <string name="hs_order_pref_text">Anordnung</string>
+    <string name="hs_order_pref_summ_on">Zeigt die Standardanordnung</string>
+    <string name="hs_order_pref_summ_off">Zeigt die alternative Anordnung</string>
+
+    <string name="pref_category_timekeeping">Zeiterfassung</string>
+    <string name="pref_category_timekeeping_summ">Zeit-Einstellungen</string>
+
+    <string name="seconds_pref_text">Eine Sekunde, bitte!</string>
+    <string name="seconds_pref_summ_on">Zeige die Sekunden</string>
+    <string name="seconds_pref_summ_off">Zeige die Sekunden nicht</string>
+    <string name="show_time_pref_text">Stelle die Zeit dar</string>
+    <string name="show_time_pref_summ_on">Zeige die Zeit auch auf &#x00fc;bliche Weise</string>
+    <string name="show_time_pref_summ_off">Zeige die Zeit nicht auf &#x00fc;bliche Weise</string>
+
+    <string name="hours_pref_text">Stunden auf der Uhr</string>
+    <string name="hours_button_text_off_long">12 Stunden Uhr</string>
+    <string name="hours_button_text_on_long">24 Stunden Uhr</string>
+
+    <string name="pref_category_color">Farbe</string>
+    <string name="pref_category_color_summ">&#x00c4;ndere die Farben</string>
+
+    <string name="bg_color_text">Farbe Hintergrund</string>
+    <string name="line_color_text">Farbe Linie (ggfl.)</string>
+    <string name="hour_color_text">Farbe Stunde</string>
+    <string name="minute_color_text">Farbe Minute</string>
+    <string name="second_color_text">Farbe Sekunde</string>
+
+    <!-- Quizzes -->
+    <string name="quiz_menu_title">Quiz</string>
+    <string name="quiz_3_4">3&#8211;4 Quiz</string>
+    <string name="quiz_3_5">3&#8211;5 Quiz</string>
+    <string name="quiz_4_5">4&#8211;5 Quiz</string>
+    <string name="quiz_3_4_5">3&#8211;4&#8211;5 Quiz</string>
+    <string name="quiz_master">Meister</string>
+
+    <string name="question">Frage</string>
+
+    <string name="quiz_what_time_is_it">Wieviel Uhr ist es?</string>
+    <string name="quiz_ab_guess">Welche Zahl ist es?</string>
+    <string name="quiz_number_between">Eine Zahl zwischen 0 und </string>
+    <string name="quiz_after_division_by">bei der Division durch </string>
+    <string name="string_and"> und </string>
+
+    <string name="quiz_hour_hint">HH</string>
+    <string name="quiz_time_sep">:</string>
+    <string name="quiz_minute_hint">MM</string>
+    <string name="dummy_time" translatable="false">99:99:99</string>
+    <string name="autofill_hint_edittext">Los!</string>
+
+    <string name="quiz_next">Weiter!</string>
+    <string name="quiz_result_title">Quiz Score</string>
+    <string name="quiz_nice_try">Nicht schlecht!</string>
+    <string name="quiz_result_better_luck">So-so!</string>
+    <string name="quiz_result_great_job">Fantastisch!</string>
+    <string name="quiz_result_keep_day_job">Oh oh!</string>
+    <string name="quiz_result_you_earned">Deine Punktzahl</string>
+    <string name="quiz_result_dismiss_dialog_great">Wunderbar!</string>
+    <string name="quiz_result_dismiss_dialog_better">Mach weiter!</string>
+    <string name="quiz_result_dismiss_dialog_keep">Uff!</string>
+    <string name="quiz_sorry">Nein! Es war</string>
+    <string name="quiz_correct">Richtig!</string>
+    <string name="has">l&#x00e4;sst</string>
+    <string name="remainder">den Rest</string>
+    <string name="period" translatable="false">.</string>
+
+    <string name="dial_use">Antworte durch bewegen der Uhrzeiger</string>
+
+</resources>

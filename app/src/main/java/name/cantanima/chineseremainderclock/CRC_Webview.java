@@ -9,6 +9,7 @@ import android.app.Activity;
 
 import java.util.Locale;
 
+import static java.util.Locale.GERMAN;
 import static java.util.Locale.ITALIAN;
 
 /**
@@ -23,6 +24,8 @@ public class CRC_Webview extends WebView {
     String language = Locale.getDefault().getLanguage();
     if (language.equals(ITALIAN.getLanguage()))
       loadUrl("file:///android_asset/Help-it.html");
+    else if (language.equals(GERMAN.getLanguage()))
+      loadUrl("file:///android_asset/Help-de.html");
     else
       loadUrl("file:///android_asset/Help.html");
   }

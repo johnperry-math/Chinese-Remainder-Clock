@@ -76,6 +76,7 @@ public class HelpActivity extends Activity implements View.OnTouchListener {
     private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
+            view.performClick();
             if (AUTO_HIDE) {
                 delayedHide(AUTO_HIDE_DELAY_MILLIS);
             }
@@ -158,6 +159,7 @@ public class HelpActivity extends Activity implements View.OnTouchListener {
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        v.performClick();
         finish();
         return false;
     }

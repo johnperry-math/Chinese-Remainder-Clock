@@ -7,7 +7,6 @@ import android.view.MotionEvent;
 
 import java.util.Calendar;
 
-import static android.graphics.Color.WHITE;
 import static android.graphics.Paint.Style.FILL;
 import static java.lang.Math.PI;
 import static java.lang.Math.atan2;
@@ -276,70 +275,93 @@ public class CRC_View_Ringy extends Clock_Drawer {
     // we record the last x & y position of each ball to enable animation
 
     ball_paint.setStyle(FILL);
+    float radius;
 
-    if (dragging && dragging_which_ball == HOUR3) ball_paint.setColor(WHITE);
-    else ball_paint.setColor(hour_color);
+    ball_paint.setColor(hour_color);
+
+    if (dragging && dragging_which_ball == HOUR3) // ball_paint.setColor(WHITE);
+      radius = bally_hr;
+    else // ball_paint.setColor(hour_color);
+      radius = bally_br;
     float x = (float) (cx + bally_hr3 * cos(hangle3));
     float y = (float) (cy + bally_hr3 * sin(hangle3));
-    canvas.drawCircle(x, y, bally_br, ball_paint);
+    canvas.drawCircle(x, y, radius, ball_paint);
     last_h3_x = x;
     last_h3_y = y;
 
-    if (dragging && dragging_which_ball == HOURH) ball_paint.setColor(WHITE);
-    else ball_paint.setColor(hour_color);
+    if (dragging && dragging_which_ball == HOURH) // ball_paint.setColor(WHITE);
+      radius = bally_hr;
+    else // ball_paint.setColor(hour_color);
+      radius = bally_br;
     x = (float) (cx + bally_hr4 * cos(hangle4));
     y = (float) (cy + bally_hr4 * sin(hangle4));
-    canvas.drawCircle(x, y, bally_br, ball_paint);
+    canvas.drawCircle(x, y, radius, ball_paint);
     last_hh_x = x;
     last_hh_y = y;
 
-    if (dragging && dragging_which_ball == MIN3) ball_paint.setColor(WHITE);
-    else ball_paint.setColor(minute_color);
+    ball_paint.setColor(minute_color);
+
+    if (dragging && dragging_which_ball == MIN3) // ball_paint.setColor(WHITE);
+      radius = bally_hr;
+    else // ball_paint.setColor(minute_color);
+      radius = bally_br;
     x = (float) (cx + bally_mr3 * cos(mangle3));
     y = (float) (cy + bally_mr3 * sin(mangle3));
-    canvas.drawCircle(x, y, bally_br, ball_paint);
+    canvas.drawCircle(x, y, radius, ball_paint);
     last_m3_x = x;
     last_m3_y = y;
 
-    if (dragging && dragging_which_ball == MIN4) ball_paint.setColor(WHITE);
-    else ball_paint.setColor(minute_color);
+    if (dragging && dragging_which_ball == MIN4) // ball_paint.setColor(WHITE);
+      radius = bally_hr;
+    else // ball_paint.setColor(minute_color);
+      radius = bally_br;
     x = (float) (cx + bally_mr4 * cos(mangle4));
     y = (float) (cy + bally_mr4 * sin(mangle4));
-    canvas.drawCircle(x, y, bally_br, ball_paint);
+    canvas.drawCircle(x, y, radius, ball_paint);
     last_m4_x = x;
     last_m4_y = y;
 
-    if (dragging && dragging_which_ball == MIN5) ball_paint.setColor(WHITE);
-    else ball_paint.setColor(minute_color);
+    if (dragging && dragging_which_ball == MIN5) // ball_paint.setColor(WHITE);
+      radius = bally_hr;
+    else // ball_paint.setColor(minute_color);
+      radius = bally_br;
     x = (float) (cx + bally_mr5 * cos(mangle5));
     y = (float) (cy + bally_mr5 * sin(mangle5));
-    canvas.drawCircle(x, y, bally_br, ball_paint);
+    canvas.drawCircle(x, y, radius, ball_paint);
     last_m5_x = x;
     last_m5_y = y;
 
     if (show_seconds) {
 
-      if (dragging && dragging_which_ball == SEC3) ball_paint.setColor(WHITE);
-      else ball_paint.setColor(second_color);
+      ball_paint.setColor(second_color);
+
+      if (dragging && dragging_which_ball == SEC3) // ball_paint.setColor(WHITE);
+        radius = bally_hr;
+      else // ball_paint.setColor(second_color);
+        radius = bally_br;
       x = (float) (cx + bally_sr3 * cos(sangle3));
       y = (float) (cy + bally_sr3 * sin(sangle3));
-      canvas.drawCircle(x, y, bally_br, ball_paint);
+      canvas.drawCircle(x, y, radius, ball_paint);
       last_s3_x = x;
       last_s3_y = y;
 
-      if (dragging && dragging_which_ball == SEC4) ball_paint.setColor(WHITE);
-      else ball_paint.setColor(second_color);
+      if (dragging && dragging_which_ball == SEC4) // ball_paint.setColor(WHITE);
+        radius = bally_hr;
+      else // ball_paint.setColor(second_color);
+        radius = bally_br;
       x = (float) (cx + bally_sr4 * cos(sangle4));
       y = (float) (cy + bally_sr4 * sin(sangle4));
-      canvas.drawCircle(x, y, bally_br, ball_paint);
+      canvas.drawCircle(x, y, radius, ball_paint);
       last_s4_x = x;
       last_s4_y = y;
 
-      if (dragging && dragging_which_ball == SEC5) ball_paint.setColor(WHITE);
-      else ball_paint.setColor(second_color);
+      if (dragging && dragging_which_ball == SEC5) // ball_paint.setColor(WHITE);
+        radius = bally_hr;
+      else // ball_paint.setColor(second_color);
+        radius = bally_br;
       x = (float) (cx + bally_sr5 * cos(sangle5));
       y = (float) (cy + bally_sr5 * sin(sangle5));
-      canvas.drawCircle(x, y, bally_br, ball_paint);
+      canvas.drawCircle(x, y, radius, ball_paint);
       last_s5_x = x;
       last_s5_y = y;
 
@@ -499,6 +521,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
         bally_hr3 = diam / 9f * 7f;
         bally_hr4 = diam / 9f * 8f;
         bally_br = diam / 28;
+        bally_hr = diam / 18;
       } else {
         bally_mr3 = diam / 6f;
         bally_mr4 = diam / 6f * 2f;
@@ -506,6 +529,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
         bally_hr3 = diam / 6f * 4f;
         bally_hr4 = diam / 6f * 5f;
         bally_br = diam / 20;
+        bally_hr = diam / 12;
       }
 
     } else {
@@ -520,6 +544,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
         bally_sr4 = diam / 12.0f * 7.0f;
         bally_sr5 = diam / 12.0f * 9.0f;
         bally_br = diam / 28;
+        bally_hr = diam / 19;
       } else {
         bally_hr3 = diam / 6f;
         bally_hr4 = diam / 6f * 2f;
@@ -527,6 +552,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
         bally_mr4 = diam / 6f * 4f;
         bally_mr5 = diam / 6f * 5f;
         bally_br = diam / 20;
+        bally_hr = diam / 12;
       }
 
     }
@@ -548,7 +574,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
   
   /** fields that control layout of analog clock elements */
   private float bally_hr3, bally_hr4, bally_mr3, bally_mr4, bally_mr5, bally_sr3, bally_sr4, bally_sr5,
-          bally_br, bally_hatch_hr3_inner, bally_hatch_h3_outer,
+          bally_br, bally_hr, bally_hatch_hr3_inner, bally_hatch_h3_outer,
           bally_hatch_hr4_inner, bally_hatch_h4_outer, bally_hatch_mr3_inner,
           bally_hatch_mr3_outer, bally_hatch_mr4_inner, bally_hatch_m4_outer,
           bally_hatch_mr5_inner, bally_hatch_m5_outer;

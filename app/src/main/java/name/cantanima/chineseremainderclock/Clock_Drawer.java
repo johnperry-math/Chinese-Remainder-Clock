@@ -71,7 +71,7 @@ public abstract class Clock_Drawer {
 
     millis = time.get(Calendar.MILLISECOND);
 
-    if (my_viewer.time_guide == CALENDAR) { // moving according to the clock
+    if (my_viewer.time_guide == CALENDAR) { // dragged_unit according to the clock
       hour = time.get(my_viewer.which_hour);
       minute = time.get(MINUTE);
       second = time.get(SECOND);
@@ -357,17 +357,53 @@ public abstract class Clock_Drawer {
   /** which color to use when drawing the background */
   void set_bg_color(int new_bg_color) { bg_color = new_bg_color; }
 
-  /** user has touched finger to clock */
+  /**
+   *  user has touched finger to clock
+   *
+   *  The basic implementation does nothing.
+   *  Your drawer will want to override this, probably to determine which unit is being manipulated.
+   */
   protected void notify_touched(MotionEvent e) { }
 
-  /** user has lifted finger off clock */
-  protected void notify_released(MotionEvent e) { }
+  /**
+   *  user has lifted finger off clock
+   *
+   *  The basic implementation sets dragged_unit to NONE.
+   */
+  protected void notify_released(MotionEvent e) {
+    dragged_unit = TOUCHED_UNIT.NONE;
+  }
 
-  /** user is dragging finger around the clock */
+  /** user is dragging finger around the clock
+   *
+   * The basic implementation does nothing.
+   * Your drawer will want to override this, probably to determine the new position
+   * of the unit being manipulated.
+   */
   protected void notify_dragged(MotionEvent e) { }
 
-  /** user has switched to manual mode; make necessary adjustments */
-  protected void notify_manual(boolean switched_on) { }
+  /**
+   *  user has switched to manual mode; make necessary adjustments
+   *
+   *  The basic implementation records the value of switched_on in manual_mode, and when it is true
+   *  it records the current time in the dragged_?? fields (correctly for 12- or 24-hour clocks).
+   */
+  void notify_manual(boolean switched_on) {
+    manual_mode = switched_on;
+    if (manual_mode) {
+      dragged_h3 = hour % 3;
+      if (my_viewer.hour_modulus == 4) dragged_hh = hour % 4;
+      else dragged_hh = hour % 8;
+      dragged_m3 = minute % 3;
+      dragged_m4 = minute % 4;
+      dragged_m5 = minute % 5;
+      dragged_s3 = second % 3;
+      dragged_s4 = second % 4;
+      dragged_s5 = second % 5;
+    } else {
+      dragged_unit = TOUCHED_UNIT.NONE;
+    }
+  }
 
   /** fields that control aspects of painting */
   private final static int GOODGREEN = Color.rgb(0, 224, 0);
@@ -408,5 +444,25 @@ public abstract class Clock_Drawer {
    *  hours_max will indicate whether it's a 12- or 24-short_hand clock
    */
   int hour, minute, second, millis;
+
+  /** enum for which unit is being manipulated in manual mode */
+  protected enum TOUCHED_UNIT {
+    NONE,
+    HOUR3,
+    HOURH,
+    MIN3,
+    MIN4,
+    MIN5,
+    SEC3,
+    SEC4,
+    SEC5
+  }
+  /** the unit being manipulated in manual mode */
+  TOUCHED_UNIT dragged_unit = TOUCHED_UNIT.NONE;
+  /** value of the corresponding unit in manual mode */
+  int dragged_h3, dragged_hh, dragged_m3, dragged_m4, dragged_m5,
+      dragged_s3, dragged_s4, dragged_s5;
+  /** whether we are in manual mode */
+  boolean manual_mode = false;
 
 }

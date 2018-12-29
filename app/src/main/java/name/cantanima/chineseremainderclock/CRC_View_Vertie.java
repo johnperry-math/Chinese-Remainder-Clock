@@ -5,12 +5,15 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Build;
+import android.util.Log;
+import android.view.MotionEvent;
 
 import static android.graphics.Color.WHITE;
 import static android.graphics.Paint.ANTI_ALIAS_FLAG;
 import static android.graphics.Paint.Style.FILL;
 import static android.graphics.Paint.Style.STROKE;
 import static java.lang.Math.PI;
+import static java.lang.Math.abs;
 import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 
@@ -126,7 +129,7 @@ public class CRC_View_Vertie extends Clock_Drawer {
 
       canvas.drawLines(digi_h4_pts, poly_paint);
       ball_paint.setColor(hour_color);
-      if (my_viewer.last_s != hour) {
+      if (my_viewer.last_h != hour) {
         canvas.drawCircle(
             digi_h4_pts[(lhmod4 % 4) << 2]*(1 - offset) + digi_h4_pts[(hmod4 % 4) << 2]*offset,
             digi_h4_pts[((lhmod4 % 4) << 2) + 1]*(1 - offset)
@@ -294,16 +297,13 @@ public class CRC_View_Vertie extends Clock_Drawer {
    */
   void recalculate_positions() {
 
-    /* fields that control layout of digital clock elements (except the polygons) */
-    float digi_step, digi_hcy1, digi_hcy2, digi_mscy1, digi_mscy3, obj_w2;
-
     super.recalculate_positions();
 
     // first find basic positions and sizes
 
     cradius = diam / 28;
 
-    digi_step = diam / 4;
+    float digi_step = diam / 4;
     obj_w2 = diam / 4;
 
     digi_hcy1 = cy - obj_w2;
@@ -319,9 +319,9 @@ public class CRC_View_Vertie extends Clock_Drawer {
 
       int dir = reverse_orientation ? -1 : 1;
 
-      float digi_hx = cx - 2.5f*dir*digi_step;
-      float digi_mx = cx;
-      float digi_sx = cx + 2.5f*dir*digi_step;
+      digi_hx = cx - 2.5f*dir*digi_step;
+      digi_mx = cx;
+      digi_sx = cx + 2.5f*dir*digi_step;
 
       digi_h3_pts = new float[]{
           digi_hx - obj_w2 * (float) cos(9 * PI / 6), digi_hcy1 + obj_w2 * (float) sin(9 * PI / 6),
@@ -432,8 +432,8 @@ public class CRC_View_Vertie extends Clock_Drawer {
 
       float dir = reverse_orientation ? -1f : 1f;
 
-      float digi_hx = cx - 1.5f*dir*digi_step;
-      float digi_mx = cx + 1.5f*dir*digi_step;
+      digi_hx = cx - 1.5f*dir*digi_step;
+      digi_mx = cx + 1.5f*dir*digi_step;
 
       digi_h3_pts = new float[]{
           digi_hx - obj_w2 * (float) cos(9 * PI / 6), digi_hcy1 + obj_w2 * (float) sin(9 * PI / 6),
@@ -606,6 +606,45 @@ public class CRC_View_Vertie extends Clock_Drawer {
 
   }
 
+  /** user has touched finger to clock */
+  @Override
+  protected void notify_touched(MotionEvent e) {
+    super.notify_touched(e);
+    float x = e.getX(), y = e.getY();
+    if (abs(digi_hx - x) < obj_w2) {
+      if (abs(digi_hcy1 - y) < obj_w2 + cradius && (y < digi_hcy1 + obj_w2 / 2 + cradius)) {
+        dragged_unit = TOUCHED_UNIT.HOUR3;
+      } else if (abs(digi_hcy2 - y) < obj_w2 + cradius) {
+        dragged_unit = TOUCHED_UNIT.HOURH;
+      } else {
+        dragged_unit = TOUCHED_UNIT.NONE;
+      }
+    } else if (abs(digi_mx - x) < obj_w2) {
+      if (abs(digi_mscy1 - y) < obj_w2 + cradius) {
+        dragged_unit = TOUCHED_UNIT.MIN3;
+      } else if (abs(cy - y) < obj_w2 + cradius) {
+        dragged_unit = TOUCHED_UNIT.MIN4;
+      } else if (abs(digi_mscy3 - y) < obj_w2 + cradius) {
+        dragged_unit = TOUCHED_UNIT.MIN5;
+      } else {
+        dragged_unit = TOUCHED_UNIT.NONE;
+      }
+    } else if (abs(digi_sx - x) < obj_w2) {
+      if (abs(digi_mscy1 - y) < obj_w2 + cradius) {
+        dragged_unit = TOUCHED_UNIT.MIN3;
+      } else if (abs(cy - y) < obj_w2 + cradius) {
+        dragged_unit = TOUCHED_UNIT.MIN4;
+      } else if (abs(digi_mscy3 - y) < obj_w2 + cradius) {
+        dragged_unit = TOUCHED_UNIT.MIN5;
+      } else {
+        dragged_unit = TOUCHED_UNIT.NONE;
+      }
+    } else {
+      dragged_unit = TOUCHED_UNIT.NONE;
+    }
+    Log.d("vertie", "touched " + dragged_unit.name());
+  }
+
   /** arrays that store points to draw the polygons */
   private float [] digi_h3_pts, digi_h4_pts, digi_h8_pts, digi_m3_pts, digi_m4_pts, digi_m5_pts,
           digi_s3_pts, digi_s4_pts, digi_s5_pts;
@@ -615,5 +654,9 @@ public class CRC_View_Vertie extends Clock_Drawer {
 
   /** positions */
   private float cradius;
+
+  /** fields related to positions of elements */
+  private float digi_hx, digi_mx, digi_sx;
+  private float digi_hcy1, digi_hcy2, digi_mscy1, digi_mscy3, obj_w2;
 
 }

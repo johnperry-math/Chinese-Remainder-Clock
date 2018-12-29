@@ -57,11 +57,11 @@ public class CRC_View_Bubbly extends Clock_Drawer {
     ball_paint.setStyle(FILL);
     canvas.drawPath(h_tria, ball_paint);
     int hmod3;
-    if (moving != TOUCHED_UNIT.NONE) hmod3 = dragged_h3;
+    if (dragged_unit != TOUCHED_UNIT.NONE) hmod3 = dragged_h3;
     else hmod3 = (hour % 3) == 0 ? 3 : hour % 3;
     for (int i = 0; i < 2; ++i) {
       ball_paint.setStyle(FILL);
-      if (moving == TOUCHED_UNIT.NONE && my_viewer.last_h == hour) {
+      if (dragged_unit == TOUCHED_UNIT.NONE && my_viewer.last_h == hour) {
         if (i + 1 <= hour % 3) {
           canvas.drawCircle(h_x3, h_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
         }
@@ -87,11 +87,11 @@ public class CRC_View_Bubbly extends Clock_Drawer {
     if (my_viewer.hour_modulus == 4) {
       canvas.drawPath(h_quad, ball_paint);
       int hmod4;
-      if (moving != TOUCHED_UNIT.NONE) hmod4 = dragged_hh;
+      if (dragged_unit != TOUCHED_UNIT.NONE) hmod4 = dragged_hh;
       else hmod4 = (hour % 4) == 0 ? 4 : hour % 4;
       for (int i = 0; i < 3; ++i) {
         ball_paint.setStyle(FILL);
-        if (moving == TOUCHED_UNIT.NONE && my_viewer.last_h == hour) {
+        if (dragged_unit == TOUCHED_UNIT.NONE && my_viewer.last_h == hour) {
           if (i + 1 <= hour % 4) {
             canvas.drawCircle(h_xh, h_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
           }
@@ -116,13 +116,13 @@ public class CRC_View_Bubbly extends Clock_Drawer {
     } else {
       canvas.drawPath(h_octo, ball_paint);
       int hmod8;
-      if (moving != TOUCHED_UNIT.NONE) hmod8 = dragged_hh;
+      if (dragged_unit != TOUCHED_UNIT.NONE) hmod8 = dragged_hh;
       else hmod8 = (hour % 8) == 0 ? 8 : hour % 8;
       float r = cradius / 1.1f;
       for (int i = 0; i < 6; ++i) {
         float x = h_xh - r;
         ball_paint.setStyle(FILL);
-        if (moving == TOUCHED_UNIT.NONE && my_viewer.last_h == hour) {
+        if (dragged_unit == TOUCHED_UNIT.NONE && my_viewer.last_h == hour) {
           if (i + 1 <= hour % 8)
             canvas.drawCircle(x + 2*r*(i % 2), h_y - vstep*0.85f - (i / 2) * cstep, r/2f, ball_paint);
         } else {
@@ -144,7 +144,7 @@ public class CRC_View_Bubbly extends Clock_Drawer {
         canvas.drawCircle(x + 2*r*(i % 2), h_y - vstep*0.85f - (i / 2) * cstep, r/2f, ball_paint);
       }
       ball_paint.setStyle(FILL);
-      if (moving == TOUCHED_UNIT.NONE && my_viewer.last_h == hour) {
+      if (dragged_unit == TOUCHED_UNIT.NONE && my_viewer.last_h == hour) {
         if (6 < hour % 8)
           canvas.drawCircle(h_xh, h_y - vstep * 0.85f - 3 * cstep, r / 2f, ball_paint);
       } else {
@@ -171,11 +171,11 @@ public class CRC_View_Bubbly extends Clock_Drawer {
     ball_paint.setStyle(FILL);
     canvas.drawPath(m_tria, ball_paint);
     int mmod3;
-    if (moving != TOUCHED_UNIT.NONE) mmod3 = dragged_m3;
+    if (dragged_unit != TOUCHED_UNIT.NONE) mmod3 = dragged_m3;
     else mmod3 = (minute % 3) == 0 ? 3 : minute % 3;
     for (int i = 0; i < 2; ++i) {
       ball_paint.setStyle(FILL);
-      if (moving == TOUCHED_UNIT.NONE && my_viewer.last_m == minute) {
+      if (dragged_unit == TOUCHED_UNIT.NONE && my_viewer.last_m == minute) {
         if (i + 1 <= minute % 3) {
           canvas.drawCircle(m_x3, m_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
         }
@@ -200,11 +200,11 @@ public class CRC_View_Bubbly extends Clock_Drawer {
     ball_paint.setAlpha(255); ball_paint.setStyle(FILL);
     canvas.drawPath(m_quad, ball_paint);
     int mmod4;
-    if (moving != TOUCHED_UNIT.NONE) mmod4 = dragged_m4;
+    if (dragged_unit != TOUCHED_UNIT.NONE) mmod4 = dragged_m4;
     else mmod4 = (minute % 4) == 0 ? 4 : minute % 4;
     for (int i = 0; i < 3; ++i) {
       ball_paint.setStyle(FILL);
-      if (moving == TOUCHED_UNIT.NONE && my_viewer.last_m == minute) {
+      if (dragged_unit == TOUCHED_UNIT.NONE && my_viewer.last_m == minute) {
         if (i + 1 <= minute % 4) {
           canvas.drawCircle(m_x4, m_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
         }
@@ -229,11 +229,11 @@ public class CRC_View_Bubbly extends Clock_Drawer {
     ball_paint.setStyle(FILL);
     canvas.drawPath(m_pent, ball_paint);
     int mmod5;
-    if (moving != TOUCHED_UNIT.NONE) mmod5 = dragged_m5;
+    if (dragged_unit != TOUCHED_UNIT.NONE) mmod5 = dragged_m5;
     else mmod5 = (minute % 5) == 0 ? 5 : minute % 5;
     for (int i = 0; i < 4; ++i) {
       ball_paint.setStyle(FILL);
-      if (moving == TOUCHED_UNIT.NONE && my_viewer.last_m == minute) {
+      if (dragged_unit == TOUCHED_UNIT.NONE && my_viewer.last_m == minute) {
         if (i + 1 <= minute % 5) {
           canvas.drawCircle(m_x5, m_y - (vstep*0.85f + cstep * i), cradius, ball_paint);
         }
@@ -262,7 +262,7 @@ public class CRC_View_Bubbly extends Clock_Drawer {
       ball_paint.setStyle(FILL);
       canvas.drawPath(s_tria, ball_paint);
       int smod3;
-      if (moving != TOUCHED_UNIT.NONE) smod3 = dragged_s3;
+      if (dragged_unit != TOUCHED_UNIT.NONE) smod3 = dragged_s3;
       else smod3 = (second % 3) == 0 ? 3 : second % 3;
       for (int i = 0; i < 2; ++i) {
         ball_paint.setStyle(FILL);
@@ -286,11 +286,11 @@ public class CRC_View_Bubbly extends Clock_Drawer {
       ball_paint.setStyle(FILL);
       canvas.drawPath(s_quad, ball_paint);
       int smod4;
-      if (moving != TOUCHED_UNIT.NONE) smod4 = dragged_s4;
+      if (dragged_unit != TOUCHED_UNIT.NONE) smod4 = dragged_s4;
       else smod4 = (second % 4) == 0 ? 4 : second % 4;
       for (int i = 0; i < 3; ++i) {
         ball_paint.setStyle(FILL);
-        if (moving == TOUCHED_UNIT.NONE && my_viewer.last_s == second) {
+        if (dragged_unit == TOUCHED_UNIT.NONE && my_viewer.last_s == second) {
           if (i + 1 <= second % 4) {
             canvas.drawCircle(s_x4, s_y - (vstep * 0.85f + cstep * i), cradius, ball_paint);
           }
@@ -315,7 +315,7 @@ public class CRC_View_Bubbly extends Clock_Drawer {
       ball_paint.setStyle(FILL);
       canvas.drawPath(s_pent, ball_paint);
       int smod5;
-      if (moving != TOUCHED_UNIT.NONE) smod5 = dragged_s5;
+      if (dragged_unit != TOUCHED_UNIT.NONE) smod5 = dragged_s5;
       else smod5 = (second % 5) == 0 ? 5 : second % 5;
       for (int i = 0; i < 4; ++i) {
         ball_paint.setStyle(FILL);
@@ -525,29 +525,29 @@ public class CRC_View_Bubbly extends Clock_Drawer {
     float radius = min(hstep, vstep) / 2.25f;
 
     if ((abs(h_x3 - x) < radius) && (h_y + radius - y > 0) && (h_y + radius - y < radius * 2 + cstep * 2))
-      moving = TOUCHED_UNIT.HOUR3;
+      dragged_unit = TOUCHED_UNIT.HOUR3;
     else if ((abs(h_xh - x) < radius) && (h_y + radius - y > 0) && (h_y + radius - y < radius * 2 + cstep * 3))
-      moving = TOUCHED_UNIT.HOURH;
+      dragged_unit = TOUCHED_UNIT.HOURH;
     else if ((abs(m_x3 - x) < radius) && (m_y + radius - y > 0) && (m_y + radius - y < radius * 2 + cstep * 2))
-      moving = TOUCHED_UNIT.MIN3;
+      dragged_unit = TOUCHED_UNIT.MIN3;
     else if ((abs(m_x4 - x) < radius) && (m_y + radius - y > 0) && (m_y + radius - y < radius * 2 + cstep * 3))
-      moving = TOUCHED_UNIT.MIN4;
+      dragged_unit = TOUCHED_UNIT.MIN4;
     else if ((abs(m_x5 - x) < radius) && (m_y + radius - y > 0) && (m_y + radius - y < radius * 2 + cstep * 4))
-      moving = TOUCHED_UNIT.MIN5;
+      dragged_unit = TOUCHED_UNIT.MIN5;
     else if ((abs(s_x3 - x) < radius) && (s_y + radius - y > 0) && (s_y + radius - y < radius * 2 + cstep * 2))
-      moving = TOUCHED_UNIT.SEC3;
+      dragged_unit = TOUCHED_UNIT.SEC3;
     else if ((abs(s_x4 - x) < radius) && (s_y + radius - y > 0) && (s_y + radius - y < radius * 2 + cstep * 3))
-      moving = TOUCHED_UNIT.SEC4;
+      dragged_unit = TOUCHED_UNIT.SEC4;
     else if ((abs(s_x5 - x) < radius) && (s_y + radius - y > 0) && (s_y + radius - y < radius * 2 + cstep * 4))
-      moving = TOUCHED_UNIT.SEC5;
+      dragged_unit = TOUCHED_UNIT.SEC5;
     else
-      moving = TOUCHED_UNIT.NONE;
+      dragged_unit = TOUCHED_UNIT.NONE;
 
     move_to(x, y, radius);
   }
 
   private void move_to(float x, float y, float radius) {
-    switch(moving) {
+    switch(dragged_unit) {
       case HOUR3:
         if (abs(h_y - y) < radius || y > h_y) dragged_h3 = 0;
         else dragged_h3 = round((h_y - radius - y ) / cstep - 0.5f) + 1;
@@ -621,40 +621,6 @@ public class CRC_View_Bubbly extends Clock_Drawer {
     move_to(e.getX(), e.getY(), radius);
   }
 
-  /**
-   * user has lifted finger off clock
-   *
-   * @param e information about the event
-   */
-  @Override
-  protected void notify_released(MotionEvent e) {
-    super.notify_released(e);
-    moving = TOUCHED_UNIT.NONE;
-  }
-
-  /**
-   * user has switched to manual mode; make necessary adjustments
-   */
-  @Override
-  protected void notify_manual(boolean switched_on) {
-    super.notify_manual(switched_on);
-    if (switched_on) {
-      dragged_h3 = hour % 3;
-      if (my_viewer.hour_modulus == 4) dragged_hh = hour % 4;
-      else dragged_hh = hour % 8;
-      dragged_m3 = minute % 3;
-      dragged_m4 = minute % 4;
-      dragged_m5 = minute % 5;
-      dragged_s3 = second % 3;
-      dragged_s4 = second % 4;
-      dragged_s5 = second % 5;
-      manual_mode = true;
-    } else {
-      moving = TOUCHED_UNIT.NONE;
-      manual_mode = false;
-    }
-  }
-
   /** Returns .15f, because we don't need very many frames for this kind of animation */
   float preferred_step() { return 0.15f; }
 
@@ -667,20 +633,4 @@ public class CRC_View_Bubbly extends Clock_Drawer {
   /** Paths to record how to draw each polygon */
   private Path h_tria, h_quad, h_octo, m_tria, m_quad, m_pent, s_tria, s_quad, s_pent;
 
-  /** enum for which bubble is being manipulated */
-  private enum TOUCHED_UNIT {
-    NONE,
-    HOUR3,
-    HOURH,
-    MIN3,
-    MIN4,
-    MIN5,
-    SEC3,
-    SEC4,
-    SEC5
-  }
-  private TOUCHED_UNIT moving = TOUCHED_UNIT.NONE;
-  private int dragged_h3, dragged_hh, dragged_m3, dragged_m4, dragged_m5,
-    dragged_s3, dragged_s4, dragged_s5;
-  private boolean manual_mode = false;
 }

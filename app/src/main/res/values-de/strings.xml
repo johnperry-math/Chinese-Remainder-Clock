@@ -9,9 +9,9 @@
     <string name="app_name">Chinesische Restuhr</string>
     <string name="welcome_string">Willkommen bei der Chinesischen Restuhr!</string>
     <string name="welcome_dialog_text">
-        Die Symbolleiste enth&#x00e4;lt Informationen &#x00fc;ber die Uhr (Fragezeichen),
+        Die Symbolleiste enth&#xe4;lt Informationen &#xfc;ber die Uhr (Fragezeichen),
         Einstellungen bzgl. Farben, Design usw. (Schraubenschlüssel), und einige Quiz (Bleistift).
-        In der Symbolleiste k&#x00e4;nn man zwischen automatischem und manuellem Modus wechseln.
+        In der Symbolleiste k&#xe4;nn man zwischen automatischem und manuellem Modus wechseln.
     </string>
     <string name="proceed_string">Los!</string>
 
@@ -32,7 +32,7 @@
         <item>Sekunden</item>
     </string-array>
 
-    <string name="color_button_text">Farbig/Schwarzwei&#x00df;</string>
+    <string name="color_button_text">Farbig/Schwarzwei&#xdf;</string>
     <string name="color_button_text_off">Farbe</string>
     <string name="color_button_text_on">SW</string>
 
@@ -69,14 +69,14 @@
     <string name="pref_category_design">Design</string>
     <string name="pref_category_design_summ">Design-Einstellungen</string>
 
-    <string name="pref_drawers">K&#x00fc;nsterisches Design</string>
+    <string name="pref_drawers">K&#xfc;nsterisches Design</string>
     <string name="design_pref_summary" translatable="false">
-        Verschiedene kreisf&#x00f6;rmige und polygonale Varianten
+        Verschiedene kreisf&#xf6;rmige und polygonale Varianten
     </string>
     <integer name="num_drawers">7</integer>
     <string-array name="drawStrings">
         <item>Archy: Rest = Bogenposition auf Kreis</item>
-        <item>Bubbly: Rest = Anzahl der gef&#x00fc;llten Blasen</item>
+        <item>Bubbly: Rest = Anzahl der gef&#xfc;llten Blasen</item>
         <item>Linus: Rest = Anzahl der markierten Seiten</item>
         <item>Ringy: Rest = Ballposition auf Kreis</item>
         <item>Shady: Der Rest wird in einem schattigen Polygon dargestellt</item>
@@ -91,13 +91,13 @@
         <item>5</item>
     </string-array>
 
-    <string name="color_pref_text">Schwarzwei&#x00df;</string>
-    <string name="color_pref_summary_on">Zeige die Uhr schwarzwei&#x00df;</string>
+    <string name="color_pref_text">Schwarzwei&#xdf;</string>
+    <string name="color_pref_summary_on">Zeige die Uhr schwarzwei&#xdf;</string>
     <string name="color_pref_summary_off">Zeige die Uhr in Farbe</string>
 
-    <string name="hs_order_pref_text">Anordnung</string>
-    <string name="hs_order_pref_summ_on">Zeigt die Standardanordnung</string>
-    <string name="hs_order_pref_summ_off">Zeigt die alternative Anordnung</string>
+    <string name="hs_order_pref_text">Die Anordnung des Zifferblatts &#xe4;ndern</string>
+    <string name="hs_order_pref_summ_on">Zeigt die alternative Anordnung</string>
+    <string name="hs_order_pref_summ_off">Zeigt die Standardanordnung</string>
 
     <string name="pref_category_timekeeping">Zeiterfassung</string>
     <string name="pref_category_timekeeping_summ">Zeit-Einstellungen</string>
@@ -106,15 +106,15 @@
     <string name="seconds_pref_summ_on">Zeige die Sekunden</string>
     <string name="seconds_pref_summ_off">Zeige die Sekunden nicht</string>
     <string name="show_time_pref_text">Stelle die Zeit dar</string>
-    <string name="show_time_pref_summ_on">Zeige die Zeit auch auf &#x00fc;bliche Weise</string>
-    <string name="show_time_pref_summ_off">Zeige die Zeit nicht auf &#x00fc;bliche Weise</string>
+    <string name="show_time_pref_summ_on">Zeige die Zeit auch auf &#xfc;bliche Weise</string>
+    <string name="show_time_pref_summ_off">Zeige die Zeit nicht auf &#xfc;bliche Weise</string>
 
     <string name="hours_pref_text">Stunden auf der Uhr</string>
     <string name="hours_button_text_off_long">12 Stunden Uhr</string>
     <string name="hours_button_text_on_long">24 Stunden Uhr</string>
 
     <string name="pref_category_color">Farbe</string>
-    <string name="pref_category_color_summ">&#x00c4;ndere die Farben</string>
+    <string name="pref_category_color_summ">&#xc4;ndere die Farben</string>
 
     <string name="bg_color_text">Farbe Hintergrund</string>
     <string name="line_color_text">Farbe Linie (ggfl.)</string>
@@ -156,7 +156,7 @@
     <string name="quiz_result_dismiss_dialog_keep">Uff!</string>
     <string name="quiz_sorry">Nein! Es war</string>
     <string name="quiz_correct">Richtig!</string>
-    <string name="has">l&#x00e4;sst</string>
+    <string name="has">l&#xe4;sst</string>
     <string name="remainder">den Rest</string>
     <string name="period" translatable="false">.</string>
 

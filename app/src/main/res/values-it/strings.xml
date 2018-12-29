@@ -61,9 +61,9 @@
     <string name="color_pref_summary_on">Disegna l&#8217;orologio in bianco e nero</string>
     <string name="color_pref_summary_off">Disegna l&#8217;orologio a colori</string>
 
-    <string name="hs_order_pref_text">Ordine di ore e secondi</string>
-    <string name="hs_order_pref_summ_on">Mostra i secondi dentro o a sinistra</string>
-    <string name="hs_order_pref_summ_off">Mostra i secondi fuori o a destra</string>
+    <string name="hs_order_pref_text">Riordina gli elementi del quadrante</string>
+    <string name="hs_order_pref_summ_on">Ordine alternativo</string>
+    <string name="hs_order_pref_summ_off">Ordine standardo</string>
 
     <string name="pref_category_timekeeping">Tieni il tempo</string>
     <string name="pref_category_timekeeping_summ">Opzioni per mostrare l&#8217;ora</string>

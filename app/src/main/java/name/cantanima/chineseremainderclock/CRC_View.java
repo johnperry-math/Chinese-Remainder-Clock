@@ -49,7 +49,7 @@ import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_TIM
  *    so you'll need to look at its numerous descendants to see the details of how and why
  *    things are drawn the way they are. Meanwhile, this view coordinates the listening for
  *    pretty much every user interface action that isn't either a system action (e.g., dismissal,
- *    moving between activities, or menu response -- for menu response see Chinese_Remainder).
+ *    dragged_unit between activities, or menu response -- for menu response see Chinese_Remainder).
  *
  */
 public class CRC_View
@@ -364,15 +364,11 @@ public class CRC_View
     float xmax = my_loc[0] + getWidth();
     float ymax = my_loc[1] + getHeight();
 
-    if (event.getAction() == ACTION_UP) { // released
+    if (event.getAction() == ACTION_UP) // released
 
-      // add drawer here if it's enabled for touch and drag
-      if (my_drawer.getClass() == CRC_View_Ringy.class) {
-        my_drawer.notify_released(event);
-        dragging = false;
-      }
+      my_drawer.notify_released(event);
 
-    } else if (event.getAction() == ACTION_MOVE) { // moved/dragged
+    else if (event.getAction() == ACTION_MOVE) { // moved/dragged
 
       if (dragging) my_drawer.notify_dragged(event);
 
@@ -383,18 +379,10 @@ public class CRC_View
 
         // inside; set up for dragging
         // add drawer here if it's enabled for touch and drag
-        if (
-            (
-                my_drawer.getClass() == CRC_View_Ringy.class ||
-                    my_drawer.getClass() == CRC_View_Bubbly.class
-            ) &&
-            currentMode == Mode.MANUAL
-        ) {
-
+        if (currentMode == Mode.MANUAL) {
           my_drawer.notify_touched(event);
           dragging = true;
           time_guide = LEAVE_BE;
-
         }
 
       }

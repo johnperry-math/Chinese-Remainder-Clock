@@ -13,15 +13,8 @@ import static java.lang.Math.atan2;
 import static java.lang.Math.cos;
 import static java.lang.Math.round;
 import static java.lang.Math.sin;
+
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT;
-import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.HOUR3;
-import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.HOURH;
-import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.MIN3;
-import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.MIN4;
-import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.MIN5;
-import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.SEC3;
-import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.SEC4;
-import static name.cantanima.chineseremainderclock.CRC_View_Ringy.DRAGGED_BALL.SEC5;
 
 /**
  * This class extends Clock_Drawer for the Ringy design,
@@ -93,8 +86,8 @@ public class CRC_View_Ringy extends Clock_Drawer {
       hmod3 = lhmod3; hmod4 = lhmod4;
       mmod3 = lmmod3; mmod4 = lmmod4; mmod5 = lmmod5;
       smod3 = lsmod3; smod4 = lsmod4; smod5 = lsmod5;
-    } else if (just_released && dragging_which_ball != null) {
-      switch (dragging_which_ball) {
+    } else if (just_released && dragged_unit != null) {
+      switch (dragged_unit) {
         case HOUR3: hmod3 = lhmod3 = last_mod; break;
         case HOURH: hmod4 = lhmod4 = last_mod; break;
         case MIN3 : mmod3 = lmmod3 = last_mod; break;
@@ -259,7 +252,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
 
     // more adjustments for dragging...
     if (dragging) {
-      switch (dragging_which_ball) {
+      switch (dragged_unit) {
         case HOUR3: hangle3 = new_angle; break;
         case HOURH: hangle4 = new_angle; break;
         case MIN3 : mangle3 = new_angle; break;
@@ -279,7 +272,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
 
     ball_paint.setColor(hour_color);
 
-    if (dragging && dragging_which_ball == HOUR3) // ball_paint.setColor(WHITE);
+    if (dragging && dragged_unit == TOUCHED_UNIT.HOUR3) // ball_paint.setColor(WHITE);
       radius = bally_hr;
     else // ball_paint.setColor(hour_color);
       radius = bally_br;
@@ -289,7 +282,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
     last_h3_x = x;
     last_h3_y = y;
 
-    if (dragging && dragging_which_ball == HOURH) // ball_paint.setColor(WHITE);
+    if (dragging && dragged_unit == TOUCHED_UNIT.HOURH) // ball_paint.setColor(WHITE);
       radius = bally_hr;
     else // ball_paint.setColor(hour_color);
       radius = bally_br;
@@ -301,7 +294,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
 
     ball_paint.setColor(minute_color);
 
-    if (dragging && dragging_which_ball == MIN3) // ball_paint.setColor(WHITE);
+    if (dragging && dragged_unit == TOUCHED_UNIT.MIN3) // ball_paint.setColor(WHITE);
       radius = bally_hr;
     else // ball_paint.setColor(minute_color);
       radius = bally_br;
@@ -311,7 +304,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
     last_m3_x = x;
     last_m3_y = y;
 
-    if (dragging && dragging_which_ball == MIN4) // ball_paint.setColor(WHITE);
+    if (dragging && dragged_unit == TOUCHED_UNIT.MIN4) // ball_paint.setColor(WHITE);
       radius = bally_hr;
     else // ball_paint.setColor(minute_color);
       radius = bally_br;
@@ -321,7 +314,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
     last_m4_x = x;
     last_m4_y = y;
 
-    if (dragging && dragging_which_ball == MIN5) // ball_paint.setColor(WHITE);
+    if (dragging && dragged_unit == TOUCHED_UNIT.MIN5) // ball_paint.setColor(WHITE);
       radius = bally_hr;
     else // ball_paint.setColor(minute_color);
       radius = bally_br;
@@ -335,7 +328,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
 
       ball_paint.setColor(second_color);
 
-      if (dragging && dragging_which_ball == SEC3) // ball_paint.setColor(WHITE);
+      if (dragging && dragged_unit == TOUCHED_UNIT.SEC3) // ball_paint.setColor(WHITE);
         radius = bally_hr;
       else // ball_paint.setColor(second_color);
         radius = bally_br;
@@ -345,7 +338,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
       last_s3_x = x;
       last_s3_y = y;
 
-      if (dragging && dragging_which_ball == SEC4) // ball_paint.setColor(WHITE);
+      if (dragging && dragged_unit == TOUCHED_UNIT.SEC4) // ball_paint.setColor(WHITE);
         radius = bally_hr;
       else // ball_paint.setColor(second_color);
         radius = bally_br;
@@ -355,7 +348,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
       last_s4_x = x;
       last_s4_y = y;
 
-      if (dragging && dragging_which_ball == SEC5) // ball_paint.setColor(WHITE);
+      if (dragging && dragged_unit == TOUCHED_UNIT.SEC5) // ball_paint.setColor(WHITE);
         radius = bally_hr;
       else // ball_paint.setColor(second_color);
         radius = bally_br;
@@ -386,49 +379,49 @@ public class CRC_View_Ringy extends Clock_Drawer {
         x > last_h3_x - bally_br && x < last_h3_x + bally_br &&
             y > last_h3_y - bally_br && y < last_h3_y + bally_br
         ) {
-      dragging_which_ball = HOUR3;
+      dragged_unit = TOUCHED_UNIT.HOUR3;
       searching = false;
     } else if (
         x > last_hh_x - bally_br && x < last_hh_x + bally_br &&
             y > last_hh_y - bally_br && y < last_hh_y + bally_br
         ) {
-      dragging_which_ball = HOURH;
+      dragged_unit = TOUCHED_UNIT.HOURH;
       searching = false;
     } else if (
         x > last_m3_x - bally_br && x < last_m3_x + bally_br &&
         y > last_m3_y - bally_br && y < last_m3_y + bally_br
     ) {
-      dragging_which_ball = MIN3;
+      dragged_unit = TOUCHED_UNIT.MIN3;
       searching = false;
     } else if (
         x > last_m4_x - bally_br && x < last_m4_x + bally_br &&
             y > last_m4_y - bally_br && y < last_m4_y + bally_br
         ) {
-      dragging_which_ball = MIN4;
+      dragged_unit = TOUCHED_UNIT.MIN4;
       searching = false;
     } else if (
         x > last_m5_x - bally_br && x < last_m5_x + bally_br &&
             y > last_m5_y - bally_br && y < last_m5_y + bally_br
         ) {
-      dragging_which_ball = MIN5;
+      dragged_unit = TOUCHED_UNIT.MIN5;
       searching = false;
     } else if (
         x > last_s3_x - bally_br && x < last_s3_x + bally_br &&
             y > last_s3_y - bally_br && y < last_s3_y + bally_br
         ) {
-      dragging_which_ball = SEC3;
+      dragged_unit = TOUCHED_UNIT.SEC3;
       searching = false;
     } else if (
         x > last_s4_x - bally_br && x < last_s4_x + bally_br &&
             y > last_s4_y - bally_br && y < last_s4_y + bally_br
         ) {
-      dragging_which_ball = SEC4;
+      dragged_unit = TOUCHED_UNIT.SEC4;
       searching = false;
     } else if (
         x > last_s5_x - bally_br && x < last_s5_x + bally_br &&
             y > last_s5_y - bally_br && y < last_s5_y + bally_br
         ) {
-      dragging_which_ball = SEC5;
+      dragged_unit = TOUCHED_UNIT.SEC5;
       searching = false;
     }
 
@@ -468,8 +461,8 @@ public class CRC_View_Ringy extends Clock_Drawer {
       
       dragging = false;
       step = 0.04f;
-      if (dragging_which_ball != null) {
-        switch (dragging_which_ball) {
+      if (dragged_unit != null) {
+        switch (dragged_unit) {
           case HOUR3:
           case MIN3:
           case SEC3:
@@ -584,28 +577,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
   private boolean just_released = false;
   private float new_angle;
   private int last_mod;
-  /** counter for which ball is being dragged */
-  protected enum DRAGGED_BALL {
-    /** dragging the 3-remainder for the short_hand */
-    HOUR3,
-    /** dragging the 4- or 8-remainder for the short_hand */
-    HOURH,
-    /** dragging the 3-remainder for the minute */
-    MIN3,
-    /** dragging the 4-remainder for the minute */
-    MIN4,
-    /** dragging the 5-remainder for the minute */
-    MIN5,
-    /** dragging the 3-remainder for the second */
-    SEC3,
-    /** dragging the 4-remainder for the second */
-    SEC4,
-    /** dragging the 5-remainder for the second */
-    SEC5
-  }
-  /** which ball are we dragging? */
-  private DRAGGED_BALL dragging_which_ball;
-  
+
   /** fields that record the last position of a ball (useful for dragging) */
   private float last_h3_x, last_h3_y, last_hh_x, last_hh_y,
                   last_m3_x, last_m3_y, last_m4_x, last_m4_y, last_m5_x, last_m5_y,

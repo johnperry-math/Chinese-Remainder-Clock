@@ -97,8 +97,8 @@
     <string name="color_pref_summary_off">Draw the clock in color</string>
 
     <string name="hs_order_pref_text">Order of units</string>
-    <string name="hs_order_pref_summ_on">Draw the seconds on the inside or left</string>
-    <string name="hs_order_pref_summ_off">Draw the seconds on the outside or right</string>
+    <string name="hs_order_pref_summ_on">Alternative order</string>
+    <string name="hs_order_pref_summ_off">Standard order</string>
 
     <string name="pref_category_timekeeping">Timekeeping</string>
     <string name="pref_category_timekeeping_summ">Options for measuring and displaying time</string>

@@ -372,6 +372,7 @@ public abstract class Clock_Drawer {
    */
   protected void notify_released(MotionEvent e) {
     dragged_unit = TOUCHED_UNIT.NONE;
+    my_viewer.invalidate();
   }
 
   /** user is dragging finger around the clock

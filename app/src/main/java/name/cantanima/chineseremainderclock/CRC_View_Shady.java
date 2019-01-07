@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Build;
-import android.util.Log;
 import android.view.MotionEvent;
 
 import org.jetbrains.annotations.NotNull;
@@ -14,7 +13,6 @@ import static android.graphics.Paint.ANTI_ALIAS_FLAG;
 import static android.graphics.Paint.Align.CENTER;
 import static android.graphics.Paint.Style.FILL;
 import static java.lang.Math.round;
-import static java.lang.StrictMath.abs;
 import static name.cantanima.chineseremainderclock.Clock_Drawer.TOUCHED_UNIT.NONE;
 
 /**
@@ -293,7 +291,6 @@ public class CRC_View_Shady extends CRC_View_Polygonal {
   public void move_to(float x, float y) {
     int mod = 0;
     float y0 = 0, ystep;
-    boolean redraw = false;
     switch (dragged_unit) {
       case HOUR3:
         y0 = digi_hcy1;
@@ -308,29 +305,23 @@ public class CRC_View_Shady extends CRC_View_Polygonal {
         mod = 3;
         break;
       case MIN4: case SEC4:
-        y0 = digi_mscy1;
+        y0 = cy;
         mod = 4;
         break;
       case MIN5: case SEC5:
-        y0 = digi_mscy1;
+        y0 = digi_mscy3;
         mod = 5;
         break;
       default: break;
     }
     if (mod != 0) {
       ystep = my_viewer.getHeight() / mod;
-      if ((original_value + round(abs(y - y0) / ystep)) % mod != last_step) {
+      if ((original_value + round((y - y0) / ystep)) % mod != last_step) {
         redraw = true;
-        last_step = (original_value + round(abs(y - y0) / ystep)) % mod;
-        Log.d("shady", "(" +
-            String.valueOf(y) + "-" + String.valueOf(y0) + ") / " + String.valueOf(ystep) +
-            " = " + String.valueOf(round((y - y0) / ystep)) + " -> " +
-            String.valueOf(last_step)
-        );
-        Log.d("shady2", String.valueOf(last_step));
+        last_step = (original_value + round((y - y0) / ystep)) % mod;
+        if (last_step < 0) last_step += mod;
       }
     }
-    if (redraw) my_viewer.invalidate();
   }
 
   @Override
@@ -398,14 +389,23 @@ public class CRC_View_Shady extends CRC_View_Polygonal {
   protected void notify_touched(@NotNull MotionEvent e) {
     super.notify_touched(e);
     switch (dragged_unit) {
-      case HOUR3: original_value = my_viewer.last_h % 3; break;
-      case HOURH: original_value = my_viewer.last_h % my_viewer.hour_modulus; break;
-      case MIN3: original_value = my_viewer.last_m % 3; break;
-      case MIN4: original_value = my_viewer.last_m % 4; break;
-      case MIN5: original_value = my_viewer.last_m % 5; break;
-      case SEC3: original_value = my_viewer.last_s % 3; break;
-      case SEC4: original_value = my_viewer.last_s % 4; break;
-      case SEC5: original_value = my_viewer.last_s % 5; break;
+      case HOUR3: last_step = original_value = my_viewer.last_h % 3; break;
+      case HOURH: last_step = original_value = my_viewer.last_h % my_viewer.hour_modulus; break;
+      case MIN3:  last_step = original_value = my_viewer.last_m % 3; break;
+      case MIN4:  last_step = original_value = my_viewer.last_m % 4; break;
+      case MIN5:  last_step = original_value = my_viewer.last_m % 5; break;
+      case SEC3:  last_step = original_value = my_viewer.last_s % 3; break;
+      case SEC4:  last_step = original_value = my_viewer.last_s % 4; break;
+      case SEC5:  last_step = original_value = my_viewer.last_s % 5; break;
+    }
+  }
+
+  @Override
+  protected void notify_dragged(@NotNull MotionEvent e) {
+    super.notify_dragged(e);
+    if (redraw) {
+      redraw = false;
+      my_viewer.invalidate();
     }
   }
 
@@ -418,5 +418,8 @@ public class CRC_View_Shady extends CRC_View_Polygonal {
 
   /** last saved step (valid only while dragging) */
   private int last_step = 0, original_value = 0;
+
+  /** whether a redraw is needed in manual mode */
+  private boolean redraw = false;
 
 }

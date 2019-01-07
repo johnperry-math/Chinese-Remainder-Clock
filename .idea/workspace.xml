@@ -27,19 +27,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b5dc24d-1c75-4245-8055-1c959373f4a1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/cantanima.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/cantanima.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Arcy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Arcy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Bubbly.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Bubbly.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Linus.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Linus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Polygonal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Polygonal.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Ringy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Ringy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Shady.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Shady.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Vertie.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Vertie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Clock_Drawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Clock_Drawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_ABTime.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_ABTime.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_WhatTimeIsIt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_WhatTimeIsIt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <ignored path="Chinese Remainder Clock.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -115,19 +104,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CRC_View_Vertie.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Vertie.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="387" selection-start-line="387" selection-end-line="387" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1153#1180#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -137,26 +113,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CRC_View_Linus.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Linus.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1057#1083#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CRC_View_Shady.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Shady.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="345" column="37" selection-start-line="345" selection-start-column="37" selection-end-line="345" selection-end-column="37" />
+            <state relative-caret-position="238">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#1277#1303#0" expanded="true" />
               </folding>
             </state>
@@ -166,11 +128,8 @@
       <file leaf-file-name="CRC_View_Polygonal.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Polygonal.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="160" column="68" lean-forward="true" selection-start-line="160" selection-start-column="39" selection-end-line="160" selection-end-column="68" />
-              <folding>
-                <element signature="e#46#177#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-872">
+              <caret line="78" selection-start-line="78" selection-end-line="78" />
             </state>
           </provider>
         </entry>
@@ -192,9 +151,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>, { i -&gt; 0f } )</find>
-      <find>i -&gt;</find>
-      <find>_ -&gt;</find>
       <find>_ -&gt;</find>
       <find>{  0f</find>
       <find>draw(</find>
@@ -222,6 +178,9 @@
       <find>_touch</find>
       <find>notify_re</find>
       <find>last_m</find>
+      <find>notify_tou</find>
+      <find>original_value =</find>
+      <find>log.d</find>
     </findStrings>
     <replaceStrings>
       <replace>second</replace>
@@ -3147,13 +3106,6 @@
       <option name="presentableId" value="Default" />
       <updated>1492918289680</updated>
     </task>
-    <task id="LOCAL-00004" summary="Added TODO list. Lots to do.">
-      <created>1496908107427</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1496908107427</updated>
-    </task>
     <task id="LOCAL-00005" summary="Moved TODO.txt to root directory. Still shows up in Android Studio, and makes it easier for someone to find it in GitHub (or in any other fashion).">
       <created>1496908263899</created>
       <option name="number" value="00005" />
@@ -3490,7 +3442,14 @@
       <option name="project" value="LOCAL" />
       <updated>1546726602414</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Added a toast message for all drawers when they switch to manual mode. Shady is now manual but still have some bugs to work out.">
+      <created>1546890790521</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1546890790521</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3608,7 +3567,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Modularized quiz and added toasts. Also fixed a bug where the box decoration for a LinearLayout did not disappear." />
     <MESSAGE value="Added Italian translation by Antonella Perucca. A few other minor tweaks." />
     <MESSAGE value="Corrections to mistakes in the translation as found by Antonella." />
     <MESSAGE value="Added matematikon graphic. Replaced &lt;p/&gt; by &lt;p&gt;&lt;/p&gt; in Help files." />
@@ -3633,14 +3591,15 @@
     <MESSAGE value="The beginnings of a manual mode for Vertie, with a refactoring that generalizes and systematizes what Ringy and Bubbly had already done. Some tweaks to translations." />
     <MESSAGE value="Vertie is fully manual via dragging. Adjustment to Italian translation." />
     <MESSAGE value="Linus is fully manual via dragging. Both Linus and Vertie now extend a new abstract class, CRC_View_Polygonal, which implements most of the manual code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Linus is fully manual via dragging. Both Linus and Vertie now extend a new abstract class, CRC_View_Polygonal, which implements most of the manual code." />
+    <MESSAGE value="Added a toast message for all drawers when they switch to manual mode. Shady is now manual but still have some bugs to work out." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a toast message for all drawers when they switch to manual mode. Shady is now manual but still have some bugs to work out." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="325" />
+      <option name="time" value="332" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
@@ -3658,12 +3617,22 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>hour % 3</expression-string>
+        <expression-string>dragged_unit</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>original_value</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
         <expression-string>hour</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>hour % 3</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -3689,16 +3658,6 @@
       </expression>
       <expression>
         <expression-string>(moved_offset - 1f/8) * 4 - 0.5f</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>(moved_offset) * 4 - 0.5f</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>(moved_offset - 1/8) * 4 - 0.5f</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -3957,13 +3916,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Android/Sdk/sources/android-26/android/view/ViewGroup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="2404" selection-start-line="2404" selection-end-line="2404" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_chinese__remainder.xml">
       <provider selected="true" editor-type-id="android-designer2">
         <state />
@@ -4049,17 +4001,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="305" column="27" selection-start-line="305" selection-start-column="16" selection-end-line="305" selection-end-column="27" />
-          <folding>
-            <marker date="1546086769307" expanded="false" signature="18426:18473" ph="&quot;saved_minute_color&quot;" />
-            <marker date="1546086769307" expanded="false" signature="18514:18561" ph="&quot;saved_second_color&quot;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Bubbly.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -4121,13 +4062,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="165" column="76" selection-start-line="165" selection-start-column="76" selection-end-line="165" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Linus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
@@ -4149,22 +4083,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Android/Sdk/sources/android-26/android/view/ViewGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="2404" selection-start-line="2404" selection-end-line="2404" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="391" selection-start-line="391" selection-end-line="391" />
+          <folding>
+            <marker date="1546086769307" expanded="false" signature="18426:18473" ph="&quot;saved_minute_color&quot;" />
+            <marker date="1546086769307" expanded="false" signature="18514:18561" ph="&quot;saved_second_color&quot;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="165" column="76" selection-start-line="165" selection-start-column="76" selection-end-line="165" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Polygonal.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="160" column="68" lean-forward="true" selection-start-line="160" selection-start-column="39" selection-end-line="160" selection-end-column="68" />
-          <folding>
-            <element signature="e#46#177#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-872">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Shady.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="345" column="37" selection-start-line="345" selection-start-column="37" selection-end-line="345" selection-end-column="37" />
+        <state relative-caret-position="238">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#1277#1303#0" expanded="true" />
           </folding>
         </state>

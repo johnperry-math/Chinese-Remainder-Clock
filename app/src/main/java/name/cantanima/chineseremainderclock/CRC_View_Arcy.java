@@ -19,7 +19,12 @@ import static android.graphics.Paint.Style.STROKE;
 public class CRC_View_Arcy extends Clock_Drawer {
 
   // default construction
-  CRC_View_Arcy(CRC_View owner) { initialize_fields(owner); }
+  CRC_View_Arcy(CRC_View owner) {
+
+    initialize_fields(owner);
+    stringID = R.string.archy_manual_hint;
+
+  }
 
   // animate every tenth of a second
   float preferred_step() { return 0.1f; }

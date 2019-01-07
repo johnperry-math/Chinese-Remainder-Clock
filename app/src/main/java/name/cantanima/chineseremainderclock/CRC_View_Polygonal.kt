@@ -19,6 +19,17 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
     @JvmField var digi_s3_pts = FloatArray(12) { 0f }
     @JvmField var digi_s4_pts = FloatArray(16) { 0f }
     @JvmField var digi_s5_pts = FloatArray(20) { 0f }
+    
+    /** paths for polygons */
+    @JvmField val h_tria = Path()
+    @JvmField val h_quad = Path()
+    @JvmField val h_octo = Path()
+    @JvmField val m_tria = Path()
+    @JvmField val m_quad = Path()
+    @JvmField val m_pent = Path()
+    @JvmField val s_tria = Path()
+    @JvmField val s_quad = Path()
+    @JvmField val s_pent = Path()
 
     /** how to paint the polygons  */
     @JvmField val poly_paint = Paint(ANTI_ALIAS_FLAG)
@@ -68,7 +79,7 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
         move_to(x, y)
     }
 
-    private fun move_to(x: Float, y: Float) {
+    open fun move_to(x: Float, y: Float) {
         val x0: Float
         val y0: Float
         when (dragged_unit) {
@@ -142,14 +153,14 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
                 if (my_viewer.hour_modulus == 4) {
                     my_viewer.last_h = (r * 4 - hour % 4 * 3) % 12
                     hour = my_viewer.last_h
-                    while (hour < 0) {
+                    while (hour <= 0) {
                         hour += 12
                         my_viewer.last_h += 12
                     }
                 } else {
                     my_viewer.last_h = (r * 16 - hour % 8 * 15) % 24
                     hour = my_viewer.last_h
-                    while (hour < 0) {
+                    while (hour <= 0) {
                         hour += 24
                         my_viewer.last_h += 24
                     }
@@ -463,14 +474,12 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
 
         // now set up the paths
 
-        val h_tria = Path()
         h_tria.rewind()
         h_tria.moveTo(digi_h3_pts[0], digi_h3_pts[1])
         h_tria.lineTo(digi_h3_pts[2], digi_h3_pts[3])
         h_tria.lineTo(digi_h3_pts[4], digi_h3_pts[5])
         h_tria.lineTo(digi_h3_pts[6], digi_h3_pts[7])
 
-        val h_quad = Path()
         h_quad.rewind()
         h_quad.moveTo(digi_h4_pts[0], digi_h4_pts[1])
         h_quad.lineTo(digi_h4_pts[2], digi_h4_pts[3])
@@ -481,7 +490,6 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
         h_quad.lineTo(digi_h4_pts[12], digi_h4_pts[13])
         h_quad.lineTo(digi_h4_pts[14], digi_h4_pts[15])
 
-        val h_octo = Path()
         h_octo.rewind()
         h_octo.moveTo(digi_h8_pts[0], digi_h8_pts[1])
         h_octo.lineTo(digi_h8_pts[2], digi_h8_pts[3])
@@ -500,14 +508,12 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
         h_octo.lineTo(digi_h8_pts[28], digi_h8_pts[29])
         h_octo.lineTo(digi_h8_pts[30], digi_h8_pts[31])
 
-        val m_tria = Path()
         m_tria.rewind()
         m_tria.moveTo(digi_m3_pts[0], digi_m3_pts[1])
         m_tria.lineTo(digi_m3_pts[2], digi_m3_pts[3])
         m_tria.lineTo(digi_m3_pts[4], digi_m3_pts[5])
         m_tria.lineTo(digi_m3_pts[6], digi_m3_pts[7])
 
-        val m_quad = Path()
         m_quad.rewind()
         m_quad.moveTo(digi_m4_pts[0], digi_m4_pts[1])
         m_quad.lineTo(digi_m4_pts[2], digi_m4_pts[3])
@@ -518,7 +524,6 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
         m_quad.lineTo(digi_m4_pts[12], digi_m4_pts[13])
         m_quad.lineTo(digi_m4_pts[14], digi_m4_pts[15])
 
-        val m_pent = Path()
         m_pent.rewind()
         m_pent.moveTo(digi_m5_pts[0], digi_m5_pts[1])
         m_pent.lineTo(digi_m5_pts[2], digi_m5_pts[3])
@@ -530,11 +535,7 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
         m_pent.lineTo(digi_m5_pts[14], digi_m5_pts[15])
         m_pent.lineTo(digi_m5_pts[16], digi_m5_pts[17])
         m_pent.lineTo(digi_m5_pts[18], digi_m5_pts[19])
-
-        val s_tria = Path()
-        val s_quad = Path()
-        val s_pent = Path()
-
+        
         if (show_seconds) {
 
             s_tria.rewind()

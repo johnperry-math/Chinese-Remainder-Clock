@@ -33,6 +33,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
   CRC_View_Ringy(CRC_View owner) {
   
     initialize_fields(owner);
+    stringID = R.string.ringy_manual_hint;
   
   }
   

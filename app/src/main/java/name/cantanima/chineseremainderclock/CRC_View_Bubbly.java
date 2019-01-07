@@ -28,7 +28,10 @@ import static java.lang.Math.sin;
 public class CRC_View_Bubbly extends Clock_Drawer {
 
   // constructor
-  CRC_View_Bubbly(CRC_View owner) { initialize_fields(owner); }
+  CRC_View_Bubbly(CRC_View owner) {
+    initialize_fields(owner);
+    stringID = R.string.bubbly_manual_hint;
+  }
 
   @Override
   void draw(Canvas canvas) {

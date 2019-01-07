@@ -78,7 +78,7 @@ class Quiz_abTime (
         } else {
             activity.getString(R.string.quiz_sorry) + " " + value.toString()
         }
-        val toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
+        val toast = Toast.makeText(context, message, Toast.LENGTH_LONG)
         toast.show()
         if (complete <= total) show_question()
         else {
@@ -157,7 +157,7 @@ class ABNumberDialog(
         var update_text : TextView = findViewById(R.id.quiz_which)
         if (complete == 1) {
             val toast = Toast.makeText(
-                    context, context.getString(R.string.dial_use), Toast.LENGTH_SHORT
+                    context, context.getString(R.string.dial_use), Toast.LENGTH_LONG
             )
             toast.show()
         }
@@ -256,7 +256,7 @@ class Quiz_abcTime (
         } else {
             activity.getString(R.string.quiz_sorry) + " " + value.toString()
         }
-        val toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
+        val toast = Toast.makeText(context, message, Toast.LENGTH_LONG)
         toast.show()
         if (complete <= total) show_question()
         else {
@@ -338,7 +338,7 @@ class ABCNumberDialog(
         val which_problem = complete.toString() + "/" + total.toString() + ":"
         if (complete == 1) {
             val toast = Toast.makeText(
-                    context, context.getString(R.string.dial_use), Toast.LENGTH_SHORT
+                    context, context.getString(R.string.dial_use), Toast.LENGTH_LONG
             )
             toast.show()
         }

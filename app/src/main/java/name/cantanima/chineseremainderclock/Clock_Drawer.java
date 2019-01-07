@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import android.os.Build;
 import android.view.MotionEvent;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -401,6 +402,11 @@ public abstract class Clock_Drawer {
       dragged_s3 = second % 3;
       dragged_s4 = second % 4;
       dragged_s5 = second % 5;
+      Toast.makeText(
+          my_viewer.my_owner,
+          my_viewer.my_owner.getString(stringID),
+          Toast.LENGTH_LONG
+      ).show();
     } else {
       dragged_unit = TOUCHED_UNIT.NONE;
     }
@@ -465,5 +471,7 @@ public abstract class Clock_Drawer {
       dragged_s3, dragged_s4, dragged_s5;
   /** whether we are in manual mode */
   boolean manual_mode = false;
+  /** ID of correct string */
+  int stringID = R.string.uninitialized_manual_hint;
 
 }

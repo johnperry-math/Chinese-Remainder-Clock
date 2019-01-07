@@ -30,6 +30,8 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
       poly_paint.setColor(WHITE);
       poly_paint.setTextAlign(CENTER);
 
+      stringID = R.string.linus_manual_hint;
+
   }
 
   /** One frame every tenth of a second */

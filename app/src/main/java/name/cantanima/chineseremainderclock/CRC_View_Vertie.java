@@ -34,6 +34,8 @@ public class CRC_View_Vertie extends CRC_View_Polygonal {
     poly_paint.setStrokeWidth(2);
     poly_paint.setStyle(STROKE);
 
+    stringID = R.string.vertie_manual_hint;
+
   }
 
   /** one frame every tenth of a second */

@@ -55,6 +55,7 @@
       <w>xprev</w>
       <w>yesno</w>
       <w>ymax</w>
+      <w>ystep</w>
     </words>
   </dictionary>
 </component>

@@ -98,5 +98,11 @@
         <item>Shady: остаток записан в затемнённом многоугольнике</item>
         <item>Vertie: положение мяча в многоугольнике показывает остаток</item>
     </string-array>
+    <string name="ringy_manual_hint">Передвинь мячь чтобы скоректировать время</string>
+    <string name="vertie_manual_hint">Передвинь мячь чтобы скоректировать время</string>
+    <string name="linus_manual_hint">Передвинь линию чтобы скоректировать время</string>
+    <string name="shady_manual_hint">Передвинь фигуру вверх или вниз чтобы скоректировать время</string>
+    <string name="bubbly_manual_hint">Дотронься до пузыря чтобы скоректировать врем</string>
+    <string name="archy_manual_hint">Дотронься до арки чтобы скоректировать врем</string>
 
 </resources>

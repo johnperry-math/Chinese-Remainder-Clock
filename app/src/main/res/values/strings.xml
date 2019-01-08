@@ -163,7 +163,7 @@
 
     <string name="dial_use">Turn clock hand to answer</string>
 
-    <string name="uninitialized_manual_hint">Need to initialize manual hint!</string>
+    <string name="uninitialized_manual_hint" translatable="false">Need to initialize manual hint!</string>
     <string name="ringy_manual_hint">Drag ball to adjust time</string>
     <string name="vertie_manual_hint">Drag ball to adjust time</string>
     <string name="linus_manual_hint">Drag line to adjust time</string>

@@ -51,7 +51,6 @@
     <string name="version">Version</string>
     <string name="current_version" translatable="false">2.071</string>
     <string name="first_run" translatable="false">erster_run</string>
-    <string name="saved_hour" translatable="false">gespeicherte_stunde</string>
     <string name="saved_color" translatable="false">gespeicherte_farbe</string>
     <string name="saved_drawer" translatable="false">gespeicherte_schublade</string>
     <string name="saved_show_seconds" translatable="false">gespeicherte_zeige_sekunden</string>
@@ -70,9 +69,6 @@
     <string name="pref_category_design_summ">Design-Einstellungen</string>
 
     <string name="pref_drawers">K&#xfc;nsterisches Design</string>
-    <string name="design_pref_summary" translatable="false">
-        Verschiedene kreisf&#xf6;rmige und polygonale Varianten
-    </string>
     <integer name="num_drawers">7</integer>
     <string-array name="drawStrings">
         <item>Archy: Rest = Bogenposition auf Kreis</item>

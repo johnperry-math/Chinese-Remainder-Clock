@@ -44,9 +44,6 @@
     <string name="pref_category_design_summ">Opzioni per il design</string>
 
     <string name="pref_drawers">Tipi di design</string>
-    <string name="design_pref_summary" translatable="false">
-        Ci sono design circolari e poligonali
-    </string>
     <integer name="num_drawers">7</integer>
     <string-array name="drawStrings">
         <item>Archy: Guarda la posizione degli archi</item>

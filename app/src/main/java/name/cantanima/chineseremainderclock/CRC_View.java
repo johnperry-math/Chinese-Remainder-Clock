@@ -561,6 +561,11 @@ public class CRC_View
     my_animator.pause();
   }
 
+  public void move_time_to(int h, int m, int s) {
+    new_second_value = s;
+    move_time_to(h, m);
+  }
+
   public Mode getCurrentMode() { return currentMode; }
 
   /** how far along the animation is (should range from 0 to 1) */
@@ -659,5 +664,5 @@ public class CRC_View
   protected boolean dragging = false;
 
   /** quiz data: new time to show */
-  int new_hour_value, new_minute_value;
+  int new_hour_value, new_minute_value, new_second_value;
 }

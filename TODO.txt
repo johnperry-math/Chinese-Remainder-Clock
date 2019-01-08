@@ -4,16 +4,9 @@ but we should consider fixing them.
 (Update: recent tests suggest this may not be true, if it ever was.)
 
 TODO
-Combine Ringy's drawing of circles and hatch marks into paths prepared
-during recalculate_positions().
-
-TODO
-Touch and drag time manually in Archy, Vertie, maybe Bubbly.
-
-TODO
 Quiz "accomplishments!" (i.e., tie quizzes into Google API)
 
-TODO
+TODO (probably won't be done)
 Other quizzes:
 - Set the clock
   The easiest could be (in both items above) letting the computer choose
@@ -97,3 +90,6 @@ DONE
 - Renamed Bally to Ringy. (Including everywhere in the to do file, except here.
 - Change Archy's animation to an expanding/collapsing arch.
 - Made quizzes modular, so that it should be easy to add more.
+- Make all designs work with hand manipulation in manual mode.
+- Combine Ringy's drawing of circles and hatch marks into paths prepared
+  during recalculate_positions().

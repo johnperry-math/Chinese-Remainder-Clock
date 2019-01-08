@@ -2,12 +2,14 @@ package name.cantanima.chineseremainderclock;
 
 import android.annotation.TargetApi;
 import android.graphics.Canvas;
+import android.graphics.Path;
 import android.os.Build;
 import android.view.MotionEvent;
 
 import java.util.Calendar;
 
 import static android.graphics.Paint.Style.FILL;
+import static android.graphics.Path.Direction.CW;
 import static java.lang.Math.PI;
 import static java.lang.Math.atan2;
 import static java.lang.Math.cos;
@@ -124,71 +126,9 @@ public class CRC_View_Ringy extends Clock_Drawer {
     // make sure the ball doesn't move too far in the animation
     float ball_offset = (my_viewer.my_offset > 0.96) ? 1.0f : my_viewer.my_offset;
 
-    // a future improvement should combine the next two steps (circles and hatch marks)
-    // into Paths prepared during recalculate_positions(), then just put them on the screen here
     // draw concentric circles for the main paths
     circle_paint.setColor(line_color);
-    canvas.drawCircle(cx, cy, bally_hr3, circle_paint);
-    canvas.drawCircle(cx, cy, bally_hr4, circle_paint);
-    canvas.drawCircle(cx, cy, bally_mr3, circle_paint);
-    canvas.drawCircle(cx, cy, bally_mr4, circle_paint);
-    canvas.drawCircle(cx, cy, bally_mr5, circle_paint);
-    if (reverse_orientation && show_seconds) {
-      canvas.drawCircle(cx, cy, bally_sr3, circle_paint);
-      canvas.drawCircle(cx, cy, bally_sr4, circle_paint);
-      canvas.drawCircle(cx, cy, bally_sr5, circle_paint);
-    }
-
-    // draw hatch marks for positions modulo 3
-    for (int i = 0; i < 3; ++i) {
-      canvas.drawLine(
-              (float) (cx + bally_hatch_hr3_inner * cos(2 * PI / 3 * i - PI  / 2)),
-              (float) (cy + bally_hatch_hr3_inner * sin(2 * PI / 3 * i - PI  / 2)),
-              (float) (cx + bally_hatch_h3_outer * cos(2 * PI / 3 * i - PI  / 2)),
-              (float) (cy + bally_hatch_h3_outer * sin(2 * PI / 3 * i - PI  / 2)),
-              circle_paint
-      );
-      canvas.drawLine(
-              (float) (cx + bally_hatch_mr3_inner * cos(2 * PI / 3 * i - PI  / 2)),
-              (float) (cy + bally_hatch_mr3_inner * sin(2 * PI / 3 * i - PI  / 2)),
-              (float) (cx + bally_hatch_mr3_outer * cos(2 * PI / 3 * i - PI  / 2)),
-              (float) (cy + bally_hatch_mr3_outer * sin(2 * PI / 3 * i - PI  / 2)),
-              circle_paint
-      );
-    }
-
-    // draw hatch marks for short_hand's second positions (modulo 4 or 8 as appropriate)
-    for (int i = 0; i < my_viewer.hour_modulus; ++i) {
-      canvas.drawLine(
-          (float) (cx + bally_hatch_hr4_inner * cos(2 * PI / my_viewer.hour_modulus * i - PI / 2)),
-          (float) (cy + bally_hatch_hr4_inner * sin(2 * PI / my_viewer.hour_modulus * i - PI / 2)),
-          (float) (cx + bally_hatch_h4_outer * cos(2 * PI / my_viewer.hour_modulus * i - PI / 2)),
-          (float) (cy + bally_hatch_h4_outer * sin(2 * PI / my_viewer.hour_modulus * i - PI / 2)),
-          circle_paint
-      );
-    }
-
-    // draw hatch marks for minute's positions modulo 4
-    for (int i = 0; i < 4; ++i) {
-      canvas.drawLine(
-        (float) (cx + bally_hatch_mr4_inner * cos(2 * PI / 4 * i - PI / 2)),
-        (float) (cy + bally_hatch_mr4_inner * sin(2 * PI / 4 * i - PI / 2)),
-        (float) (cx + bally_hatch_m4_outer * cos(2 * PI / 4 * i - PI / 2)),
-        (float) (cy + bally_hatch_m4_outer * sin(2 * PI / 4 * i - PI / 2)),
-        circle_paint
-      );
-    }
-
-    // draw hatch marks for minute's positions modulo 5
-    for (int i = 0; i < 5; ++i) {
-      canvas.drawLine(
-        (float) (cx + bally_hatch_mr5_inner * cos(2 * PI / 5 * i - PI / 2)),
-        (float) (cy + bally_hatch_mr5_inner * sin(2 * PI / 5 * i - PI / 2)),
-        (float) (cx + bally_hatch_m5_outer * cos(2 * PI / 5 * i - PI / 2)),
-        (float) (cy + bally_hatch_m5_outer * sin(2 * PI / 5 * i - PI / 2)),
-        circle_paint
-      );
-    }
+    canvas.drawPath(background, circle_paint);
 
     // determine the short_hand ball's position:
     // hangle3 determines the position for the inner ball (modulo 3)
@@ -553,25 +493,87 @@ public class CRC_View_Ringy extends Clock_Drawer {
 
     // information for hatch marks
     float bally_hatch_dist = diam / 60;
-    bally_hatch_hr3_inner = bally_hr3 - bally_hatch_dist;
-    bally_hatch_h3_outer = bally_hr3 + bally_hatch_dist;
-    bally_hatch_hr4_inner = bally_hr4 - bally_hatch_dist;
-    bally_hatch_h4_outer = bally_hr4 + bally_hatch_dist;
-    bally_hatch_mr3_inner = bally_mr3 - bally_hatch_dist;
-    bally_hatch_mr3_outer = bally_mr3 + bally_hatch_dist;
-    bally_hatch_mr4_inner = bally_mr4 - bally_hatch_dist;
-    bally_hatch_m4_outer = bally_mr4 + bally_hatch_dist;
-    bally_hatch_mr5_inner = bally_mr5 - bally_hatch_dist;
-    bally_hatch_m5_outer = bally_mr5 + bally_hatch_dist;
-  
+    float bally_hatch_hr3_inner = bally_hr3 - bally_hatch_dist;
+    float bally_hatch_h3_outer = bally_hr3 + bally_hatch_dist;
+    float bally_hatch_hr4_inner = bally_hr4 - bally_hatch_dist;
+    float bally_hatch_h4_outer = bally_hr4 + bally_hatch_dist;
+    float bally_hatch_mr3_inner = bally_mr3 - bally_hatch_dist;
+    float bally_hatch_mr3_outer = bally_mr3 + bally_hatch_dist;
+    float bally_hatch_mr4_inner = bally_mr4 - bally_hatch_dist;
+    float bally_hatch_m4_outer = bally_mr4 + bally_hatch_dist;
+    float bally_hatch_mr5_inner = bally_mr5 - bally_hatch_dist;
+    float bally_hatch_m5_outer = bally_mr5 + bally_hatch_dist;
+
+    background.rewind();
+    background.addCircle(cx, cy, bally_hr3, CW);
+    background.addCircle(cx, cy, bally_hr4, CW);
+    background.addCircle(cx, cy, bally_mr3, CW);
+    background.addCircle(cx, cy, bally_mr4, CW);
+    background.addCircle(cx, cy, bally_mr5, CW);
+    if (reverse_orientation && show_seconds) {
+      background.addCircle(cx, cy, bally_sr3, CW);
+      background.addCircle(cx, cy, bally_sr4, CW);
+      background.addCircle(cx, cy, bally_sr5, CW);
+    }
+
+    // draw hatch marks for positions modulo 3
+    for (int i = 0; i < 3; ++i) {
+      background.moveTo(
+          (float) (cx + bally_hatch_hr3_inner * cos(2 * PI / 3 * i - PI  / 2)),
+          (float) (cy + bally_hatch_hr3_inner * sin(2 * PI / 3 * i - PI  / 2)));
+      background.lineTo(
+          (float) (cx + bally_hatch_h3_outer * cos(2 * PI / 3 * i - PI  / 2)),
+          (float) (cy + bally_hatch_h3_outer * sin(2 * PI / 3 * i - PI  / 2))
+      );
+      background.moveTo(
+          (float) (cx + bally_hatch_mr3_inner * cos(2 * PI / 3 * i - PI  / 2)),
+          (float) (cy + bally_hatch_mr3_inner * sin(2 * PI / 3 * i - PI  / 2)));
+      background.lineTo(
+          (float) (cx + bally_hatch_mr3_outer * cos(2 * PI / 3 * i - PI  / 2)),
+          (float) (cy + bally_hatch_mr3_outer * sin(2 * PI / 3 * i - PI  / 2))
+      );
+    }
+
+    // draw hatch marks for short_hand's second positions (modulo 4 or 8 as appropriate)
+    for (int i = 0; i < my_viewer.hour_modulus; ++i) {
+      background.moveTo(
+          (float) (cx + bally_hatch_hr4_inner * cos(2 * PI / my_viewer.hour_modulus * i - PI / 2)),
+          (float) (cy + bally_hatch_hr4_inner * sin(2 * PI / my_viewer.hour_modulus * i - PI / 2)));
+      background.lineTo(
+          (float) (cx + bally_hatch_h4_outer * cos(2 * PI / my_viewer.hour_modulus * i - PI / 2)),
+          (float) (cy + bally_hatch_h4_outer * sin(2 * PI / my_viewer.hour_modulus * i - PI / 2))
+      );
+    }
+
+    // draw hatch marks for minute's positions modulo 4
+    for (int i = 0; i < 4; ++i) {
+      background.moveTo(
+          (float) (cx + bally_hatch_mr4_inner * cos(2 * PI / 4 * i - PI / 2)),
+          (float) (cy + bally_hatch_mr4_inner * sin(2 * PI / 4 * i - PI / 2)));
+      background.lineTo(
+          (float) (cx + bally_hatch_m4_outer * cos(2 * PI / 4 * i - PI / 2)),
+          (float) (cy + bally_hatch_m4_outer * sin(2 * PI / 4 * i - PI / 2))
+      );
+    }
+
+    // draw hatch marks for minute's positions modulo 5
+    for (int i = 0; i < 5; ++i) {
+      background.moveTo(
+          (float) (cx + bally_hatch_mr5_inner * cos(2 * PI / 5 * i - PI / 2)),
+          (float) (cy + bally_hatch_mr5_inner * sin(2 * PI / 5 * i - PI / 2)));
+      background.lineTo(
+          (float) (cx + bally_hatch_m5_outer * cos(2 * PI / 5 * i - PI / 2)),
+          (float) (cy + bally_hatch_m5_outer * sin(2 * PI / 5 * i - PI / 2))
+      );
+    }
+
+
+
   }
   
   /** fields that control layout of analog clock elements */
   private float bally_hr3, bally_hr4, bally_mr3, bally_mr4, bally_mr5, bally_sr3, bally_sr4, bally_sr5,
-          bally_br, bally_hr, bally_hatch_hr3_inner, bally_hatch_h3_outer,
-          bally_hatch_hr4_inner, bally_hatch_h4_outer, bally_hatch_mr3_inner,
-          bally_hatch_mr3_outer, bally_hatch_mr4_inner, bally_hatch_m4_outer,
-          bally_hatch_mr5_inner, bally_hatch_m5_outer;
+          bally_br, bally_hr;
 
   /** fields that control dragging of balls */
   private boolean dragging = false;
@@ -586,5 +588,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
 
   /** time for a frame during animation */
   private float step = 0.04f;
+
+  private Path background = new Path();
 
 }

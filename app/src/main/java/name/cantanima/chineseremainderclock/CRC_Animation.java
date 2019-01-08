@@ -1,7 +1,6 @@
 package name.cantanima.chineseremainderclock;
 
 import android.graphics.Canvas;
-import android.util.Log;
 
 import java.util.Calendar;
 
@@ -22,7 +21,7 @@ public class CRC_Animation implements Runnable {
    * create an animator to animate the named view
    * @param view a CRC_View to animate
    */
-  public CRC_Animation(CRC_View view) {
+  CRC_Animation(CRC_View view) {
 
     my_view = view;
     step = 0.0f;
@@ -49,7 +48,8 @@ public class CRC_Animation implements Runnable {
     // step forward
     step += step_delta;
     // restart animation:
-    if (step < 1f + step_delta) { // more to do? wait the desired step
+    if (immediate || step < 1f + step_delta) { // more to do? wait the desired step
+      immediate = false;
       my_view.postOnAnimationDelayed(this, (int) (step_delta * 2.5));
     } else if (!paused) { // no, move to next half-second
       step = 0.0f;
@@ -63,29 +63,37 @@ public class CRC_Animation implements Runnable {
 
   }
 
-  /** set the step for animation -- don't invoke this unless you know what you're doign */
-  public void set_step(float new_step) { step_delta = new_step; }
+  /** set the step for animation -- don't invoke this unless you know what you're doing */
+  void set_step(float new_step) { step_delta = new_step; }
 
   /** whether the animator is currently paused */
+  @SuppressWarnings("unused method")
   public boolean is_paused() { return paused; }
 
   /** pause the animator (for Manual mode) */
-  public void pause() { paused = true; }
+  void pause() { paused = true; }
 
   /** resume the animation (leaving Manual mode) */
-  public void resume() {
+  void resume() {
 
     paused = false;
     step = 0.0f;
     Calendar time = Calendar.getInstance();
-    // restart on next half-second
-    int millis = time.get(Calendar.MILLISECOND);
-    if (millis < 500)
-      my_view.postOnAnimationDelayed(this, 500 - millis);
-    else
-      my_view.postOnAnimationDelayed(this, 1500 - millis);
+    if (immediate) {
+      immediate = false;
+      my_view.postOnAnimationDelayed(this, (int) (step_delta * 2.5));
+    } else {
+      // restart on next half-second
+      int millis = time.get(Calendar.MILLISECOND);
+      if (millis < 500)
+        my_view.postOnAnimationDelayed(this, 500 - millis);
+      else
+        my_view.postOnAnimationDelayed(this, 1500 - millis);
+    }
 
   }
+
+  public void immediate_animation() { immediate = true; }
 
   /** CRC_View that we are animating */
   private CRC_View my_view;
@@ -93,8 +101,7 @@ public class CRC_Animation implements Runnable {
   private float step, step_delta;
   /** whether the animator is paused */
   private boolean paused;
-  /** useful for Log.d() debugging */
-
-  private static final String tag = "CRC_Animation";
+  /** whether to start the animation immediately */
+  private boolean immediate = false;
 
 }

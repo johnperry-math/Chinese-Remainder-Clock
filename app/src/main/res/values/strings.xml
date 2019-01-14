@@ -50,7 +50,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="version">version</string>
-    <string name="current_version" translatable="false">2.071</string>
+    <string name="current_version" translatable="false">2.9</string>
     <string name="first_run" translatable="false">first_run</string>
     <string name="saved_hour" translatable="false">saved_hour</string>
     <string name="saved_color" translatable="false">saved_color</string>
@@ -143,6 +143,7 @@
     <string name="quiz_time_sep">:</string>
     <string name="quiz_minute_hint">MM</string>
     <string name="dummy_time" translatable="false">99:99:99</string>
+    <string name="dummy_hour" translatable="false">99</string>
     <string name="autofill_hint_edittext">enter</string>
 
     <string name="quiz_next">Next!</string>
@@ -170,5 +171,12 @@
     <string name="bubbly_manual_hint">Touch bubbles to adjust time</string>
     <string name="shady_manual_hint">Drag up or down in polygons to adjust time</string>
     <string name="archy_manual_hint">Touch arch to adjust time</string>
+
+    <string name="increase_hour">increment hour</string>
+    <string name="increase_minute">increment minute</string>
+    <string name="increase_second">increment second</string>
+    <string name="decrease_hour">decrement hour</string>
+    <string name="decrease_minute">decrement minute</string>
+    <string name="decrease_second">decrement second</string>
 
 </resources>

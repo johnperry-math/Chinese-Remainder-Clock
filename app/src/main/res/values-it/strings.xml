@@ -121,5 +121,17 @@
     <string name="remainder">resto</string>
 
     <string name="dial_use">Muovere la lancetta per rispondere</string>
+    <string name="ringy_manual_hint">Muovi le palline per settare il tempo</string>
+    <string name="vertie_manual_hint">Muovi le palline per settare il tempo</string>
+    <string name="linus_manual_hint">Muovi le linee per settare il tempo</string>
+    <string name="bubbly_manual_hint">Muovi le bolle per settare il tempo</string>
+    <string name="shady_manual_hint">Trascina su o gi nei poligoni per settare il tempo</string>
+    <string name="archy_manual_hint">Muovi gli archi per settare il tempo</string>
+    <string name="increase_hour">aumenta l\'ora</string>
+    <string name="increase_minute">aumenta il minuto</string>
+    <string name="increase_second">aumenta il secondo</string>
+    <string name="decrease_hour">diminuisce l\'ora</string>
+    <string name="decrease_minute">diminuisce il minuto</string>
+    <string name="decrease_second">diminuisce il secondo</string>
 
 </resources>

@@ -62,12 +62,12 @@ public class CRC_View_Arcy extends Clock_Drawer {
     int lmmod4 = my_viewer.last_m % 4;
     int mmod5 = minute % 5;
     int lmmod5 = my_viewer.last_m % 5;
-    int smod3 = minute % 3;
-    int lsmod3 = my_viewer.last_m % 3;
-    int smod4 = minute % 4;
-    int lsmod4 = my_viewer.last_m % 4;
-    int smod5 = minute % 5;
-    int lsmod5 = my_viewer.last_m % 5;
+    int smod3 = second % 3;
+    int lsmod3 = my_viewer.last_s % 3;
+    int smod4 = second % 4;
+    int lsmod4 = my_viewer.last_s % 4;
+    int smod5 = second % 5;
+    int lsmod5 = my_viewer.last_s % 5;
     
     switch (dragged_unit) {
       case HOUR3: hmod3 = dragged_h3; break;
@@ -666,17 +666,12 @@ public class CRC_View_Arcy extends Clock_Drawer {
 
     // reconstruct time and update
     reconstruct_time();
-    switch (my_viewer.which_unit_to_modify) {
-      case HOURS:
-        my_viewer.valueEditor.setText(String.valueOf(my_viewer.last_h));
-        break;
-      case MINUTES:
-        my_viewer.valueEditor.setText(String.valueOf(my_viewer.last_m));
-        break;
-      case SECONDS:
-        my_viewer.valueEditor.setText(String.valueOf(my_viewer.last_s));
-        break;
-    }
+    if (my_viewer.hour_modulus == 4)
+      my_viewer.hr_ed.setText(my_viewer.hour12_strings[my_viewer.last_h]);
+    else
+      my_viewer.hr_ed.setText(my_viewer.hour24_strings[my_viewer.last_h]);
+    my_viewer.min_ed.setText(String.valueOf(my_viewer.last_m));
+    my_viewer.sec_ed.setText(String.valueOf(my_viewer.last_s));
     my_viewer.move_time_to(hour, minute, second);
   }
 

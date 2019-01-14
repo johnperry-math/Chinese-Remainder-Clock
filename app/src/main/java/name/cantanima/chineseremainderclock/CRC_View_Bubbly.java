@@ -594,23 +594,17 @@ public class CRC_View_Bubbly extends Clock_Drawer {
         break;
     }
     // reconstruct time and update
-    if (my_viewer.hour_modulus == 4)
+    if (my_viewer.hour_modulus == 4) {
       hour = my_viewer.last_h = (dragged_h3 * 4 + dragged_hh * 9) % 12;
-    else
+      my_viewer.hr_ed.setText(my_viewer.hour12_strings[my_viewer.last_h]);
+    } else {
       hour = my_viewer.last_h = (dragged_h3 * 16 + dragged_hh * 9) % 24;
+      my_viewer.hr_ed.setText(my_viewer.hour24_strings[my_viewer.last_h]);
+    }
     minute = my_viewer.last_m = (dragged_m3 * 40 + dragged_m4 * 45 + dragged_m5 * 36) % 60;
     second = my_viewer.last_s = (dragged_s3 * 40 + dragged_s4 * 45 + dragged_s5 * 36) % 60;
-    switch (my_viewer.which_unit_to_modify) {
-      case HOURS:
-        my_viewer.valueEditor.setText(String.valueOf(my_viewer.last_h));
-        break;
-      case MINUTES:
-        my_viewer.valueEditor.setText(String.valueOf(my_viewer.last_m));
-        break;
-      case SECONDS:
-        my_viewer.valueEditor.setText(String.valueOf(my_viewer.last_s));
-        break;
-    }
+    my_viewer.min_ed.setText(String.valueOf(my_viewer.last_m));
+    my_viewer.sec_ed.setText(String.valueOf(my_viewer.last_s));
     my_viewer.invalidate();
   }
 

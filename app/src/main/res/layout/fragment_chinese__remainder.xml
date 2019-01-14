@@ -46,13 +46,124 @@
         android:id="@+id/manual_buttons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/timeEditor"
         android:weightSum="1"
         android:gravity="center"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/box">
+        android:background="@drawable/box"
+        >
 
-        <Button
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/hour_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/arrow_up_float"
+                android:contentDescription="@string/increase_hour"
+                />
+            <EditText
+                android:id="@+id/hour_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/dummy_hour"
+                android:autofillHints="@string/dummy_hour"
+                tools:targetApi="o"
+                android:layout_gravity="center"
+                android:inputType="number"
+                />
+
+            <ImageButton
+                android:id="@+id/hour_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/arrow_down_float"
+                android:contentDescription="@string/decrease_hour"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quiz_time_sep"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/minute_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/arrow_up_float"
+                android:contentDescription="@string/increase_minute"
+                />
+            <EditText
+                android:id="@+id/minute_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/dummy_hour"
+                android:autofillHints="@string/dummy_hour"
+                tools:targetApi="o"
+                android:layout_gravity="center"
+                android:inputType="number"
+                />
+            <ImageButton
+                android:id="@+id/minute_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/arrow_down_float"
+                android:contentDescription="@string/decrease_minute"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quiz_time_sep"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/second_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/arrow_up_float"
+                android:contentDescription="@string/increase_second"
+                />
+            <EditText
+                android:id="@+id/second_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/dummy_hour"
+                android:autofillHints="@string/dummy_hour"
+                tools:targetApi="o"
+                android:layout_gravity="center"
+                android:inputType="number"
+                />
+
+            <ImageButton
+                android:id="@+id/second_down"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/arrow_down_float"
+                android:contentDescription="@string/decrease_second"
+                />
+
+        </LinearLayout>
+
+        <!--<Button
             android:id="@+id/decrementButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,11 +183,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.15"
-            android:text="@string/inc_button" />
+            android:text="@string/inc_button" />-->
 
     </LinearLayout>
 
-    <EditText
+    <!--<EditText
         android:id="@+id/timeEditor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -88,6 +199,6 @@
         android:inputType="number"
         android:hint="@string/autofill_hint_edittext"
         android:autofillHints="@string/autofill_hint_edittext"
-        android:selectAllOnFocus="true"/>
+        android:selectAllOnFocus="true"/>-->
 
 </RelativeLayout>

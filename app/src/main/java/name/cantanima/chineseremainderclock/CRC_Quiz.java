@@ -1,7 +1,6 @@
 package name.cantanima.chineseremainderclock;
 
 import android.view.View;
-import android.widget.LinearLayout;
 
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
@@ -26,11 +25,6 @@ public abstract class CRC_Quiz {
     if (ab != null) ab.hide();
     crc_view = crc_context.findViewById(R.id.crc_view);
     crc_view.pause_animation();
-    unitSelecter = crc_view.unitSelecter;
-    incrementer = crc_view.incrementer;
-    decrementer = crc_view.decrementer;
-    valueEditor = crc_view.valueEditor;
-    button_row = crc_view.manual_button_layout;
     tv = crc_view.tv;
     crc_drawer = crc_view.my_drawer;
     // visibility
@@ -41,11 +35,7 @@ public abstract class CRC_Quiz {
       was_in_manual_mode = false;
     else {
       was_in_manual_mode = true;
-      unitSelecter.setVisibility(INVISIBLE);
-      incrementer.setVisibility(INVISIBLE);
-      decrementer.setVisibility(INVISIBLE);
-      valueEditor.setVisibility(INVISIBLE);
-      button_row.setVisibility(INVISIBLE);
+      crc_view.set_manual_button_visibility(INVISIBLE);
     }
 
     crc_drawer.set_show_seconds(false);
@@ -92,13 +82,8 @@ public abstract class CRC_Quiz {
     crc_view.setVisibility(VISIBLE);
     android.support.v7.app.ActionBar ab = crc_context.getSupportActionBar();
     if (ab != null) ab.show();
-    if (was_in_manual_mode) {
-      unitSelecter.setVisibility(VISIBLE);
-      incrementer.setVisibility(VISIBLE);
-      decrementer.setVisibility(VISIBLE);
-      valueEditor.setVisibility(VISIBLE);
-      button_row.setVisibility(VISIBLE);
-    }
+    if (was_in_manual_mode)
+      crc_view.set_manual_button_visibility(VISIBLE);
     else
       crc_view.restart_animation_by_calendar();
   }
@@ -108,7 +93,6 @@ public abstract class CRC_Quiz {
   private Clock_Drawer crc_drawer;
   private int quiz_previous_time_visibility;
   private boolean quiz_previous_seconds_visibility, was_in_manual_mode;
-  private View unitSelecter, incrementer, decrementer, valueEditor, tv;
-  private LinearLayout button_row;
-  
+  private View tv;
+
 }

@@ -12,7 +12,9 @@ import static android.graphics.Paint.Style.STROKE;
 import static java.lang.Math.abs;
 import static java.lang.Math.floor;
 import static java.lang.Math.round;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT;
+import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT_HOUR;
+import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT_MINUTE;
+import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT_SECOND;
 
 /**
  * This class extends Clock_Drawer for the Linus design,
@@ -216,7 +218,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
     ball_paint.setColor(hour_color);
     canvas.drawLines(digi_h3_pts, circle_paint);
     //if (abs(my_viewer.last_h - hour) == 1 && my_viewer.time_guide != DECREMENT) {
-    if ((lhmod3 != hmod3) && my_viewer.time_guide != DECREMENT) {
+    if ((lhmod3 != hmod3) && my_viewer.time_guide != DECREMENT_HOUR) {
       canvas.drawLines(digi_h3_pts, 0, (lhmod3 % 3) << 2, ball_paint);
       canvas.drawLine(
           digi_h3_pts[(lhmod3 % 3) << 2],
@@ -227,7 +229,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
                   + digi_h3_pts[((hmod3 % 3) << 2) + 1]*h3off,
           ball_paint
       );
-    } else if (abs(lhmod3 - hmod3) == 1 && my_viewer.time_guide == DECREMENT) {
+    } else if (abs(lhmod3 - hmod3) == 1 && my_viewer.time_guide == DECREMENT_HOUR) {
       canvas.drawLines(digi_h3_pts, 0, (hmod3 % 3) << 2, ball_paint);
       canvas.drawLine(
               digi_h3_pts[(hmod3 % 3) << 2],
@@ -248,7 +250,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
     if (my_viewer.hour_modulus == 4) {
 
       canvas.drawLines(digi_h4_pts, circle_paint);
-      if ((lhmod4 != hmod4) && my_viewer.time_guide != DECREMENT) {
+      if ((lhmod4 != hmod4) && my_viewer.time_guide != DECREMENT_HOUR) {
         canvas.drawLines(digi_h4_pts, 0, (lhmod4 % 4) << 2, ball_paint);
         canvas.drawLine(
                 digi_h4_pts[(lhmod4 % 4) << 2],
@@ -259,7 +261,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
                         + digi_h4_pts[((hmod4 % 4) << 2) + 1]*h48off,
                 ball_paint
         );
-      } else if (abs(lhmod4 - hmod4) == 1 && my_viewer.time_guide == DECREMENT) {
+      } else if (abs(lhmod4 - hmod4) == 1 && my_viewer.time_guide == DECREMENT_HOUR) {
         canvas.drawLines(digi_h4_pts, 0, (hmod4 % 4) << 2, ball_paint);
         canvas.drawLine(
                 digi_h4_pts[(hmod4 % 4) << 2],
@@ -278,7 +280,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
     } else { // short_hand modulo 8
 
       canvas.drawLines(digi_h8_pts, circle_paint);
-      if ((lhmod4 != hmod4) && my_viewer.time_guide != DECREMENT) {
+      if ((lhmod4 != hmod4) && my_viewer.time_guide != DECREMENT_HOUR) {
         canvas.drawLines(digi_h8_pts, 0, (lhmod4 % 8) << 2, ball_paint);
         canvas.drawLine(
                 digi_h8_pts[(lhmod4 % 8) << 2],
@@ -289,7 +291,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
                         + digi_h8_pts[((hmod4 % 8) << 2) + 1]*h48off,
                 ball_paint
         );
-      } else if (abs(lhmod4 - hmod4) == 1 && my_viewer.time_guide == DECREMENT) {
+      } else if (abs(lhmod4 - hmod4) == 1 && my_viewer.time_guide == DECREMENT_HOUR) {
         canvas.drawLines(digi_h8_pts, 0, (hmod4 % 8) << 2, ball_paint);
         canvas.drawLine(
                 digi_h8_pts[(hmod4 % 8) << 2],
@@ -312,7 +314,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
     // minute, modulo 3
 
     canvas.drawLines(digi_m3_pts, circle_paint);
-    if ((lmmod3 != mmod3) && my_viewer.time_guide != DECREMENT) {
+    if ((lmmod3 != mmod3) && my_viewer.time_guide != DECREMENT_MINUTE) {
       canvas.drawLines(digi_m3_pts, 0, (lmmod3 % 3) << 2, ball_paint);
       canvas.drawLine(
               digi_m3_pts[(lmmod3 % 3) << 2],
@@ -323,7 +325,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
                       + digi_m3_pts[((mmod3 % 3) << 2) + 1]*m3off,
               ball_paint
       );
-    } else if (abs(lmmod3 - mmod3) == 1 && my_viewer.time_guide == DECREMENT) {
+    } else if (abs(lmmod3 - mmod3) == 1 && my_viewer.time_guide == DECREMENT_MINUTE) {
       canvas.drawLines(digi_m3_pts, 0, (mmod3 % 3) << 2, ball_paint);
       canvas.drawLine(
               digi_m3_pts[(mmod3 % 3) << 2],
@@ -342,7 +344,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
     // minute, modulo 4
 
     canvas.drawLines(digi_m4_pts, circle_paint);
-    if ((lmmod4 != mmod4) && my_viewer.time_guide != DECREMENT) {
+    if ((lmmod4 != mmod4) && my_viewer.time_guide != DECREMENT_MINUTE) {
       canvas.drawLines(digi_m4_pts, 0, (lmmod4 % 4) << 2, ball_paint);
       canvas.drawLine(
               digi_m4_pts[(lmmod4 % 4) << 2],
@@ -353,7 +355,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
                       + digi_m4_pts[((mmod4 % 4) << 2) + 1]*m4off,
               ball_paint
       );
-    } else if (abs(lmmod4 - mmod4) == 1 && my_viewer.time_guide == DECREMENT) {
+    } else if (abs(lmmod4 - mmod4) == 1 && my_viewer.time_guide == DECREMENT_MINUTE) {
       canvas.drawLines(digi_m4_pts, 0, (mmod4 % 4) << 2, ball_paint);
       canvas.drawLine(
               digi_m4_pts[(mmod4 % 4) << 2],
@@ -372,7 +374,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
     // minute, modulo 5
 
     canvas.drawLines(digi_m5_pts, circle_paint);
-    if ((lmmod5 != mmod5) && my_viewer.time_guide != DECREMENT) {
+    if ((lmmod5 != mmod5) && my_viewer.time_guide != DECREMENT_MINUTE) {
       canvas.drawLines(digi_m5_pts, 0, (lmmod5 % 5) << 2, ball_paint);
       canvas.drawLine(
               digi_m5_pts[(lmmod5 % 5) << 2],
@@ -383,7 +385,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
                       + digi_m5_pts[((mmod5 % 5) << 2) + 1]*m5off,
               ball_paint
       );
-    } else if (abs(lmmod5 - mmod5) == 1 && my_viewer.time_guide == DECREMENT) {
+    } else if (abs(lmmod5 - mmod5) == 1 && my_viewer.time_guide == DECREMENT_MINUTE) {
       canvas.drawLines(digi_m5_pts, 0, (mmod5 % 5) << 2, ball_paint);
       canvas.drawLine(
               digi_m5_pts[(mmod5 % 5) << 2],
@@ -406,7 +408,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
       // second, modulo 3
 
       canvas.drawLines(digi_s3_pts, circle_paint);
-      if ((lsmod3 != smod3) && my_viewer.time_guide != DECREMENT) {
+      if ((lsmod3 != smod3) && my_viewer.time_guide != DECREMENT_SECOND) {
           canvas.drawLines(digi_s3_pts, 0, (lsmod3 % 3) << 2, ball_paint);
           canvas.drawLine(
                   digi_s3_pts[(lsmod3 % 3) << 2],
@@ -417,7 +419,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
                           + digi_s3_pts[((smod3 % 3) << 2) + 1] * s3off,
                   ball_paint
           );
-      } else if (abs(lsmod3 - smod3) == 1 && my_viewer.time_guide == DECREMENT) {
+      } else if (abs(lsmod3 - smod3) == 1 && my_viewer.time_guide == DECREMENT_SECOND) {
           canvas.drawLines(digi_s3_pts, 0, (smod3 % 3) << 2, ball_paint);
           canvas.drawLine(
                   digi_s3_pts[(smod3 % 3) << 2],
@@ -436,7 +438,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
       // second, modulo 4
 
       canvas.drawLines(digi_s4_pts, circle_paint);
-      if ((lsmod4 != smod4) && my_viewer.time_guide != DECREMENT) {
+      if ((lsmod4 != smod4) && my_viewer.time_guide != DECREMENT_SECOND) {
           canvas.drawLines(digi_s4_pts, 0, (lsmod4 % 4) << 2, ball_paint);
           canvas.drawLine(
                   digi_s4_pts[(lsmod4 % 4) << 2],
@@ -447,7 +449,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
                           + digi_s4_pts[((smod4 % 4) << 2) + 1] * s4off,
                   ball_paint
           );
-      } else if (abs(lsmod4 - smod4) == 1 && my_viewer.time_guide == DECREMENT) {
+      } else if (abs(lsmod4 - smod4) == 1 && my_viewer.time_guide == DECREMENT_SECOND) {
           canvas.drawLines(digi_s4_pts, 0, (smod4 % 4) << 2, ball_paint);
           canvas.drawLine(
                   digi_s4_pts[(smod4 % 4) << 2],
@@ -466,7 +468,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
       // second, modulo 5
 
       canvas.drawLines(digi_s5_pts, circle_paint);
-      if ((lsmod5 != smod5) && my_viewer.time_guide != DECREMENT) {
+      if ((lsmod5 != smod5) && my_viewer.time_guide != DECREMENT_SECOND) {
           canvas.drawLines(digi_s5_pts, 0, (lsmod5 % 5) << 2, ball_paint);
           canvas.drawLine(
                   digi_s5_pts[(lsmod5 % 5) << 2],
@@ -477,7 +479,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
                           + digi_s5_pts[((smod5 % 5) << 2) + 1] * s5off,
                   ball_paint
           );
-      } else if (abs(lsmod5 - smod5) == 1 && my_viewer.time_guide == DECREMENT) {
+      } else if (abs(lsmod5 - smod5) == 1 && my_viewer.time_guide == DECREMENT_SECOND) {
           canvas.drawLines(digi_s5_pts, 0, (smod5 % 5) << 2, ball_paint);
           canvas.drawLine(
                   digi_s5_pts[(smod5 % 5) << 2],

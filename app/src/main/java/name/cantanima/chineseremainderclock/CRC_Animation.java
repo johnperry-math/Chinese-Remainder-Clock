@@ -93,7 +93,7 @@ public class CRC_Animation implements Runnable {
 
   }
 
-  public void immediate_animation() { immediate = true; }
+  void immediate_animation() { immediate = true; }
 
   /** CRC_View that we are animating */
   private CRC_View my_view;

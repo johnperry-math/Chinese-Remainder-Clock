@@ -104,5 +104,11 @@
     <string name="shady_manual_hint">Передвинь фигуру вверх или вниз чтобы скоректировать время</string>
     <string name="bubbly_manual_hint">Дотронься до пузыря чтобы скоректировать врем</string>
     <string name="archy_manual_hint">Дотронься до арки чтобы скоректировать врем</string>
+    <string name="increase_hour">Увеличить время на один час</string>
+    <string name="increase_minute">Увеличить время на одну минуту</string>
+    <string name="increase_second">Увеличить время на одну секунду</string>
+    <string name="decrease_hour">Уменшать время на один час</string>
+    <string name="decrease_minute">Уменшать время на одну минуту</string>
+    <string name="decrease_second">Уменшать время на одну секунду</string>
 
 </resources>

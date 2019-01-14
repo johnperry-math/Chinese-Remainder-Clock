@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="dummy_content" translatable="false">dummy</string>
-
     <!-- Strings related to UI -->
 
     <string name="app_menu_title">CR Uhr</string>
@@ -42,28 +40,10 @@
 
     <!-- Strings related to Help (not sure I actually use this) -->
 
-    <string name="title_activity_help" translatable="false">Hilfe</string>
-    <string name="title_activity_settings" translatable="false">Argh</string>
-
     <!-- Strings related to Settings -->
     <string name="action_settings">Einstellungen</string>
 
     <string name="version">Version</string>
-    <string name="current_version" translatable="false">2.071</string>
-    <string name="first_run" translatable="false">erster_run</string>
-    <string name="saved_color" translatable="false">gespeicherte_farbe</string>
-    <string name="saved_drawer" translatable="false">gespeicherte_schublade</string>
-    <string name="saved_show_seconds" translatable="false">gespeicherte_zeige_sekunden</string>
-    <string name="saved_show_time" translatable="false">gespeicherte_zeige_zeit</string>
-    <string name="saved_reverse_orientation" translatable="false">gespeicherte_umgekehrte_orientierung</string>
-    <string name="saved_bg_color" translatable="false">gespeicherte_sw_farbe</string>
-    <string name="saved_line_color" translatable="false">gespeicherte_linien_farbe</string>
-    <string name="saved_hour_color" translatable="false">gespeicherte_stunden_farbe</string>
-    <string name="saved_minute_color" translatable="false">gespeicherte_minuten_farbe</string>
-    <string name="saved_second_color" translatable="false">gespeicherte_sekunden_farbe</string>
-    <string name="saved_bw_hour_color" translatable="false">gespeicherte_sw_stunden_farbe</string>
-    <string name="saved_bw_minute_color" translatable="false">gespeicherte_sw_minuten_farbe</string>
-    <string name="saved_bw_second_color" translatable="false">gespeicherte_sw_sekunden_farbe</string>
 
     <string name="pref_category_design">Design</string>
     <string name="pref_category_design_summ">Design-Einstellungen</string>
@@ -137,7 +117,6 @@
     <string name="quiz_hour_hint">HH</string>
     <string name="quiz_time_sep">:</string>
     <string name="quiz_minute_hint">MM</string>
-    <string name="dummy_time" translatable="false">99:99:99</string>
     <string name="autofill_hint_edittext">Los!</string>
 
     <string name="quiz_next">Weiter!</string>
@@ -154,8 +133,19 @@
     <string name="quiz_correct">Richtig!</string>
     <string name="has">l&#xe4;sst</string>
     <string name="remainder">den Rest</string>
-    <string name="period" translatable="false">.</string>
 
     <string name="dial_use">Antworte durch bewegen der Uhrzeiger</string>
+    <string name="ringy_manual_hint">Kugel bewegen um Zeit einzustellen</string>
+    <string name="vertie_manual_hint">Kugel bewegen um Zeit einzustellen</string>
+    <string name="linus_manual_hint">Linien bewegen um Zeit einzustellen</string>
+    <string name="bubbly_manual_hint">Blasen bewegen um Zeit einzustellen</string>
+    <string name="shady_manual_hint">Hoch- und Runterziehen in den   Polygonen um Zeit einzustellen</string>
+    <string name="archy_manual_hint">Bogen bewegen um Zeit einzustellen</string>
+    <string name="increase_hour">Die Stunde erhöhen</string>
+    <string name="increase_minute">Die Minute erhöhen</string>
+    <string name="increase_second">Die Sekunde erhöhen</string>
+    <string name="decrease_hour">Der Stunde erringern</string>
+    <string name="decrease_minute">Der Minute erringern</string>
+    <string name="decrease_second">Der Sekunde verringern</string>
 
 </resources>

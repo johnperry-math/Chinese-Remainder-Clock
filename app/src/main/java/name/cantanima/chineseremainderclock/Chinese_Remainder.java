@@ -18,11 +18,10 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 /**
@@ -227,19 +226,37 @@ public class Chinese_Remainder
       // and should have crc_view as an appropriate listener
       // (since that's where I take care of the interaction)
 
-      Button upButton = rootView.findViewById(R.id.decrementButton);
+      //Button upButton = rootView.findViewById(R.id.decrementButton);
+      ImageButton upButton = rootView.findViewById(R.id.hour_up);
+      upButton.setOnClickListener(crc_view);
+      upButton.setVisibility(View.INVISIBLE);
+      upButton = rootView.findViewById(R.id.hour_down);
+      upButton.setOnClickListener(crc_view);
+      upButton.setVisibility(View.INVISIBLE);
+      upButton = rootView.findViewById(R.id.minute_up);
+      upButton.setOnClickListener(crc_view);
+      upButton.setVisibility(View.INVISIBLE);
+      upButton = rootView.findViewById(R.id.minute_down);
+      upButton.setOnClickListener(crc_view);
+      upButton.setVisibility(View.INVISIBLE);
+      upButton = rootView.findViewById(R.id.second_up);
+      upButton.setOnClickListener(crc_view);
+      upButton.setVisibility(View.INVISIBLE);
+      upButton = rootView.findViewById(R.id.second_down);
       upButton.setOnClickListener(crc_view);
       upButton.setVisibility(View.INVISIBLE);
 
-      Button dnButton = rootView.findViewById(R.id.incrementButton);
-      dnButton.setOnClickListener(crc_view);
-      dnButton.setVisibility(View.INVISIBLE);
-
-      Spinner spinner = rootView.findViewById(R.id.selectUnit);
-      spinner.setOnItemSelectedListener(crc_view);
-      spinner.setVisibility(View.INVISIBLE);
-
-      EditText timeEditor = rootView.findViewById(R.id.timeEditor);
+      EditText timeEditor = rootView.findViewById(R.id.hour_edit);
+      timeEditor.setOnEditorActionListener(crc_view);
+      timeEditor.setVisibility(View.INVISIBLE);
+      timeEditor.setSelectAllOnFocus(true);
+      timeEditor.setOnClickListener(crc_view);
+      timeEditor = rootView.findViewById(R.id.minute_edit);
+      timeEditor.setOnEditorActionListener(crc_view);
+      timeEditor.setVisibility(View.INVISIBLE);
+      timeEditor.setSelectAllOnFocus(true);
+      timeEditor.setOnClickListener(crc_view);
+      timeEditor = rootView.findViewById(R.id.second_edit);
       timeEditor.setOnEditorActionListener(crc_view);
       timeEditor.setVisibility(View.INVISIBLE);
       timeEditor.setSelectAllOnFocus(true);
@@ -249,7 +266,7 @@ public class Chinese_Remainder
       button_row.setVisibility(View.INVISIBLE);
 
       // make crc_view listen to things that have to be shown/hidden and such
-      crc_view.setButtonsToListen(upButton, dnButton, spinner, timeEditor, button_row);
+      crc_view.setButtonsToListen(rootView);
 
       // crc_view also needs to show/hide the time, and for some reason
       // I separated that from the buttons

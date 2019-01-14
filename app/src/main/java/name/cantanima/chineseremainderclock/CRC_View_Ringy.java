@@ -16,7 +16,9 @@ import static java.lang.Math.cos;
 import static java.lang.Math.round;
 import static java.lang.Math.sin;
 
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT;
+import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT_HOUR;
+import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT_MINUTE;
+import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT_SECOND;
 
 /**
  * This class extends Clock_Drawer for the Ringy design,
@@ -107,18 +109,6 @@ public class CRC_View_Ringy extends Clock_Drawer {
         my_viewer.last_h = hour = (lhmod3 * 16 + lhmod4 * 9) % 24;
       my_viewer.last_m = minute = (lmmod3 * 40 + lmmod4 * 45 + lmmod5 * 36) % 60;
       my_viewer.last_s = second = (lsmod3 * 40 + lsmod4 * 45 + lsmod5 * 36) % 60;
-      // update the valueEditor (Manual mode, after all)
-      switch (my_viewer.which_unit_to_modify) {
-        case HOURS:
-          my_viewer.valueEditor.setText(String.valueOf(hour));
-          break;
-        case MINUTES:
-          my_viewer.valueEditor.setText(String.valueOf(minute));
-          break;
-        case SECONDS:
-          my_viewer.valueEditor.setText(String.valueOf(second));
-          break;
-      }
       // write the correct time
       draw_time(hour, minute, second);
     }
@@ -139,7 +129,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
       hangle3 = (float) (2 * PI / 3 * hmod3 - PI / 2);
       hangle4 = (float) (2 * PI / my_viewer.hour_modulus * hmod4 - PI / 2);
     } else {
-      if (my_viewer.time_guide == DECREMENT) {
+      if (my_viewer.time_guide == DECREMENT_HOUR) {
         if (hmod3 == 3) hmod3 = 0;
         else if (lhmod3 == 0) lhmod3 = 3;
         if (hmod4 == my_viewer.hour_modulus) hmod4 = 0;
@@ -157,7 +147,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
       mangle4 = (float) (2 * PI / 4 * mmod4 - PI / 2);
       mangle5 = (float) (2 * PI / 5 * mmod5 - PI / 2);
     } else {
-      if (my_viewer.time_guide == DECREMENT) {
+      if (my_viewer.time_guide == DECREMENT_MINUTE) {
         if (mmod3 == 3) mmod3 = 0;
         else if (lmmod3 == 0) lmmod3 = 3;
         if (mmod4 == 4) mmod4 = 0;
@@ -178,7 +168,7 @@ public class CRC_View_Ringy extends Clock_Drawer {
       sangle4 = (float) (2 * PI / 4 * smod4 - PI / 2);
       sangle5 = (float) (2 * PI / 5 * smod5 - PI / 2);
     } else {
-      if (my_viewer.time_guide == DECREMENT) {
+      if (my_viewer.time_guide == DECREMENT_SECOND) {
         if (smod3 == 3) smod3 = 0;
         else if (lsmod3 == 0) lsmod3 = 3;
         if (smod4 == 4) smod4 = 0;

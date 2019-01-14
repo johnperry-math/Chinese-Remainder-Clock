@@ -21,8 +21,12 @@ import static java.lang.Math.min;
 import static java.util.Calendar.MINUTE;
 import static java.util.Calendar.SECOND;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.CALENDAR;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT;
-import static name.cantanima.chineseremainderclock.CRC_View.Modification.INCREMENT;
+import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT_HOUR;
+import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT_MINUTE;
+import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREMENT_SECOND;
+import static name.cantanima.chineseremainderclock.CRC_View.Modification.INCREMENT_HOUR;
+import static name.cantanima.chineseremainderclock.CRC_View.Modification.INCREMENT_MINUTE;
+import static name.cantanima.chineseremainderclock.CRC_View.Modification.INCREMENT_SECOND;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.LEAVE_BE;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_TIME;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_VALUE;
@@ -77,14 +81,9 @@ public abstract class Clock_Drawer {
       minute = time.get(MINUTE);
       second = time.get(SECOND);
     } else if (my_viewer.time_guide == NEW_VALUE) { // user has manually entered a value for a unit
-      hour = my_viewer.last_h;
-      minute = my_viewer.last_m;
-      second = my_viewer.last_s;
-      switch (my_viewer.unitSelecter.getSelectedItemPosition()) {
-        case 0: hour = my_viewer.new_time_value; break;
-        case 1: minute = my_viewer.new_time_value; break;
-        case 2: second = my_viewer.new_time_value; break;
-      }
+      hour = my_viewer.new_hour_value;
+      minute = my_viewer.new_minute_value;
+      second = my_viewer.new_second_value;
     } else if (my_viewer.time_guide == NEW_TIME) { // quiz has manually set the time
       hour = my_viewer.new_hour_value;
       minute = my_viewer.new_minute_value;
@@ -97,19 +96,14 @@ public abstract class Clock_Drawer {
       hour = my_viewer.last_h;
       minute = my_viewer.last_m;
       second = my_viewer.last_s;
-      int direction;
-      if (my_viewer.time_guide == INCREMENT) direction = 1;
-      else direction = -1;
-      switch (my_viewer.which_unit_to_modify) {
-        case HOURS:
-          hour += direction;
-          break;
-        case MINUTES:
-          minute += direction;
-          break;
-        case SECONDS:
-          second += direction;
-          break;
+      switch (my_viewer.time_guide) {
+        case INCREMENT_HOUR:   hour   += 1; break;
+        case INCREMENT_MINUTE: minute += 1; break;
+        case INCREMENT_SECOND: second += 1; break;
+        case DECREMENT_HOUR:   hour   -= 1; break;
+        case DECREMENT_MINUTE: minute -= 1; break;
+        case DECREMENT_SECOND: second -= 1; break;
+        default: break;
       }
     }
 
@@ -141,37 +135,20 @@ public abstract class Clock_Drawer {
 
       // if the user manually modified the time, instructor the animator to leave it be
       // on the next pass
-      if (my_viewer.time_guide == INCREMENT || my_viewer.time_guide == DECREMENT) {
+      if (
+          my_viewer.time_guide == INCREMENT_HOUR   || my_viewer.time_guide == DECREMENT_HOUR   ||
+          my_viewer.time_guide == INCREMENT_MINUTE || my_viewer.time_guide == DECREMENT_MINUTE ||
+          my_viewer.time_guide == INCREMENT_SECOND || my_viewer.time_guide == DECREMENT_SECOND
+      ) {
         my_viewer.time_guide = LEAVE_BE;
       }
 
-      // this seems necessary for some reason I haven't yet worked out
-      if (my_viewer.unitSelecter != null) {
-        switch (my_viewer.unitSelecter.getSelectedItemPosition()) {
-          case 0:
-            //default:
-            switch (my_viewer.hour_modulus) {
-              case 4:
-                //default:
-                my_viewer.valueEditor.setText(hour12_strings[hour]);
-                my_viewer.valueEditor.selectAll();
-                break;
-              case 8:
-                my_viewer.valueEditor.setText(hour24_strings[hour]);
-                my_viewer.valueEditor.selectAll();
-                break;
-            }
-            break;
-          case 1:
-            my_viewer.valueEditor.setText(String.valueOf(minute));
-            my_viewer.valueEditor.selectAll();
-            break;
-          case 2:
-            my_viewer.valueEditor.setText(String.valueOf(second));
-            my_viewer.valueEditor.selectAll();
-            break;
-        }
-      }
+      if (my_viewer.hour_modulus == 4)
+        my_viewer.hr_ed.setText(my_viewer.hour12_strings[hour]);
+      else
+        my_viewer.hr_ed.setText(my_viewer.hour24_strings[hour]);
+      my_viewer.min_ed.setText(String.valueOf(minute));
+      my_viewer.sec_ed.setText(String.valueOf(second));
     }
 
   }
@@ -232,7 +209,6 @@ public abstract class Clock_Drawer {
 
     minsec_strings = my_viewer.minsec_strings;
     hour12_strings = my_viewer.hour12_strings;
-    hour24_strings = my_viewer.hour24_strings;
 
   }
 
@@ -373,6 +349,10 @@ public abstract class Clock_Drawer {
    */
   protected void notify_released(MotionEvent e) {
     dragged_unit = TOUCHED_UNIT.NONE;
+    // update the valueEditor (Manual mode, after all)
+    my_viewer.hr_ed.setText(String.valueOf(hour));
+    my_viewer.min_ed.setText(String.valueOf(minute));
+    my_viewer.sec_ed.setText(String.valueOf(second));
     my_viewer.invalidate();
   }
 
@@ -440,7 +420,6 @@ public abstract class Clock_Drawer {
   private static final String colon_str = ":";
   private static String [] minsec_strings = {};
   private static String [] hour12_strings = {};
-  private static String [] hour24_strings = {};
 
   /** stuff to listen to or update */
   CRC_View my_viewer;

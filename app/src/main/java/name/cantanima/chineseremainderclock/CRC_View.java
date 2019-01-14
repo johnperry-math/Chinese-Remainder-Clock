@@ -13,12 +13,11 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
@@ -55,7 +54,7 @@ import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_TIM
 public class CRC_View
     extends View
     implements OnTouchListener, OnCheckedChangeListener, OnClickListener,
-               OnItemSelectedListener, OnEditorActionListener,
+               OnEditorActionListener,
                SharedPreferences.OnSharedPreferenceChangeListener
 {
 
@@ -250,22 +249,20 @@ public class CRC_View
 
   /**
    * Buttons we need to listen to in order to implement manual mode.
-   * //@param pb "pause button", currently labeled "Manual" because that's how we use it
-   * @param dn decrement the time (Manual mode)
-   * @param up increment the time (Manual mode)
-   * @param spin which time unit to modify (Manual mode)
-   * @param vb specify a specific value for the time unit (Manual mode)
    */
-  //
-  // see code for indication of which parameter corresponds to which button
   void setButtonsToListen(
-      /*Switch pb, */Button dn, Button up, Spinner spin, EditText vb, LinearLayout ll
+      View layout
   ) {
-    incrementer = up;
-    decrementer = dn;
-    unitSelecter = spin;
-    valueEditor = vb;
-    manual_button_layout = ll;
+    hr_up = layout.findViewById(R.id.hour_up);
+    hr_ed = layout.findViewById(R.id.hour_edit);
+    hr_dn = layout.findViewById(R.id.hour_down);
+    min_up = layout.findViewById(R.id.minute_up);
+    min_ed = layout.findViewById(R.id.minute_edit);
+    min_dn = layout.findViewById(R.id.minute_down);
+    sec_up = layout.findViewById(R.id.second_up);
+    sec_ed = layout.findViewById(R.id.second_edit);
+    sec_dn = layout.findViewById(R.id.second_down);
+    manual_button_layout = layout.findViewById(R.id.manual_buttons);
   }
 
   /**
@@ -307,11 +304,7 @@ public class CRC_View
       // animation is paused, let's resume it
       my_animator.resume();
       // outside & showing buttons; hide them
-      valueEditor.setVisibility(INVISIBLE);
-      unitSelecter.setVisibility(INVISIBLE);
-      incrementer.setVisibility(INVISIBLE);
-      decrementer.setVisibility(INVISIBLE);
-      manual_button_layout.setVisibility(INVISIBLE);
+      set_manual_button_visibility(INVISIBLE);
       // when drawing, we need to check the calendar for the time
       time_guide = CALENDAR;
 
@@ -322,28 +315,24 @@ public class CRC_View
       my_drawer.notify_manual(true);
       // animation is current, let's pause it
       my_animator.pause();
-      // set up manual interface
-      unitSelecter.setSelection(0);
-      switch (hour_modulus) {
-        case 4:
-          //default:
-          valueEditor.setText(hour12_strings[last_h]);
-          break;
-        case 8:
-          valueEditor.setText(hour24_strings[last_h]);
-          break;
-      }
-      valueEditor.selectAll(); // (this doesn't actually seem to work)
       // show manual buttons
-      incrementer.setVisibility(VISIBLE);
-      decrementer.setVisibility(VISIBLE);
-      unitSelecter.setVisibility(VISIBLE);
-      valueEditor.setVisibility(VISIBLE);
-      manual_button_layout.setVisibility(VISIBLE);
-      valueEditor.selectAll(); // (this might work)
-
+      set_manual_button_visibility(VISIBLE);
     }
 
+  }
+  
+  public void set_manual_button_visibility(int visibility) {
+    hr_up.setVisibility(visibility);
+    hr_ed.setVisibility(visibility);
+    hr_dn.setVisibility(visibility);
+    min_up.setVisibility(visibility);
+    min_ed.setVisibility(visibility);
+    min_dn.setVisibility(visibility);
+    sec_up.setVisibility(visibility);
+    sec_ed.setVisibility(visibility);
+    sec_dn.setVisibility(visibility);
+    manual_button_layout.setVisibility(visibility);
+    manual_button_layout.requestFocus();
   }
 
   /**
@@ -412,72 +401,35 @@ public class CRC_View
   @Override
   public void onClick(View v) {
 
-    if (v == incrementer) {
-      time_guide = Modification.INCREMENT;
+    if (v == hr_up || v == min_up || v == sec_up || v == hr_dn || v == min_dn || v == sec_dn) {
+      if (v == hr_up)
+        time_guide = Modification.INCREMENT_HOUR;
+      else if (v == min_up)
+        time_guide = Modification.INCREMENT_MINUTE;
+      else if (v == sec_up)
+        time_guide = Modification.INCREMENT_SECOND;
+      else if (v == hr_dn)
+        time_guide = Modification.DECREMENT_HOUR;
+      else if (v == min_dn)
+        time_guide = Modification.DECREMENT_MINUTE;
+      else // v == sec_dn
+        time_guide = Modification.DECREMENT_SECOND;
       my_offset = 0.0f;
       my_animator.resume();
       my_animator.pause();
-    } else if (v == decrementer) {
-      time_guide = Modification.DECREMENT;
-      my_offset = 0.0f;
-      my_animator.resume();
-      my_animator.pause();
-    } else if (v == valueEditor)
-      new_time_value = Integer.valueOf(valueEditor.getText().toString());
-
-  }
-
-  /**
-   * Handle selection of unit by user.
-   * @param parent should be the ListAdapter of units
-   * @param view should be the Spinner
-   * @param position which position in the list was chosen
-   * @param id I dunno; not used
-   */
-  @Override
-  public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-    // only unitSelecter should be talking to us, but you never know
-    if (parent == unitSelecter) {
-      switch (position) {
-        case 0:
-          which_unit_to_modify = Units.HOURS;
-          switch (hour_modulus) {
-            case 4:
-                //default:
-              valueEditor.setText(hour12_strings[last_h]);
-              break;
-            case 8:
-              valueEditor.setText(hour24_strings[last_h]);
-              break;
-          }
-          break;
-        case 1:
-          which_unit_to_modify = Units.MINUTES;
-          valueEditor.setText(minsec_strings[last_m]);
-          break;
-        case 2:
-          which_unit_to_modify = Units.SECONDS;
-          valueEditor.setText(minsec_strings[last_s]);
-          break;
-      }
+    } else if (v == hr_ed || v == min_ed || v == sec_ed) {
+      new_time_value = Integer.valueOf(((EditText) v).getText().toString());
     }
-    valueEditor.selectAll();
 
   }
-
-  /** Interface requires me to implement this, but nothing needs doing. */
-  @Override
-  public void onNothingSelected(AdapterView<?> parent) { }
 
   /** Handle when the user enters a new time. */
   @Override
   public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
     new_time_value = Integer.valueOf(textView.getText().toString());
     time_guide = Modification.NEW_VALUE;
-    valueEditor.setEnabled(false);
-    valueEditor.setEnabled(true);
-    valueEditor.selectAll();
+    textView.setEnabled(false);
+    textView.setEnabled(true);
     my_offset = 0.0f;
     my_animator.resume();
     my_animator.pause();
@@ -582,24 +534,18 @@ public class CRC_View
   private Mode currentMode = Mode.AUTOMATIC;
 
   /** increment or decrement the time (Manual mode only) */
-  protected Button incrementer, decrementer;
-  /** select which unit to modify (Manual mode only) */
-  protected Spinner unitSelecter;
+  protected ImageButton hr_up, hr_dn, min_up, min_dn, sec_up, sec_dn;
   /** layout that contains the manual buttons */
   protected LinearLayout manual_button_layout;
 
   /**
    *  enter the new value for the time unit specified by unitSelecter (Manual mode only)
-   *  @see #unitSelecter
    */
-  protected EditText valueEditor;
+  protected EditText hr_ed, min_ed, sec_ed;
   /**
    * where to print the time
    */
   protected TextView tv;
-
-  /* useful for Log.d when debugging */
-  //protected static final String tag = "CRC_View";
 
   /** preferences file */
   protected SharedPreferences my_prefs;
@@ -619,9 +565,17 @@ public class CRC_View
     /** read the time from the calendar */
     CALENDAR,
     /** increment the specified time unit by 1 */
-    INCREMENT,
+    INCREMENT_HOUR,
+    /** increment the specified time unit by 1 */
+    INCREMENT_MINUTE,
+    /** increment the specified time unit by 1 */
+    INCREMENT_SECOND,
     /** decrement the specified time unit by 1 */
-    DECREMENT,
+    DECREMENT_HOUR,
+    /** decrement the specified time unit by 1 */
+    DECREMENT_MINUTE,
+    /** decrement the specified time unit by 1 */
+    DECREMENT_SECOND,
     /**
      *  a new value for the specified unit only; read from valueEditor
      *  @see Units

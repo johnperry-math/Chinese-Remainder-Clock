@@ -143,12 +143,14 @@ public abstract class Clock_Drawer {
         my_viewer.time_guide = LEAVE_BE;
       }
 
-      if (my_viewer.hour_modulus == 4)
-        my_viewer.hr_ed.setText(my_viewer.hour12_strings[hour]);
-      else
-        my_viewer.hr_ed.setText(my_viewer.hour24_strings[hour]);
-      my_viewer.min_ed.setText(String.valueOf(minute));
-      my_viewer.sec_ed.setText(String.valueOf(second));
+      if (my_viewer.hr_ed != null) {
+        if (my_viewer.hour_modulus == 4)
+          my_viewer.hr_ed.setText(my_viewer.hour12_strings[hour]);
+        else
+          my_viewer.hr_ed.setText(my_viewer.hour24_strings[hour]);
+        my_viewer.min_ed.setText(String.valueOf(minute));
+        my_viewer.sec_ed.setText(String.valueOf(second));
+      }
     }
 
   }

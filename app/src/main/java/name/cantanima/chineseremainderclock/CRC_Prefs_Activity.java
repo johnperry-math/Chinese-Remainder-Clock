@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class CRC_Prefs_Activity
         extends PreferenceActivity
@@ -16,9 +18,18 @@ public class CRC_Prefs_Activity
 
         super.onCreate(savedInstanceState);
         crc_prefs = new CRC_Preferences();
-        getFragmentManager().beginTransaction()
+        crc_prefs_preview = new CRC_Preferences_Preview();
+        /*getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, crc_prefs)
-                .commit();
+                .commit();*/
+        View v = findViewById(android.R.id.content);
+        ViewGroup parent = (ViewGroup) v.getParent();
+        int index = parent.indexOfChild(v);
+        parent.removeView(v);
+        v = getLayoutInflater().inflate(R.layout.preferences_frame_layout, parent, false);
+        parent.addView(v, index);
+        getFragmentManager().beginTransaction().add(R.id.first_block, crc_prefs_preview).commit();
+        getFragmentManager().beginTransaction().add(R.id.second_block, crc_prefs).commit();
         PreferenceManager.getDefaultSharedPreferences(this)
                 .registerOnSharedPreferenceChangeListener(this);
 
@@ -57,4 +68,5 @@ public class CRC_Prefs_Activity
     }
 
     protected CRC_Preferences crc_prefs;
+    protected CRC_Preferences_Preview crc_prefs_preview;
 }

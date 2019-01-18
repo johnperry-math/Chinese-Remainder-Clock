@@ -299,6 +299,6 @@ public class Chinese_Remainder
   }
 
   // used when debugging w/Log.d()
-  // private static final String tag = "Chinese Remainer";
+  // private static final String tag = "Chinese Remainder";
 
 }

@@ -26,7 +26,7 @@
         android:shadowDx="5"
         android:shadowDy="5"
         android:shadowRadius="3"
-        android:text="99:99:99"
+        android:text="@string/dummy_time"
         android:textColor="@color/white"
         android:textSize="27sp"
         android:layout_gravity="center"/>

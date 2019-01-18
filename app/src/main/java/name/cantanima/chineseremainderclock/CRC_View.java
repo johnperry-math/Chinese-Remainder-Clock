@@ -11,8 +11,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
@@ -553,11 +551,6 @@ public class CRC_View
   /** which clock design to use */
   protected Clock_Drawer my_drawer;
 
-  /** which unit is being modified (Manual mode only) */
-  enum Units { HOURS, MINUTES, SECONDS }
-  /** which unit is being modified (Manual mode only) */
-  protected Units which_unit_to_modify;
-
   /** How to determine the time when re-drawing the clock. */
   enum Modification {
     /** do not change the time */
@@ -578,7 +571,6 @@ public class CRC_View
     DECREMENT_SECOND,
     /**
      *  a new value for the specified unit only; read from valueEditor
-     *  @see Units
      */
     NEW_VALUE,
     /** a new value for all units of time; read from short_hand, minute, second */

@@ -3,7 +3,7 @@
 
     <string name="app_menu_title">Orologio Cinese</string>
     <string name="app_name">Orologio Cinese del Resto</string>
-    <string name="welcome_string">Benvenuto nella App dell&#8217;Orologio Cinese del Resto!</string>
+    <string name="welcome_string">Benvenuto nella App dell’Orologio Cinese!</string>
     <string name="welcome_dialog_text">
         La barra degli strumenti contiene Informazioni su come funziona l&#8217;Orologio Cinese del Resto
         (punto interrogativo), Impostazioni per scegliere ad esempio il design (chiave inglese)
@@ -113,25 +113,25 @@
     <string name="quiz_result_keep_day_job">Proprio non ci siamo!</string>
     <string name="quiz_result_you_earned">Hai totalizzato</string>
     <string name="quiz_result_dismiss_dialog_great">Fantastico!</string>
-    <string name="quiz_result_dismiss_dialog_better">Ritenta!</string>
-    <string name="quiz_result_dismiss_dialog_keep">Oops/&#8320;</string>
+    <string name="quiz_result_dismiss_dialog_better">Vai!</string>
+    <string name="quiz_result_dismiss_dialog_keep">Oops!</string>
     <string name="quiz_sorry">Sbagliato! Era</string>
     <string name="quiz_correct">Giusto!</string>
     <string name="has">ha</string>
     <string name="remainder">resto</string>
 
-    <string name="dial_use">Muovere la lancetta per rispondere</string>
+    <string name="dial_use">Muovi la lancetta per rispondere</string>
     <string name="ringy_manual_hint">Muovi le palline per settare il tempo</string>
     <string name="vertie_manual_hint">Muovi le palline per settare il tempo</string>
     <string name="linus_manual_hint">Muovi le linee per settare il tempo</string>
     <string name="bubbly_manual_hint">Muovi le bolle per settare il tempo</string>
     <string name="shady_manual_hint">Trascina su o gi nei poligoni per settare il tempo</string>
     <string name="archy_manual_hint">Muovi gli archi per settare il tempo</string>
-    <string name="increase_hour">aumenta l\'ora</string>
-    <string name="increase_minute">aumenta il minuto</string>
-    <string name="increase_second">aumenta il secondo</string>
-    <string name="decrease_hour">diminuisce l\'ora</string>
-    <string name="decrease_minute">diminuisce il minuto</string>
-    <string name="decrease_second">diminuisce il secondo</string>
+    <string name="increase_hour">aumenta l\\\'ora</string>
+    <string name="increase_minute">aumenta i minuti</string>
+    <string name="increase_second">aumenta i secondi</string>
+    <string name="decrease_hour">diminuisci l\\\'ora</string>
+    <string name="decrease_minute">diminuisci i minuti</string>
+    <string name="decrease_second">diminuisci i secondi</string>
 
 </resources>

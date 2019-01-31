@@ -141,11 +141,11 @@
     <string name="bubbly_manual_hint">Blasen bewegen um Zeit einzustellen</string>
     <string name="shady_manual_hint">Hoch- und Runterziehen in den   Polygonen um Zeit einzustellen</string>
     <string name="archy_manual_hint">Bogen bewegen um Zeit einzustellen</string>
-    <string name="increase_hour">Die Stunde erhöhen</string>
-    <string name="increase_minute">Die Minute erhöhen</string>
-    <string name="increase_second">Die Sekunde erhöhen</string>
-    <string name="decrease_hour">Der Stunde erringern</string>
-    <string name="decrease_minute">Der Minute erringern</string>
-    <string name="decrease_second">Der Sekunde verringern</string>
+    <string name="increase_hour">Die Stunden erhöhen</string>
+    <string name="increase_minute">Die Minuten erhöhen</string>
+    <string name="increase_second">Die Sekunden erhöhen</string>
+    <string name="decrease_hour">Der Stunden verringern</string>
+    <string name="decrease_minute">Der Minuten verringern</string>
+    <string name="decrease_second">Der Sekunden verringern</string>
 
 </resources>

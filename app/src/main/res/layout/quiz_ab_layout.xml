@@ -232,6 +232,7 @@
         app:short_min="0"
         app:short_num="12"
         app:short_min_val="0"
+        app:text_size="36"
         />
 
     <Space

@@ -123,6 +123,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/seconds_colon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/quiz_time_sep"
@@ -163,53 +164,6 @@
                 />
 
         </LinearLayout>
-
-        <!--<Spinner
-            android:id="@+id/selectUnit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/unitStrings"
-            android:spinnerMode="dropdown"
-            android:focusable="true"
-            android:layout_gravity="center_horizontal" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="1"
-            android:id="@+id/manual_buttons"
-            android:background="@drawable/box">
-
-            <Button
-                style="?android:attr/buttonBarStyle"
-                android:id="@+id/decrementButton"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_weight="0.5"
-                android:text="@string/dec_button" />
-
-            <Button
-                style="?android:attr/buttonBarStyle"
-                android:id="@+id/incrementButton"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_weight="0.5"
-                android:text="@string/inc_button" />
-
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/timeEditor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal"
-            android:ems="5"
-            android:hint="@string/autofill_hint_edittext"
-            android:autofillHints="@string/autofill_hint_edittext"
-            android:imeOptions="actionDone"
-            android:selectAllOnFocus="true"
-            android:inputType="number" />-->
 
     </LinearLayout>
 </RelativeLayout>

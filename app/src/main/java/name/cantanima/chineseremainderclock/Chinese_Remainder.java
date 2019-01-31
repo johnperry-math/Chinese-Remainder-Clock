@@ -69,8 +69,7 @@ public class Chinese_Remainder
         !pref.getString(getString(R.string.version), version_string).equals(version_string)) {
 
       new AlertDialog.Builder(this).setTitle(
-                                        getString(R.string.welcome_string) +
-                                            " (v " + getString(R.string.current_version) + ")"
+                                        getString(R.string.welcome_string)
                                    )
                                    .setMessage(getString(R.string.welcome_dialog_text))
                                    .setIcon(R.drawable.ic_action_info)

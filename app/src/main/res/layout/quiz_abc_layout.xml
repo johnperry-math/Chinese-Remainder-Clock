@@ -285,15 +285,6 @@
         android:layout_height="16sp"
         />
 
-    <!--<name.cantanima.chineseremainderclock.FlexibleNumberPicker
-        android:id="@+id/quiz_ab_number_picker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:text_size="16.0"
-        app:high_size="18.0"
-        app:back_color="@drawable/transparent_dialog"
-        />-->
-
     <name.cantanima.chineseremainderclock.Dial_Entry
         android:id="@+id/quiz_abc_60_number_picker"
         android:layout_width="144dp"
@@ -301,6 +292,7 @@
         android:layout_gravity="center"
         app:two_handed="false"
         app:time_text="true"
+        app:text_size="36"
         />
 
     <Space

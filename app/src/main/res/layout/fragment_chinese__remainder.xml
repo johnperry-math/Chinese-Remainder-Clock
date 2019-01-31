@@ -125,6 +125,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/seconds_colon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/quiz_time_sep"
@@ -163,42 +164,6 @@
 
         </LinearLayout>
 
-        <!--<Button
-            android:id="@+id/decrementButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.15"
-            android:text="@string/dec_button" />
-
-        <Spinner
-            android:id="@+id/selectUnit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/unitStrings"
-            android:focusable="true"
-            android:spinnerMode="dropdown" />
-
-        <Button
-            android:id="@+id/incrementButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.15"
-            android:text="@string/inc_button" />-->
-
     </LinearLayout>
-
-    <!--<EditText
-        android:id="@+id/timeEditor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:ems="5"
-        android:imeOptions="actionDone"
-        android:inputType="number"
-        android:hint="@string/autofill_hint_edittext"
-        android:autofillHints="@string/autofill_hint_edittext"
-        android:selectAllOnFocus="true"/>-->
 
 </RelativeLayout>

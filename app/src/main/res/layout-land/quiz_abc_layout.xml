@@ -320,6 +320,7 @@
         android:layout_gravity="center"
         app:two_handed="false"
         app:time_text="true"
+        app:text_size="36"
         />
 
     <Space

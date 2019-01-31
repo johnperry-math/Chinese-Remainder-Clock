@@ -19,9 +19,6 @@ public class CRC_Prefs_Activity
         super.onCreate(savedInstanceState);
         crc_prefs = new CRC_Preferences();
         crc_prefs_preview = new CRC_Preferences_Preview();
-        /*getFragmentManager().beginTransaction()
-                .replace(android.R.id.content, crc_prefs)
-                .commit();*/
         View v = findViewById(android.R.id.content);
         ViewGroup parent = (ViewGroup) v.getParent();
         int index = parent.indexOfChild(v);

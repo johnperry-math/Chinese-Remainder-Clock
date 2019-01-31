@@ -185,7 +185,7 @@ class Dial_Entry(context: Context, attrs: AttributeSet)
             text_paint.getTextBounds(text, 0, text.length, text_bounds)
             canvas.drawText(
                     text,
-                    cx - text_bounds.width() / 2, cy + (radius - text_bounds.height()) / 2,
+                    cx - text_bounds.width() / 2, cy + radius / 2,
                     text_paint
             )
         }

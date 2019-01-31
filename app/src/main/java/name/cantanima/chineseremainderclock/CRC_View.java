@@ -225,6 +225,13 @@ public class CRC_View
       default: my_drawer = new CRC_View_Ringy(this); break;
     }
     my_drawer.set_show_seconds(show_seconds);
+    if (currentMode == Mode.MANUAL && sec_dn != null) {
+      int visibility = show_seconds ? VISIBLE : INVISIBLE;
+      sec_dn.setVisibility(visibility);
+      sec_up.setVisibility(visibility);
+      sec_ed.setVisibility(visibility);
+      sec_col.setVisibility(visibility);
+    }
     my_drawer.set_show_time(show_time);
     my_drawer.set_reverse_orientation(saved_unit_orientation);
     if (hour_12_24) {
@@ -260,6 +267,7 @@ public class CRC_View
     sec_up = layout.findViewById(R.id.second_up);
     sec_ed = layout.findViewById(R.id.second_edit);
     sec_dn = layout.findViewById(R.id.second_down);
+    sec_col = layout.findViewById(R.id.seconds_colon);
     manual_button_layout = layout.findViewById(R.id.manual_buttons);
   }
 
@@ -326,16 +334,24 @@ public class CRC_View
     min_up.setVisibility(visibility);
     min_ed.setVisibility(visibility);
     min_dn.setVisibility(visibility);
-    sec_up.setVisibility(visibility);
-    sec_ed.setVisibility(visibility);
-    sec_dn.setVisibility(visibility);
+    if (my_drawer.show_seconds && visibility == VISIBLE) {
+      sec_up.setVisibility(VISIBLE);
+      sec_ed.setVisibility(VISIBLE);
+      sec_dn.setVisibility(VISIBLE);
+      sec_col.setVisibility(VISIBLE);
+    } else {
+      sec_up.setVisibility(INVISIBLE);
+      sec_ed.setVisibility(INVISIBLE);
+      sec_dn.setVisibility(INVISIBLE);
+      sec_col.setVisibility(INVISIBLE);
+    }
     manual_button_layout.setVisibility(visibility);
     manual_button_layout.requestFocus();
   }
 
   /**
    *
-   * Show or hide buttons, enable dragging.
+   * Enable dragging.
    * @param v the View that was touched (might not be this)
    * @param event the MotionEvent that occurred
    *
@@ -543,7 +559,7 @@ public class CRC_View
   /**
    * where to print the time
    */
-  protected TextView tv;
+  protected TextView tv, sec_col;
 
   /** preferences file */
   protected SharedPreferences my_prefs;

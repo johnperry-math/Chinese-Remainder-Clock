@@ -12,7 +12,7 @@
         android:icon="@android:drawable/ic_menu_edit"
         android:orderInCategory="200"
         android:title="@string/quiz_menu_title"
-        app:showAsAction="always"
+        app:showAsAction="ifRoom"
         >
         <menu>
             <item
@@ -52,10 +52,10 @@
         android:icon="@android:drawable/ic_menu_help"
         android:orderInCategory="300"
         android:title="@string/info_button_text"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
     <item
         android:id="@+id/automanual"
         android:icon="@drawable/ic_pointing_hand"
         android:title="@string/menu_manual"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 </menu>

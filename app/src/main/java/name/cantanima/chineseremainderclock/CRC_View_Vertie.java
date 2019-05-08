@@ -117,7 +117,7 @@ public class CRC_View_Vertie extends CRC_View_Polygonal {
             lhmod4 = (lhmod4 + 1) % 4;
           }
         } else {
-          hmod4 = round((moved_offset + 1/4) * 8 - 0.5f) - 1;
+          hmod4 = round((moved_offset + 0.25f) * 8 - 0.5f) - 1;
           if (hmod4 < 0) hmod4 = 7;
           lhmod4 = (hmod4 == 0) ? 7 : hmod4 - 1;
           h48off = 8 * moved_offset - (float) floor(8 * moved_offset);

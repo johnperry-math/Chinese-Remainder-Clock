@@ -579,6 +579,6 @@ public class CRC_View_Ringy extends Clock_Drawer {
   /** time for a frame during animation */
   private float step = 0.04f;
 
-  private Path background = new Path();
+  private final Path background = new Path();
 
 }

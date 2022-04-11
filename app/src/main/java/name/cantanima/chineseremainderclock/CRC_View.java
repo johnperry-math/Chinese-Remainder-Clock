@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -87,7 +88,7 @@ public class CRC_View
       boolean saved_unit_orientation = prefs.getBoolean(my_owner.getString(R.string.saved_reverse_orientation), false);
       int saved_drawer;
       try {
-        saved_drawer = Integer.valueOf(prefs.getString(my_owner.getString(R.string.saved_drawer), String.valueOf(3)));
+        saved_drawer = Integer.parseInt(prefs.getString(my_owner.getString(R.string.saved_drawer), String.valueOf(3)));
       } catch (java.lang.ClassCastException e) {
         saved_drawer = prefs.getInt(my_owner.getString(R.string.saved_drawer), 0);
       }
@@ -218,10 +219,11 @@ public class CRC_View
     switch (which_drawer) {
       case 0: my_drawer = new CRC_View_Arcy(this); break;
       case 1: my_drawer = new CRC_View_Bubbly(this); break;
-      case 2: my_drawer = new CRC_View_Linus(this); break;
-      case 3: my_drawer = new CRC_View_Ringy(this); break;
-      case 4: my_drawer = new CRC_View_Shady(this); break;
-      case 5: my_drawer = new CRC_View_Vertie(this); break;
+      case 2: my_drawer = new CRC_View_Handy(this); break;
+      case 3: my_drawer = new CRC_View_Linus(this); break;
+      case 4: my_drawer = new CRC_View_Ringy(this); break;
+      case 5: my_drawer = new CRC_View_Shady(this); break;
+      case 6: my_drawer = new CRC_View_Vertie(this); break;
       default: my_drawer = new CRC_View_Ringy(this); break;
     }
     my_drawer.set_show_seconds(show_seconds);
@@ -362,7 +364,7 @@ public class CRC_View
     // let's get some information on where the touch occurred
     float x = event.getRawX();
     float y = event.getRawY();
-    int my_loc [] = { 0, 0 };
+    int[] my_loc = { 0, 0 };
     getLocationOnScreen(my_loc);
     float xmax = my_loc[0] + getWidth();
     float ymax = my_loc[1] + getHeight();
@@ -432,7 +434,7 @@ public class CRC_View
       my_animator.resume();
       my_animator.pause();
     } else if (v == hr_ed || v == min_ed || v == sec_ed) {
-      new_time_value = Integer.valueOf(((EditText) v).getText().toString());
+      new_time_value = Integer.parseInt(((EditText) v).getText().toString());
     }
 
   }
@@ -440,7 +442,7 @@ public class CRC_View
   /** Handle when the user enters a new time. */
   @Override
   public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-    new_time_value = Integer.valueOf(textView.getText().toString());
+    new_time_value = Integer.parseInt(textView.getText().toString());
     time_guide = Modification.NEW_VALUE;
     textView.setEnabled(false);
     textView.setEnabled(true);
@@ -462,7 +464,7 @@ public class CRC_View
     boolean saved_seconds = pref.getBoolean(my_owner.getString(R.string.saved_show_seconds), false);
     boolean saved_time = pref.getBoolean(my_owner.getString(R.string.saved_show_time), false);
     boolean saved_reverse_orientation = pref.getBoolean(my_owner.getString(R.string.saved_reverse_orientation), false);
-    int saved_drawer = Integer.valueOf(pref.getString(my_owner.getString(R.string.saved_drawer), "0"));
+    int saved_drawer = Integer.parseInt(pref.getString(my_owner.getString(R.string.saved_drawer), "0"));
     int saved_hour_color = pref.getInt(my_owner.getString(R.string.saved_hour_color), BLUE);
     int saved_minute_color = pref.getInt(my_owner.getString(R.string.saved_minute_color), RED);
     int saved_second_color = pref.getInt(my_owner.getString(R.string.saved_second_color), GREEN);
@@ -627,4 +629,7 @@ public class CRC_View
 
   /** quiz data: new time to show */
   int new_hour_value, new_minute_value, new_second_value;
+
+  @SuppressWarnings("All")
+  private final String TAG = "CRC_View";
 }

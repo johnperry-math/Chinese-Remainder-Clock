@@ -48,6 +48,7 @@
     <string-array name="drawStrings">
         <item>Archy: Guarda la posizione degli archi</item>
         <item>Bubbly: Conta le bolle</item>
+        <item>Handy: Guarda le mani del orologio</item> <!-- TODO -->
         <item>Linus: Conta i lati marcati</item>
         <item>Ringy: Guarda la posizione delle palline</item>
         <item>Shady: I resti appaiono dentro a poligoni</item>
@@ -127,6 +128,7 @@
     <string name="bubbly_manual_hint">Muovi le bolle per settare il tempo</string>
     <string name="shady_manual_hint">Trascina su o gi nei poligoni per settare il tempo</string>
     <string name="archy_manual_hint">Muovi gli archi per settare il tempo</string>
+    <string name="handy_manual_hint">Muovi le mani per settare il tempo</string> <!-- TODO -->
     <string name="increase_hour">aumenta l\\\'ora</string>
     <string name="increase_minute">aumenta i minuti</string>
     <string name="increase_second">aumenta i secondi</string>

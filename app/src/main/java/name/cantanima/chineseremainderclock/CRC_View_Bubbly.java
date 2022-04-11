@@ -414,7 +414,7 @@ public class CRC_View_Bubbly extends Clock_Drawer {
 
     }
 
-    // set up the paths for hte polygons
+    // set up the paths for the polygons
     // most are set up according to strict trigonometry,
     // but for alignment purposes triangles are somewhat offset
 

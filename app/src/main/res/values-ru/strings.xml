@@ -93,6 +93,7 @@
     <string-array name="drawStrings">
         <item>Archy: положение арки показывает остаток</item>
         <item>Bubbly: количество пузырей показывает остаток</item>
+        <item>Handy: Guarda le mani del orologio</item> <!-- TODO -->
         <item>Linus: количество линий показывает остаток</item>
         <item>Ringy: положение мяча в круге показывает остаток</item>
         <item>Shady: остаток записан в затемнённом многоугольнике</item>
@@ -104,6 +105,7 @@
     <string name="shady_manual_hint">Передвинь фигуру вверх или вниз чтобы скоректировать время</string>
     <string name="bubbly_manual_hint">Дотронься до пузыря чтобы скоректировать врем</string>
     <string name="archy_manual_hint">Дотронься до арки чтобы скоректировать врем</string>
+    <string name="handy_manual_hint">Дотронься до руки чтобы скоректировать врем</string> <!-- TODO -->
     <string name="increase_hour">Увеличить время на один час</string>
     <string name="increase_minute">Увеличить время на одну минуту</string>
     <string name="increase_second">Увеличить время на одну секунду</string>

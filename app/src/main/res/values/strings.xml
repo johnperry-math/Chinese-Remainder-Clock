@@ -78,6 +78,7 @@
     <string-array name="drawStrings">
         <item>Archy: arc\'s position on circle tells remainder</item>
         <item>Bubbly: number of filled bubbles tells remainder</item>
+        <item>Handy: traditional analog hands tell remainder</item>
         <item>Linus: number of highlighted sides tells remainder</item>
         <item>Ringy: ball\'s position on ring tells remainder</item>
         <item>Shady: remainders displayed in shaded polygon</item>
@@ -171,6 +172,7 @@
     <string name="bubbly_manual_hint">Touch bubbles to adjust time</string>
     <string name="shady_manual_hint">Drag up or down in polygons to adjust time</string>
     <string name="archy_manual_hint">Touch arch to adjust time</string>
+    <string name="handy_manual_hint">Touch hands to adjust time</string>
 
     <string name="increase_hour">increment hour</string>
     <string name="increase_minute">increment minute</string>

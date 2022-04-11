@@ -36,7 +36,7 @@ import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_VAL
  * Draws the clock. Implement all designs as a subclass of this one.
  * When you implement the constructor, you can call initialize_fields() in order to gain access
  * to routine and desirable information.
- * The two functions you absolutely have to implement is draw() and preferred_step();
+ * The two functions you absolutely have to implement are draw() and preferred_step();
  * see them for details.
  * You will probably also want to implement recalculate_positions().
  * In many cases, and probably most, you should use recalculate_positions() to set up Paths

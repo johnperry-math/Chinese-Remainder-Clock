@@ -53,6 +53,7 @@
     <string-array name="drawStrings">
         <item>Archy: Rest = Bogenposition auf Kreis</item>
         <item>Bubbly: Rest = Anzahl der gef&#xfc;llten Blasen</item>
+        <item>Handy: Guarda le mani del orologio</item> <!-- TODO -->
         <item>Linus: Rest = Anzahl der markierten Seiten</item>
         <item>Ringy: Rest = Ballposition auf Kreis</item>
         <item>Shady: Der Rest wird in einem schattigen Polygon dargestellt</item>
@@ -141,6 +142,7 @@
     <string name="bubbly_manual_hint">Blasen bewegen um Zeit einzustellen</string>
     <string name="shady_manual_hint">Hoch- und Runterziehen in den   Polygonen um Zeit einzustellen</string>
     <string name="archy_manual_hint">Bogen bewegen um Zeit einzustellen</string>
+    <string name="handy_manual_hint">TODO</string> <!-- TODO -->
     <string name="increase_hour">Die Stunden erhöhen</string>
     <string name="increase_minute">Die Minuten erhöhen</string>
     <string name="increase_second">Die Sekunden erhöhen</string>

@@ -1,11 +1,13 @@
 package name.cantanima.chineseremainderclock
 
-import android.graphics.*
+import android.graphics.Canvas
 import android.graphics.Color.*
-import name.cantanima.chineseremainderclock.CRC_View.Modification
-import kotlin.math.PI
-import kotlin.math.cos
-import kotlin.math.sin
+import android.graphics.Paint
+import android.graphics.Path
+import android.util.Log
+import android.view.MotionEvent
+import java.util.*
+import kotlin.math.*
 
 class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
 
@@ -66,74 +68,123 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
         usual_cleanup()
     }
 
+    fun angle(value: Int, old_value: Int, offset: Float, modulus: Int, unchanging_time: Boolean): Float {
+        return if (unchanging_time) {
+            (2 * PI / modulus * value - PI / 2).toFloat()
+        } else {
+            (2 * PI / modulus * (value * offset + old_value * (1 - offset)) - PI / 2).toFloat()
+        }
+    }
+    
     override fun recalculate_positions() {
         setup_time()
         super.recalculate_positions()
         radius = if (w < h) w / 2f else h / 2f
+        hrad = radius / 2f
+        mrad = radius * 3f / 4f
+        srad = radius * 4f / 5f
         edge = Path()
         edge.addCircle(cx, cy, radius * 19f / 20f, Path.Direction.CW)
         edge.close()
         val offset = minOf(my_viewer.my_offset, 1f)
+        if (dragging) {
+            when (dragged_unit) {
+                TOUCHED_UNIT.HOUR3 -> {
+                    val h3 = round((new_angle + PI/2)/(2*PI/3)).toInt()
+                    hour = if (my_viewer.hour_modulus == 4) (4*h3 + 9*(hour % 4)) % 12
+                    else (16*h3 + 9*(hour % 4)) % 24
+                }
+                TOUCHED_UNIT.HOURH -> {
+                    val h4 = round((new_angle + PI/2)/(2*PI/my_viewer.hour_modulus)).toInt()
+                    hour = if (my_viewer.hour_modulus == 4) (4*(hour % 3) + 9*h4) % 12
+                    else (16*(hour % 3) + 9*h4) % 24
+                }
+                TOUCHED_UNIT.MIN3 -> {
+                    val m3 = round((new_angle + PI/2)/(2*PI/3)).toInt()
+                    minute = (m3 * 40 + (minute % 4) * 45 + (minute % 5) * 36) % 60
+                }
+                TOUCHED_UNIT.MIN4 -> {
+                    val m4 = round((new_angle + PI/2)/(2*PI/4)).toInt()
+                    minute = ((minute % 3) * 40 + m4 * 45 + (minute % 5) * 36) % 60
+                }
+                TOUCHED_UNIT.MIN5 -> {
+                    val m5 = round((new_angle + PI/2)/(2*PI/5)).toInt()
+                    minute = ((minute % 3) * 40 + (minute % 4) * 45 + m5 * 36) % 60
+                }
+                TOUCHED_UNIT.SEC3 -> {
+                    val s3 = round((new_angle + PI/2)/(2*PI/3)).toInt()
+                    second = (s3 * 40 + (second % 4) * 45 + (second % 5) * 36) % 60
+                }
+                TOUCHED_UNIT.SEC4 -> {
+                    val s4 = round((new_angle + PI/2)/(2*PI/4)).toInt()
+                    second = ((second % 3) * 40 + s4 * 45 + (second % 5) * 36) % 60
+                }
+                TOUCHED_UNIT.SEC5 -> {
+                    val s5 = round((new_angle + PI/2)/(2*PI/5)).toInt()
+                    second = ((second % 3) * 40 + (second % 4) * 45 + s5 * 36) % 60
+                }
+                else -> {}
+            }
+            my_viewer.last_h = hour
+            my_viewer.last_m = minute
+            my_viewer.last_s = second
+        }
         val h3 = if (hour % 3 == 0) 3 else hour % 3
         val h4 = if (hour % my_viewer.hour_modulus == 0) my_viewer.hour_modulus else hour % my_viewer.hour_modulus
         val lh3 = my_viewer.last_h % 3
         val lh4 = my_viewer.last_h % my_viewer.hour_modulus
-        val hangle3: Double
-        val hangle4 : Double
-        if (hour == my_viewer.last_h) {
-            hangle3 = 2 * PI / 3 * h3 - PI / 2
-            hangle4 = 2 * PI / my_viewer.hour_modulus * h4 - PI / 2
-        } else {
-            hangle3 = 2 * Math.PI / 3 * (h3 * offset + lh3 * (1 - offset)) - Math.PI / 2
-            hangle4 = 2 * Math.PI / my_viewer.hour_modulus * (h4 * offset + lh4 * (1 - offset)) - Math.PI / 2
-        }
-        val hrad = radius / 2f
-        hour3 = hand_box(cx, cy, hangle3.toFloat(), 10f, hrad)
-        hour4 = hand_box(cx, cy, hangle4.toFloat(), 12f, hrad)
+        val hangle3 = angle(h3, lh3, offset, 3, hour == my_viewer.last_h)
+        val hangle4 = angle(h4, lh4, offset, my_viewer.hour_modulus, hour == my_viewer.last_h)
+        hour3 = hand_box(cx, cy, hangle3, 10f, hrad)
+        hour4 = hand_box(cx, cy, hangle4, 12f, hrad)
         val m3 = if (minute % 3 == 0) 3 else minute % 3
         val m4 = if (minute % 4 == 0) 4 else minute % 4
         val m5 = if (minute % 5 == 0) 5 else minute % 5
         val lm3 = my_viewer.last_m % 3
         val lm4 = my_viewer.last_m % 4
         val lm5 = my_viewer.last_m % 5
-        val mangle3: Double
-        val mangle4: Double
-        val mangle5: Double
-        if (my_viewer.last_m == minute) {
-            mangle3 = 2 * PI / 3 * m3 - PI / 2
-            mangle4 = 2 * PI / 4 * m4 - PI / 2
-            mangle5 = 2 * PI / 5 * m5 - PI / 2
-        } else {
-            mangle3 = 2 * PI / 3 * (m3 * offset + lm3 * (1 - offset)) - PI / 2
-            mangle4 = 2 * PI / 4 * (m4 * offset + lm4 * (1 - offset)) - PI / 2
-            mangle5 = 2 * PI / 5 * (m5 * offset + lm5 * (1 - offset)) - PI / 2
-        }
-        val mrad = radius * 3f / 4f
-        min3 = hand_box(cx, cy, mangle3.toFloat(), 20f, mrad)
-        min4 = hand_box(cx, cy, mangle4.toFloat(), 30f, mrad)
-        min5 = hand_box(cx, cy, mangle5.toFloat(), 40f, mrad)
+        val mangle3 = angle(m3, lm3, offset, 3, minute == my_viewer.last_m)
+        val mangle4 = angle(m4, lm4, offset, 4, minute == my_viewer.last_m)
+        val mangle5 = angle(m5, lm5, offset, 5, minute == my_viewer.last_m)
+        min3 = hand_box(cx, cy, mangle3, 20f, mrad)
+        min4 = hand_box(cx, cy, mangle4, 30f, mrad)
+        min5 = hand_box(cx, cy, mangle5, 40f, mrad)
         val s3 = if (second % 3 == 0) 3 else second % 3
         val s4 = if (second % 4 == 0) 4 else second % 4
         val s5 = if (second % 5 == 0) 5 else second % 5
         val ls3 = my_viewer.last_s % 3
         val ls4 = my_viewer.last_s % 4
         val ls5 = my_viewer.last_s % 5
-        val sangle3: Double
-        val sangle4: Double
-        val sangle5: Double
-        if (my_viewer.last_s == second) {
-            sangle3 = 2 * PI / 3 * s3 - PI / 2
-            sangle4 = 2 * PI / 4 * s4 - PI / 2
-            sangle5 = 2 * PI / 5 * s5 - PI / 2
-        } else {
-            sangle3 = 2 * PI / 3 * (s3 * offset + ls3 * (1 - offset)) - PI / 2
-            sangle4 = 2 * PI / 4 * (s4 * offset + ls4 * (1 - offset)) - PI / 2
-            sangle5 = 2 * PI / 5 * (s5 * offset + ls5 * (1 - offset)) - PI / 2
+        val sangle3 = angle(s3, ls3, offset, 3, second == my_viewer.last_s)
+        val sangle4 = angle(s4, ls4, offset, 4, second == my_viewer.last_s)
+        val sangle5 = angle(s5, ls5, offset, 5, second == my_viewer.last_s)
+        sec3 = hand_box(cx, cy, sangle3, 2f, srad)
+        sec4 = hand_box(cx, cy, sangle4, 2f, srad)
+        sec5 = hand_box(cx, cy, sangle5, 2f, srad)
+        if (dragging) {
+            val dragged_path = when (dragged_unit) {
+                in arrayOf(TOUCHED_UNIT.HOUR3, TOUCHED_UNIT.HOURH) -> {
+                    hand_box(cx, cy, new_angle, 25f, hrad)
+                }
+                in arrayOf(TOUCHED_UNIT.MIN3, TOUCHED_UNIT.MIN4, TOUCHED_UNIT.MIN5) -> {
+                    hand_box(cx, cy, new_angle, 25f, mrad)
+                }
+                else -> {
+                    hand_box(cx, cy, new_angle, 25f, srad)
+                }
+            }
+            when (dragged_unit) {
+                TOUCHED_UNIT.HOUR3 -> hour3 = dragged_path
+                TOUCHED_UNIT.HOURH -> hour4 = dragged_path
+                TOUCHED_UNIT.MIN3 -> min3 = dragged_path
+                TOUCHED_UNIT.MIN4 -> min4 = dragged_path
+                TOUCHED_UNIT.MIN5 -> min5 = dragged_path
+                TOUCHED_UNIT.SEC3 -> sec3 = dragged_path
+                TOUCHED_UNIT.SEC4 -> sec4 = dragged_path
+                TOUCHED_UNIT.SEC5 -> sec5 = dragged_path
+                else -> {}
+            }
         }
-        val srad = radius * 4f / 5f
-        sec3 = hand_box(cx, cy, sangle3.toFloat(), 2f, srad)
-        sec4 = hand_box(cx, cy, sangle4.toFloat(), 2f, srad)
-        sec5 = hand_box(cx, cy, sangle5.toFloat(), 2f, srad)
     }
     
     fun hand_box(cx: Float, cy: Float, angle: Float, width: Float, length: Float): Path {
@@ -166,7 +217,111 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
         return 0.15f
     }
 
+    fun matches(x: Float, y: Float, touch_radius: Float, time: Int, last_time: Int, offset: Float, modulus: Int): Boolean {
+        val mod_time = time % modulus
+        val mod_last = last_time % modulus
+        val time_angle = angle(mod_time, mod_last, offset, modulus, time == last_time)
+        val time_x = cx + touch_radius * cos(time_angle)
+        val time_y = cy + touch_radius * sin(time_angle)
+        return sqrt((x - time_x).pow(2) + (y - time_y).pow(2)) < 20
+    }
+
+    override fun notify_touched(e: MotionEvent?) {
+        Log.i(TAG, "notify_touched: $e")
+        if (e != null) {
+            var searching = true
+            val x = e.x
+            val y = e.y
+            val touch_radius = (sqrt((cx - x).pow(2) + (cy - y).pow(2)))
+            val offset = minOf(1f, my_viewer.my_offset)
+            if (matches(x, y, touch_radius, hour, my_viewer.last_h, offset, 3) && touch_radius <= hrad) {
+                dragged_unit = TOUCHED_UNIT.HOUR3
+                searching = false
+            } else if (matches(x, y, touch_radius, hour, my_viewer.last_h, offset, my_viewer.hour_modulus) && touch_radius <= hrad) {
+                dragged_unit = TOUCHED_UNIT.HOURH
+                searching = false
+            } else if (matches(x, y, touch_radius, minute, my_viewer.last_m, offset, 3)) {
+                dragged_unit = TOUCHED_UNIT.MIN3
+                searching = false
+            } else if (matches(x, y, touch_radius, minute, my_viewer.last_m, offset, 4)) {
+                dragged_unit = TOUCHED_UNIT.MIN4
+                searching = false
+            } else if (matches(x, y, touch_radius, minute, my_viewer.last_m, offset, 5)) {
+                dragged_unit = TOUCHED_UNIT.MIN5
+                searching = false
+            } else if (matches(x, y, touch_radius, second, my_viewer.last_s, offset, 3)) {
+                dragged_unit = TOUCHED_UNIT.SEC3
+                searching = false
+            } else if (matches(x, y, touch_radius, second, my_viewer.last_s, offset, 4)) {
+                dragged_unit = TOUCHED_UNIT.SEC4
+                searching = false
+            } else if (matches(x, y, touch_radius, second, my_viewer.last_s, offset, 5)) {
+                dragged_unit = TOUCHED_UNIT.SEC5
+                searching = false
+            }
+
+            if (!searching) {
+                dragging = true
+                step = 0f
+                Log.i(TAG, "notify_touched: $dragged_unit")
+            }
+        }
+    }
+
+    override fun notify_released(e: MotionEvent?) {
+
+        if (dragging) {
+            dragging = false
+            step = 0.04f
+            if (dragged_unit != null) {
+                when (dragged_unit) {
+                    TOUCHED_UNIT.HOUR3, TOUCHED_UNIT.MIN3, TOUCHED_UNIT.SEC3 -> {
+                        last_mod = round(3f / (2f * PI) * new_angle  + 3f / 4f).toInt()
+                        if (last_mod < 0) last_mod += 3
+                    }
+                    TOUCHED_UNIT.HOURH -> {
+                        last_mod = round((my_viewer.hour_modulus) / (6f * PI) * new_angle  + my_viewer.hour_modulus / 12f).toInt()
+                        if (last_mod < 0) last_mod += my_viewer.hour_modulus
+                    }
+                    TOUCHED_UNIT.MIN4, TOUCHED_UNIT.SEC4 -> {
+                        last_mod = round(2f / PI * new_angle + 1f).toInt()
+                        if (last_mod < 0) last_mod += 4
+
+                    }
+                    TOUCHED_UNIT.MIN5, TOUCHED_UNIT.SEC5 -> {
+                        last_mod = round(5f / (2f * PI) * new_angle + 5f / 4f).toInt()
+                        if (last_mod < 0) last_mod += 5
+                    }
+                    else -> TODO()
+                }
+            }
+        }
+        just_released = true
+        my_viewer.invalidate()
+
+    }
+
+    override fun notify_dragged(e: MotionEvent?) {
+        if (e != null) {
+            val new_millis = Calendar.getInstance()[Calendar.MILLISECOND]
+            // position is determined using basic trigonometry
+            // (arctangent of y/x after translated to center of View)
+            // position is determined using basic trigonometry
+            // (arctangent of y/x after translated to center of View)
+            if (new_millis - millis > 100 || millis - new_millis > 0) {
+                val x = e.x
+                val y = e.y
+                new_angle = atan2((y - cy).toDouble(), (x - cx).toDouble()).toFloat()
+                my_viewer.invalidate()
+            }
+
+        }
+    }
+
     var radius = 0f
+    var hrad = 0f
+    var mrad = 0f
+    var srad = 0f
     lateinit var edge: Path
     lateinit var hour3: Path
     lateinit var hour4: Path
@@ -180,6 +335,12 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
     val mod3_color = GREEN
     val mod4_color = BLUE
     val mod5_color = RED
+
+    var step = 0.4f
+    var dragging = false
+    var last_mod = 0
+    var new_angle = 0f
+    var just_released = false
 
     @Suppress("Unused", "PropertyName")
     val TAG = "CRC_View_Handy"

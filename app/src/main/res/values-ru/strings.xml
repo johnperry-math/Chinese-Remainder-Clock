@@ -93,7 +93,7 @@
     <string-array name="drawStrings">
         <item>Archy: положение арки показывает остаток</item>
         <item>Bubbly: количество пузырей показывает остаток</item>
-        <item>Handy: Guarda le mani del orologio</item> <!-- TODO -->
+        <item>Handy: стрелки часов показывают остаток</item> <!-- TODO -->
         <item>Linus: количество линий показывает остаток</item>
         <item>Ringy: положение мяча в круге показывает остаток</item>
         <item>Shady: остаток записан в затемнённом многоугольнике</item>
@@ -103,14 +103,14 @@
     <string name="vertie_manual_hint">Передвинь мячь чтобы скоректировать время</string>
     <string name="linus_manual_hint">Передвинь линию чтобы скоректировать время</string>
     <string name="shady_manual_hint">Передвинь фигуру вверх или вниз чтобы скоректировать время</string>
-    <string name="bubbly_manual_hint">Дотронься до пузыря чтобы скоректировать врем</string>
-    <string name="archy_manual_hint">Дотронься до арки чтобы скоректировать врем</string>
-    <string name="handy_manual_hint">Дотронься до руки чтобы скоректировать врем</string> <!-- TODO -->
+    <string name="bubbly_manual_hint">Дотронься до пузыря чтобы скоректировать время</string>
+    <string name="archy_manual_hint">Дотронься до арки чтобы скоректировать время</string>
+    <string name="handy_manual_hint">Дотронься до стрелки часов чтобы скоректировать время</string>
     <string name="increase_hour">Увеличить время на один час</string>
     <string name="increase_minute">Увеличить время на одну минуту</string>
     <string name="increase_second">Увеличить время на одну секунду</string>
-    <string name="decrease_hour">Уменшать время на один час</string>
-    <string name="decrease_minute">Уменшать время на одну минуту</string>
-    <string name="decrease_second">Уменшать время на одну секунду</string>
+    <string name="decrease_hour">Уменьшать время на один час</string>
+    <string name="decrease_minute">Уменьшать время на одну минуту</string>
+    <string name="decrease_second">Уменьшать время на одну секунду</string>
 
 </resources>

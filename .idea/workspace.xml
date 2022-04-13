@@ -23,9 +23,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b5dc24d-1c75-4245-8055-1c959373f4a1" name="Default" comment="First (non-interactive) implementation of new Handy design, plus changes required for updates.">
+    <list default="true" id="6b5dc24d-1c75-4245-8055-1c959373f4a1" name="Default" comment="Handy design is now interactive. The hands could stand to look better, though.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Handy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Handy.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-it/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-it/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,9 +313,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="AnalyzeApkAction.lastApkPath" value="$PROJECT_DIR$/app/app-release.apk" />
-    <property name="DEBUGGABLE_DEVICE" value="5.4_FWVGA_API_22 [emulator-5554]" />
+    <property name="DEBUGGABLE_DEVICE" value="Nexus_10_API_30 [emulator-5556]" />
     <property name="DEBUGGABLE_PROCESS" value="name.cantanima.chineseremainderclock" />
-    <property name="DEBUGGER_ID" value="Auto" />
+    <property name="DEBUGGER_ID" value="Java" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="VirtualDevicePath@/home/cantanima/.android/avd/Nexus_10_API_30.avd" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2022-04-11T03:59:50.244916Z" />
     <property name="ExportApk.ApkPath" value="$PROJECT_DIR$/app" />
@@ -544,13 +546,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1492918289680</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Added a color picker, modified preferences accordingly, added a time display that differs from the old one.">
-      <created>1499355563661</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1499355563661</updated>
     </task>
     <task id="LOCAL-00014" summary="Adjusted design sizes, modified time display, updated help file, fixed a bug in the preferences settings.">
       <created>1499440450766</created>
@@ -888,7 +883,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649662864800</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Handy design is now interactive. The hands could stand to look better, though.">
+      <created>1649732583580</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1649732583580</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1016,7 +1018,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Now we are dreaming. :-)" />
     <MESSAGE value="Mostly some changes requested by Antonella. A few tweaks here and there, too." />
     <MESSAGE value="some bug fixes and improvements" />
     <MESSAGE value="Horrible preferences bug fixed. Also removed the switch for manual/automatic mode and introduced a menu option for the same thing." />
@@ -1041,13 +1042,18 @@
     <MESSAGE value="Some changes requested by Antonella." />
     <MESSAGE value="Changes required for updates." />
     <MESSAGE value="First (non-interactive) implementation of new Handy design, plus changes required for updates." />
-    <option name="LAST_COMMIT_MESSAGE" value="First (non-interactive) implementation of new Handy design, plus changes required for updates." />
+    <MESSAGE value="Handy design is now interactive. The hands could stand to look better, though." />
+    <option name="LAST_COMMIT_MESSAGE" value="Handy design is now interactive. The hands could stand to look better, though." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
       <configuration name="app">
         <watch expression="sec_dn" language="JAVA" />
         <watch expression="sec_col" language="JAVA" />
+      </configuration>
+      <configuration name="Remote">
+        <watch expression="hour" language="kotlin" />
+        <watch expression="hour % 3" language="kotlin" />
       </configuration>
     </watches-manager>
   </component>

@@ -44,6 +44,9 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
             paint.style = Paint.Style.STROKE
             canvas.drawPath(hour3, paint)
             canvas.drawPath(min3, paint)
+            paint.style = Paint.Style.FILL_AND_STROKE
+            canvas.drawPath(hour_hand3, paint)
+            canvas.drawPath(min_hand3, paint)
             if (show_seconds) canvas.drawPath(sec3, paint)
             paint.color = mod4_color
             paint.style = Paint.Style.FILL_AND_STROKE
@@ -54,6 +57,9 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
             paint.style = Paint.Style.STROKE
             canvas.drawPath(hour4, paint)
             canvas.drawPath(min4, paint)
+            paint.style = Paint.Style.FILL_AND_STROKE
+            canvas.drawPath(hour_hand4, paint)
+            canvas.drawPath(min_hand4, paint)
             if (show_seconds) canvas.drawPath(sec4, paint)
             paint.color = mod5_color
             paint.style = Paint.Style.FILL_AND_STROKE
@@ -63,6 +69,8 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
             }
             paint.style = Paint.Style.STROKE
             canvas.drawPath(min5, paint)
+            paint.style = Paint.Style.FILL_AND_STROKE
+            canvas.drawPath(min_hand5, paint)
             if (show_seconds) canvas.drawPath(sec5, paint)
         }
         usual_cleanup()
@@ -83,6 +91,7 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
         hrad = radius / 2f
         mrad = radius * 3f / 4f
         srad = radius * 4f / 5f
+        hand_width = radius / 20f
         edge = Path()
         edge.addCircle(cx, cy, radius * 19f / 20f, Path.Direction.CW)
         edge.close()
@@ -125,6 +134,10 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
                 }
                 else -> {}
             }
+            while (hour < 0)
+                hour += if (my_viewer.hour_modulus == 4) 12 else 24
+            while (minute < 0) minute %= 60
+            while (second < 0) second %= 60
             my_viewer.last_h = hour
             my_viewer.last_m = minute
             my_viewer.last_s = second
@@ -135,8 +148,10 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
         val lh4 = my_viewer.last_h % my_viewer.hour_modulus
         val hangle3 = angle(h3, lh3, offset, 3, hour == my_viewer.last_h)
         val hangle4 = angle(h4, lh4, offset, my_viewer.hour_modulus, hour == my_viewer.last_h)
-        hour3 = hand_box(cx, cy, hangle3, 10f, hrad)
-        hour4 = hand_box(cx, cy, hangle4, 12f, hrad)
+        hour3 = hand_box(hangle3, hand_width, hrad, 1)
+        hour_hand3 = hand_box(hangle3, hand_width, hrad, 2)
+        hour4 = hand_box(hangle4, hand_width, hrad, 1)
+        hour_hand4 = hand_box(hangle4, hand_width, hrad, 3)
         val m3 = if (minute % 3 == 0) 3 else minute % 3
         val m4 = if (minute % 4 == 0) 4 else minute % 4
         val m5 = if (minute % 5 == 0) 5 else minute % 5
@@ -146,9 +161,12 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
         val mangle3 = angle(m3, lm3, offset, 3, minute == my_viewer.last_m)
         val mangle4 = angle(m4, lm4, offset, 4, minute == my_viewer.last_m)
         val mangle5 = angle(m5, lm5, offset, 5, minute == my_viewer.last_m)
-        min3 = hand_box(cx, cy, mangle3, 20f, mrad)
-        min4 = hand_box(cx, cy, mangle4, 30f, mrad)
-        min5 = hand_box(cx, cy, mangle5, 40f, mrad)
+        min3 = hand_box(mangle3, hand_width, mrad, 1)
+        min_hand3 = hand_box(mangle3, hand_width, mrad, 2)
+        min4 = hand_box(mangle4, hand_width, mrad, 1)
+        min_hand4 = hand_box(mangle4, hand_width, mrad, 4)
+        min5 = hand_box(mangle5, hand_width, mrad, 1)
+        min_hand5 = hand_box(mangle5, hand_width, mrad, 8)
         val s3 = if (second % 3 == 0) 3 else second % 3
         val s4 = if (second % 4 == 0) 4 else second % 4
         val s5 = if (second % 5 == 0) 5 else second % 5
@@ -158,27 +176,42 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
         val sangle3 = angle(s3, ls3, offset, 3, second == my_viewer.last_s)
         val sangle4 = angle(s4, ls4, offset, 4, second == my_viewer.last_s)
         val sangle5 = angle(s5, ls5, offset, 5, second == my_viewer.last_s)
-        sec3 = hand_box(cx, cy, sangle3, 2f, srad)
-        sec4 = hand_box(cx, cy, sangle4, 2f, srad)
-        sec5 = hand_box(cx, cy, sangle5, 2f, srad)
+        sec3 = hand_box(sangle3, 1f, srad, 1)
+        sec4 = hand_box(sangle4, 1f, srad, 1)
+        sec5 = hand_box(sangle5, 1f, srad, 1)
         if (dragging) {
             val dragged_path = when (dragged_unit) {
                 in arrayOf(TOUCHED_UNIT.HOUR3, TOUCHED_UNIT.HOURH) -> {
-                    hand_box(cx, cy, new_angle, 25f, hrad)
+                    hand_box(new_angle, hand_width, hrad, 1)
                 }
                 in arrayOf(TOUCHED_UNIT.MIN3, TOUCHED_UNIT.MIN4, TOUCHED_UNIT.MIN5) -> {
-                    hand_box(cx, cy, new_angle, 25f, mrad)
+                    hand_box(new_angle, hand_width, mrad, 1)
                 }
                 else -> {
-                    hand_box(cx, cy, new_angle, 25f, srad)
+                    hand_box(new_angle, hand_width, srad, 1)
                 }
             }
             when (dragged_unit) {
-                TOUCHED_UNIT.HOUR3 -> hour3 = dragged_path
-                TOUCHED_UNIT.HOURH -> hour4 = dragged_path
-                TOUCHED_UNIT.MIN3 -> min3 = dragged_path
-                TOUCHED_UNIT.MIN4 -> min4 = dragged_path
-                TOUCHED_UNIT.MIN5 -> min5 = dragged_path
+                TOUCHED_UNIT.HOUR3 -> {
+                    hour3 = dragged_path
+                    hour_hand3 = hand_box(new_angle, hand_width, hrad, 2)
+                }
+                TOUCHED_UNIT.HOURH -> {
+                    hour4 = dragged_path
+                    hour_hand4 = hand_box(new_angle, hand_width, hrad, 3)
+                }
+                TOUCHED_UNIT.MIN3 -> {
+                    min3 = dragged_path
+                    min_hand3 = hand_box(new_angle, hand_width, mrad, 2)
+                }
+                TOUCHED_UNIT.MIN4 -> {
+                    min4 = dragged_path
+                    min_hand4 = hand_box(new_angle, hand_width, mrad, 4)
+                }
+                TOUCHED_UNIT.MIN5 -> {
+                    min5 = dragged_path
+                    min_hand5 = hand_box(new_angle, hand_width, mrad, 8)
+                }
                 TOUCHED_UNIT.SEC3 -> sec3 = dragged_path
                 TOUCHED_UNIT.SEC4 -> sec4 = dragged_path
                 TOUCHED_UNIT.SEC5 -> sec5 = dragged_path
@@ -187,27 +220,29 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
         }
     }
     
-    fun hand_box(cx: Float, cy: Float, angle: Float, width: Float, length: Float): Path {
+    fun hand_box(angle: Float, width: Float, length: Float, shade_denom: Int): Path {
         val result = Path()
         val dx = cx + length * cos(angle)
         val dy = cy + length * sin(angle)
-        if (cx == dx) { // vertical
-            result.moveTo(cx - width / 2f, cy)
-            result.lineTo(cx + width / 2f, cy)
+        val sx = cx + (length * (1f - 1f/shade_denom.toFloat())) * cos(angle)
+        val sy = cy + (length * (1f - 1f/shade_denom.toFloat())) * sin(angle)
+        if (sx == dx) { // vertical
+            result.moveTo(sx - width / 2f, sy)
+            result.lineTo(sx + width / 2f, sy)
             result.lineTo(dx + width / 2f, dy)
             result.lineTo(dx - width / 2f, dy)
             result.close()
-        } else if (dy == cy) {
-            result.moveTo(cx, cy - width / 2f)
-            result.lineTo(cx, cy + width / 2f)
+        } else if (sy == dy) {
+            result.moveTo(sx, sy - width / 2f)
+            result.lineTo(sx, sy + width / 2f)
             result.lineTo(dx, dy + width / 2f)
             result.lineTo(dx, dy - width / 2f)
             result.close()
         } else {
-            result.moveTo(cx - width * cos(PI.toFloat() / 2f - angle), cy + width * sin(PI.toFloat() / 2f - angle))
-            result.lineTo(cx + width * cos(PI.toFloat() / 2f - angle), cy - width * sin(PI.toFloat() / 2f - angle))
-            result.lineTo(dx + width * cos(PI.toFloat() / 2f - angle), dy - width * sin(PI.toFloat() / 2f - angle))
-            result.lineTo(dx - width * cos(PI.toFloat() / 2f - angle), dy + width * sin(PI.toFloat() / 2f - angle))
+            result.moveTo(sx - width / 2f * cos(PI.toFloat() / 2f - angle), sy + width / 2f * sin(PI.toFloat() / 2f - angle))
+            result.lineTo(sx + width / 2f * cos(PI.toFloat() / 2f - angle), sy - width / 2f * sin(PI.toFloat() / 2f - angle))
+            result.lineTo(dx + width / 2f * cos(PI.toFloat() / 2f - angle), dy - width / 2f * sin(PI.toFloat() / 2f - angle))
+            result.lineTo(dx - width / 2f * cos(PI.toFloat() / 2f - angle), dy + width / 2f * sin(PI.toFloat() / 2f - angle))
             result.close()
         }
         return result
@@ -227,7 +262,6 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
     }
 
     override fun notify_touched(e: MotionEvent?) {
-        Log.i(TAG, "notify_touched: $e")
         if (e != null) {
             var searching = true
             val x = e.x
@@ -263,7 +297,6 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
             if (!searching) {
                 dragging = true
                 step = 0f
-                Log.i(TAG, "notify_touched: $dragged_unit")
             }
         }
     }
@@ -319,6 +352,7 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
     }
 
     var radius = 0f
+    var hand_width = 0f
     var hrad = 0f
     var mrad = 0f
     var srad = 0f
@@ -331,6 +365,11 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
     lateinit var sec3: Path
     lateinit var sec4: Path
     lateinit var sec5: Path
+    lateinit var hour_hand3: Path
+    lateinit var hour_hand4: Path
+    lateinit var min_hand3: Path
+    lateinit var min_hand4: Path
+    lateinit var min_hand5: Path
     
     val mod3_color = GREEN
     val mod4_color = BLUE

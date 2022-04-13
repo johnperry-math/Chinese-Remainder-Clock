@@ -119,7 +119,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
             lhmod4 = (lhmod4 + 1) % 4;
           }
         } else {
-          hmod4 = round((moved_offset + 1/4) * 8 - 0.5f) - 1;
+          hmod4 = round((moved_offset + 1f/4f) * 8 - 0.5f) - 1;
           if (hmod4 < 0) hmod4 = 7;
           else if (hmod4 == 0) hmod4 = 8;
           lhmod4 = hmod4 - 1;
@@ -214,7 +214,7 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
 
     // short_hand, modulo 3
 
-    Log.d("linus", String.valueOf(hmod3) + ", " + String.valueOf(lhmod3));
+    Log.d("linus", hmod3 + ", " + lhmod3);
     ball_paint.setColor(hour_color);
     canvas.drawLines(digi_h3_pts, circle_paint);
     //if (abs(my_viewer.last_h - hour) == 1 && my_viewer.time_guide != DECREMENT) {

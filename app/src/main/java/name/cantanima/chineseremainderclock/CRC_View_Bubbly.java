@@ -127,24 +127,24 @@ public class CRC_View_Bubbly extends Clock_Drawer {
         ball_paint.setStyle(FILL);
         if (dragged_unit == TOUCHED_UNIT.NONE && my_viewer.last_h == hour) {
           if (i + 1 <= hour % 8)
-            canvas.drawCircle(x + 2*r*(i % 2), h_y - vstep*0.85f - (i / 2) * cstep, r/2f, ball_paint);
+            canvas.drawCircle(x + 2*r*(i % 2), h_y - vstep*0.85f - ((float)i / 2) * cstep, r/2f, ball_paint);
         } else {
           if (hmod8 == 8) {
             ball_paint.setAlpha(max(0, (int) ((1 - my_viewer.my_offset) * 255)));
-            canvas.drawCircle(x + 2*r*(i % 2), h_y - vstep*0.85f - (i / 2) * cstep, r/2f, ball_paint);
+            canvas.drawCircle(x + 2*r*(i % 2), h_y - vstep*0.85f - ((float)i / 2) * cstep, r/2f, ball_paint);
           } else {
             if (i + 1 < hmod8 || (i + 1 == hmod8 && my_viewer.my_offset > 0.9)) {
               ball_paint.setAlpha(255);
-              canvas.drawCircle(x + 2*r*(i % 2), h_y - vstep*0.85f - (i / 2) * cstep, r/2f, ball_paint);
+              canvas.drawCircle(x + 2*r*(i % 2), h_y - vstep*0.85f - ((float)i / 2) * cstep, r/2f, ball_paint);
             } else if (i + 1 == hmod8) {
               ball_paint.setAlpha((int) (my_viewer.my_offset * 255));
-              canvas.drawCircle(x + 2*r*(i % 2), h_y - vstep*0.85f - (i / 2) * cstep, r/2f, ball_paint);
+              canvas.drawCircle(x + 2*r*(i % 2), h_y - vstep*0.85f - ((float)i / 2) * cstep, r/2f, ball_paint);
             }
           }
         }
         ball_paint.setAlpha(255);
         ball_paint.setStyle(STROKE);
-        canvas.drawCircle(x + 2*r*(i % 2), h_y - vstep*0.85f - (i / 2) * cstep, r/2f, ball_paint);
+        canvas.drawCircle(x + 2*r*(i % 2), h_y - vstep*0.85f - ((float)i / 2) * cstep, r/2f, ball_paint);
       }
       ball_paint.setStyle(FILL);
       if (dragged_unit == TOUCHED_UNIT.NONE && my_viewer.last_h == hour) {
@@ -375,21 +375,18 @@ public class CRC_View_Bubbly extends Clock_Drawer {
         m_x3 = 1.75f * hstep;
         m_x4 = 2.75f * hstep;
         m_x5 = 3.75f * hstep;
-        s_x3 = 3f * hstep;
-        s_x4 = 4f * hstep;
-        s_x5 = 5f * hstep;
       } else {
         h_x3 = 1.75f * hstep;
         h_xh = 2.75f * hstep;
         m_x3 = 4.25f * hstep;
         m_x4 = 5.25f * hstep;
         m_x5 = 6.25f * hstep;
-        s_x3 = 3f * hstep;
-        s_x4 = 4f * hstep;
-        s_x5 = 5f * hstep;
       }
+      s_x3 = 3f * hstep;
+      s_x4 = 4f * hstep;
+      s_x5 = 5f * hstep;
 
-  } else {
+    } else {
 
       hstep = w / 6f;
       vstep = h / 7f;

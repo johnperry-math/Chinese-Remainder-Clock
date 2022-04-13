@@ -119,11 +119,10 @@ public class CRC_View_Shady extends CRC_View_Polygonal {
       ball_paint.setAlpha((int) (
           (1 - my_viewer.my_offset)*63*((lhmod3 % 3) + 1) + my_viewer.my_offset*63*((hmod3 % 3) + 1))
       );
-      canvas.drawPath(h_tria, ball_paint);
     } else {
       ball_paint.setAlpha(63 * ((hmod3 % 3) + 1));
-      canvas.drawPath(h_tria, ball_paint);
     }
+    canvas.drawPath(h_tria, ball_paint);
     if (hmod3 == 3)
       canvas.drawText(zero_str, digi_hx, digi_hty1, digi_paint);
     else
@@ -137,11 +136,10 @@ public class CRC_View_Shady extends CRC_View_Polygonal {
         ball_paint.setAlpha((int) (
                 (1 - my_viewer.my_offset)*51*((lhmod4 % 4) + 1) + my_viewer.my_offset*51*((hmod4 % 4) + 1))
         );
-        canvas.drawPath(h_quad, ball_paint);
       } else {
         ball_paint.setAlpha(51 * ((hmod4 % 4) + 1));
-        canvas.drawPath(h_quad, ball_paint);
       }
+      canvas.drawPath(h_quad, ball_paint);
       if (hmod4 == 4)
         canvas.drawText(zero_str, digi_hx, digi_hty2, digi_paint);
       else
@@ -153,11 +151,10 @@ public class CRC_View_Shady extends CRC_View_Polygonal {
         ball_paint.setAlpha((int) (
             (1 - my_viewer.my_offset)*27*((lhmod4 % 8) + 1) + my_viewer.my_offset*27*((hmod4 % 8) + 1))
         );
-        canvas.drawPath(h_octo, ball_paint);
       } else {
         ball_paint.setAlpha(27 * ((hmod4 % 8) + 1));
-        canvas.drawPath(h_octo, ball_paint);
       }
+      canvas.drawPath(h_octo, ball_paint);
       if (hmod4 == 8)
         canvas.drawText(zero_str, digi_hx, digi_hty2, digi_paint);
       else
@@ -172,11 +169,10 @@ public class CRC_View_Shady extends CRC_View_Polygonal {
       ball_paint.setAlpha((int) (
           (1 - my_viewer.my_offset)*63*((lmmod3 % 3) + 1) + my_viewer.my_offset*63*((mmod3 % 3) + 1))
       );
-      canvas.drawPath(m_tria, ball_paint);
     } else {
       ball_paint.setAlpha(63 * ((mmod3 % 3) + 1));
-      canvas.drawPath(m_tria, ball_paint);
     }
+    canvas.drawPath(m_tria, ball_paint);
     if (mmod3 == 3)
       canvas.drawText(zero_str, digi_mx, digi_msty1, digi_paint);
     else
@@ -188,11 +184,10 @@ public class CRC_View_Shady extends CRC_View_Polygonal {
       ball_paint.setAlpha((int) (
           (1 - my_viewer.my_offset)*51*((lmmod4 % 4) + 1) + my_viewer.my_offset*51*((mmod4 % 4) + 1))
       );
-      canvas.drawPath(m_quad, ball_paint);
     } else {
       ball_paint.setAlpha(51 * ((mmod4 % 4) + 1));
-      canvas.drawPath(m_quad, ball_paint);
     }
+    canvas.drawPath(m_quad, ball_paint);
     if (mmod4 == 4)
       canvas.drawText(zero_str, digi_mx, digi_ty, digi_paint);
     else
@@ -204,11 +199,10 @@ public class CRC_View_Shady extends CRC_View_Polygonal {
       ball_paint.setAlpha((int) (
           (1 - my_viewer.my_offset)*45*((lmmod5 % 5) + 1) + my_viewer.my_offset*45*((mmod5 % 5) + 1))
       );
-      canvas.drawPath(m_pent, ball_paint);
     } else {
       ball_paint.setAlpha(45 * ((mmod5 % 5) + 1));
-      canvas.drawPath(m_pent, ball_paint);
     }
+    canvas.drawPath(m_pent, ball_paint);
     if (mmod5 == 5)
       canvas.drawText(zero_str, digi_mx, digi_msty3, digi_paint);
     else
@@ -223,11 +217,10 @@ public class CRC_View_Shady extends CRC_View_Polygonal {
         ball_paint.setAlpha((int) (
             (1 - my_viewer.my_offset) * 63 * ((lsmod3 % 3) + 1) + my_viewer.my_offset * 63 * ((smod3 % 3) + 1))
         );
-        canvas.drawPath(s_tria, ball_paint);
       } else {
         ball_paint.setAlpha(63 * ((smod3 % 3) + 1));
-        canvas.drawPath(s_tria, ball_paint);
       }
+      canvas.drawPath(s_tria, ball_paint);
       if (smod3 == 3)
         canvas.drawText(zero_str, digi_sx, digi_msty1, digi_paint);
       else
@@ -239,11 +232,10 @@ public class CRC_View_Shady extends CRC_View_Polygonal {
         ball_paint.setAlpha((int) (
             (1 - my_viewer.my_offset) * 51 * ((lsmod4 % 4) + 1) + my_viewer.my_offset * 51* ((smod4 % 4) + 1))
         );
-        canvas.drawPath(s_quad, ball_paint);
       } else {
         ball_paint.setAlpha(51 * ((smod4 % 4) + 1));
-        canvas.drawPath(s_quad, ball_paint);
       }
+      canvas.drawPath(s_quad, ball_paint);
       if (smod4 == 4)
         canvas.drawText(zero_str, digi_sx, digi_ty, digi_paint);
       else
@@ -255,11 +247,10 @@ public class CRC_View_Shady extends CRC_View_Polygonal {
         ball_paint.setAlpha((int) (
                 (1 - my_viewer.my_offset) * 45 * ((lsmod5 % 5) + 1) + my_viewer.my_offset * 45 * ((smod5 % 5) + 1))
         );
-        canvas.drawPath(s_pent, ball_paint);
       } else {
         ball_paint.setAlpha(45 * ((smod5 % 5) + 1));
-        canvas.drawPath(s_pent, ball_paint);
       }
+      canvas.drawPath(s_pent, ball_paint);
       if (smod5 == 5)
         canvas.drawText(zero_str, digi_sx, digi_msty3, digi_paint);
       else
@@ -315,10 +306,11 @@ public class CRC_View_Shady extends CRC_View_Polygonal {
       default: break;
     }
     if (mod != 0) {
-      ystep = my_viewer.getHeight() / mod;
-      if ((original_value + round((y - y0) / ystep)) % mod != last_step) {
+      ystep = ((float) my_viewer.getHeight()) / mod;
+      final int delta = round((y - y0) / ystep);
+      if ((original_value + delta) % mod != last_step) {
         redraw = true;
-        last_step = (original_value + round((y - y0) / ystep)) % mod;
+        last_step = (original_value + delta) % mod;
         if (last_step < 0) last_step += mod;
       }
     }
@@ -331,23 +323,21 @@ public class CRC_View_Shady extends CRC_View_Polygonal {
         if (my_viewer.hour_modulus == 4) {
           hour = (last_step * 4 - hour % 4 * 3) % 12;
           while (hour < 0) hour += 12;
-          my_viewer.last_h = hour;
         } else {
           hour = (last_step * 16 - hour % 8 * 15) % 24;
           while (hour < 0) hour += 24;
-          my_viewer.last_h = hour;
         }
+        my_viewer.last_h = hour;
         break;
       case HOURH:
         if (my_viewer.hour_modulus == 4) {
           hour = (-last_step * 3 + hour % 3 * 4) % 12;
           while (hour < 0) hour += 12;
-          my_viewer.last_h = hour;
         } else {
           hour = (-last_step * 15 + hour % 3 * 16) % 24;
           while (hour < 0) hour += 24;
-          my_viewer.last_h = hour;
         }
+        my_viewer.last_h = hour;
         break;
       case MIN3:
         minute = (-last_step * 20 + minute % 20 * 21) % 60;
@@ -410,7 +400,7 @@ public class CRC_View_Shady extends CRC_View_Polygonal {
   }
 
   /** used to paint the remainders in the polygons */
-  private Paint digi_paint;
+  private final Paint digi_paint;
 
   /** fields that control layout of digital clock elements (except the polygons) */
   private float digi_ty, digi_hty1, digi_hty2,

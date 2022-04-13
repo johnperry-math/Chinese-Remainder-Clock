@@ -345,10 +345,10 @@ public class CRC_View_Arcy extends Clock_Drawer {
         rm5 = diam * 4f / 9f; // was: 2/9
         rs3 = diam * 3f / 9f; // was: 5/9
         rs4 = diam * 2f / 9f; // was: 3/9
-        rs5 = diam * 1f / 9f; // was: 1/9
+        rs5 = diam      / 9f; // was: 1/9
         r_off = diam / 35f;
       } else {
-        rm3 = diam * 1f / 6f;
+        rm3 = diam      / 6f;
         rm4 = diam * 2f / 6f;
         rm5 = diam * 3f / 6f;
         rh3 = diam * 4f / 6f;
@@ -359,7 +359,7 @@ public class CRC_View_Arcy extends Clock_Drawer {
     } else {
 
       if (show_seconds) {
-        rh3 = diam * 1f / 9f;
+        rh3 = diam      / 9f;
         rhh = diam * 2f / 9f;
         rm3 = diam * 3f / 9f; // was: 4/9
         rm4 = diam * 4f / 9f; // was: 6/9
@@ -369,7 +369,7 @@ public class CRC_View_Arcy extends Clock_Drawer {
         rs5 = diam * 8f / 9f; // was: 7/9
         r_off = diam / 35f;
       } else {
-        rh3 = diam * 1f / 6f;
+        rh3 = diam      / 6f;
         rhh = diam * 2f / 6f;
         rm3 = diam * 3f / 6f;
         rm4 = diam * 4f / 6f;

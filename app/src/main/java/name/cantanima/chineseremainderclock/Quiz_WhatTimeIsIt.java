@@ -91,16 +91,12 @@ public class Quiz_WhatTimeIsIt extends CRC_Quiz implements TimeEntryDialogListen
       }
       new AlertDialog.Builder(crc_context).setTitle(crc_context.getString(R.string.quiz_result_title))
           .setMessage(
-              quiz_message + ": " + crc_context.getString(R.string.quiz_result_you_earned) +
-                  String.valueOf(quiz_number_correct) +
-                  "/" + String.valueOf(quiz_number_total)
+              quiz_message + ": " + crc_context.getString(R.string.quiz_result_you_earned) + quiz_number_correct + "/" + quiz_number_total
           )
           .setIcon(R.drawable.ic_action_info)
           .setPositiveButton(
               dialog_dismiss,
-              new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) { dialog.dismiss(); }
-              }
+                  (dialog, which) -> dialog.dismiss()
           ).show();
 
       quiz_cancelled();
@@ -123,9 +119,9 @@ public class Quiz_WhatTimeIsIt extends CRC_Quiz implements TimeEntryDialogListen
     String message = (hr == new_hour_value && min == new_minute_value)
         ? crc_context.getString(R.string.quiz_correct)
         : crc_context.getString(R.string.quiz_sorry) + " "
-            + String.valueOf(new_hour_value) + ":"
+            + new_hour_value + ":"
             + ( ( new_minute_value < 10 ) ? "0" : "" )
-            + String.valueOf(new_minute_value);
+            + new_minute_value;
     Toast toast = Toast.makeText(crc_context, message, Toast.LENGTH_LONG);
     toast.setGravity(Gravity.TOP, 0, 0);
     toast.show();
@@ -139,8 +135,10 @@ public class Quiz_WhatTimeIsIt extends CRC_Quiz implements TimeEntryDialogListen
 
   private TimeEntryDialog quiz_dialog;
   private int new_hour_value, new_minute_value;
-  private int quiz_number_correct, quiz_number_complete, quiz_number_total;
-  private boolean twelve_hour_clock;
-  private Random quiz_generator;
+  private int quiz_number_correct;
+  private int quiz_number_complete;
+  private final int quiz_number_total;
+  private final boolean twelve_hour_clock;
+  private final Random quiz_generator;
 
 }

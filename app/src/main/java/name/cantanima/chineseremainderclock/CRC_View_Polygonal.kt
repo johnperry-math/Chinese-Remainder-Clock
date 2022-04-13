@@ -4,7 +4,7 @@ import android.graphics.Paint
 import android.graphics.Paint.ANTI_ALIAS_FLAG
 import android.graphics.Path
 import android.view.MotionEvent
-import java.lang.Math.*
+import kotlin.math.*
 
 abstract class CRC_View_Polygonal : Clock_Drawer()
 {
@@ -55,27 +55,27 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
         val y = e.y
         dragged_unit = if (abs(digi_hx - x) < obj_w2) {
             if (abs(digi_hcy1 - y) < obj_w2 + cradius && y < digi_hcy1 + obj_w2 / 2 + cradius)
-                Clock_Drawer.TOUCHED_UNIT.HOUR3
+                TOUCHED_UNIT.HOUR3
             else if (abs(digi_hcy2 - y) < obj_w2 + cradius)
-                Clock_Drawer.TOUCHED_UNIT.HOURH
+                TOUCHED_UNIT.HOURH
             else
-                Clock_Drawer.TOUCHED_UNIT.NONE
+                TOUCHED_UNIT.NONE
         } else if (abs(digi_mx - x) < obj_w2) {
             when {
-                abs(digi_mscy1 - y) < obj_w2 + cradius -> Clock_Drawer.TOUCHED_UNIT.MIN3
-                abs(cy - y) < obj_w2 + cradius -> Clock_Drawer.TOUCHED_UNIT.MIN4
-                abs(digi_mscy3 - y) < obj_w2 + cradius -> Clock_Drawer.TOUCHED_UNIT.MIN5
-                else -> Clock_Drawer.TOUCHED_UNIT.NONE
+                abs(digi_mscy1 - y) < obj_w2 + cradius -> TOUCHED_UNIT.MIN3
+                abs(cy - y) < obj_w2 + cradius -> TOUCHED_UNIT.MIN4
+                abs(digi_mscy3 - y) < obj_w2 + cradius -> TOUCHED_UNIT.MIN5
+                else -> TOUCHED_UNIT.NONE
             }
         } else if (abs(digi_sx - x) < obj_w2) {
             when {
-                abs(digi_mscy1 - y) < obj_w2 + cradius -> Clock_Drawer.TOUCHED_UNIT.SEC3
-                abs(cy - y) < obj_w2 + cradius -> Clock_Drawer.TOUCHED_UNIT.SEC4
-                abs(digi_mscy3 - y) < obj_w2 + cradius -> Clock_Drawer.TOUCHED_UNIT.SEC5
-                else -> Clock_Drawer.TOUCHED_UNIT.NONE
+                abs(digi_mscy1 - y) < obj_w2 + cradius -> TOUCHED_UNIT.SEC3
+                abs(cy - y) < obj_w2 + cradius -> TOUCHED_UNIT.SEC4
+                abs(digi_mscy3 - y) < obj_w2 + cradius -> TOUCHED_UNIT.SEC5
+                else -> TOUCHED_UNIT.NONE
             }
         } else
-            Clock_Drawer.TOUCHED_UNIT.NONE
+            TOUCHED_UNIT.NONE
         move_to(x, y)
     }
 
@@ -83,35 +83,35 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
         val x0: Float
         val y0: Float
         when (dragged_unit) {
-            Clock_Drawer.TOUCHED_UNIT.HOUR3 -> {
+            TOUCHED_UNIT.HOUR3 -> {
                 x0 = digi_hx
                 y0 = digi_hcy1
             }
-            Clock_Drawer.TOUCHED_UNIT.HOURH -> {
+            TOUCHED_UNIT.HOURH -> {
                 x0 = digi_hx
                 y0 = digi_hcy2
             }
-            Clock_Drawer.TOUCHED_UNIT.MIN3 -> {
+            TOUCHED_UNIT.MIN3 -> {
                 x0 = digi_mx
                 y0 = digi_mscy1
             }
-            Clock_Drawer.TOUCHED_UNIT.MIN4 -> {
+            TOUCHED_UNIT.MIN4 -> {
                 x0 = digi_mx
                 y0 = cy
             }
-            Clock_Drawer.TOUCHED_UNIT.MIN5 -> {
+            TOUCHED_UNIT.MIN5 -> {
                 x0 = digi_mx
                 y0 = digi_mscy3
             }
-            Clock_Drawer.TOUCHED_UNIT.SEC3 -> {
+            TOUCHED_UNIT.SEC3 -> {
                 x0 = digi_sx
                 y0 = digi_mscy1
             }
-            Clock_Drawer.TOUCHED_UNIT.SEC4 -> {
+            TOUCHED_UNIT.SEC4 -> {
                 x0 = digi_sx
                 y0 = cy
             }
-            Clock_Drawer.TOUCHED_UNIT.SEC5 -> {
+            TOUCHED_UNIT.SEC5 -> {
                 x0 = digi_sx
                 y0 = digi_mscy3
             }
@@ -148,8 +148,8 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
     override fun notify_released(e: MotionEvent) {
         val r: Int
         when (dragged_unit) {
-            Clock_Drawer.TOUCHED_UNIT.HOUR3 -> {
-                r = round(moved_offset * 3 - 0.5f)
+            TOUCHED_UNIT.HOUR3 -> {
+                r = round(moved_offset * 3 - 0.5f).toInt()
                 if (my_viewer.hour_modulus == 4) {
                     my_viewer.last_h = (r * 4 - hour % 4 * 3) % 12
                     hour = my_viewer.last_h
@@ -166,8 +166,8 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
                     }
                 }
             }
-            Clock_Drawer.TOUCHED_UNIT.HOURH -> if (my_viewer.hour_modulus == 4) {
-                r = round(moved_offset * 4 - 1)
+            TOUCHED_UNIT.HOURH -> if (my_viewer.hour_modulus == 4) {
+                r = round(moved_offset * 4 - 1).toInt()
                 my_viewer.last_h = (-r * 3 + hour % 3 * 4) % 12
                 hour = my_viewer.last_h
                 while (hour < 0) {
@@ -175,7 +175,7 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
                     my_viewer.last_h += 12
                 }
             } else {
-                r = round(moved_offset * 8 - 2)
+                r = round(moved_offset * 8 - 2).toInt()
                 my_viewer.last_h = (-r * 15 + hour % 3 * 16) % 24
                 hour = my_viewer.last_h
                 while (hour < 0) {
@@ -183,8 +183,8 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
                     my_viewer.last_h += 24
                 }
             }
-            Clock_Drawer.TOUCHED_UNIT.MIN3 -> {
-                r = round(moved_offset * 3 - 0.5f)
+            TOUCHED_UNIT.MIN3 -> {
+                r = round(moved_offset * 3 - 0.5f).toInt()
                 my_viewer.last_m = (-r * 20 + minute % 20 * 21) % 60
                 minute = my_viewer.last_m
                 while (minute < 0) {
@@ -192,8 +192,8 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
                     my_viewer.last_m += 60
                 }
             }
-            Clock_Drawer.TOUCHED_UNIT.MIN4 -> {
-                r = round(moved_offset * 4 - 1)
+            TOUCHED_UNIT.MIN4 -> {
+                r = round(moved_offset * 4 - 1).toInt()
                 my_viewer.last_m = (-r * 15 + minute % 15 * 16) % 60
                 minute = my_viewer.last_m
                 while (minute < 0) {
@@ -201,8 +201,8 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
                     my_viewer.last_m += 60
                 }
             }
-            Clock_Drawer.TOUCHED_UNIT.MIN5 -> {
-                r = round(moved_offset * 5 - 1)
+            TOUCHED_UNIT.MIN5 -> {
+                r = round(moved_offset * 5 - 1).toInt()
                 my_viewer.last_m = (-r * 24 + minute % 12 * 25) % 60
                 minute = my_viewer.last_m
                 while (minute < 0) {
@@ -210,8 +210,8 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
                     my_viewer.last_m += 60
                 }
             }
-            Clock_Drawer.TOUCHED_UNIT.SEC3 -> {
-                r = round(moved_offset * 3 - 0.5f)
+            TOUCHED_UNIT.SEC3 -> {
+                r = round(moved_offset * 3 - 0.5f).toInt()
                 my_viewer.last_s = (-r * 20 + second % 20 * 21) % 60
                 second = my_viewer.last_s
                 while (second < 0) {
@@ -219,8 +219,8 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
                     my_viewer.last_s += 60
                 }
             }
-            Clock_Drawer.TOUCHED_UNIT.SEC4 -> {
-                r = round(moved_offset * 4 - 1)
+            TOUCHED_UNIT.SEC4 -> {
+                r = round(moved_offset * 4 - 1).toInt()
                 my_viewer.last_s = (-r * 15 + second % 15 * 16) % 60
                 second = my_viewer.last_s
                 while (second < 0) {
@@ -228,8 +228,8 @@ abstract class CRC_View_Polygonal : Clock_Drawer()
                     my_viewer.last_s += 60
                 }
             }
-            Clock_Drawer.TOUCHED_UNIT.SEC5 -> {
-                r = round(moved_offset * 5 - 1)
+            TOUCHED_UNIT.SEC5 -> {
+                r = round(moved_offset * 5 - 1).toInt()
                 my_viewer.last_s = (-r * 24 + second % 12 * 25) % 60
                 second = my_viewer.last_s
                 while (second < 0) {

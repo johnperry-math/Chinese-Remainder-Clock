@@ -1,7 +1,6 @@
 package name.cantanima.chineseremainderclock;
 
 import android.graphics.Canvas;
-import android.util.Log;
 
 import java.util.Calendar;
 
@@ -105,6 +104,7 @@ public class CRC_Animation implements Runnable {
   /** whether to start the animation immediately */
   private boolean immediate = false;
 
+  @SuppressWarnings("unused")
   private final String TAG = "Animation";
 
 }

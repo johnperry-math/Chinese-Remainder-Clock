@@ -71,8 +71,7 @@ class Quiz_abTime (
     override fun num_received(n: Int) {
         val activity = context as Activity
         ++complete
-        val message: String
-        message = if (n == value) {
+        val message: String = if (n == value) {
             ++correct
             activity.getString(R.string.quiz_correct)
         } else {
@@ -161,7 +160,7 @@ class ABNumberDialog(
             )
             toast.show()
         }
-        val which_problem = complete.toString() + "/" + total.toString() + ":"
+        val which_problem = "$complete/$total:"
         update_text.text = which_problem
         update_text = findViewById(R.id.max_value)
         update_text.text = max.toString()
@@ -249,8 +248,7 @@ class Quiz_abcTime (
     override fun num_received(n: Int) {
         val activity = context as Activity
         ++complete
-        val message: String
-        message = if (n == value) {
+        val message: String = if (n == value) {
             ++correct
             activity.getString(R.string.quiz_correct)
         } else {
@@ -335,7 +333,7 @@ class ABCNumberDialog(
         val next_button: Button = findViewById(R.id.quiz_accept_button)
         next_button.setOnClickListener(this)
         var update_text : TextView = findViewById(R.id.quiz_which)
-        val which_problem = complete.toString() + "/" + total.toString() + ":"
+        val which_problem = "$complete/$total:"
         if (complete == 1) {
             val toast = Toast.makeText(
                     context, context.getString(R.string.dial_use), Toast.LENGTH_LONG

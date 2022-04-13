@@ -23,11 +23,24 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b5dc24d-1c75-4245-8055-1c959373f4a1" name="Default" comment="Handy design is now interactive. The hands could stand to look better, though.">
+    <list default="true" id="6b5dc24d-1c75-4245-8055-1c959373f4a1" name="Default" comment="Added translations. Polished handy and fixed some bugs.">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_Animation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_Animation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_Quiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_Quiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Arcy.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Arcy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Bubbly.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Bubbly.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Handy.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Handy.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-it/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-it/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Linus.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Linus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Polygonal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Polygonal.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Shady.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View_Shady.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_Webview.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/CRC_Webview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/FlexibleNumberPicker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/FlexibleNumberPicker.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_ABTime.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_ABTime.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_WhatTimeIsIt.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/Quiz_WhatTimeIsIt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/TimeEntryDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/TimeEntryDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/TimeEntryDialogListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/name/cantanima/chineseremainderclock/TimeEntryDialogListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -327,6 +340,10 @@
     <property name="SearchEverywhereHistoryKey" value="manual_buttons&#9;PSI&#9;JAVA://name.cantanima.chineseremainderclock.R.id#manual_buttons&#10;title_activity_settings&#9;PSI&#9;JAVA://name.cantanima.chineseremainderclock.R.string#title_activity_settings&#10;title_activity&#9;PSI&#9;JAVA://name.cantanima.chineseremainderclock.R.string#title_activity_settings&#10;putBoolean&#9;PSI&#9;JAVA://android.os.BaseBundle#putBoolean&#10;watch&#9;ACTION&#9;ToggleFieldBreakpoint&#10;show_time&#9;PSI&#9;JAVA://name.cantanima.chineseremainderclock.Clock_Drawer#show_time&#10;onPrefer&#9;PSI&#9;JAVA://name.cantanima.chineseremainderclock.Chinese_Remainder#onSharedPreferenceChanged&#10;anadig&#9;PSI&#9;JAVA://name.cantanima.chineseremainderclock.R.string#saved_anadig&#10;line num&#9;null&#9;null&#10;CRC_View&#9;PSI&#9;JAVA://name.cantanima.chineseremainderclock.CRC_View&#10;avd&#9;ACTION&#9;Android.RunAndroidAvdManager" />
     <property name="android-custom-view/home/cantanima/Android/Sdk/sources/android-30/android/view/View.java_SELECTED" value="View" />
     <property name="android-custom-view/home/cantanima/AndroidStudioProjects/ChineseRemainderClock/app/src/main/java/name/cantanima/chineseremainderclock/CRC_View.java_SELECTED" value="CRC_View" />
+    <property name="android-custom-view/home/cantanima/AndroidStudioProjects/ChineseRemainderClock/app/src/main/java/name/cantanima/chineseremainderclock/CRC_Webview.java_SELECTED" value="CRC_Webview" />
+    <property name="android-custom-view/home/cantanima/AndroidStudioProjects/ChineseRemainderClock/app/src/main/java/name/cantanima/chineseremainderclock/Dial_Entry.kt_SELECTED" value="Dial_Entry" />
+    <property name="android-custom-view/home/cantanima/AndroidStudioProjects/ChineseRemainderClock/app/src/main/java/name/cantanima/chineseremainderclock/FlexibleNumberPicker.kt_SELECTED" value="FlexibleNumberPicker" />
+    <property name="android-custom-view/home/cantanima/AndroidStudioProjects/ChineseRemainderClock/app/src/main/java/name/cantanima/chineseremainderclock/NumberArray.kt_SELECTED" value="NumberArray" />
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
@@ -546,13 +563,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1492918289680</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Adjusted design sizes, modified time display, updated help file, fixed a bug in the preferences settings.">
-      <created>1499440450766</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1499440450766</updated>
     </task>
     <task id="LOCAL-00015" summary="Touch support for Bally! Reformatted some files with indent = 2 spaces, rather than 4.">
       <created>1499721873190</created>
@@ -890,7 +900,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649732583580</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Added translations. Polished handy and fixed some bugs.">
+      <created>1649824148329</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1649824148329</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1006,6 +1023,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1018,7 +1036,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Mostly some changes requested by Antonella. A few tweaks here and there, too." />
     <MESSAGE value="some bug fixes and improvements" />
     <MESSAGE value="Horrible preferences bug fixed. Also removed the switch for manual/automatic mode and introduced a menu option for the same thing." />
     <MESSAGE value="Fixed a couple of small bugs in the Clock Master quiz." />
@@ -1043,7 +1060,8 @@
     <MESSAGE value="Changes required for updates." />
     <MESSAGE value="First (non-interactive) implementation of new Handy design, plus changes required for updates." />
     <MESSAGE value="Handy design is now interactive. The hands could stand to look better, though." />
-    <option name="LAST_COMMIT_MESSAGE" value="Handy design is now interactive. The hands could stand to look better, though." />
+    <MESSAGE value="Added translations. Polished handy and fixed some bugs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added translations. Polished handy and fixed some bugs." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

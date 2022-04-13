@@ -2,7 +2,6 @@ package name.cantanima.chineseremainderclock;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -60,17 +59,12 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
     // no title bar (space is at a premium)
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     // set up layout according to device orientation
-    if (cr_activity.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
-      setContentView(R.layout.time_dialog);
-    else
-      setContentView(R.layout.time_dialog);
+    setContentView(R.layout.time_dialog);
     // find and remember important interface elements
     Button next_button = findViewById(R.id.quiz_accept_button);
     time_entry_clock = findViewById(R.id.twohanded_clock);
     // message to indicate quiz name & progress on question
-    String title = cr_activity.getString(R.string.quiz_what_time_is_it) + " "
-        + String.valueOf(number_complete + 1) + "/"
-        + String.valueOf(number_total);
+    String title = cr_activity.getString(R.string.quiz_what_time_is_it) + " " + number_complete + 1 + "/" + number_total;
     TextView message_text = findViewById(R.id.quiz_message);
     message_text.setText(title);
     // listen for next button
@@ -121,12 +115,13 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
   }
 
   /** Activity that started this dialog */
-  private Activity cr_activity;
+  private final Activity cr_activity;
   /** CRC_View with which we must interact */
-  private LinkedList<TimeEntryDialogListener> listeners;
+  private final LinkedList<TimeEntryDialogListener> listeners;
   /** Dial_Entry for time entry */
   private Dial_Entry time_entry_clock;
   /** number of questions completed and total */
-  private int number_complete, number_total;
+  private final int number_complete;
+  private final int number_total;
 
 }

@@ -258,7 +258,7 @@ class FlexibleNumberPicker(context: Context, attrs: AttributeSet)
 
         } else if (event.action == ACTION_DOWN) { // pressed down
 
-            Log.d(tag, "down at " + x.toString() + " , " + y.toString() )
+            Log.d(tag, "down at $x , $y")
             Log.d(tag, "checking within " +
                     my_loc[0].toString() + "-" + (my_loc[0] + view_width).toString() + " , " +
                     my_loc[1].toString() + "-" + (my_loc[1] + view_height).toString()

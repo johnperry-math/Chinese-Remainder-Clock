@@ -221,7 +221,7 @@ public class CRC_View
       case 1: my_drawer = new CRC_View_Bubbly(this); break;
       case 2: my_drawer = new CRC_View_Handy(this); break;
       case 3: my_drawer = new CRC_View_Linus(this); break;
-      case 4: my_drawer = new CRC_View_Ringy(this); break;
+      // case 4 is default
       case 5: my_drawer = new CRC_View_Shady(this); break;
       case 6: my_drawer = new CRC_View_Vertie(this); break;
       default: my_drawer = new CRC_View_Ringy(this); break;

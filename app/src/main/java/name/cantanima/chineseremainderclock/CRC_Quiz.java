@@ -90,9 +90,10 @@ public abstract class CRC_Quiz {
 
   Chinese_Remainder crc_context;
   protected CRC_View crc_view;
-  private Clock_Drawer crc_drawer;
-  private int quiz_previous_time_visibility;
-  private boolean quiz_previous_seconds_visibility, was_in_manual_mode;
-  private View tv;
+  private final Clock_Drawer crc_drawer;
+  private final int quiz_previous_time_visibility;
+  private final boolean quiz_previous_seconds_visibility;
+  private final boolean was_in_manual_mode;
+  private final View tv;
 
 }

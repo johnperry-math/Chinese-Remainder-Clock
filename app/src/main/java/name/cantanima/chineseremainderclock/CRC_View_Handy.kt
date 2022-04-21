@@ -28,17 +28,23 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
             val paint = Paint(Paint.ANTI_ALIAS_FLAG)
             paint.textAlign = Paint.Align.CENTER
             paint.textSize = radius / 10f
+            val text_offset = paint.textSize / 3
             paint.strokeWidth = 10f
             paint.color = WHITE
             paint.style = Paint.Style.STROKE
             canvas.drawPath(edge, paint)
-            val time_radius = radius * 9f / 10f
+            val time_radius = radius * 17f / 20f
             paint.strokeWidth = 3f
             paint.color = mod3_color
             paint.style = Paint.Style.FILL_AND_STROKE
             for (h in 1.until(3)) {
                 val hangle = 2f * PI / 3 * h - PI / 2f
-                canvas.drawText("$h", cx + time_radius * cos(hangle).toFloat(), cy + time_radius * sin(hangle).toFloat(), paint)
+                canvas.drawText(
+                    "$h",
+                    cx + time_radius * cos(hangle).toFloat(),
+                    cy + time_radius * sin(hangle).toFloat() + text_offset,
+                    paint
+                )
             }
             paint.style = Paint.Style.STROKE
             canvas.drawPath(hour3, paint)
@@ -49,9 +55,14 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
             if (show_seconds) canvas.drawPath(sec3, paint)
             paint.color = mod4_color
             paint.style = Paint.Style.FILL_AND_STROKE
-            for (h in 1.until(my_viewer.hour_modulus)) {
-                val hangle = 2f * PI / my_viewer.hour_modulus * h - PI / 2f
-                canvas.drawText("$h", cx + time_radius * cos(hangle).toFloat(), cy + time_radius * sin(hangle).toFloat(), paint)
+            for (m in 1.until(my_viewer.hour_modulus)) {
+                val hangle = 2f * PI / my_viewer.hour_modulus * m - PI / 2f
+                canvas.drawText(
+                    "$m",
+                    cx + time_radius * cos(hangle).toFloat(),
+                    cy + time_radius * sin(hangle).toFloat() + text_offset,
+                    paint
+                )
             }
             paint.style = Paint.Style.STROKE
             canvas.drawPath(hour4, paint)
@@ -62,9 +73,14 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
             if (show_seconds) canvas.drawPath(sec4, paint)
             paint.color = mod5_color
             paint.style = Paint.Style.FILL_AND_STROKE
-            for (h in 1.until(5)) {
-                val hangle = 2f * PI / 5 * h - PI / 2f
-                canvas.drawText("$h", cx + time_radius * cos(hangle).toFloat(), cy + time_radius * sin(hangle).toFloat(), paint)
+            for (s in 1.until(5)) {
+                val hangle = 2f * PI / 5 * s - PI / 2f
+                canvas.drawText(
+                    "$s",
+                    cx + time_radius * cos(hangle).toFloat(),
+                    cy + time_radius * sin(hangle).toFloat() + text_offset,
+                    paint
+                )
             }
             paint.style = Paint.Style.STROKE
             canvas.drawPath(min5, paint)
@@ -86,15 +102,15 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
     override fun recalculate_positions() {
         setup_time()
         super.recalculate_positions()
-        radius = if (w < h) w / 2f else h / 2f
+        radius = min(w / 2f, h / 2f)
         hrad = radius / 2f
-        mrad = radius * 3f / 4f
-        srad = radius * 4f / 5f
+        mrad = radius * 7f / 10f
+        srad = radius * 3f / 4f
         hand_width = radius / 20f
         edge = Path()
         edge.addCircle(cx, cy, radius * 19f / 20f, Path.Direction.CW)
         edge.close()
-        val offset = minOf(my_viewer.my_offset, 1f)
+        val offset = min(my_viewer.my_offset, 1f)
         if (dragging) {
             when (dragged_unit) {
                 TOUCHED_UNIT.HOUR3 -> {

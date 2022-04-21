@@ -102,6 +102,9 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
     override fun recalculate_positions() {
         setup_time()
         super.recalculate_positions()
+        mod4_color = hour_color
+        mod3_color = second_color
+        mod5_color = minute_color
         radius = min(w / 2f, h / 2f)
         hrad = radius / 2f
         mrad = radius * 7f / 10f
@@ -234,13 +237,17 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
             }
         }
     }
-    
-    fun hand_box(angle: Float, width: Float, length: Float, shade_denom: Int): Path {
+
+    /**
+     * draws a box of given `width`, at a distance of `outer_radius` from the center
+     * to a distance of `outer_distance` * (1 - 1/`inner_ratio`) from the center
+     */
+    fun hand_box(angle: Float, width: Float, outer_radius: Float, inner_ratio: Int): Path {
         val result = Path()
-        val dx = cx + length * cos(angle)
-        val dy = cy + length * sin(angle)
-        val sx = cx + (length * (1f - 1f/shade_denom.toFloat())) * cos(angle)
-        val sy = cy + (length * (1f - 1f/shade_denom.toFloat())) * sin(angle)
+        val dx = cx + outer_radius * cos(angle)
+        val dy = cy + outer_radius * sin(angle)
+        val sx = cx + (outer_radius * (1f - 1f/inner_ratio.toFloat())) * cos(angle)
+        val sy = cy + (outer_radius * (1f - 1f/inner_ratio.toFloat())) * sin(angle)
         if (sx == dx) { // vertical
             result.moveTo(sx - width / 2f, sy)
             result.lineTo(sx + width / 2f, sy)
@@ -366,12 +373,15 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
         }
     }
 
+    // distances (to be initialized later)
     var radius = 0f
     var hand_width = 0f
     var hrad = 0f
     var mrad = 0f
     var srad = 0f
-    lateinit var edge: Path
+
+    // paths (to be initialized later)
+    lateinit var edge: Path         // this should be the outer circle
     lateinit var hour3: Path
     lateinit var hour4: Path
     lateinit var min3: Path
@@ -380,22 +390,27 @@ class CRC_View_Handy(owner: CRC_View) : Clock_Drawer() {
     lateinit var sec3: Path
     lateinit var sec4: Path
     lateinit var sec5: Path
-    lateinit var hour_hand3: Path
+    lateinit var hour_hand3: Path   // the _hand variables draw the solid box
     lateinit var hour_hand4: Path
     lateinit var min_hand3: Path
     lateinit var min_hand4: Path
     lateinit var min_hand5: Path
-    
-    val mod3_color = GREEN
-    val mod4_color = BLUE
-    val mod5_color = RED
 
+    // colors of hands and labels
+    var mod3_color = GREEN
+    var mod4_color = BLUE
+    var mod5_color = RED
+
+    // animation
     var step = 0.4f
+    var new_angle = 0f
+
+    // manipulation
     var dragging = false
     var last_mod = 0
-    var new_angle = 0f
     var just_released = false
 
+    // debugging
     @Suppress("Unused", "PropertyName")
     val TAG = "CRC_View_Handy"
 }

@@ -149,12 +149,12 @@ class Dial_Entry(context: Context, attrs: AttributeSet)
      *
      * @param canvas the canvas on which the background will be drawn
      */
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         val cx = width.toFloat() / 2f
         val cy = width.toFloat() / 2f
         val radius = min(cx, cy)
-        canvas!!.drawCircle(cx, cy, radius, background_paint)
+        canvas.drawCircle(cx, cy, radius, background_paint)
         // draw a mark every short_hand / minute
         for (i in 0..short_num) {
             val alpha = i.toFloat() * (2*pi)/short_num

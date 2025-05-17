@@ -92,9 +92,9 @@ class NumberArray(context: Context, attrs: AttributeSet)
      *
      * @param canvas the canvas on which the background will be drawn
      */
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas!!.drawRect(0f, 0f, view_width.toFloat(), view_height.toFloat(), back_paint)
+        canvas.drawRect(0f, 0f, view_width.toFloat(), view_height.toFloat(), back_paint)
         var i = 0
         var j = 0
         var a = start

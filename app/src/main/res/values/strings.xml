@@ -91,6 +91,7 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
     </string-array>
 
     <string name="color_pref_text">Monochrome</string>

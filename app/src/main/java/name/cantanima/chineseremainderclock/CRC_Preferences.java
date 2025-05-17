@@ -28,7 +28,7 @@ public class CRC_Preferences extends PreferenceFragment
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ListPreference lp = (ListPreference) findPreference(getString(R.string.saved_drawer));
-        lp.setSummary(lp.getEntries()[Integer.valueOf(lp.getValue())]);
+        lp.setSummary(lp.getEntries()[Integer.parseInt(lp.getValue())]);
         PreferenceManager pm = getPreferenceManager();
         SharedPreferences pref = pm.getSharedPreferences();
         boolean is_mono = pref.getBoolean(getString(R.string.saved_color), false);

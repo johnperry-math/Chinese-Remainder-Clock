@@ -16,6 +16,7 @@ class CRC_View_Preference(context: Context, attrs: AttributeSet) : Preference(co
      * @return The View that displays this Preference.
      * @see .onBindView
      */
+    @Deprecated("Deprecated in Java")
     override fun onCreateView(parent: ViewGroup?): View {
         super.onCreateView(parent)
         val li : LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

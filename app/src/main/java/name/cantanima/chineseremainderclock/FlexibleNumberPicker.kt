@@ -105,9 +105,9 @@ class FlexibleNumberPicker(context: Context, attrs: AttributeSet)
      *
      * @param canvas the canvas on which the background will be drawn
      */
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas!!.drawRect(
+        canvas.drawRect(
                 0f, 0f,
                 view_width.toFloat(),
                 view_height.toFloat(),

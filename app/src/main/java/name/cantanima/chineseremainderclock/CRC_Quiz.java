@@ -5,6 +5,8 @@ import android.view.View;
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
+import androidx.appcompat.app.ActionBar;
+
 /**
  * Created by cantanima on 8/22/17.
  */
@@ -21,7 +23,7 @@ public abstract class CRC_Quiz {
    */
   public CRC_Quiz(Chinese_Remainder context) {
     crc_context = context;
-    android.support.v7.app.ActionBar ab = crc_context.getSupportActionBar();
+    ActionBar ab = crc_context.getSupportActionBar();
     if (ab != null) ab.hide();
     crc_view = crc_context.findViewById(R.id.crc_view);
     crc_view.pause_animation();
@@ -80,7 +82,7 @@ public abstract class CRC_Quiz {
     crc_drawer.set_show_seconds(quiz_previous_seconds_visibility);
     crc_drawer.recalculate_positions();
     crc_view.setVisibility(VISIBLE);
-    android.support.v7.app.ActionBar ab = crc_context.getSupportActionBar();
+    ActionBar ab = crc_context.getSupportActionBar();
     if (ab != null) ab.show();
     if (was_in_manual_mode)
       crc_view.set_manual_button_visibility(VISIBLE);

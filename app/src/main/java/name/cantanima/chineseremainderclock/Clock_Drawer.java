@@ -3,7 +3,6 @@ package name.cantanima.chineseremainderclock;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.os.Build;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -227,11 +226,7 @@ public abstract class Clock_Drawer {
 
     // draw a rounded rectangle if we can
     back_paint.setColor(bg_color);
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      canvas.drawRoundRect(min_x, min_y, max_x, max_y, diam / 6f, diam / 6f, back_paint);
-    } else {
-      canvas.drawRect(min_x, min_y, max_x, max_y, back_paint);
-    }
+    canvas.drawRoundRect(min_x, min_y, max_x, max_y, diam / 6f, diam / 6f, back_paint);
 
     // show time if desired
     if (show_time && tv != null) {
@@ -338,7 +333,7 @@ public abstract class Clock_Drawer {
 
   /**
    *  user has touched finger to clock
-   *
+   * <p>
    *  The basic implementation does nothing.
    *  Your drawer will want to override this, probably to determine which unit is being manipulated.
    */
@@ -346,7 +341,7 @@ public abstract class Clock_Drawer {
 
   /**
    *  user has lifted finger off clock
-   *
+   * <p>
    *  The basic implementation sets dragged_unit to NONE.
    */
   protected void notify_released(MotionEvent e) {
@@ -359,7 +354,7 @@ public abstract class Clock_Drawer {
   }
 
   /** user is dragging finger around the clock
-   *
+   * <p>
    * The basic implementation does nothing.
    * Your drawer will want to override this, probably to determine the new position
    * of the unit being manipulated.
@@ -368,7 +363,7 @@ public abstract class Clock_Drawer {
 
   /**
    *  user has switched to manual mode; make necessary adjustments
-   *
+   * <p>
    *  The basic implementation records the value of switched_on in manual_mode, and when it is true
    *  it records the current time in the dragged_?? fields (correctly for 12- or 24-hour clocks).
    */

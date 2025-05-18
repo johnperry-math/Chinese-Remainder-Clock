@@ -14,6 +14,7 @@ import android.view.MotionEvent
 import android.view.MotionEvent.*
 import android.view.View
 import kotlin.math.max
+import androidx.core.content.withStyledAttributes
 
 class FlexibleNumberPicker(context: Context, attrs: AttributeSet)
     : View(context, attrs), View.OnTouchListener
@@ -66,19 +67,19 @@ class FlexibleNumberPicker(context: Context, attrs: AttributeSet)
 
         val resources = context.resources
 
-        val choices = context.obtainStyledAttributes(attrs, R.styleable.FlexibleNumberPicker)
-        min   = choices.getInt(R.styleable.FlexibleNumberPicker_min,     min)
-        max   = choices.getInt(R.styleable.FlexibleNumberPicker_max,     max)
-        skip  = choices.getInt(R.styleable.FlexibleNumberPicker_skip,    skip)
-        value = choices.getInt(R.styleable.FlexibleNumberPicker_initial, value)
-        // TODO: typeface
-        text_size = choices.getFloat(R.styleable.FlexibleNumberPicker_text_size, text_size)
-        high_size = choices.getFloat(R.styleable.FlexibleNumberPicker_high_size, high_size)
-        back_color = choices.getColor(R.styleable.FlexibleNumberPicker_back_color, back_color)
-        high_color = choices.getColor(R.styleable.FlexibleNumberPicker_high_color, high_color)
-        text_color = choices.getColor(R.styleable.FlexibleNumberPicker_text_color, text_color)
-        horizontal = choices.getBoolean(R.styleable.FlexibleNumberPicker_horizontal, horizontal)
-        choices.recycle()
+        context.withStyledAttributes(attrs, R.styleable.FlexibleNumberPicker) {
+            min = getInt(R.styleable.FlexibleNumberPicker_min, min)
+            max = getInt(R.styleable.FlexibleNumberPicker_max, max)
+            skip = getInt(R.styleable.FlexibleNumberPicker_skip, skip)
+            value = getInt(R.styleable.FlexibleNumberPicker_initial, value)
+            // TODO: typeface
+            text_size = getFloat(R.styleable.FlexibleNumberPicker_text_size, text_size)
+            high_size = getFloat(R.styleable.FlexibleNumberPicker_high_size, high_size)
+            back_color = getColor(R.styleable.FlexibleNumberPicker_back_color, back_color)
+            high_color = getColor(R.styleable.FlexibleNumberPicker_high_color, high_color)
+            text_color = getColor(R.styleable.FlexibleNumberPicker_text_color, text_color)
+            horizontal = getBoolean(R.styleable.FlexibleNumberPicker_horizontal, horizontal)
+        }
 
         text_size = TypedValue.applyDimension(COMPLEX_UNIT_SP, text_size, resources.displayMetrics)
         high_size = TypedValue.applyDimension(COMPLEX_UNIT_SP, high_size, resources.displayMetrics)

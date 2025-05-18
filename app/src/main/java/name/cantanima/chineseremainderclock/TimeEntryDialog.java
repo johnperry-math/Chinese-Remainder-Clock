@@ -3,6 +3,7 @@ package name.cantanima.chineseremainderclock;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,7 +15,7 @@ import java.util.LinkedList;
 
 /**
  * Created by cantanima on 7/19/17.
- *
+ * <p>
  * Used to obtain user's input in a "What time is it?" quiz.
  *
  */
@@ -64,7 +65,7 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
     Button next_button = findViewById(R.id.quiz_accept_button);
     time_entry_clock = findViewById(R.id.twohanded_clock);
     // message to indicate quiz name & progress on question
-    String title = cr_activity.getString(R.string.quiz_what_time_is_it) + " " + number_complete + 1 + "/" + number_total;
+    String title = cr_activity.getString(R.string.quiz_what_time_is_it) + " " + number_complete + "/" + number_total;
     TextView message_text = findViewById(R.id.quiz_message);
     message_text.setText(title);
     // listen for next button
@@ -77,6 +78,7 @@ public class TimeEntryDialog extends Dialog implements View.OnClickListener {
       Toast toast = Toast.makeText(
           cr_activity, cr_activity.getString(R.string.dial_use), Toast.LENGTH_SHORT
       );
+      toast.setGravity(Gravity.TOP, 0, 0);
       toast.show();
     }
 

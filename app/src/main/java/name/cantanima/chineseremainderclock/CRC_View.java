@@ -3,9 +3,8 @@ package name.cantanima.chineseremainderclock;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
-import android.preference.PreferenceManager;
+//import android.preference.PreferenceManager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -34,6 +33,8 @@ import static java.util.Calendar.HOUR_OF_DAY;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.CALENDAR;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.LEAVE_BE;
 import static name.cantanima.chineseremainderclock.CRC_View.Modification.NEW_TIME;
+
+import androidx.preference.PreferenceManager;
 
 /*
  * Created by cantanima on 4/22/17.
@@ -570,7 +571,7 @@ public class CRC_View
   protected Clock_Drawer my_drawer;
 
   /** How to determine the time when re-drawing the clock. */
-  enum Modification {
+  protected enum Modification {
     /** do not change the time */
     LEAVE_BE,
     /** read the time from the calendar */

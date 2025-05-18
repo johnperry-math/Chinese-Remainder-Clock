@@ -1,8 +1,6 @@
 package name.cantanima.chineseremainderclock;
 
-import android.annotation.TargetApi;
 import android.graphics.Canvas;
-import android.os.Build;
 
 import static android.graphics.Color.WHITE;
 import static android.graphics.Paint.Style.FILL;
@@ -41,7 +39,6 @@ public class CRC_View_Vertie extends CRC_View_Polygonal {
   /** one frame every tenth of a second */
   float preferred_step() { return 0.1f; }
 
-  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
   @Override
   protected void draw(Canvas canvas) {
 

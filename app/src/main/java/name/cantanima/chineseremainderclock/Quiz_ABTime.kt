@@ -5,6 +5,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.view.Window
 import android.widget.Button
@@ -43,7 +44,7 @@ class Quiz_abTime (
         val r1 = value % d1
         val r2 = value % d2
         quiz_dialog = ABNumberDialog(
-                context as Activity, this, 0, prod - 1,
+                context as Activity, this, prod - 1,
                 r1, r2, d1, d2, complete, total
         )
         val qd = quiz_dialog
@@ -128,7 +129,7 @@ class Quiz_abTime (
 class ABNumberDialog(
         crc_activity: Activity,
         val listener: ABNumberDialogListener,
-        val min: Int, val max: Int, val rem_1: Int, val rem_2: Int, val div_1: Int, val div_2: Int,
+        val max: Int, val rem_1: Int, val rem_2: Int, val div_1: Int, val div_2: Int,
         val complete: Int, val total: Int
 ) : Dialog(crc_activity), View.OnClickListener
 {
@@ -158,6 +159,7 @@ class ABNumberDialog(
             val toast = Toast.makeText(
                     context, context.getString(R.string.dial_use), Toast.LENGTH_LONG
             )
+            toast.setGravity(Gravity.TOP, 0, 0)
             toast.show()
         }
         val which_problem = "$complete/$total:"
@@ -190,10 +192,12 @@ class ABNumberDialog(
      * key.  The default implementation simply cancels the dialog (only if
      * it is cancelable), but you can override this to do whatever you want.
      */
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         dismiss()
         listener.cancelled()
     }
+
 }
 
 class Quiz_abcTime (
@@ -303,7 +307,6 @@ class Quiz_abcTime (
     init {
         show_question()
     }
-
 }
 
 class ABCNumberDialog(
@@ -338,6 +341,7 @@ class ABCNumberDialog(
             val toast = Toast.makeText(
                     context, context.getString(R.string.dial_use), Toast.LENGTH_LONG
             )
+            toast.setGravity(Gravity.TOP, 0, 0)
             toast.show()
         }
         update_text.text = which_problem
@@ -373,6 +377,7 @@ class ABCNumberDialog(
      * key.  The default implementation simply cancels the dialog (only if
      * it is cancelable), but you can override this to do whatever you want.
      */
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         dismiss()
         listener.cancelled()

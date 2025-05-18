@@ -1,9 +1,7 @@
 package name.cantanima.chineseremainderclock;
 
-import android.annotation.TargetApi;
 import android.graphics.Canvas;
 import android.graphics.Path;
-import android.os.Build;
 import android.view.MotionEvent;
 
 import java.util.Calendar;
@@ -25,7 +23,7 @@ import static name.cantanima.chineseremainderclock.CRC_View.Modification.DECREME
  * a circular design that moves a ball to show the correct remainder.
  * For general documentation on Clock_Drawer, see that class.
  * This file only documents groups of lines to explain how Ringy works.
- * 
+ * <p>
  * Since Ringy is draggable, a number of tweaks are required, to make sure things are drawn
  * properly. See the fields for various explanations, as well as comments within draw().
  * @see Clock_Drawer
@@ -43,7 +41,6 @@ public class CRC_View_Ringy extends Clock_Drawer {
   
   float preferred_step() { return step; }
   
-  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
   @Override
   protected void draw(Canvas canvas) {
 

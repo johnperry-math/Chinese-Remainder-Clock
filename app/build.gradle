@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "name.cantanima.chineseremainderclock"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 33
         versionCode 7
         versionName "3.0"
@@ -23,16 +23,17 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-//    implementation 'com.android.support:support-v4:26.1.0'
-//    implementation 'com.android.support:support-vector-drawable:26.1.0'
-//    implementation 'com.android.support:appcompat-v7:26.1.0' // where X.X.X version
-    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
-    implementation 'com.github.yukuku:ambilwarna:2.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    def preference_version = "1.2.1"
+    implementation "androidx.preference:preference-ktx:$preference_version"
+
+    implementation 'com.github.martin-stone:hsv-alpha-color-picker-android:3.1.0'
 
 }
 repositories {
     mavenCentral()
     google()
+    maven { url "https://jitpack.io" }
 }

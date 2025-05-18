@@ -1,17 +1,11 @@
 package name.cantanima.chineseremainderclock;
 
-import android.support.v7.app.AppCompatActivity;
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +18,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.preference.PreferenceManager;
+
 /**
  *
  * The main Activity for the clock!
@@ -35,7 +35,7 @@ import android.widget.TextView;
  *    and setting up some communication between this Activity and the CRC_View.
  *    Note that the SharedPreferences are not necessarily the same in the various places they
  *    are read (apparently the "Shared"Preferences aren't actually "shared").
- *
+ * <p>
  *    To implement a new design, extend Clock_Drawer, add information to the strings.xml file,
  *    and modify CRC_View accordingly (look for where drawers are assigned, etc.).
  *
@@ -55,7 +55,7 @@ public class Chinese_Remainder
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_chinese__remainder);
-    FragmentManager fm = getFragmentManager();
+    FragmentManager fm = getSupportFragmentManager();
     if (savedInstanceState == null) {
         fm.beginTransaction()
                 .add(R.id.container, new PlaceholderFragment())
@@ -75,11 +75,7 @@ public class Chinese_Remainder
                                    .setIcon(R.drawable.ic_action_info)
                                    .setPositiveButton(
                                        getString(R.string.proceed_string),
-                                       new DialogInterface.OnClickListener() {
-                                         public void onClick(DialogInterface dialog, int which) {
-                                           dialog.dismiss();
-                                         }
-                                       }
+                                           (dialog, which) -> dialog.dismiss()
                                    ).show();
       SharedPreferences.Editor edit = pref.edit();
       edit.putBoolean(getString(R.string.first_run), false);
@@ -88,6 +84,8 @@ public class Chinese_Remainder
     }
 
     setTitle(getString(R.string.app_menu_title));
+
+    Log.i(tag, "successfully initialized Chinese_Remainder");
 
   }
 
@@ -115,6 +113,7 @@ public class Chinese_Remainder
     // automatically handle clicks on the Home/Up button, so long
     // as you specify a parent activity in AndroidManifest.xml.
     int id = item.getItemId();
+    Log.i(tag, String.format("selected action %d", id));
 
     //noinspection SimplifiableIfStatement
     if (id == R.id.action_settings) {
@@ -159,7 +158,6 @@ public class Chinese_Remainder
    *    everything done henceforth and hereafter. Aside from the default,
    *    this reads from the preferences file and assigns values to the CRC_View.
    */
-  @TargetApi(Build.VERSION_CODES.HONEYCOMB)
   public static class PlaceholderFragment extends Fragment {
 
     public PlaceholderFragment() { }
@@ -173,8 +171,8 @@ public class Chinese_Remainder
      */
     @Override
     public View onCreateView(
-          LayoutInflater inflater, ViewGroup container,
-          Bundle savedInstanceState
+            @NonNull LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState
     ) {
 
       RelativeLayout rootView = (RelativeLayout) inflater.inflate(
@@ -186,7 +184,7 @@ public class Chinese_Remainder
       crc_view.setOnTouchListener(crc_view);
 
       // Read preferences, assign to crc_view
-      SharedPreferences prefs = getActivity().getPreferences(Context.MODE_PRIVATE);
+      SharedPreferences prefs = requireActivity().getPreferences(Context.MODE_PRIVATE);
 
       // various boolean options
       boolean saved_hour = (prefs.contains(getString(R.string.saved_hour))) &&
@@ -201,7 +199,7 @@ public class Chinese_Remainder
       // read the preferred drawer/design
       final int default_drawer = 3;
       int saved_drawer = (prefs.contains(getString(R.string.saved_drawer)))
-          ? Integer.valueOf(prefs.getString(getString(R.string.saved_drawer), String.valueOf(default_drawer)))
+          ? Integer.parseInt(prefs.getString(getString(R.string.saved_drawer), String.valueOf(default_drawer)))
           : default_drawer;
 
       // read the version and if there isn't one (because this is a first run) save the preferences
@@ -298,6 +296,6 @@ public class Chinese_Remainder
   }
 
   // used when debugging w/Log.d()
-  // private static final String tag = "Chinese Remainder";
+   private static final String tag = "Chinese Remainder";
 
 }

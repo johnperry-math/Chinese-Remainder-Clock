@@ -1,8 +1,6 @@
 package name.cantanima.chineseremainderclock;
 
-import android.annotation.TargetApi;
 import android.graphics.Canvas;
-import android.os.Build;
 import android.util.Log;
 
 
@@ -39,7 +37,6 @@ public class CRC_View_Linus extends CRC_View_Polygonal {
   /** One frame every tenth of a second */
   float preferred_step() { return 0.1f; }
 
-  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
   @Override
   protected void draw(Canvas canvas) {
 

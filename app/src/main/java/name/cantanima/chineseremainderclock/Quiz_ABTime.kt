@@ -5,7 +5,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.view.Gravity
+import android.view.KeyEvent
 import android.view.View
 import android.view.Window
 import android.widget.Button
@@ -134,7 +134,16 @@ class ABNumberDialog(
 ) : Dialog(crc_activity), View.OnClickListener
 {
 
-    init { setCanceledOnTouchOutside(false) }
+    init {
+        setCanceledOnTouchOutside(false)
+        setOnKeyListener { dialog, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_UP) {
+                dialog?.cancel()
+                listener.cancelled()
+            }
+            false
+        }
+    }
 
     /**
      * Similar to [Activity.onCreate], you should initialize your dialog
@@ -159,7 +168,6 @@ class ABNumberDialog(
             val toast = Toast.makeText(
                     context, context.getString(R.string.dial_use), Toast.LENGTH_LONG
             )
-            toast.setGravity(Gravity.TOP, 0, 0)
             toast.show()
         }
         val which_problem = "$complete/$total:"
@@ -185,17 +193,6 @@ class ABNumberDialog(
         val number_picker : Dial_Entry = findViewById(R.id.quiz_ab_number_dial)
         listener.num_received(number_picker.long_value())
         dismiss()
-    }
-
-    /**
-     * Called when the dialog has detected the user's press of the back
-     * key.  The default implementation simply cancels the dialog (only if
-     * it is cancelable), but you can override this to do whatever you want.
-     */
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        dismiss()
-        listener.cancelled()
     }
 
 }
@@ -319,7 +316,16 @@ class ABCNumberDialog(
 ) : Dialog(crc_activity), View.OnClickListener
 {
 
-    init { setCanceledOnTouchOutside(false) }
+    init {
+        setCanceledOnTouchOutside(false)
+        setOnKeyListener { dialog, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_UP) {
+                dialog?.cancel()
+                listener.cancelled()
+            }
+            false
+        }
+    }
 
     /**
      * Similar to [Activity.onCreate], you should initialize your dialog
@@ -341,7 +347,6 @@ class ABCNumberDialog(
             val toast = Toast.makeText(
                     context, context.getString(R.string.dial_use), Toast.LENGTH_LONG
             )
-            toast.setGravity(Gravity.TOP, 0, 0)
             toast.show()
         }
         update_text.text = which_problem
@@ -372,14 +377,4 @@ class ABCNumberDialog(
         dismiss()
     }
 
-    /**
-     * Called when the dialog has detected the user's press of the back
-     * key.  The default implementation simply cancels the dialog (only if
-     * it is cancelable), but you can override this to do whatever you want.
-     */
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        dismiss()
-        listener.cancelled()
-    }
 }

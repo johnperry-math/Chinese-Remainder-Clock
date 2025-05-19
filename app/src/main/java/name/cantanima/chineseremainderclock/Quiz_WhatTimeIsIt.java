@@ -124,7 +124,6 @@ public class Quiz_WhatTimeIsIt extends CRC_Quiz implements TimeEntryDialogListen
             + ( ( new_minute_value < 10 ) ? "0" : "" )
             + new_minute_value;
     Toast toast = Toast.makeText(crc_context, message, Toast.LENGTH_LONG);
-    toast.setGravity(Gravity.TOP, 0, 0);
     toast.show();
   }
 

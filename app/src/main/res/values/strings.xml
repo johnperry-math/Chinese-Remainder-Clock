@@ -119,6 +119,12 @@
     <string name="pref_category_color">Color</string>
     <string name="pref_category_color_summ">Change how the clock draws various colors</string>
 
+    <string name="default_gray">Default (Gray)</string>
+    <string name="default_white">Default (White)</string>
+    <string name="default_blue">Default (Blue)</string>
+    <string name="default_red">Default (Red)</string>
+    <string name="default_green">Default (Green)</string>
+
     <string name="bg_color_text">Background color</string>
     <string name="line_color_text">Line color (when appropriate)</string>
     <string name="hour_color_text">Hour color</string>

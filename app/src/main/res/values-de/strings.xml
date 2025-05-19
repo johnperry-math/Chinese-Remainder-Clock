@@ -94,6 +94,12 @@
     <string name="pref_category_color">Farbe</string>
     <string name="pref_category_color_summ">&#xc4;ndere die Farben</string>
 
+    <string name="default_gray">Standard (Grau)</string>
+    <string name="default_white">Standard (Weiß)</string>
+    <string name="default_blue">Standard (Blau)</string>
+    <string name="default_red">Standard (Rot)</string>
+    <string name="default_green">Standard (Grün)</string>
+
     <string name="bg_color_text">Farbe Hintergrund</string>
     <string name="line_color_text">Farbe Linie (ggfl.)</string>
     <string name="hour_color_text">Farbe Stunde</string>

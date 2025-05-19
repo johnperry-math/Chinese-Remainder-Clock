@@ -51,31 +51,31 @@
             android:key="@string/saved_bg_color"
             android:defaultValue="0xff808080"
             android:title="@string/bg_color_text"
-            app:colorpicker_selectNoneButtonText="Default (gray)"
+            app:colorpicker_selectNoneButtonText="@string/default_gray"
             app:colorpicker_showHex="false" />
         <com.rarepebble.colorpicker.ColorPreference
             android:key="@string/saved_line_color"
             android:defaultValue="0xffffffff"
             android:title="@string/line_color_text"
-            app:colorpicker_selectNoneButtonText="Default (white)"
+            app:colorpicker_selectNoneButtonText="@string/default_white"
             app:colorpicker_showHex="false" />
         <com.rarepebble.colorpicker.ColorPreference
             android:key="@string/saved_hour_color"
             android:defaultValue="0xff0000ff"
             android:title="@string/hour_color_text"
-            app:colorpicker_selectNoneButtonText="Default (blue)"
+            app:colorpicker_selectNoneButtonText="@string/default_blue"
             app:colorpicker_showHex="false" />
         <com.rarepebble.colorpicker.ColorPreference
             android:key="@string/saved_minute_color"
             android:defaultValue="0xffff0000"
             android:title="@string/minute_color_text"
-            app:colorpicker_selectNoneButtonText="Default (red)"
+            app:colorpicker_selectNoneButtonText="@string/default_red"
             app:colorpicker_showHex="false" />
         <com.rarepebble.colorpicker.ColorPreference
             android:key="@string/saved_second_color"
             android:defaultValue="0xff00ff00"
             android:title="@string/second_color_text"
-            app:colorpicker_selectNoneButtonText="Default (green)"
+            app:colorpicker_selectNoneButtonText="@string/default_green"
             app:colorpicker_showHex="false" />
     </PreferenceCategory>
 

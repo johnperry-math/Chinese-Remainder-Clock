@@ -79,6 +79,12 @@
 
     <string name="pref_category_color">Colori</string>
     <string name="pref_category_color_summ">Scegli i colori</string>
+    
+    <string name="default_gray">Valore predefinito (Grigio)</string>
+    <string name="default_white">Valore predefinito (Bianco)</string>
+    <string name="default_blue">Valore predefinito (Blu)</string>
+    <string name="default_red">Valore predefinito (Rosso)</string>
+    <string name="default_green">Valore predefinito (Verde)</string>
 
     <string name="bg_color_text">Sfondo</string>
     <string name="line_color_text">Linee (se ci sono)</string>
